@@ -1,0 +1,21 @@
+staff_id,staff_name,email,phone_no,department_id,designation_id,joining_date,status
+1,Ananya Bhosale,staff1@example.edu,9136690368,1,5,2019-02-27,Active
+2,Sagar Chavan,staff2@example.edu,9157374644,2,4,2023-06-25,Active
+3,Shreya Deshmukh,staff3@example.edu,9766879879,3,5,2023-09-26,Active
+4,Aarav More,staff4@example.edu,9419868063,4,6,2021-05-22,Active
+5,Rohan Joshi,staff5@example.edu,9889241014,5,4,2024-03-25,Active
+6,Sneha Gokhale,staff6@example.edu,9129174528,1,6,2017-11-07,Active
+7,Siddharth Shinde,staff7@example.edu,9366833591,2,6,2020-04-08,Active
+8,Ananya Kale,staff8@example.edu,9796860329,3,6,2019-10-18,Active
+9,Aarav Jadhav,staff9@example.edu,9916446571,4,5,2022-03-05,Active
+10,Vivek More,staff10@example.edu,9744788269,5,6,2023-06-26,Active
+11,Devendra Jadhav,staff11@example.edu,9186909248,1,4,2021-04-22,Active
+12,Isha Kulkarni,staff12@example.edu,9554477387,2,5,2024-11-04,Active
+13,Priya Shinde,staff13@example.edu,9127022123,3,5,2023-11-04,Active
+14,Karan Shinde,staff14@example.edu,9978820616,4,5,2025-01-15,Active
+15,Aarav Kadam,staff15@example.edu,9399107223,5,4,2020-09-13,Active
+16,Aarav Naik,staff16@example.edu,9610688662,1,4,2018-11-29,Active
+17,Karan Kadam,staff17@example.edu,9802575299,2,4,2023-11-04,Active
+18,Neha Mane,staff18@example.edu,9143853710,3,4,2019-02-07,Active
+19,Shreya Naik,staff19@example.edu,9209849708,4,4,2020-07-30,Active
+20,Ashwini Tiwari,staff20@example.edu,9921753382,5,4,2024-07-21,Active

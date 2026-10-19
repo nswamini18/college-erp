@@ -1,0 +1,41 @@
+course_id,course_code,course_name,department_id,duration_semesters,course_type,total_credits
+1,CS001,Data Structures,1,1,Elective,4
+2,CS002,Database Management Systems,1,1,Elective,3
+3,CS003,Operating Systems,1,1,Elective,4
+4,CS004,Computer Networks,1,1,Core,4
+5,CS005,Software Engineering,1,1,Elective,3
+6,CS006,Artificial Intelligence,1,1,Core,4
+7,CS007,Web Technology,1,1,Core,3
+8,CS008,Theory of Computation,1,1,Core,3
+9,ENTC001,Signals and Systems,2,1,Core,4
+10,ENTC002,Analog Circuits,2,1,Elective,4
+11,ENTC003,Digital Communication,2,1,Elective,3
+12,ENTC004,Microcontrollers,2,1,Core,4
+13,ENTC005,VLSI Design,2,1,Elective,4
+14,ENTC006,Embedded Systems,2,1,Core,3
+15,ENTC007,Control Systems,2,1,Core,3
+16,ENTC008,Computer Networks,2,1,Core,4
+17,IT001,Database Management Systems,3,1,Core,3
+18,IT002,Web Technology,3,1,Core,3
+19,IT003,Operating Systems,3,1,Core,3
+20,IT004,Computer Networks,3,1,Elective,3
+21,IT005,Cloud Computing,3,1,Core,3
+22,IT006,Information Security,3,1,Elective,4
+23,IT007,Data Structures,3,1,Elective,3
+24,IT008,Software Engineering,3,1,Elective,4
+25,AIDS001,Machine Learning,4,1,Elective,3
+26,AIDS002,Statistics for Data Science,4,1,Elective,3
+27,AIDS003,Artificial Intelligence,4,1,Elective,4
+28,AIDS004,Data Mining,4,1,Core,4
+29,AIDS005,Big Data Analytics,4,1,Core,4
+30,AIDS006,Python Programming,4,1,Elective,3
+31,AIDS007,Database Management Systems,4,1,Core,3
+32,AIDS008,Deep Learning,4,1,Core,4
+33,ENCE001,Digital Systems,5,1,Core,4
+34,ENCE002,Computer Architecture,5,1,Core,3
+35,ENCE003,Embedded Systems,5,1,Elective,3
+36,ENCE004,Data Structures,5,1,Core,3
+37,ENCE005,Database Management Systems,5,1,Core,3
+38,ENCE006,VLSI Design,5,1,Elective,3
+39,ENCE007,Operating Systems,5,1,Core,3
+40,ENCE008,Computer Networks,5,1,Core,4

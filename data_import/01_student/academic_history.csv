@@ -1,0 +1,1001 @@
+history_id,student_id,qualification_level,institute_name,board_university,passing_year,percentage_gpa
+1,1,HSC/12th,Modern Junior College,CBSE,2024,73.65
+2,2,HSC/12th,Vidya Junior College,Maharashtra State Board,2024,95.01
+3,3,HSC/12th,New English Junior College,CBSE,2024,80.08
+4,4,HSC/12th,Modern Junior College,Maharashtra State Board,2024,95.35
+5,5,HSC/12th,Modern Junior College,ISC,2024,86.87
+6,6,HSC/12th,Modern Junior College,Maharashtra State Board,2024,97.05
+7,7,HSC/12th,Vidya Junior College,CBSE,2024,87.01
+8,8,HSC/12th,New English Junior College,Maharashtra State Board,2024,96.67
+9,9,HSC/12th,Vidya Junior College,ISC,2024,91.51
+10,10,HSC/12th,Modern Junior College,Maharashtra State Board,2024,94.4
+11,11,HSC/12th,Modern Junior College,ISC,2024,96.58
+12,12,HSC/12th,National Junior College,Maharashtra State Board,2024,96.16
+13,13,HSC/12th,New English Junior College,CBSE,2024,72.59
+14,14,HSC/12th,New English Junior College,Maharashtra State Board,2024,84.12
+15,15,HSC/12th,New English Junior College,ISC,2024,77.44
+16,16,HSC/12th,Vidya Junior College,ISC,2024,83.96
+17,17,HSC/12th,National Junior College,ISC,2024,94.11
+18,18,HSC/12th,National Junior College,CBSE,2024,79.76
+19,19,HSC/12th,National Junior College,Maharashtra State Board,2024,91.42
+20,20,HSC/12th,Modern Junior College,Maharashtra State Board,2024,76.27
+21,21,HSC/12th,Vidya Junior College,Maharashtra State Board,2024,83.8
+22,22,HSC/12th,New English Junior College,Maharashtra State Board,2024,84.31
+23,23,HSC/12th,Modern Junior College,Maharashtra State Board,2024,96.12
+24,24,HSC/12th,Shivaji Junior College,Maharashtra State Board,2024,96.68
+25,25,HSC/12th,Shivaji Junior College,CBSE,2024,74.13
+26,26,HSC/12th,Modern Junior College,ISC,2024,92.28
+27,27,HSC/12th,New English Junior College,ISC,2024,82.49
+28,28,HSC/12th,National Junior College,ISC,2024,80.6
+29,29,HSC/12th,Shivaji Junior College,Maharashtra State Board,2024,81.98
+30,30,HSC/12th,Modern Junior College,Maharashtra State Board,2024,89.91
+31,31,HSC/12th,National Junior College,Maharashtra State Board,2024,85.19
+32,32,HSC/12th,Shivaji Junior College,CBSE,2024,79.28
+33,33,HSC/12th,Shivaji Junior College,CBSE,2024,77.07
+34,34,HSC/12th,Modern Junior College,CBSE,2024,75.46
+35,35,HSC/12th,New English Junior College,ISC,2024,82.81
+36,36,HSC/12th,Vidya Junior College,CBSE,2024,70.77
+37,37,HSC/12th,National Junior College,CBSE,2024,91.12
+38,38,HSC/12th,Shivaji Junior College,ISC,2024,78.57
+39,39,HSC/12th,New English Junior College,Maharashtra State Board,2024,95.65
+40,40,HSC/12th,Modern Junior College,Maharashtra State Board,2024,96.87
+41,41,HSC/12th,New English Junior College,Maharashtra State Board,2024,87.42
+42,42,HSC/12th,New English Junior College,ISC,2024,86.96
+43,43,HSC/12th,National Junior College,ISC,2024,84.69
+44,44,HSC/12th,Vidya Junior College,ISC,2024,86.14
+45,45,HSC/12th,Shivaji Junior College,ISC,2024,92.11
+46,46,HSC/12th,Modern Junior College,ISC,2024,87.03
+47,47,HSC/12th,New English Junior College,CBSE,2024,82.16
+48,48,HSC/12th,New English Junior College,Maharashtra State Board,2024,88.53
+49,49,HSC/12th,Shivaji Junior College,Maharashtra State Board,2024,80.67
+50,50,HSC/12th,Vidya Junior College,Maharashtra State Board,2024,86.62
+51,51,HSC/12th,Shivaji Junior College,Maharashtra State Board,2024,96.33
+52,52,HSC/12th,Shivaji Junior College,ISC,2024,93.54
+53,53,HSC/12th,Vidya Junior College,ISC,2024,78.37
+54,54,HSC/12th,Shivaji Junior College,ISC,2024,97.03
+55,55,HSC/12th,New English Junior College,Maharashtra State Board,2024,73.69
+56,56,HSC/12th,Vidya Junior College,CBSE,2024,75.08
+57,57,HSC/12th,Shivaji Junior College,ISC,2024,86.62
+58,58,HSC/12th,Vidya Junior College,ISC,2024,80.09
+59,59,HSC/12th,Vidya Junior College,CBSE,2024,93.46
+60,60,HSC/12th,Modern Junior College,ISC,2024,80.28
+61,61,HSC/12th,Vidya Junior College,ISC,2024,94.13
+62,62,HSC/12th,Shivaji Junior College,ISC,2024,71.74
+63,63,HSC/12th,Vidya Junior College,ISC,2024,90.21
+64,64,HSC/12th,Vidya Junior College,ISC,2024,96.8
+65,65,HSC/12th,New English Junior College,CBSE,2024,77.61
+66,66,HSC/12th,National Junior College,CBSE,2024,72.56
+67,67,HSC/12th,National Junior College,CBSE,2024,72.11
+68,68,HSC/12th,National Junior College,ISC,2024,90.15
+69,69,HSC/12th,National Junior College,CBSE,2024,93.04
+70,70,HSC/12th,National Junior College,ISC,2024,87.26
+71,71,HSC/12th,New English Junior College,CBSE,2024,95.31
+72,72,HSC/12th,Shivaji Junior College,ISC,2024,84.71
+73,73,HSC/12th,Vidya Junior College,ISC,2024,78.37
+74,74,HSC/12th,Shivaji Junior College,CBSE,2024,91.33
+75,75,HSC/12th,National Junior College,CBSE,2024,94.63
+76,76,HSC/12th,Modern Junior College,ISC,2024,75.65
+77,77,HSC/12th,Vidya Junior College,Maharashtra State Board,2024,87.27
+78,78,HSC/12th,National Junior College,CBSE,2024,72.96
+79,79,HSC/12th,Vidya Junior College,Maharashtra State Board,2024,97.46
+80,80,HSC/12th,Vidya Junior College,ISC,2024,85.66
+81,81,HSC/12th,New English Junior College,Maharashtra State Board,2024,85.64
+82,82,HSC/12th,Shivaji Junior College,Maharashtra State Board,2024,79.44
+83,83,HSC/12th,National Junior College,ISC,2024,89.19
+84,84,HSC/12th,National Junior College,CBSE,2024,74.97
+85,85,HSC/12th,National Junior College,CBSE,2024,90.9
+86,86,HSC/12th,Shivaji Junior College,CBSE,2024,80.26
+87,87,HSC/12th,Shivaji Junior College,CBSE,2024,73.12
+88,88,HSC/12th,Modern Junior College,CBSE,2024,86.41
+89,89,HSC/12th,National Junior College,Maharashtra State Board,2024,71.56
+90,90,HSC/12th,New English Junior College,ISC,2024,90.27
+91,91,HSC/12th,New English Junior College,CBSE,2024,97.9
+92,92,HSC/12th,Shivaji Junior College,ISC,2024,98.28
+93,93,HSC/12th,Shivaji Junior College,Maharashtra State Board,2024,91.02
+94,94,HSC/12th,Modern Junior College,CBSE,2024,90.22
+95,95,HSC/12th,Shivaji Junior College,ISC,2024,92.16
+96,96,HSC/12th,Shivaji Junior College,Maharashtra State Board,2024,70.35
+97,97,HSC/12th,Modern Junior College,ISC,2024,72.02
+98,98,HSC/12th,Modern Junior College,Maharashtra State Board,2024,86.69
+99,99,HSC/12th,New English Junior College,CBSE,2024,78.1
+100,100,HSC/12th,Modern Junior College,CBSE,2024,81.79
+101,101,HSC/12th,New English Junior College,ISC,2024,80.7
+102,102,HSC/12th,Shivaji Junior College,CBSE,2024,96.9
+103,103,HSC/12th,Shivaji Junior College,CBSE,2024,88.29
+104,104,HSC/12th,Modern Junior College,Maharashtra State Board,2024,95.4
+105,105,HSC/12th,Shivaji Junior College,ISC,2024,83.26
+106,106,HSC/12th,Modern Junior College,ISC,2024,80.23
+107,107,HSC/12th,Vidya Junior College,ISC,2024,90.83
+108,108,HSC/12th,National Junior College,ISC,2024,80.4
+109,109,HSC/12th,Modern Junior College,ISC,2024,72.64
+110,110,HSC/12th,New English Junior College,ISC,2024,88.46
+111,111,HSC/12th,New English Junior College,ISC,2024,72.39
+112,112,HSC/12th,National Junior College,CBSE,2024,80.25
+113,113,HSC/12th,New English Junior College,ISC,2024,77.33
+114,114,HSC/12th,Modern Junior College,Maharashtra State Board,2024,86.49
+115,115,HSC/12th,Shivaji Junior College,CBSE,2024,84.24
+116,116,HSC/12th,National Junior College,ISC,2024,84.46
+117,117,HSC/12th,National Junior College,CBSE,2024,77.06
+118,118,HSC/12th,National Junior College,Maharashtra State Board,2024,91.17
+119,119,HSC/12th,Modern Junior College,Maharashtra State Board,2024,92.71
+120,120,HSC/12th,New English Junior College,Maharashtra State Board,2024,79.95
+121,121,HSC/12th,Modern Junior College,Maharashtra State Board,2024,86.07
+122,122,HSC/12th,Modern Junior College,ISC,2024,79.87
+123,123,HSC/12th,Shivaji Junior College,ISC,2024,86.14
+124,124,HSC/12th,Vidya Junior College,ISC,2024,96.68
+125,125,HSC/12th,Shivaji Junior College,ISC,2024,84.32
+126,126,HSC/12th,Shivaji Junior College,CBSE,2024,78.57
+127,127,HSC/12th,Vidya Junior College,ISC,2024,92.21
+128,128,HSC/12th,National Junior College,ISC,2024,86.3
+129,129,HSC/12th,New English Junior College,CBSE,2024,95.12
+130,130,HSC/12th,New English Junior College,Maharashtra State Board,2024,71.27
+131,131,HSC/12th,Modern Junior College,Maharashtra State Board,2024,89.25
+132,132,HSC/12th,Modern Junior College,CBSE,2024,82.15
+133,133,HSC/12th,Vidya Junior College,ISC,2024,96.67
+134,134,HSC/12th,Shivaji Junior College,CBSE,2024,77.44
+135,135,HSC/12th,New English Junior College,ISC,2024,76.38
+136,136,HSC/12th,New English Junior College,Maharashtra State Board,2024,95.35
+137,137,HSC/12th,Shivaji Junior College,CBSE,2024,90.68
+138,138,HSC/12th,Vidya Junior College,ISC,2024,88.64
+139,139,HSC/12th,Vidya Junior College,CBSE,2024,92.29
+140,140,HSC/12th,Shivaji Junior College,Maharashtra State Board,2024,73.4
+141,141,HSC/12th,Modern Junior College,ISC,2024,80.66
+142,142,HSC/12th,Vidya Junior College,CBSE,2024,70.09
+143,143,HSC/12th,Vidya Junior College,Maharashtra State Board,2024,96.1
+144,144,HSC/12th,Vidya Junior College,ISC,2024,71.75
+145,145,HSC/12th,New English Junior College,Maharashtra State Board,2024,90.03
+146,146,HSC/12th,National Junior College,Maharashtra State Board,2024,80.64
+147,147,HSC/12th,New English Junior College,Maharashtra State Board,2024,90.69
+148,148,HSC/12th,Modern Junior College,ISC,2024,81.89
+149,149,HSC/12th,Modern Junior College,ISC,2024,82.01
+150,150,HSC/12th,Modern Junior College,CBSE,2024,72.12
+151,151,HSC/12th,National Junior College,CBSE,2024,76.68
+152,152,HSC/12th,Vidya Junior College,Maharashtra State Board,2024,97.18
+153,153,HSC/12th,Shivaji Junior College,CBSE,2024,71.95
+154,154,HSC/12th,Vidya Junior College,Maharashtra State Board,2024,85.98
+155,155,HSC/12th,Vidya Junior College,ISC,2024,84.05
+156,156,HSC/12th,Modern Junior College,ISC,2024,85.76
+157,157,HSC/12th,National Junior College,Maharashtra State Board,2024,78.89
+158,158,HSC/12th,Vidya Junior College,CBSE,2024,71.54
+159,159,HSC/12th,Shivaji Junior College,Maharashtra State Board,2024,85.61
+160,160,HSC/12th,Modern Junior College,Maharashtra State Board,2024,78.7
+161,161,HSC/12th,Shivaji Junior College,ISC,2024,87.87
+162,162,HSC/12th,Vidya Junior College,Maharashtra State Board,2024,83.13
+163,163,HSC/12th,New English Junior College,Maharashtra State Board,2024,81.72
+164,164,HSC/12th,New English Junior College,ISC,2024,83.37
+165,165,HSC/12th,National Junior College,Maharashtra State Board,2024,71.94
+166,166,HSC/12th,National Junior College,ISC,2024,96.41
+167,167,HSC/12th,Vidya Junior College,CBSE,2024,75.83
+168,168,HSC/12th,Modern Junior College,CBSE,2024,92.46
+169,169,HSC/12th,National Junior College,ISC,2024,80.24
+170,170,HSC/12th,New English Junior College,Maharashtra State Board,2024,85.75
+171,171,HSC/12th,Shivaji Junior College,ISC,2024,74.38
+172,172,HSC/12th,New English Junior College,CBSE,2024,89.12
+173,173,HSC/12th,National Junior College,ISC,2024,78.66
+174,174,HSC/12th,National Junior College,ISC,2024,74.18
+175,175,HSC/12th,New English Junior College,CBSE,2024,83.93
+176,176,HSC/12th,National Junior College,CBSE,2024,93.87
+177,177,HSC/12th,Modern Junior College,CBSE,2024,81.79
+178,178,HSC/12th,New English Junior College,Maharashtra State Board,2024,72.82
+179,179,HSC/12th,National Junior College,Maharashtra State Board,2024,79.48
+180,180,HSC/12th,Vidya Junior College,Maharashtra State Board,2024,87.55
+181,181,HSC/12th,New English Junior College,ISC,2024,74.04
+182,182,HSC/12th,Shivaji Junior College,Maharashtra State Board,2024,72.36
+183,183,HSC/12th,New English Junior College,CBSE,2024,79.32
+184,184,HSC/12th,Modern Junior College,Maharashtra State Board,2024,75.71
+185,185,HSC/12th,New English Junior College,ISC,2024,85.57
+186,186,HSC/12th,New English Junior College,Maharashtra State Board,2024,93.48
+187,187,HSC/12th,National Junior College,ISC,2024,88.15
+188,188,HSC/12th,Vidya Junior College,Maharashtra State Board,2024,75.27
+189,189,HSC/12th,New English Junior College,CBSE,2024,79.64
+190,190,HSC/12th,Modern Junior College,ISC,2024,77.86
+191,191,HSC/12th,National Junior College,ISC,2024,78.21
+192,192,HSC/12th,Modern Junior College,Maharashtra State Board,2024,75.08
+193,193,HSC/12th,New English Junior College,CBSE,2024,75.95
+194,194,HSC/12th,Modern Junior College,CBSE,2024,95.77
+195,195,HSC/12th,Vidya Junior College,CBSE,2024,85.55
+196,196,HSC/12th,Modern Junior College,Maharashtra State Board,2024,94.97
+197,197,HSC/12th,Vidya Junior College,CBSE,2024,91.54
+198,198,HSC/12th,National Junior College,Maharashtra State Board,2024,84.8
+199,199,HSC/12th,Shivaji Junior College,Maharashtra State Board,2024,80.78
+200,200,HSC/12th,National Junior College,CBSE,2024,81.79
+201,201,HSC/12th,Vidya Junior College,ISC,2024,82.2
+202,202,HSC/12th,Vidya Junior College,Maharashtra State Board,2024,77.95
+203,203,HSC/12th,Modern Junior College,CBSE,2024,97.89
+204,204,HSC/12th,Shivaji Junior College,CBSE,2024,93.54
+205,205,HSC/12th,Modern Junior College,CBSE,2024,97.32
+206,206,HSC/12th,Shivaji Junior College,ISC,2024,96.9
+207,207,HSC/12th,National Junior College,ISC,2024,97.33
+208,208,HSC/12th,Modern Junior College,CBSE,2024,95.56
+209,209,HSC/12th,Vidya Junior College,ISC,2024,95.01
+210,210,HSC/12th,National Junior College,Maharashtra State Board,2024,78.64
+211,211,HSC/12th,Modern Junior College,CBSE,2024,92.9
+212,212,HSC/12th,New English Junior College,CBSE,2024,77.63
+213,213,HSC/12th,New English Junior College,ISC,2024,98.78
+214,214,HSC/12th,New English Junior College,Maharashtra State Board,2024,92.76
+215,215,HSC/12th,Vidya Junior College,CBSE,2024,76.53
+216,216,HSC/12th,New English Junior College,CBSE,2024,96.46
+217,217,HSC/12th,New English Junior College,ISC,2024,84.85
+218,218,HSC/12th,National Junior College,ISC,2024,89.68
+219,219,HSC/12th,Shivaji Junior College,ISC,2024,82.49
+220,220,HSC/12th,Shivaji Junior College,Maharashtra State Board,2024,90.23
+221,221,HSC/12th,Modern Junior College,Maharashtra State Board,2024,73.77
+222,222,HSC/12th,National Junior College,ISC,2024,87.7
+223,223,HSC/12th,Shivaji Junior College,CBSE,2024,90.29
+224,224,HSC/12th,Modern Junior College,CBSE,2024,75.35
+225,225,HSC/12th,Shivaji Junior College,CBSE,2024,83.07
+226,226,HSC/12th,Modern Junior College,Maharashtra State Board,2024,93.43
+227,227,HSC/12th,National Junior College,ISC,2024,96.42
+228,228,HSC/12th,Shivaji Junior College,ISC,2024,75.16
+229,229,HSC/12th,Vidya Junior College,CBSE,2024,79.38
+230,230,HSC/12th,National Junior College,CBSE,2024,73.98
+231,231,HSC/12th,National Junior College,ISC,2024,76.67
+232,232,HSC/12th,Vidya Junior College,Maharashtra State Board,2024,98.65
+233,233,HSC/12th,Modern Junior College,CBSE,2024,96.63
+234,234,HSC/12th,National Junior College,CBSE,2024,98.62
+235,235,HSC/12th,Shivaji Junior College,ISC,2024,75.87
+236,236,HSC/12th,Modern Junior College,Maharashtra State Board,2024,71.53
+237,237,HSC/12th,National Junior College,Maharashtra State Board,2024,92.17
+238,238,HSC/12th,Shivaji Junior College,ISC,2024,74.24
+239,239,HSC/12th,Modern Junior College,CBSE,2024,83.02
+240,240,HSC/12th,Vidya Junior College,ISC,2024,89.07
+241,241,HSC/12th,Shivaji Junior College,CBSE,2024,89.35
+242,242,HSC/12th,Modern Junior College,ISC,2024,81.8
+243,243,HSC/12th,Shivaji Junior College,CBSE,2024,81.52
+244,244,HSC/12th,Modern Junior College,CBSE,2024,84.82
+245,245,HSC/12th,Shivaji Junior College,ISC,2024,73.49
+246,246,HSC/12th,Vidya Junior College,CBSE,2024,98.67
+247,247,HSC/12th,Modern Junior College,CBSE,2024,74.63
+248,248,HSC/12th,Vidya Junior College,Maharashtra State Board,2024,80.94
+249,249,HSC/12th,Modern Junior College,Maharashtra State Board,2024,91.88
+250,250,HSC/12th,Shivaji Junior College,Maharashtra State Board,2024,91.73
+251,251,HSC/12th,Modern Junior College,CBSE,2024,81.87
+252,252,HSC/12th,New English Junior College,Maharashtra State Board,2024,75.29
+253,253,HSC/12th,Vidya Junior College,ISC,2024,79.94
+254,254,HSC/12th,New English Junior College,ISC,2024,82.39
+255,255,HSC/12th,New English Junior College,ISC,2024,73.68
+256,256,HSC/12th,New English Junior College,CBSE,2024,83.06
+257,257,HSC/12th,New English Junior College,ISC,2024,75.22
+258,258,HSC/12th,National Junior College,Maharashtra State Board,2024,85.01
+259,259,HSC/12th,Vidya Junior College,CBSE,2024,92.19
+260,260,HSC/12th,New English Junior College,CBSE,2024,98.02
+261,261,HSC/12th,Shivaji Junior College,Maharashtra State Board,2024,94.3
+262,262,HSC/12th,Vidya Junior College,CBSE,2024,72.29
+263,263,HSC/12th,Shivaji Junior College,ISC,2024,97.62
+264,264,HSC/12th,National Junior College,Maharashtra State Board,2024,92.63
+265,265,HSC/12th,Shivaji Junior College,Maharashtra State Board,2024,93.08
+266,266,HSC/12th,Shivaji Junior College,CBSE,2024,74.83
+267,267,HSC/12th,New English Junior College,CBSE,2024,93.96
+268,268,HSC/12th,New English Junior College,CBSE,2024,78.67
+269,269,HSC/12th,Vidya Junior College,ISC,2024,95.41
+270,270,HSC/12th,New English Junior College,ISC,2024,72.01
+271,271,HSC/12th,Shivaji Junior College,ISC,2024,88.15
+272,272,HSC/12th,New English Junior College,ISC,2024,98.87
+273,273,HSC/12th,Shivaji Junior College,Maharashtra State Board,2024,87.07
+274,274,HSC/12th,Modern Junior College,CBSE,2024,98.1
+275,275,HSC/12th,National Junior College,CBSE,2024,75.03
+276,276,HSC/12th,National Junior College,Maharashtra State Board,2024,74.71
+277,277,HSC/12th,National Junior College,CBSE,2024,74.43
+278,278,HSC/12th,New English Junior College,Maharashtra State Board,2024,90.47
+279,279,HSC/12th,New English Junior College,Maharashtra State Board,2024,81.44
+280,280,HSC/12th,Shivaji Junior College,CBSE,2024,76.0
+281,281,HSC/12th,Vidya Junior College,ISC,2024,90.28
+282,282,HSC/12th,New English Junior College,ISC,2024,94.09
+283,283,HSC/12th,Modern Junior College,ISC,2024,81.59
+284,284,HSC/12th,Modern Junior College,CBSE,2024,72.27
+285,285,HSC/12th,Vidya Junior College,CBSE,2024,73.73
+286,286,HSC/12th,Modern Junior College,ISC,2024,79.45
+287,287,HSC/12th,Shivaji Junior College,Maharashtra State Board,2024,94.9
+288,288,HSC/12th,Vidya Junior College,CBSE,2024,74.22
+289,289,HSC/12th,Vidya Junior College,CBSE,2024,95.02
+290,290,HSC/12th,Shivaji Junior College,CBSE,2024,95.0
+291,291,HSC/12th,Vidya Junior College,ISC,2024,80.4
+292,292,HSC/12th,Shivaji Junior College,CBSE,2024,94.25
+293,293,HSC/12th,Shivaji Junior College,ISC,2024,98.19
+294,294,HSC/12th,Vidya Junior College,Maharashtra State Board,2024,97.08
+295,295,HSC/12th,Modern Junior College,ISC,2024,75.61
+296,296,HSC/12th,New English Junior College,Maharashtra State Board,2024,78.09
+297,297,HSC/12th,New English Junior College,Maharashtra State Board,2024,74.33
+298,298,HSC/12th,Vidya Junior College,ISC,2024,84.41
+299,299,HSC/12th,National Junior College,ISC,2024,81.02
+300,300,HSC/12th,New English Junior College,Maharashtra State Board,2024,70.38
+301,301,HSC/12th,New English Junior College,ISC,2024,76.49
+302,302,HSC/12th,New English Junior College,CBSE,2024,73.21
+303,303,HSC/12th,Shivaji Junior College,CBSE,2024,93.45
+304,304,HSC/12th,Shivaji Junior College,Maharashtra State Board,2024,94.74
+305,305,HSC/12th,Modern Junior College,Maharashtra State Board,2024,83.21
+306,306,HSC/12th,Vidya Junior College,CBSE,2024,74.72
+307,307,HSC/12th,Shivaji Junior College,CBSE,2024,85.57
+308,308,HSC/12th,National Junior College,ISC,2024,89.0
+309,309,HSC/12th,New English Junior College,ISC,2024,77.63
+310,310,HSC/12th,Modern Junior College,Maharashtra State Board,2024,94.23
+311,311,HSC/12th,Shivaji Junior College,Maharashtra State Board,2024,98.4
+312,312,HSC/12th,Modern Junior College,ISC,2024,83.58
+313,313,HSC/12th,Shivaji Junior College,Maharashtra State Board,2024,85.61
+314,314,HSC/12th,Shivaji Junior College,ISC,2024,78.13
+315,315,HSC/12th,Vidya Junior College,ISC,2024,71.15
+316,316,HSC/12th,National Junior College,ISC,2024,95.97
+317,317,HSC/12th,National Junior College,ISC,2024,77.03
+318,318,HSC/12th,National Junior College,Maharashtra State Board,2024,93.99
+319,319,HSC/12th,Shivaji Junior College,CBSE,2024,73.14
+320,320,HSC/12th,National Junior College,CBSE,2024,74.28
+321,321,HSC/12th,Shivaji Junior College,ISC,2024,86.09
+322,322,HSC/12th,New English Junior College,ISC,2024,83.04
+323,323,HSC/12th,Modern Junior College,CBSE,2024,89.4
+324,324,HSC/12th,Shivaji Junior College,ISC,2024,75.85
+325,325,HSC/12th,National Junior College,Maharashtra State Board,2024,75.14
+326,326,HSC/12th,Shivaji Junior College,ISC,2024,92.63
+327,327,HSC/12th,New English Junior College,Maharashtra State Board,2024,72.54
+328,328,HSC/12th,New English Junior College,CBSE,2024,90.81
+329,329,HSC/12th,New English Junior College,CBSE,2024,95.67
+330,330,HSC/12th,Modern Junior College,ISC,2024,92.19
+331,331,HSC/12th,New English Junior College,Maharashtra State Board,2024,75.23
+332,332,HSC/12th,Modern Junior College,Maharashtra State Board,2024,77.3
+333,333,HSC/12th,Shivaji Junior College,ISC,2024,76.23
+334,334,HSC/12th,Modern Junior College,ISC,2024,94.51
+335,335,HSC/12th,National Junior College,Maharashtra State Board,2024,84.66
+336,336,HSC/12th,National Junior College,ISC,2024,88.84
+337,337,HSC/12th,Vidya Junior College,CBSE,2024,70.49
+338,338,HSC/12th,Shivaji Junior College,CBSE,2024,83.71
+339,339,HSC/12th,Shivaji Junior College,Maharashtra State Board,2024,72.61
+340,340,HSC/12th,New English Junior College,Maharashtra State Board,2024,77.68
+341,341,HSC/12th,Modern Junior College,CBSE,2024,77.02
+342,342,HSC/12th,National Junior College,CBSE,2024,86.98
+343,343,HSC/12th,Modern Junior College,ISC,2024,91.48
+344,344,HSC/12th,Vidya Junior College,CBSE,2024,89.5
+345,345,HSC/12th,Vidya Junior College,CBSE,2024,73.24
+346,346,HSC/12th,Modern Junior College,CBSE,2024,97.26
+347,347,HSC/12th,New English Junior College,Maharashtra State Board,2024,91.58
+348,348,HSC/12th,National Junior College,Maharashtra State Board,2024,85.1
+349,349,HSC/12th,National Junior College,CBSE,2024,81.8
+350,350,HSC/12th,Modern Junior College,ISC,2024,85.46
+351,351,HSC/12th,Shivaji Junior College,CBSE,2024,76.4
+352,352,HSC/12th,Modern Junior College,ISC,2024,72.96
+353,353,HSC/12th,Shivaji Junior College,ISC,2024,98.76
+354,354,HSC/12th,New English Junior College,Maharashtra State Board,2024,81.19
+355,355,HSC/12th,New English Junior College,Maharashtra State Board,2024,90.98
+356,356,HSC/12th,Shivaji Junior College,Maharashtra State Board,2024,76.45
+357,357,HSC/12th,Shivaji Junior College,ISC,2024,72.45
+358,358,HSC/12th,National Junior College,CBSE,2024,93.07
+359,359,HSC/12th,National Junior College,ISC,2024,93.77
+360,360,HSC/12th,Modern Junior College,CBSE,2024,73.38
+361,361,HSC/12th,New English Junior College,CBSE,2024,87.16
+362,362,HSC/12th,New English Junior College,CBSE,2024,97.45
+363,363,HSC/12th,Modern Junior College,CBSE,2024,89.04
+364,364,HSC/12th,New English Junior College,Maharashtra State Board,2024,85.7
+365,365,HSC/12th,New English Junior College,CBSE,2024,84.74
+366,366,HSC/12th,Shivaji Junior College,ISC,2024,87.35
+367,367,HSC/12th,Vidya Junior College,ISC,2024,79.77
+368,368,HSC/12th,Vidya Junior College,CBSE,2024,87.71
+369,369,HSC/12th,Vidya Junior College,CBSE,2024,91.83
+370,370,HSC/12th,Shivaji Junior College,CBSE,2024,87.79
+371,371,HSC/12th,New English Junior College,CBSE,2024,71.16
+372,372,HSC/12th,Modern Junior College,Maharashtra State Board,2024,85.98
+373,373,HSC/12th,Modern Junior College,Maharashtra State Board,2024,77.1
+374,374,HSC/12th,National Junior College,CBSE,2024,73.53
+375,375,HSC/12th,Vidya Junior College,CBSE,2024,87.15
+376,376,HSC/12th,Modern Junior College,Maharashtra State Board,2024,74.87
+377,377,HSC/12th,Vidya Junior College,ISC,2024,90.13
+378,378,HSC/12th,Shivaji Junior College,Maharashtra State Board,2024,79.33
+379,379,HSC/12th,Modern Junior College,ISC,2024,84.45
+380,380,HSC/12th,Shivaji Junior College,Maharashtra State Board,2024,89.35
+381,381,HSC/12th,Vidya Junior College,ISC,2024,78.72
+382,382,HSC/12th,Vidya Junior College,CBSE,2024,83.72
+383,383,HSC/12th,New English Junior College,ISC,2024,90.65
+384,384,HSC/12th,New English Junior College,Maharashtra State Board,2024,87.49
+385,385,HSC/12th,National Junior College,Maharashtra State Board,2024,93.28
+386,386,HSC/12th,Shivaji Junior College,CBSE,2024,72.34
+387,387,HSC/12th,Shivaji Junior College,ISC,2024,73.77
+388,388,HSC/12th,National Junior College,ISC,2024,87.31
+389,389,HSC/12th,Modern Junior College,ISC,2024,74.65
+390,390,HSC/12th,Shivaji Junior College,ISC,2024,88.97
+391,391,HSC/12th,New English Junior College,ISC,2024,77.71
+392,392,HSC/12th,Shivaji Junior College,CBSE,2024,70.61
+393,393,HSC/12th,Vidya Junior College,CBSE,2024,71.47
+394,394,HSC/12th,Vidya Junior College,CBSE,2024,75.77
+395,395,HSC/12th,Vidya Junior College,CBSE,2024,75.79
+396,396,HSC/12th,New English Junior College,Maharashtra State Board,2024,92.85
+397,397,HSC/12th,Modern Junior College,ISC,2024,98.27
+398,398,HSC/12th,National Junior College,ISC,2024,92.77
+399,399,HSC/12th,New English Junior College,ISC,2024,83.83
+400,400,HSC/12th,Vidya Junior College,CBSE,2024,97.7
+401,401,HSC/12th,Vidya Junior College,CBSE,2024,89.45
+402,402,HSC/12th,New English Junior College,ISC,2024,71.84
+403,403,HSC/12th,Modern Junior College,ISC,2024,92.62
+404,404,HSC/12th,National Junior College,ISC,2024,74.86
+405,405,HSC/12th,Modern Junior College,ISC,2024,93.93
+406,406,HSC/12th,New English Junior College,Maharashtra State Board,2024,73.93
+407,407,HSC/12th,Modern Junior College,ISC,2024,84.59
+408,408,HSC/12th,National Junior College,ISC,2024,84.99
+409,409,HSC/12th,Vidya Junior College,ISC,2024,72.52
+410,410,HSC/12th,New English Junior College,CBSE,2024,95.28
+411,411,HSC/12th,New English Junior College,CBSE,2024,73.89
+412,412,HSC/12th,National Junior College,ISC,2024,72.44
+413,413,HSC/12th,Modern Junior College,CBSE,2024,74.23
+414,414,HSC/12th,New English Junior College,CBSE,2024,82.95
+415,415,HSC/12th,National Junior College,ISC,2024,95.03
+416,416,HSC/12th,National Junior College,ISC,2024,78.51
+417,417,HSC/12th,Shivaji Junior College,CBSE,2024,87.47
+418,418,HSC/12th,Modern Junior College,ISC,2024,87.32
+419,419,HSC/12th,National Junior College,Maharashtra State Board,2024,85.38
+420,420,HSC/12th,Vidya Junior College,CBSE,2024,72.31
+421,421,HSC/12th,National Junior College,ISC,2024,86.18
+422,422,HSC/12th,Modern Junior College,CBSE,2024,97.33
+423,423,HSC/12th,New English Junior College,Maharashtra State Board,2024,90.63
+424,424,HSC/12th,National Junior College,CBSE,2024,96.93
+425,425,HSC/12th,National Junior College,Maharashtra State Board,2024,92.84
+426,426,HSC/12th,Shivaji Junior College,ISC,2024,92.68
+427,427,HSC/12th,New English Junior College,Maharashtra State Board,2024,77.55
+428,428,HSC/12th,Vidya Junior College,Maharashtra State Board,2024,93.33
+429,429,HSC/12th,Vidya Junior College,ISC,2024,90.16
+430,430,HSC/12th,Modern Junior College,ISC,2024,88.69
+431,431,HSC/12th,National Junior College,CBSE,2024,76.99
+432,432,HSC/12th,Shivaji Junior College,CBSE,2024,73.76
+433,433,HSC/12th,Shivaji Junior College,Maharashtra State Board,2024,81.08
+434,434,HSC/12th,Shivaji Junior College,ISC,2024,80.75
+435,435,HSC/12th,National Junior College,Maharashtra State Board,2024,75.8
+436,436,HSC/12th,New English Junior College,ISC,2024,94.03
+437,437,HSC/12th,New English Junior College,CBSE,2024,94.74
+438,438,HSC/12th,Modern Junior College,ISC,2024,79.21
+439,439,HSC/12th,Vidya Junior College,Maharashtra State Board,2024,90.13
+440,440,HSC/12th,New English Junior College,Maharashtra State Board,2024,90.33
+441,441,HSC/12th,National Junior College,ISC,2024,94.32
+442,442,HSC/12th,National Junior College,ISC,2024,81.02
+443,443,HSC/12th,Shivaji Junior College,CBSE,2024,70.14
+444,444,HSC/12th,New English Junior College,Maharashtra State Board,2024,95.28
+445,445,HSC/12th,Shivaji Junior College,CBSE,2024,86.61
+446,446,HSC/12th,National Junior College,ISC,2024,76.32
+447,447,HSC/12th,Modern Junior College,Maharashtra State Board,2024,92.76
+448,448,HSC/12th,Shivaji Junior College,CBSE,2024,86.78
+449,449,HSC/12th,Shivaji Junior College,CBSE,2024,81.33
+450,450,HSC/12th,Shivaji Junior College,ISC,2024,97.93
+451,451,HSC/12th,Shivaji Junior College,ISC,2024,82.04
+452,452,HSC/12th,Shivaji Junior College,CBSE,2024,97.65
+453,453,HSC/12th,National Junior College,Maharashtra State Board,2024,74.77
+454,454,HSC/12th,Vidya Junior College,ISC,2024,97.99
+455,455,HSC/12th,New English Junior College,Maharashtra State Board,2024,83.93
+456,456,HSC/12th,Modern Junior College,CBSE,2024,72.8
+457,457,HSC/12th,Vidya Junior College,Maharashtra State Board,2024,71.18
+458,458,HSC/12th,Shivaji Junior College,CBSE,2024,76.74
+459,459,HSC/12th,Modern Junior College,Maharashtra State Board,2024,87.24
+460,460,HSC/12th,Vidya Junior College,Maharashtra State Board,2024,94.72
+461,461,HSC/12th,Shivaji Junior College,Maharashtra State Board,2024,93.95
+462,462,HSC/12th,Vidya Junior College,Maharashtra State Board,2024,94.9
+463,463,HSC/12th,Vidya Junior College,CBSE,2024,82.69
+464,464,HSC/12th,National Junior College,CBSE,2024,86.22
+465,465,HSC/12th,Vidya Junior College,ISC,2024,92.01
+466,466,HSC/12th,Vidya Junior College,ISC,2024,93.07
+467,467,HSC/12th,National Junior College,Maharashtra State Board,2024,81.02
+468,468,HSC/12th,New English Junior College,Maharashtra State Board,2024,81.45
+469,469,HSC/12th,New English Junior College,Maharashtra State Board,2024,90.32
+470,470,HSC/12th,Shivaji Junior College,Maharashtra State Board,2024,85.66
+471,471,HSC/12th,New English Junior College,Maharashtra State Board,2024,93.15
+472,472,HSC/12th,Shivaji Junior College,Maharashtra State Board,2024,97.28
+473,473,HSC/12th,New English Junior College,Maharashtra State Board,2024,91.32
+474,474,HSC/12th,Shivaji Junior College,ISC,2024,72.33
+475,475,HSC/12th,New English Junior College,CBSE,2024,81.77
+476,476,HSC/12th,New English Junior College,CBSE,2024,79.26
+477,477,HSC/12th,New English Junior College,Maharashtra State Board,2024,70.1
+478,478,HSC/12th,National Junior College,ISC,2024,81.8
+479,479,HSC/12th,New English Junior College,ISC,2024,91.65
+480,480,HSC/12th,National Junior College,CBSE,2024,78.47
+481,481,HSC/12th,Shivaji Junior College,CBSE,2024,79.88
+482,482,HSC/12th,National Junior College,CBSE,2024,72.97
+483,483,HSC/12th,Vidya Junior College,Maharashtra State Board,2024,96.33
+484,484,HSC/12th,Modern Junior College,CBSE,2024,70.78
+485,485,HSC/12th,National Junior College,Maharashtra State Board,2024,70.05
+486,486,HSC/12th,Modern Junior College,CBSE,2024,97.8
+487,487,HSC/12th,Shivaji Junior College,Maharashtra State Board,2024,78.54
+488,488,HSC/12th,New English Junior College,CBSE,2024,75.69
+489,489,HSC/12th,Modern Junior College,CBSE,2024,97.9
+490,490,HSC/12th,National Junior College,Maharashtra State Board,2024,92.69
+491,491,HSC/12th,Vidya Junior College,ISC,2024,77.4
+492,492,HSC/12th,New English Junior College,ISC,2024,74.91
+493,493,HSC/12th,Vidya Junior College,CBSE,2024,77.48
+494,494,HSC/12th,New English Junior College,CBSE,2024,84.27
+495,495,HSC/12th,New English Junior College,Maharashtra State Board,2024,98.46
+496,496,HSC/12th,New English Junior College,CBSE,2024,80.2
+497,497,HSC/12th,Modern Junior College,ISC,2024,86.54
+498,498,HSC/12th,New English Junior College,Maharashtra State Board,2024,90.99
+499,499,HSC/12th,Vidya Junior College,Maharashtra State Board,2024,97.22
+500,500,HSC/12th,New English Junior College,CBSE,2024,88.27
+501,501,HSC/12th,National Junior College,Maharashtra State Board,2024,93.42
+502,502,HSC/12th,Shivaji Junior College,CBSE,2024,81.32
+503,503,HSC/12th,Vidya Junior College,ISC,2024,93.71
+504,504,HSC/12th,Vidya Junior College,Maharashtra State Board,2024,72.15
+505,505,HSC/12th,National Junior College,CBSE,2024,98.35
+506,506,HSC/12th,National Junior College,CBSE,2024,88.7
+507,507,HSC/12th,Shivaji Junior College,ISC,2024,75.72
+508,508,HSC/12th,Modern Junior College,ISC,2024,89.01
+509,509,HSC/12th,Vidya Junior College,Maharashtra State Board,2024,74.45
+510,510,HSC/12th,New English Junior College,CBSE,2024,87.59
+511,511,HSC/12th,Modern Junior College,Maharashtra State Board,2024,88.83
+512,512,HSC/12th,National Junior College,ISC,2024,96.05
+513,513,HSC/12th,Shivaji Junior College,CBSE,2024,84.39
+514,514,HSC/12th,Vidya Junior College,ISC,2024,91.51
+515,515,HSC/12th,Vidya Junior College,CBSE,2024,86.91
+516,516,HSC/12th,National Junior College,CBSE,2024,73.17
+517,517,HSC/12th,Modern Junior College,ISC,2024,97.59
+518,518,HSC/12th,Modern Junior College,CBSE,2024,82.61
+519,519,HSC/12th,Shivaji Junior College,Maharashtra State Board,2024,95.51
+520,520,HSC/12th,Modern Junior College,CBSE,2024,89.29
+521,521,HSC/12th,Vidya Junior College,CBSE,2024,91.95
+522,522,HSC/12th,New English Junior College,ISC,2024,78.25
+523,523,HSC/12th,Vidya Junior College,ISC,2024,87.89
+524,524,HSC/12th,Shivaji Junior College,Maharashtra State Board,2024,80.44
+525,525,HSC/12th,Modern Junior College,ISC,2024,80.65
+526,526,HSC/12th,Vidya Junior College,Maharashtra State Board,2024,93.19
+527,527,HSC/12th,Shivaji Junior College,Maharashtra State Board,2024,70.21
+528,528,HSC/12th,New English Junior College,Maharashtra State Board,2024,86.87
+529,529,HSC/12th,Vidya Junior College,ISC,2024,72.69
+530,530,HSC/12th,National Junior College,ISC,2024,98.7
+531,531,HSC/12th,Vidya Junior College,Maharashtra State Board,2024,88.03
+532,532,HSC/12th,Vidya Junior College,Maharashtra State Board,2024,96.34
+533,533,HSC/12th,Modern Junior College,CBSE,2024,91.01
+534,534,HSC/12th,New English Junior College,CBSE,2024,86.37
+535,535,HSC/12th,Shivaji Junior College,CBSE,2024,96.2
+536,536,HSC/12th,National Junior College,CBSE,2024,74.67
+537,537,HSC/12th,Shivaji Junior College,CBSE,2024,93.13
+538,538,HSC/12th,New English Junior College,Maharashtra State Board,2024,75.69
+539,539,HSC/12th,Shivaji Junior College,CBSE,2024,80.72
+540,540,HSC/12th,National Junior College,Maharashtra State Board,2024,95.23
+541,541,HSC/12th,New English Junior College,CBSE,2024,96.94
+542,542,HSC/12th,Shivaji Junior College,Maharashtra State Board,2024,81.4
+543,543,HSC/12th,National Junior College,ISC,2024,79.43
+544,544,HSC/12th,New English Junior College,CBSE,2024,72.96
+545,545,HSC/12th,New English Junior College,CBSE,2024,82.78
+546,546,HSC/12th,Modern Junior College,CBSE,2024,89.24
+547,547,HSC/12th,Vidya Junior College,ISC,2024,86.04
+548,548,HSC/12th,Shivaji Junior College,Maharashtra State Board,2024,93.14
+549,549,HSC/12th,National Junior College,ISC,2024,79.57
+550,550,HSC/12th,Modern Junior College,CBSE,2024,71.96
+551,551,HSC/12th,Modern Junior College,Maharashtra State Board,2024,70.05
+552,552,HSC/12th,Modern Junior College,CBSE,2024,83.53
+553,553,HSC/12th,Modern Junior College,ISC,2024,96.03
+554,554,HSC/12th,National Junior College,ISC,2024,71.1
+555,555,HSC/12th,Shivaji Junior College,Maharashtra State Board,2024,74.8
+556,556,HSC/12th,Modern Junior College,CBSE,2024,87.02
+557,557,HSC/12th,Modern Junior College,ISC,2024,94.23
+558,558,HSC/12th,Vidya Junior College,ISC,2024,79.93
+559,559,HSC/12th,National Junior College,ISC,2024,71.66
+560,560,HSC/12th,Modern Junior College,ISC,2024,81.88
+561,561,HSC/12th,Vidya Junior College,Maharashtra State Board,2024,98.7
+562,562,HSC/12th,National Junior College,CBSE,2024,80.84
+563,563,HSC/12th,Vidya Junior College,Maharashtra State Board,2024,82.99
+564,564,HSC/12th,New English Junior College,Maharashtra State Board,2024,70.95
+565,565,HSC/12th,Shivaji Junior College,CBSE,2024,87.85
+566,566,HSC/12th,Vidya Junior College,Maharashtra State Board,2024,88.07
+567,567,HSC/12th,National Junior College,Maharashtra State Board,2024,91.44
+568,568,HSC/12th,New English Junior College,CBSE,2024,96.08
+569,569,HSC/12th,New English Junior College,CBSE,2024,76.48
+570,570,HSC/12th,Shivaji Junior College,ISC,2024,79.25
+571,571,HSC/12th,Shivaji Junior College,Maharashtra State Board,2024,73.28
+572,572,HSC/12th,New English Junior College,ISC,2024,95.55
+573,573,HSC/12th,National Junior College,ISC,2024,97.6
+574,574,HSC/12th,Shivaji Junior College,ISC,2024,72.9
+575,575,HSC/12th,Shivaji Junior College,CBSE,2024,70.34
+576,576,HSC/12th,National Junior College,ISC,2024,95.14
+577,577,HSC/12th,National Junior College,CBSE,2024,77.11
+578,578,HSC/12th,New English Junior College,ISC,2024,72.06
+579,579,HSC/12th,Shivaji Junior College,Maharashtra State Board,2024,98.73
+580,580,HSC/12th,National Junior College,ISC,2024,91.14
+581,581,HSC/12th,New English Junior College,CBSE,2024,96.82
+582,582,HSC/12th,National Junior College,CBSE,2024,89.2
+583,583,HSC/12th,Vidya Junior College,ISC,2024,90.17
+584,584,HSC/12th,New English Junior College,CBSE,2024,82.26
+585,585,HSC/12th,National Junior College,CBSE,2024,72.56
+586,586,HSC/12th,Vidya Junior College,Maharashtra State Board,2024,89.51
+587,587,HSC/12th,Modern Junior College,ISC,2024,83.19
+588,588,HSC/12th,New English Junior College,Maharashtra State Board,2024,70.49
+589,589,HSC/12th,Vidya Junior College,ISC,2024,86.5
+590,590,HSC/12th,Vidya Junior College,ISC,2024,77.86
+591,591,HSC/12th,New English Junior College,Maharashtra State Board,2024,75.78
+592,592,HSC/12th,National Junior College,Maharashtra State Board,2024,76.38
+593,593,HSC/12th,Shivaji Junior College,ISC,2024,90.86
+594,594,HSC/12th,New English Junior College,ISC,2024,80.55
+595,595,HSC/12th,Vidya Junior College,Maharashtra State Board,2024,79.8
+596,596,HSC/12th,National Junior College,CBSE,2024,84.85
+597,597,HSC/12th,Vidya Junior College,CBSE,2024,72.35
+598,598,HSC/12th,Modern Junior College,CBSE,2024,87.4
+599,599,HSC/12th,New English Junior College,Maharashtra State Board,2024,80.13
+600,600,HSC/12th,Modern Junior College,CBSE,2024,73.8
+601,601,HSC/12th,National Junior College,Maharashtra State Board,2024,84.78
+602,602,HSC/12th,Modern Junior College,Maharashtra State Board,2024,79.1
+603,603,HSC/12th,New English Junior College,CBSE,2024,75.17
+604,604,HSC/12th,National Junior College,CBSE,2024,88.67
+605,605,HSC/12th,New English Junior College,Maharashtra State Board,2024,93.29
+606,606,HSC/12th,Vidya Junior College,ISC,2024,96.28
+607,607,HSC/12th,National Junior College,ISC,2024,84.06
+608,608,HSC/12th,Shivaji Junior College,CBSE,2024,86.74
+609,609,HSC/12th,New English Junior College,ISC,2024,92.66
+610,610,HSC/12th,New English Junior College,CBSE,2024,84.38
+611,611,HSC/12th,New English Junior College,ISC,2024,79.44
+612,612,HSC/12th,National Junior College,Maharashtra State Board,2024,75.48
+613,613,HSC/12th,Vidya Junior College,Maharashtra State Board,2024,91.53
+614,614,HSC/12th,New English Junior College,CBSE,2024,94.66
+615,615,HSC/12th,Modern Junior College,ISC,2024,93.91
+616,616,HSC/12th,National Junior College,ISC,2024,94.25
+617,617,HSC/12th,Vidya Junior College,ISC,2024,93.17
+618,618,HSC/12th,Vidya Junior College,Maharashtra State Board,2024,92.52
+619,619,HSC/12th,National Junior College,ISC,2024,98.35
+620,620,HSC/12th,Vidya Junior College,ISC,2024,96.56
+621,621,HSC/12th,New English Junior College,Maharashtra State Board,2024,77.47
+622,622,HSC/12th,Vidya Junior College,ISC,2024,76.89
+623,623,HSC/12th,Shivaji Junior College,Maharashtra State Board,2024,85.82
+624,624,HSC/12th,Vidya Junior College,Maharashtra State Board,2024,72.98
+625,625,HSC/12th,Shivaji Junior College,ISC,2024,77.26
+626,626,HSC/12th,New English Junior College,Maharashtra State Board,2024,88.44
+627,627,HSC/12th,Modern Junior College,ISC,2024,77.27
+628,628,HSC/12th,Shivaji Junior College,CBSE,2024,80.45
+629,629,HSC/12th,Shivaji Junior College,Maharashtra State Board,2024,82.34
+630,630,HSC/12th,Vidya Junior College,Maharashtra State Board,2024,79.06
+631,631,HSC/12th,Shivaji Junior College,CBSE,2024,86.82
+632,632,HSC/12th,Modern Junior College,Maharashtra State Board,2024,74.04
+633,633,HSC/12th,Shivaji Junior College,CBSE,2024,90.29
+634,634,HSC/12th,Vidya Junior College,ISC,2024,82.23
+635,635,HSC/12th,Modern Junior College,Maharashtra State Board,2024,96.5
+636,636,HSC/12th,New English Junior College,Maharashtra State Board,2024,87.04
+637,637,HSC/12th,New English Junior College,CBSE,2024,96.26
+638,638,HSC/12th,National Junior College,CBSE,2024,94.94
+639,639,HSC/12th,Shivaji Junior College,ISC,2024,90.55
+640,640,HSC/12th,Modern Junior College,CBSE,2024,78.43
+641,641,HSC/12th,Shivaji Junior College,CBSE,2024,71.28
+642,642,HSC/12th,National Junior College,Maharashtra State Board,2024,90.35
+643,643,HSC/12th,New English Junior College,ISC,2024,94.29
+644,644,HSC/12th,Vidya Junior College,ISC,2024,93.37
+645,645,HSC/12th,Modern Junior College,Maharashtra State Board,2024,70.62
+646,646,HSC/12th,Modern Junior College,CBSE,2024,87.33
+647,647,HSC/12th,Shivaji Junior College,CBSE,2024,92.73
+648,648,HSC/12th,New English Junior College,CBSE,2024,92.25
+649,649,HSC/12th,National Junior College,ISC,2024,85.67
+650,650,HSC/12th,Modern Junior College,CBSE,2024,70.52
+651,651,HSC/12th,Shivaji Junior College,CBSE,2024,81.98
+652,652,HSC/12th,New English Junior College,Maharashtra State Board,2024,73.71
+653,653,HSC/12th,National Junior College,ISC,2024,73.43
+654,654,HSC/12th,Shivaji Junior College,Maharashtra State Board,2024,81.41
+655,655,HSC/12th,Vidya Junior College,ISC,2024,82.91
+656,656,HSC/12th,New English Junior College,Maharashtra State Board,2024,85.17
+657,657,HSC/12th,Shivaji Junior College,ISC,2024,81.73
+658,658,HSC/12th,Vidya Junior College,ISC,2024,80.38
+659,659,HSC/12th,New English Junior College,Maharashtra State Board,2024,73.69
+660,660,HSC/12th,New English Junior College,ISC,2024,81.46
+661,661,HSC/12th,Shivaji Junior College,ISC,2024,97.67
+662,662,HSC/12th,Modern Junior College,ISC,2024,76.0
+663,663,HSC/12th,Shivaji Junior College,CBSE,2024,77.82
+664,664,HSC/12th,National Junior College,Maharashtra State Board,2024,71.14
+665,665,HSC/12th,Modern Junior College,ISC,2024,72.22
+666,666,HSC/12th,Modern Junior College,CBSE,2024,89.14
+667,667,HSC/12th,National Junior College,ISC,2024,70.26
+668,668,HSC/12th,Vidya Junior College,CBSE,2024,88.08
+669,669,HSC/12th,Modern Junior College,Maharashtra State Board,2024,95.54
+670,670,HSC/12th,Modern Junior College,Maharashtra State Board,2024,88.04
+671,671,HSC/12th,Modern Junior College,Maharashtra State Board,2024,70.27
+672,672,HSC/12th,Shivaji Junior College,ISC,2024,76.23
+673,673,HSC/12th,New English Junior College,CBSE,2024,84.4
+674,674,HSC/12th,Shivaji Junior College,Maharashtra State Board,2024,91.77
+675,675,HSC/12th,Shivaji Junior College,Maharashtra State Board,2024,94.71
+676,676,HSC/12th,National Junior College,Maharashtra State Board,2024,81.59
+677,677,HSC/12th,New English Junior College,CBSE,2024,92.45
+678,678,HSC/12th,Shivaji Junior College,CBSE,2024,92.25
+679,679,HSC/12th,Vidya Junior College,CBSE,2024,70.31
+680,680,HSC/12th,Shivaji Junior College,CBSE,2024,76.87
+681,681,HSC/12th,Vidya Junior College,ISC,2024,73.62
+682,682,HSC/12th,Vidya Junior College,Maharashtra State Board,2024,83.2
+683,683,HSC/12th,Vidya Junior College,CBSE,2024,86.35
+684,684,HSC/12th,New English Junior College,ISC,2024,90.29
+685,685,HSC/12th,Vidya Junior College,Maharashtra State Board,2024,96.34
+686,686,HSC/12th,National Junior College,CBSE,2024,91.97
+687,687,HSC/12th,Shivaji Junior College,Maharashtra State Board,2024,77.6
+688,688,HSC/12th,Vidya Junior College,Maharashtra State Board,2024,88.66
+689,689,HSC/12th,Shivaji Junior College,ISC,2024,88.24
+690,690,HSC/12th,New English Junior College,CBSE,2024,85.43
+691,691,HSC/12th,Vidya Junior College,ISC,2024,89.23
+692,692,HSC/12th,New English Junior College,Maharashtra State Board,2024,83.67
+693,693,HSC/12th,Shivaji Junior College,CBSE,2024,75.71
+694,694,HSC/12th,National Junior College,CBSE,2024,86.58
+695,695,HSC/12th,Vidya Junior College,ISC,2024,95.31
+696,696,HSC/12th,National Junior College,CBSE,2024,86.8
+697,697,HSC/12th,New English Junior College,ISC,2024,78.44
+698,698,HSC/12th,New English Junior College,ISC,2024,91.72
+699,699,HSC/12th,Modern Junior College,Maharashtra State Board,2024,76.09
+700,700,HSC/12th,New English Junior College,CBSE,2024,75.31
+701,701,HSC/12th,New English Junior College,Maharashtra State Board,2024,70.34
+702,702,HSC/12th,Modern Junior College,Maharashtra State Board,2024,75.99
+703,703,HSC/12th,Modern Junior College,CBSE,2024,92.96
+704,704,HSC/12th,New English Junior College,Maharashtra State Board,2024,96.28
+705,705,HSC/12th,Modern Junior College,CBSE,2024,75.03
+706,706,HSC/12th,New English Junior College,ISC,2024,89.47
+707,707,HSC/12th,New English Junior College,Maharashtra State Board,2024,72.48
+708,708,HSC/12th,National Junior College,ISC,2024,95.46
+709,709,HSC/12th,Modern Junior College,CBSE,2024,70.44
+710,710,HSC/12th,Shivaji Junior College,CBSE,2024,82.08
+711,711,HSC/12th,Shivaji Junior College,CBSE,2024,84.95
+712,712,HSC/12th,National Junior College,ISC,2024,94.15
+713,713,HSC/12th,Modern Junior College,CBSE,2024,89.32
+714,714,HSC/12th,National Junior College,ISC,2024,93.36
+715,715,HSC/12th,Shivaji Junior College,ISC,2024,87.05
+716,716,HSC/12th,Vidya Junior College,Maharashtra State Board,2024,76.31
+717,717,HSC/12th,Modern Junior College,ISC,2024,77.3
+718,718,HSC/12th,Modern Junior College,CBSE,2024,93.59
+719,719,HSC/12th,New English Junior College,CBSE,2024,76.7
+720,720,HSC/12th,New English Junior College,Maharashtra State Board,2024,84.89
+721,721,HSC/12th,Vidya Junior College,ISC,2024,86.35
+722,722,HSC/12th,Modern Junior College,Maharashtra State Board,2024,73.07
+723,723,HSC/12th,Vidya Junior College,Maharashtra State Board,2024,92.92
+724,724,HSC/12th,New English Junior College,Maharashtra State Board,2024,89.84
+725,725,HSC/12th,National Junior College,CBSE,2024,74.82
+726,726,HSC/12th,Vidya Junior College,Maharashtra State Board,2024,90.96
+727,727,HSC/12th,New English Junior College,ISC,2024,79.92
+728,728,HSC/12th,New English Junior College,Maharashtra State Board,2024,92.79
+729,729,HSC/12th,New English Junior College,CBSE,2024,77.13
+730,730,HSC/12th,New English Junior College,CBSE,2024,79.83
+731,731,HSC/12th,Vidya Junior College,ISC,2024,86.17
+732,732,HSC/12th,Shivaji Junior College,Maharashtra State Board,2024,75.73
+733,733,HSC/12th,New English Junior College,CBSE,2024,90.4
+734,734,HSC/12th,National Junior College,ISC,2024,73.4
+735,735,HSC/12th,Vidya Junior College,ISC,2024,74.15
+736,736,HSC/12th,Shivaji Junior College,CBSE,2024,82.42
+737,737,HSC/12th,Modern Junior College,Maharashtra State Board,2024,74.62
+738,738,HSC/12th,Shivaji Junior College,ISC,2024,84.76
+739,739,HSC/12th,Vidya Junior College,ISC,2024,96.75
+740,740,HSC/12th,National Junior College,ISC,2024,80.7
+741,741,HSC/12th,New English Junior College,CBSE,2024,78.58
+742,742,HSC/12th,Vidya Junior College,ISC,2024,72.33
+743,743,HSC/12th,New English Junior College,ISC,2024,96.97
+744,744,HSC/12th,New English Junior College,ISC,2024,76.82
+745,745,HSC/12th,Vidya Junior College,ISC,2024,84.37
+746,746,HSC/12th,National Junior College,Maharashtra State Board,2024,73.9
+747,747,HSC/12th,New English Junior College,CBSE,2024,93.69
+748,748,HSC/12th,Shivaji Junior College,Maharashtra State Board,2024,97.81
+749,749,HSC/12th,Vidya Junior College,Maharashtra State Board,2024,89.11
+750,750,HSC/12th,National Junior College,Maharashtra State Board,2024,81.72
+751,751,HSC/12th,Shivaji Junior College,Maharashtra State Board,2024,74.03
+752,752,HSC/12th,National Junior College,Maharashtra State Board,2024,78.32
+753,753,HSC/12th,New English Junior College,ISC,2024,71.61
+754,754,HSC/12th,Modern Junior College,ISC,2024,73.96
+755,755,HSC/12th,Vidya Junior College,ISC,2024,80.5
+756,756,HSC/12th,Shivaji Junior College,Maharashtra State Board,2024,72.24
+757,757,HSC/12th,Vidya Junior College,CBSE,2024,85.33
+758,758,HSC/12th,New English Junior College,ISC,2024,89.23
+759,759,HSC/12th,New English Junior College,CBSE,2024,74.71
+760,760,HSC/12th,Vidya Junior College,ISC,2024,74.9
+761,761,HSC/12th,National Junior College,Maharashtra State Board,2024,94.66
+762,762,HSC/12th,Vidya Junior College,ISC,2024,71.86
+763,763,HSC/12th,Shivaji Junior College,ISC,2024,84.29
+764,764,HSC/12th,National Junior College,CBSE,2024,73.68
+765,765,HSC/12th,Vidya Junior College,ISC,2024,78.33
+766,766,HSC/12th,Modern Junior College,ISC,2024,76.91
+767,767,HSC/12th,Modern Junior College,Maharashtra State Board,2024,96.84
+768,768,HSC/12th,Modern Junior College,CBSE,2024,79.28
+769,769,HSC/12th,New English Junior College,ISC,2024,88.38
+770,770,HSC/12th,New English Junior College,CBSE,2024,78.24
+771,771,HSC/12th,Shivaji Junior College,Maharashtra State Board,2024,95.86
+772,772,HSC/12th,National Junior College,Maharashtra State Board,2024,93.66
+773,773,HSC/12th,Shivaji Junior College,ISC,2024,92.53
+774,774,HSC/12th,New English Junior College,Maharashtra State Board,2024,96.28
+775,775,HSC/12th,Vidya Junior College,Maharashtra State Board,2024,96.04
+776,776,HSC/12th,Vidya Junior College,ISC,2024,88.26
+777,777,HSC/12th,Modern Junior College,CBSE,2024,89.06
+778,778,HSC/12th,Shivaji Junior College,CBSE,2024,70.21
+779,779,HSC/12th,New English Junior College,CBSE,2024,74.49
+780,780,HSC/12th,National Junior College,ISC,2024,89.29
+781,781,HSC/12th,National Junior College,Maharashtra State Board,2024,96.21
+782,782,HSC/12th,Shivaji Junior College,ISC,2024,70.4
+783,783,HSC/12th,New English Junior College,Maharashtra State Board,2024,79.8
+784,784,HSC/12th,Shivaji Junior College,Maharashtra State Board,2024,73.79
+785,785,HSC/12th,Modern Junior College,ISC,2024,91.46
+786,786,HSC/12th,National Junior College,Maharashtra State Board,2024,81.43
+787,787,HSC/12th,New English Junior College,CBSE,2024,71.9
+788,788,HSC/12th,New English Junior College,ISC,2024,74.75
+789,789,HSC/12th,Shivaji Junior College,Maharashtra State Board,2024,97.97
+790,790,HSC/12th,Modern Junior College,ISC,2024,95.77
+791,791,HSC/12th,New English Junior College,ISC,2024,74.62
+792,792,HSC/12th,National Junior College,CBSE,2024,83.0
+793,793,HSC/12th,New English Junior College,Maharashtra State Board,2024,97.85
+794,794,HSC/12th,New English Junior College,Maharashtra State Board,2024,77.89
+795,795,HSC/12th,Modern Junior College,Maharashtra State Board,2024,74.03
+796,796,HSC/12th,National Junior College,CBSE,2024,75.04
+797,797,HSC/12th,Shivaji Junior College,ISC,2024,84.19
+798,798,HSC/12th,Shivaji Junior College,Maharashtra State Board,2024,74.74
+799,799,HSC/12th,National Junior College,CBSE,2024,88.26
+800,800,HSC/12th,New English Junior College,ISC,2024,82.63
+801,801,HSC/12th,National Junior College,Maharashtra State Board,2024,81.77
+802,802,HSC/12th,Vidya Junior College,ISC,2024,93.76
+803,803,HSC/12th,New English Junior College,Maharashtra State Board,2024,73.85
+804,804,HSC/12th,Modern Junior College,ISC,2024,84.83
+805,805,HSC/12th,Modern Junior College,CBSE,2024,84.15
+806,806,HSC/12th,Modern Junior College,ISC,2024,87.69
+807,807,HSC/12th,Modern Junior College,Maharashtra State Board,2024,70.87
+808,808,HSC/12th,National Junior College,CBSE,2024,86.62
+809,809,HSC/12th,Vidya Junior College,ISC,2024,77.88
+810,810,HSC/12th,Vidya Junior College,ISC,2024,94.84
+811,811,HSC/12th,New English Junior College,Maharashtra State Board,2024,72.84
+812,812,HSC/12th,Modern Junior College,CBSE,2024,98.56
+813,813,HSC/12th,Modern Junior College,CBSE,2024,86.43
+814,814,HSC/12th,Modern Junior College,Maharashtra State Board,2024,94.75
+815,815,HSC/12th,Vidya Junior College,Maharashtra State Board,2024,93.73
+816,816,HSC/12th,Modern Junior College,ISC,2024,73.04
+817,817,HSC/12th,New English Junior College,Maharashtra State Board,2024,90.89
+818,818,HSC/12th,New English Junior College,ISC,2024,74.48
+819,819,HSC/12th,National Junior College,CBSE,2024,75.98
+820,820,HSC/12th,National Junior College,CBSE,2024,85.81
+821,821,HSC/12th,Vidya Junior College,ISC,2024,90.85
+822,822,HSC/12th,New English Junior College,ISC,2024,97.47
+823,823,HSC/12th,National Junior College,ISC,2024,76.97
+824,824,HSC/12th,Vidya Junior College,ISC,2024,93.38
+825,825,HSC/12th,New English Junior College,Maharashtra State Board,2024,89.65
+826,826,HSC/12th,Modern Junior College,Maharashtra State Board,2024,81.0
+827,827,HSC/12th,Modern Junior College,Maharashtra State Board,2024,78.73
+828,828,HSC/12th,National Junior College,CBSE,2024,95.4
+829,829,HSC/12th,National Junior College,Maharashtra State Board,2024,70.95
+830,830,HSC/12th,Modern Junior College,Maharashtra State Board,2024,97.38
+831,831,HSC/12th,National Junior College,ISC,2024,75.87
+832,832,HSC/12th,National Junior College,ISC,2024,70.38
+833,833,HSC/12th,Vidya Junior College,Maharashtra State Board,2024,95.73
+834,834,HSC/12th,National Junior College,CBSE,2024,94.72
+835,835,HSC/12th,Shivaji Junior College,Maharashtra State Board,2024,77.4
+836,836,HSC/12th,Vidya Junior College,Maharashtra State Board,2024,80.3
+837,837,HSC/12th,Shivaji Junior College,CBSE,2024,84.98
+838,838,HSC/12th,National Junior College,Maharashtra State Board,2024,74.01
+839,839,HSC/12th,National Junior College,ISC,2024,93.56
+840,840,HSC/12th,Vidya Junior College,Maharashtra State Board,2024,72.14
+841,841,HSC/12th,Shivaji Junior College,ISC,2024,92.81
+842,842,HSC/12th,Shivaji Junior College,Maharashtra State Board,2024,72.15
+843,843,HSC/12th,National Junior College,Maharashtra State Board,2024,83.49
+844,844,HSC/12th,Shivaji Junior College,Maharashtra State Board,2024,70.19
+845,845,HSC/12th,New English Junior College,ISC,2024,98.68
+846,846,HSC/12th,Modern Junior College,Maharashtra State Board,2024,71.93
+847,847,HSC/12th,New English Junior College,CBSE,2024,93.21
+848,848,HSC/12th,New English Junior College,CBSE,2024,97.86
+849,849,HSC/12th,Shivaji Junior College,ISC,2024,88.18
+850,850,HSC/12th,Vidya Junior College,ISC,2024,72.83
+851,851,HSC/12th,New English Junior College,CBSE,2024,94.0
+852,852,HSC/12th,Modern Junior College,CBSE,2024,77.06
+853,853,HSC/12th,Shivaji Junior College,Maharashtra State Board,2024,82.33
+854,854,HSC/12th,Shivaji Junior College,CBSE,2024,84.78
+855,855,HSC/12th,Modern Junior College,CBSE,2024,82.14
+856,856,HSC/12th,Shivaji Junior College,Maharashtra State Board,2024,94.3
+857,857,HSC/12th,Modern Junior College,CBSE,2024,70.85
+858,858,HSC/12th,Vidya Junior College,CBSE,2024,73.81
+859,859,HSC/12th,Modern Junior College,ISC,2024,86.43
+860,860,HSC/12th,Shivaji Junior College,CBSE,2024,80.9
+861,861,HSC/12th,National Junior College,Maharashtra State Board,2024,97.19
+862,862,HSC/12th,Modern Junior College,CBSE,2024,98.53
+863,863,HSC/12th,Modern Junior College,ISC,2024,70.53
+864,864,HSC/12th,National Junior College,CBSE,2024,94.09
+865,865,HSC/12th,Vidya Junior College,CBSE,2024,79.84
+866,866,HSC/12th,New English Junior College,Maharashtra State Board,2024,87.21
+867,867,HSC/12th,National Junior College,Maharashtra State Board,2024,88.45
+868,868,HSC/12th,New English Junior College,CBSE,2024,89.82
+869,869,HSC/12th,New English Junior College,Maharashtra State Board,2024,89.86
+870,870,HSC/12th,New English Junior College,CBSE,2024,84.4
+871,871,HSC/12th,New English Junior College,CBSE,2024,85.94
+872,872,HSC/12th,Vidya Junior College,Maharashtra State Board,2024,81.04
+873,873,HSC/12th,Modern Junior College,CBSE,2024,86.69
+874,874,HSC/12th,Shivaji Junior College,CBSE,2024,89.45
+875,875,HSC/12th,Shivaji Junior College,Maharashtra State Board,2024,81.26
+876,876,HSC/12th,Modern Junior College,ISC,2024,98.8
+877,877,HSC/12th,New English Junior College,CBSE,2024,83.57
+878,878,HSC/12th,Modern Junior College,ISC,2024,72.19
+879,879,HSC/12th,Shivaji Junior College,Maharashtra State Board,2024,83.34
+880,880,HSC/12th,National Junior College,CBSE,2024,71.51
+881,881,HSC/12th,New English Junior College,ISC,2024,94.35
+882,882,HSC/12th,Shivaji Junior College,Maharashtra State Board,2024,87.54
+883,883,HSC/12th,Modern Junior College,ISC,2024,83.91
+884,884,HSC/12th,National Junior College,ISC,2024,79.58
+885,885,HSC/12th,New English Junior College,Maharashtra State Board,2024,89.5
+886,886,HSC/12th,New English Junior College,CBSE,2024,71.55
+887,887,HSC/12th,Vidya Junior College,ISC,2024,84.22
+888,888,HSC/12th,New English Junior College,Maharashtra State Board,2024,70.65
+889,889,HSC/12th,Modern Junior College,CBSE,2024,84.75
+890,890,HSC/12th,Modern Junior College,ISC,2024,90.59
+891,891,HSC/12th,New English Junior College,ISC,2024,81.08
+892,892,HSC/12th,Shivaji Junior College,Maharashtra State Board,2024,91.1
+893,893,HSC/12th,New English Junior College,ISC,2024,71.55
+894,894,HSC/12th,National Junior College,ISC,2024,84.96
+895,895,HSC/12th,Shivaji Junior College,ISC,2024,93.84
+896,896,HSC/12th,New English Junior College,ISC,2024,83.67
+897,897,HSC/12th,New English Junior College,Maharashtra State Board,2024,70.24
+898,898,HSC/12th,National Junior College,ISC,2024,75.16
+899,899,HSC/12th,National Junior College,CBSE,2024,98.01
+900,900,HSC/12th,Shivaji Junior College,CBSE,2024,82.42
+901,901,HSC/12th,Vidya Junior College,ISC,2024,96.75
+902,902,HSC/12th,New English Junior College,ISC,2024,98.06
+903,903,HSC/12th,Shivaji Junior College,ISC,2024,86.28
+904,904,HSC/12th,New English Junior College,CBSE,2024,83.77
+905,905,HSC/12th,Vidya Junior College,CBSE,2024,88.84
+906,906,HSC/12th,Shivaji Junior College,Maharashtra State Board,2024,94.57
+907,907,HSC/12th,New English Junior College,Maharashtra State Board,2024,93.91
+908,908,HSC/12th,National Junior College,CBSE,2024,85.08
+909,909,HSC/12th,New English Junior College,Maharashtra State Board,2024,94.78
+910,910,HSC/12th,New English Junior College,Maharashtra State Board,2024,85.67
+911,911,HSC/12th,New English Junior College,CBSE,2024,79.73
+912,912,HSC/12th,National Junior College,CBSE,2024,89.07
+913,913,HSC/12th,Vidya Junior College,ISC,2024,74.28
+914,914,HSC/12th,Shivaji Junior College,Maharashtra State Board,2024,82.8
+915,915,HSC/12th,Shivaji Junior College,Maharashtra State Board,2024,91.76
+916,916,HSC/12th,Vidya Junior College,ISC,2024,81.44
+917,917,HSC/12th,Modern Junior College,ISC,2024,80.4
+918,918,HSC/12th,Modern Junior College,Maharashtra State Board,2024,92.52
+919,919,HSC/12th,Modern Junior College,CBSE,2024,96.32
+920,920,HSC/12th,Modern Junior College,CBSE,2024,76.24
+921,921,HSC/12th,Shivaji Junior College,Maharashtra State Board,2024,87.31
+922,922,HSC/12th,Modern Junior College,ISC,2024,95.74
+923,923,HSC/12th,Modern Junior College,CBSE,2024,77.88
+924,924,HSC/12th,Vidya Junior College,ISC,2024,83.51
+925,925,HSC/12th,Shivaji Junior College,Maharashtra State Board,2024,91.34
+926,926,HSC/12th,Modern Junior College,Maharashtra State Board,2024,79.05
+927,927,HSC/12th,Vidya Junior College,ISC,2024,97.76
+928,928,HSC/12th,Vidya Junior College,Maharashtra State Board,2024,96.43
+929,929,HSC/12th,New English Junior College,CBSE,2024,82.0
+930,930,HSC/12th,National Junior College,ISC,2024,86.77
+931,931,HSC/12th,National Junior College,Maharashtra State Board,2024,79.88
+932,932,HSC/12th,New English Junior College,Maharashtra State Board,2024,78.82
+933,933,HSC/12th,Modern Junior College,CBSE,2024,86.16
+934,934,HSC/12th,Vidya Junior College,ISC,2024,95.54
+935,935,HSC/12th,New English Junior College,Maharashtra State Board,2024,91.21
+936,936,HSC/12th,Vidya Junior College,Maharashtra State Board,2024,92.26
+937,937,HSC/12th,National Junior College,Maharashtra State Board,2024,86.95
+938,938,HSC/12th,Modern Junior College,Maharashtra State Board,2024,72.75
+939,939,HSC/12th,National Junior College,Maharashtra State Board,2024,90.31
+940,940,HSC/12th,Shivaji Junior College,ISC,2024,97.99
+941,941,HSC/12th,Vidya Junior College,ISC,2024,83.35
+942,942,HSC/12th,National Junior College,ISC,2024,77.19
+943,943,HSC/12th,National Junior College,Maharashtra State Board,2024,74.33
+944,944,HSC/12th,Vidya Junior College,Maharashtra State Board,2024,80.26
+945,945,HSC/12th,Modern Junior College,Maharashtra State Board,2024,93.0
+946,946,HSC/12th,Vidya Junior College,CBSE,2024,93.87
+947,947,HSC/12th,Shivaji Junior College,CBSE,2024,80.71
+948,948,HSC/12th,New English Junior College,ISC,2024,78.13
+949,949,HSC/12th,Modern Junior College,ISC,2024,95.99
+950,950,HSC/12th,Modern Junior College,CBSE,2024,90.51
+951,951,HSC/12th,Vidya Junior College,ISC,2024,96.82
+952,952,HSC/12th,Modern Junior College,CBSE,2024,75.67
+953,953,HSC/12th,National Junior College,CBSE,2024,98.33
+954,954,HSC/12th,Modern Junior College,CBSE,2024,75.58
+955,955,HSC/12th,Vidya Junior College,ISC,2024,79.13
+956,956,HSC/12th,Vidya Junior College,ISC,2024,93.06
+957,957,HSC/12th,Shivaji Junior College,Maharashtra State Board,2024,86.1
+958,958,HSC/12th,National Junior College,Maharashtra State Board,2024,96.34
+959,959,HSC/12th,Modern Junior College,CBSE,2024,96.2
+960,960,HSC/12th,New English Junior College,CBSE,2024,76.58
+961,961,HSC/12th,New English Junior College,Maharashtra State Board,2024,75.33
+962,962,HSC/12th,National Junior College,ISC,2024,72.07
+963,963,HSC/12th,New English Junior College,CBSE,2024,75.34
+964,964,HSC/12th,Shivaji Junior College,ISC,2024,83.25
+965,965,HSC/12th,Vidya Junior College,CBSE,2024,96.29
+966,966,HSC/12th,Modern Junior College,Maharashtra State Board,2024,78.98
+967,967,HSC/12th,New English Junior College,Maharashtra State Board,2024,86.29
+968,968,HSC/12th,Shivaji Junior College,ISC,2024,87.15
+969,969,HSC/12th,Shivaji Junior College,CBSE,2024,98.22
+970,970,HSC/12th,New English Junior College,Maharashtra State Board,2024,96.3
+971,971,HSC/12th,National Junior College,CBSE,2024,81.75
+972,972,HSC/12th,Vidya Junior College,ISC,2024,95.16
+973,973,HSC/12th,New English Junior College,Maharashtra State Board,2024,93.54
+974,974,HSC/12th,Modern Junior College,Maharashtra State Board,2024,84.76
+975,975,HSC/12th,New English Junior College,CBSE,2024,71.74
+976,976,HSC/12th,Vidya Junior College,Maharashtra State Board,2024,83.71
+977,977,HSC/12th,Shivaji Junior College,ISC,2024,76.14
+978,978,HSC/12th,Vidya Junior College,CBSE,2024,78.31
+979,979,HSC/12th,Shivaji Junior College,Maharashtra State Board,2024,81.26
+980,980,HSC/12th,New English Junior College,CBSE,2024,70.26
+981,981,HSC/12th,Modern Junior College,ISC,2024,75.08
+982,982,HSC/12th,Shivaji Junior College,ISC,2024,83.11
+983,983,HSC/12th,National Junior College,Maharashtra State Board,2024,92.09
+984,984,HSC/12th,National Junior College,Maharashtra State Board,2024,83.5
+985,985,HSC/12th,New English Junior College,ISC,2024,90.35
+986,986,HSC/12th,Shivaji Junior College,ISC,2024,74.54
+987,987,HSC/12th,New English Junior College,Maharashtra State Board,2024,89.04
+988,988,HSC/12th,Shivaji Junior College,Maharashtra State Board,2024,94.31
+989,989,HSC/12th,Modern Junior College,CBSE,2024,90.4
+990,990,HSC/12th,Shivaji Junior College,ISC,2024,89.65
+991,991,HSC/12th,Shivaji Junior College,CBSE,2024,74.9
+992,992,HSC/12th,Modern Junior College,Maharashtra State Board,2024,77.45
+993,993,HSC/12th,New English Junior College,Maharashtra State Board,2024,82.12
+994,994,HSC/12th,Vidya Junior College,Maharashtra State Board,2024,89.67
+995,995,HSC/12th,Shivaji Junior College,ISC,2024,95.44
+996,996,HSC/12th,Shivaji Junior College,CBSE,2024,73.53
+997,997,HSC/12th,Modern Junior College,CBSE,2024,96.16
+998,998,HSC/12th,Shivaji Junior College,ISC,2024,86.83
+999,999,HSC/12th,Modern Junior College,Maharashtra State Board,2024,74.64
+1000,1000,HSC/12th,Shivaji Junior College,ISC,2024,98.82

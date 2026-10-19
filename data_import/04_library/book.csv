@@ -1,0 +1,25 @@
+isbn,title,author_id,publisher_id,category_id,edition,publication_year,language,total_copies,available_copies,shelf_no,rack_no
+978-93-000001-1,Database System Concepts,1,6,1,3rd,2025,English,10,8,S1,3
+978-93-000002-2,Operating System Concepts,2,5,1,3rd,2021,English,10,8,S1,10
+978-93-000003-3,Computer Networks,10,7,1,3rd,2020,English,10,10,S1,10
+978-93-000004-4,Introduction to Algorithms,11,3,1,3rd,2019,English,10,5,S1,8
+978-93-000005-5,Digital Design,9,4,2,3rd,2020,English,10,3,S2,7
+978-93-000006-6,Microprocessors and Microcontrollers,7,7,2,3rd,2019,English,10,10,S2,4
+978-93-000007-7,Engineering Mathematics,14,6,3,3rd,2019,English,10,7,S3,2
+978-93-000008-8,Machine Learning,12,5,7,3rd,2024,English,10,3,S7,9
+978-93-000009-9,Wings of Fire,2,5,6,3rd,2019,English,10,6,S6,7
+978-93-000010-0,The Guide,1,3,5,3rd,2019,English,10,4,S5,10
+978-93-000011-1,Python Programming,13,5,1,3rd,2024,English,10,9,S1,12
+978-93-000012-2,Signals and Systems,12,2,2,3rd,2022,English,10,8,S2,1
+978-93-000013-3,Control Systems Engineering,15,5,4,3rd,2023,English,10,7,S4,11
+978-93-000014-4,Let Us C,13,4,1,3rd,2024,English,10,5,S1,5
+978-93-000015-5,Data Structures Using C,7,1,1,3rd,2025,English,10,8,S1,8
+978-93-000016-6,The Alchemist,5,6,5,3rd,2022,English,10,9,S5,4
+978-93-000017-7,Ignited Minds,2,7,6,3rd,2018,English,10,9,S6,12
+978-93-000018-8,Fundamentals of Database Systems,8,4,1,3rd,2021,English,10,8,S1,8
+978-93-000019-9,VLSI Design,9,1,2,3rd,2023,English,10,4,S2,8
+978-93-000020-0,Artificial Intelligence,10,4,7,3rd,2021,English,10,3,S7,2
+978-93-000021-1,Engineering Mechanics,15,4,4,3rd,2018,English,10,10,S4,7
+978-93-000022-2,Rich Dad Poor Dad,4,5,6,3rd,2022,English,10,9,S6,3
+978-93-000023-3,India 2020,2,3,6,3rd,2019,English,10,9,S6,2
+978-93-000024-4,Computer Organization,9,4,1,3rd,2023,English,10,3,S1,10

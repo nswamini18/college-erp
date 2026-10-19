@@ -1,0 +1,81 @@
+finance_fine_id,student_id,reason,amount,fine_date,payment_status
+1,292,Administrative penalty,100,2026-09-28,Paid
+2,44,Library damage,200,2026-09-01,Pending
+3,960,Late fee payment,1000,2026-08-31,Paid
+4,479,ID card replacement,200,2026-08-25,Pending
+5,941,Library damage,500,2026-09-14,Paid
+6,816,ID card replacement,500,2026-10-05,Pending
+7,576,Administrative penalty,100,2026-10-10,Paid
+8,774,Administrative penalty,1000,2026-09-11,Pending
+9,372,Library damage,1000,2026-08-03,Paid
+10,366,Administrative penalty,100,2026-09-16,Pending
+11,35,Library damage,500,2026-08-06,Pending
+12,350,Administrative penalty,1000,2026-10-07,Pending
+13,37,ID card replacement,500,2026-08-15,Pending
+14,273,Late fee payment,100,2026-09-13,Pending
+15,237,ID card replacement,500,2026-08-10,Paid
+16,731,ID card replacement,500,2026-08-14,Pending
+17,768,Library damage,200,2026-10-06,Pending
+18,235,Administrative penalty,100,2026-08-31,Paid
+19,599,ID card replacement,500,2026-10-06,Pending
+20,423,Late fee payment,500,2026-10-03,Paid
+21,901,ID card replacement,200,2026-10-10,Pending
+22,737,Late fee payment,1000,2026-09-30,Paid
+23,639,ID card replacement,1000,2026-08-21,Pending
+24,510,Administrative penalty,100,2026-08-01,Pending
+25,47,ID card replacement,200,2026-10-02,Pending
+26,895,Administrative penalty,100,2026-09-12,Pending
+27,811,ID card replacement,500,2026-08-25,Paid
+28,491,ID card replacement,200,2026-09-22,Paid
+29,113,Library damage,500,2026-09-14,Pending
+30,707,ID card replacement,200,2026-10-02,Pending
+31,984,Administrative penalty,200,2026-08-28,Paid
+32,628,Library damage,200,2026-08-24,Paid
+33,936,Library damage,1000,2026-08-24,Pending
+34,787,ID card replacement,200,2026-10-05,Pending
+35,706,Library damage,500,2026-08-30,Pending
+36,657,Late fee payment,500,2026-08-19,Pending
+37,455,Late fee payment,200,2026-09-01,Pending
+38,671,Library damage,1000,2026-08-27,Pending
+39,156,Administrative penalty,1000,2026-08-29,Pending
+40,229,Administrative penalty,100,2026-08-14,Paid
+41,953,Late fee payment,1000,2026-08-28,Paid
+42,321,Library damage,200,2026-08-26,Pending
+43,913,Late fee payment,200,2026-09-18,Pending
+44,955,Library damage,100,2026-08-06,Paid
+45,417,Late fee payment,500,2026-08-06,Pending
+46,370,Library damage,500,2026-09-27,Paid
+47,212,Library damage,100,2026-08-17,Paid
+48,944,Administrative penalty,100,2026-08-17,Paid
+49,811,Library damage,500,2026-08-22,Pending
+50,514,ID card replacement,200,2026-09-15,Pending
+51,529,Late fee payment,500,2026-09-13,Pending
+52,455,Late fee payment,200,2026-08-17,Pending
+53,230,Administrative penalty,1000,2026-09-26,Paid
+54,353,ID card replacement,500,2026-08-16,Pending
+55,306,Late fee payment,200,2026-09-30,Paid
+56,422,Library damage,1000,2026-10-06,Pending
+57,365,Administrative penalty,100,2026-10-08,Pending
+58,171,ID card replacement,500,2026-09-25,Pending
+59,272,Library damage,500,2026-09-12,Pending
+60,817,Late fee payment,200,2026-09-21,Pending
+61,267,Late fee payment,100,2026-08-15,Pending
+62,38,ID card replacement,500,2026-08-30,Paid
+63,83,ID card replacement,1000,2026-09-10,Paid
+64,987,Late fee payment,200,2026-09-06,Pending
+65,256,Library damage,200,2026-09-17,Pending
+66,119,Library damage,100,2026-08-03,Pending
+67,729,Late fee payment,1000,2026-09-27,Pending
+68,562,Administrative penalty,200,2026-08-18,Pending
+69,681,Library damage,500,2026-08-23,Pending
+70,792,Library damage,500,2026-09-28,Pending
+71,22,Library damage,200,2026-09-29,Pending
+72,685,Library damage,500,2026-08-12,Paid
+73,130,Administrative penalty,1000,2026-09-15,Pending
+74,99,Administrative penalty,500,2026-08-18,Pending
+75,567,Library damage,1000,2026-09-14,Paid
+76,450,Library damage,100,2026-08-31,Pending
+77,743,Late fee payment,1000,2026-08-28,Pending
+78,459,ID card replacement,100,2026-09-09,Pending
+79,884,Late fee payment,1000,2026-08-26,Pending
+80,908,Administrative penalty,1000,2026-09-30,Paid

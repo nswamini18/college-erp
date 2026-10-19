@@ -1,0 +1,1001 @@
+guardian_id,student_id,guardian_name,relation,occupation,contact_number,email
+1,1,Sunita Kulkarni,Mother,Teacher,9846030512,guardian1@example.com
+2,2,Rajendra Nale,Guardian,Business,9349487032,guardian2@example.com
+3,3,Mahesh Tiwari,Father,Teacher,9993300330,guardian3@example.com
+4,4,Madhuri Iyer,Mother,Engineer,9759315027,guardian4@example.com
+5,5,Vijaya Kore,Mother,Government Service,9790123073,guardian5@example.com
+6,6,Sanjay Agarwal,Mother,Engineer,9236260084,guardian6@example.com
+7,7,Mahesh Dhumal,Mother,Government Service,9254686568,guardian7@example.com
+8,8,Madhuri Kale,Mother,Teacher,9193719477,guardian8@example.com
+9,9,Mahesh Jain,Guardian,Government Service,9987275637,guardian9@example.com
+10,10,Madhuri Shelke,Mother,Business,9840350610,guardian10@example.com
+11,11,Anita Bose,Mother,Agriculture,9804538370,guardian11@example.com
+12,12,Madhuri Lokhande,Mother,Healthcare,9280712461,guardian12@example.com
+13,13,Sanjay Sharma,Guardian,Business,9748547010,guardian13@example.com
+14,14,Madhuri Salunkhe,Father,Government Service,9522005409,guardian14@example.com
+15,15,Sanjay Shah,Guardian,Agriculture,9526012735,guardian15@example.com
+16,16,Sanjay Mali,Mother,Healthcare,9557437062,guardian16@example.com
+17,17,Rajendra Phadke,Mother,Teacher,9942773676,guardian17@example.com
+18,18,Anita Kamble,Mother,Healthcare,9963288701,guardian18@example.com
+19,19,Pradeep Tale,Mother,Engineer,9968682039,guardian19@example.com
+20,20,Madhuri Kshirsagar,Father,Teacher,9597071926,guardian20@example.com
+21,21,Sunita Pillai,Father,Engineer,9600061376,guardian21@example.com
+22,22,Mahesh Saxena,Guardian,Business,9969452506,guardian22@example.com
+23,23,Vijaya Mankar,Father,Engineer,9695584584,guardian23@example.com
+24,24,Pradeep Das,Guardian,Business,9530477148,guardian24@example.com
+25,25,Sunita Kale,Mother,Government Service,9385895445,guardian25@example.com
+26,26,Anita Rane,Mother,Healthcare,9158694444,guardian26@example.com
+27,27,Sanjay Sawant,Father,Agriculture,9542228432,guardian27@example.com
+28,28,Sunita Gokhale,Father,Teacher,9567428379,guardian28@example.com
+29,29,Madhuri Kale,Guardian,Healthcare,9965594678,guardian29@example.com
+30,30,Sanjay Tambe,Father,Teacher,9806359849,guardian30@example.com
+31,31,Pradeep Verma,Father,Healthcare,9748454836,guardian31@example.com
+32,32,Sanjay Shelke,Guardian,Agriculture,9437678502,guardian32@example.com
+33,33,Sanjay Jadhav,Guardian,Healthcare,9334312224,guardian33@example.com
+34,34,Rajendra Pillai,Mother,Business,9806567278,guardian34@example.com
+35,35,Sunita Ranade,Father,Healthcare,9288609673,guardian35@example.com
+36,36,Mahesh Phadke,Mother,Healthcare,9341140389,guardian36@example.com
+37,37,Anita Sinha,Mother,Government Service,9532836065,guardian37@example.com
+38,38,Sanjay Pillai,Father,Government Service,9384085864,guardian38@example.com
+39,39,Sunita Borkar,Mother,Agriculture,9292382876,guardian39@example.com
+40,40,Mahesh Mukherjee,Mother,Engineer,9537014613,guardian40@example.com
+41,41,Rajendra Mishra,Mother,Agriculture,9237354281,guardian41@example.com
+42,42,Mahesh Inamdar,Father,Business,9652150966,guardian42@example.com
+43,43,Pradeep Rao,Father,Teacher,9279616630,guardian43@example.com
+44,44,Anita Mankar,Guardian,Government Service,9563588795,guardian44@example.com
+45,45,Vijaya Jadhav,Mother,Business,9757879894,guardian45@example.com
+46,46,Rajendra Mishra,Guardian,Engineer,9483206793,guardian46@example.com
+47,47,Mahesh Reddy,Father,Government Service,9133310574,guardian47@example.com
+48,48,Anita Joshi,Guardian,Agriculture,9388258708,guardian48@example.com
+49,49,Sanjay Mehta,Father,Teacher,9997129389,guardian49@example.com
+50,50,Rajendra Gawande,Father,Agriculture,9517357872,guardian50@example.com
+51,51,Sunita Dhole,Guardian,Agriculture,9234050536,guardian51@example.com
+52,52,Madhuri Kharat,Father,Business,9492191999,guardian52@example.com
+53,53,Sanjay Banerjee,Father,Government Service,9240441119,guardian53@example.com
+54,54,Pradeep Mhatre,Father,Teacher,9253798914,guardian54@example.com
+55,55,Mahesh Kale,Mother,Agriculture,9552181034,guardian55@example.com
+56,56,Madhuri Mane,Mother,Teacher,9901232757,guardian56@example.com
+57,57,Sunita Malhotra,Guardian,Government Service,9323220204,guardian57@example.com
+58,58,Pradeep Dhole,Mother,Agriculture,9575825021,guardian58@example.com
+59,59,Rajendra Sharma,Father,Business,9723728041,guardian59@example.com
+60,60,Sunita Vartak,Mother,Teacher,9643265033,guardian60@example.com
+61,61,Madhuri Pawar,Father,Government Service,9457278066,guardian61@example.com
+62,62,Rajendra Phadke,Father,Agriculture,9549436020,guardian62@example.com
+63,63,Madhuri Vaidya,Guardian,Healthcare,9192273190,guardian63@example.com
+64,64,Vijaya Gawande,Father,Agriculture,9593875017,guardian64@example.com
+65,65,Vijaya Shelke,Father,Healthcare,9271127138,guardian65@example.com
+66,66,Anita Vartak,Father,Teacher,9139002482,guardian66@example.com
+67,67,Pradeep Lad,Mother,Government Service,9475928654,guardian67@example.com
+68,68,Mahesh Lokhande,Father,Agriculture,9884067275,guardian68@example.com
+69,69,Rajendra Gore,Guardian,Business,9401159973,guardian69@example.com
+70,70,Rajendra Kulkarni,Guardian,Engineer,9185054670,guardian70@example.com
+71,71,Anita Kshirsagar,Mother,Business,9381533162,guardian71@example.com
+72,72,Pradeep Lokhande,Mother,Government Service,9979115789,guardian72@example.com
+73,73,Mahesh Mukherjee,Mother,Engineer,9630277113,guardian73@example.com
+74,74,Pradeep Agarwal,Father,Engineer,9636848090,guardian74@example.com
+75,75,Rajendra Mukherjee,Mother,Business,9364130912,guardian75@example.com
+76,76,Madhuri Mhatre,Mother,Agriculture,9646755205,guardian76@example.com
+77,77,Mahesh Shelke,Guardian,Agriculture,9109721947,guardian77@example.com
+78,78,Sunita Ghosh,Mother,Agriculture,9717444412,guardian78@example.com
+79,79,Madhuri Pandey,Mother,Healthcare,9427756164,guardian79@example.com
+80,80,Sanjay Chaudhari,Mother,Engineer,9751811932,guardian80@example.com
+81,81,Sunita Pillai,Father,Agriculture,9590984806,guardian81@example.com
+82,82,Sunita Gawande,Mother,Engineer,9560094693,guardian82@example.com
+83,83,Madhuri Kulkarni,Mother,Business,9684474811,guardian83@example.com
+84,84,Sanjay Iyer,Guardian,Business,9528672874,guardian84@example.com
+85,85,Sunita Reddy,Father,Teacher,9339982942,guardian85@example.com
+86,86,Madhuri Jain,Mother,Agriculture,9633942412,guardian86@example.com
+87,87,Mahesh Chopra,Mother,Engineer,9651580819,guardian87@example.com
+88,88,Rajendra Dhumal,Guardian,Teacher,9753940026,guardian88@example.com
+89,89,Sanjay Das,Father,Business,9747598730,guardian89@example.com
+90,90,Pradeep Khot,Father,Healthcare,9694441183,guardian90@example.com
+91,91,Rajendra Karnik,Father,Healthcare,9800230152,guardian91@example.com
+92,92,Pradeep Chavan,Father,Business,9547242614,guardian92@example.com
+93,93,Anita Gawande,Father,Government Service,9563472903,guardian93@example.com
+94,94,Madhuri Suryawanshi,Father,Teacher,9522224372,guardian94@example.com
+95,95,Mahesh Tiwari,Father,Agriculture,9849367046,guardian95@example.com
+96,96,Pradeep Shah,Father,Agriculture,9774376980,guardian96@example.com
+97,97,Sanjay Sharma,Guardian,Healthcare,9665912805,guardian97@example.com
+98,98,Sunita Chopra,Father,Business,9565490561,guardian98@example.com
+99,99,Mahesh Ranade,Father,Government Service,9597163784,guardian99@example.com
+100,100,Madhuri Shirke,Mother,Teacher,9929317738,guardian100@example.com
+101,101,Mahesh Kamble,Father,Teacher,9530988699,guardian101@example.com
+102,102,Anita Dhumal,Mother,Agriculture,9204402556,guardian102@example.com
+103,103,Vijaya Dhole,Father,Healthcare,9952789395,guardian103@example.com
+104,104,Madhuri Babar,Guardian,Engineer,9553930032,guardian104@example.com
+105,105,Anita Pisal,Guardian,Engineer,9898929638,guardian105@example.com
+106,106,Vijaya Vartak,Guardian,Government Service,9551792183,guardian106@example.com
+107,107,Pradeep Rao,Father,Government Service,9680562371,guardian107@example.com
+108,108,Vijaya Kapoor,Guardian,Business,9345545061,guardian108@example.com
+109,109,Vijaya Mehta,Father,Business,9719987096,guardian109@example.com
+110,110,Sanjay Wagh,Guardian,Engineer,9627862661,guardian110@example.com
+111,111,Pradeep Singh,Father,Teacher,9135914676,guardian111@example.com
+112,112,Madhuri Joshi,Guardian,Government Service,9722956801,guardian112@example.com
+113,113,Madhuri Iyer,Father,Government Service,9530377715,guardian113@example.com
+114,114,Pradeep Dandekar,Father,Agriculture,9267614168,guardian114@example.com
+115,115,Madhuri Tiwari,Father,Teacher,9163026243,guardian115@example.com
+116,116,Vijaya Kshirsagar,Father,Government Service,9198976606,guardian116@example.com
+117,117,Sunita Kulkarni,Guardian,Healthcare,9576685162,guardian117@example.com
+118,118,Rajendra Pisal,Guardian,Healthcare,9489003166,guardian118@example.com
+119,119,Sunita Kulkarni,Mother,Business,9787779981,guardian119@example.com
+120,120,Anita Singh,Mother,Business,9563944827,guardian120@example.com
+121,121,Vijaya Shinde,Guardian,Healthcare,9538594937,guardian121@example.com
+122,122,Mahesh Kshirsagar,Guardian,Business,9336929090,guardian122@example.com
+123,123,Anita Joshi,Guardian,Teacher,9681476312,guardian123@example.com
+124,124,Vijaya Warade,Father,Healthcare,9669831793,guardian124@example.com
+125,125,Rajendra Gawande,Mother,Engineer,9659757175,guardian125@example.com
+126,126,Rajendra Chaudhari,Mother,Agriculture,9687600378,guardian126@example.com
+127,127,Mahesh Kothari,Father,Government Service,9144074959,guardian127@example.com
+128,128,Rajendra Kharat,Mother,Agriculture,9914526208,guardian128@example.com
+129,129,Rajendra Kamble,Mother,Teacher,9973794410,guardian129@example.com
+130,130,Rajendra Pawar,Guardian,Business,9378054373,guardian130@example.com
+131,131,Sanjay Inamdar,Guardian,Agriculture,9250626498,guardian131@example.com
+132,132,Sanjay Borkar,Guardian,Teacher,9687390854,guardian132@example.com
+133,133,Sanjay Patil,Guardian,Healthcare,9612982843,guardian133@example.com
+134,134,Madhuri Shelke,Father,Agriculture,9674185416,guardian134@example.com
+135,135,Mahesh Pansare,Father,Engineer,9960150774,guardian135@example.com
+136,136,Vijaya Nikam,Mother,Engineer,9629921229,guardian136@example.com
+137,137,Mahesh Zende,Mother,Teacher,9996964934,guardian137@example.com
+138,138,Anita Pansare,Father,Engineer,9264485039,guardian138@example.com
+139,139,Anita Kulkarni,Mother,Teacher,9581632123,guardian139@example.com
+140,140,Rajendra Kadam,Mother,Agriculture,9369331712,guardian140@example.com
+141,141,Sanjay Yadav,Guardian,Business,9193968413,guardian141@example.com
+142,142,Sunita Bhosale,Mother,Agriculture,9959515801,guardian142@example.com
+143,143,Pradeep Deshmukh,Guardian,Healthcare,9997026145,guardian143@example.com
+144,144,Pradeep Puranik,Mother,Business,9526764920,guardian144@example.com
+145,145,Pradeep Londhe,Mother,Business,9518063453,guardian145@example.com
+146,146,Vijaya Banerjee,Mother,Government Service,9451292365,guardian146@example.com
+147,147,Sunita Mhatre,Guardian,Business,9582509368,guardian147@example.com
+148,148,Mahesh Pandey,Mother,Business,9760647116,guardian148@example.com
+149,149,Sanjay Rane,Mother,Healthcare,9683046081,guardian149@example.com
+150,150,Mahesh Pathak,Mother,Healthcare,9520339496,guardian150@example.com
+151,151,Anita Mukherjee,Mother,Business,9675434546,guardian151@example.com
+152,152,Rajendra Bhosale,Mother,Healthcare,9129603057,guardian152@example.com
+153,153,Rajendra Wagh,Father,Government Service,9430623982,guardian153@example.com
+154,154,Sanjay Borkar,Guardian,Engineer,9753983991,guardian154@example.com
+155,155,Pradeep Sawant,Father,Government Service,9267810856,guardian155@example.com
+156,156,Pradeep Pansare,Mother,Business,9222681384,guardian156@example.com
+157,157,Rajendra Aher,Mother,Teacher,9805942602,guardian157@example.com
+158,158,Vijaya Shelke,Father,Government Service,9475401660,guardian158@example.com
+159,159,Anita Das,Guardian,Teacher,9625049758,guardian159@example.com
+160,160,Sunita Lokhande,Father,Engineer,9936023134,guardian160@example.com
+161,161,Anita Joshi,Mother,Engineer,9188983032,guardian161@example.com
+162,162,Madhuri Warade,Guardian,Healthcare,9696213254,guardian162@example.com
+163,163,Rajendra Nikam,Mother,Government Service,9738234868,guardian163@example.com
+164,164,Sanjay Raut,Guardian,Teacher,9506408642,guardian164@example.com
+165,165,Sunita Shah,Mother,Teacher,9810081060,guardian165@example.com
+166,166,Rajendra Mishra,Father,Agriculture,9638403209,guardian166@example.com
+167,167,Pradeep Yadav,Mother,Agriculture,9620994764,guardian167@example.com
+168,168,Pradeep Kadam,Father,Government Service,9927962096,guardian168@example.com
+169,169,Sanjay Pathak,Father,Agriculture,9214269665,guardian169@example.com
+170,170,Sanjay Deshmukh,Father,Engineer,9779824146,guardian170@example.com
+171,171,Vijaya Jadhav,Mother,Agriculture,9398164245,guardian171@example.com
+172,172,Sunita Shah,Mother,Engineer,9761677303,guardian172@example.com
+173,173,Anita Sawant,Mother,Business,9807119456,guardian173@example.com
+174,174,Rajendra Zende,Father,Engineer,9739613530,guardian174@example.com
+175,175,Sanjay Das,Mother,Healthcare,9885844221,guardian175@example.com
+176,176,Vijaya Pillai,Mother,Government Service,9624114945,guardian176@example.com
+177,177,Vijaya Mukherjee,Guardian,Engineer,9455451799,guardian177@example.com
+178,178,Vijaya Nikam,Guardian,Government Service,9112251181,guardian178@example.com
+179,179,Sunita Singh,Guardian,Teacher,9185059026,guardian179@example.com
+180,180,Madhuri Agarwal,Father,Business,9620407109,guardian180@example.com
+181,181,Sanjay Bhagat,Father,Business,9103171511,guardian181@example.com
+182,182,Madhuri Desai,Mother,Teacher,9324461740,guardian182@example.com
+183,183,Rajendra Pathak,Guardian,Agriculture,9872783949,guardian183@example.com
+184,184,Sunita Shelke,Guardian,Business,9184425961,guardian184@example.com
+185,185,Sunita Nale,Father,Teacher,9692063720,guardian185@example.com
+186,186,Rajendra Shah,Guardian,Government Service,9483930800,guardian186@example.com
+187,187,Sunita Kothari,Father,Government Service,9256590849,guardian187@example.com
+188,188,Madhuri Dandekar,Father,Healthcare,9202683041,guardian188@example.com
+189,189,Madhuri Phadke,Mother,Healthcare,9143635250,guardian189@example.com
+190,190,Sunita Borkar,Father,Healthcare,9865252247,guardian190@example.com
+191,191,Rajendra Puranik,Guardian,Government Service,9692181428,guardian191@example.com
+192,192,Madhuri Bose,Guardian,Business,9898835095,guardian192@example.com
+193,193,Vijaya Kadam,Guardian,Teacher,9771667289,guardian193@example.com
+194,194,Mahesh Kharat,Father,Government Service,9418600785,guardian194@example.com
+195,195,Sanjay Rao,Mother,Business,9914442061,guardian195@example.com
+196,196,Madhuri Pawar,Father,Agriculture,9679311734,guardian196@example.com
+197,197,Pradeep Reddy,Father,Healthcare,9292555286,guardian197@example.com
+198,198,Rajendra Kshirsagar,Father,Healthcare,9625166183,guardian198@example.com
+199,199,Madhuri Saxena,Father,Teacher,9578421357,guardian199@example.com
+200,200,Anita Bhosale,Guardian,Government Service,9190261830,guardian200@example.com
+201,201,Anita Kumar,Guardian,Business,9579247141,guardian201@example.com
+202,202,Rajendra Pansare,Mother,Healthcare,9402581403,guardian202@example.com
+203,203,Mahesh Jadhav,Guardian,Engineer,9352043656,guardian203@example.com
+204,204,Sanjay Zende,Mother,Healthcare,9931979127,guardian204@example.com
+205,205,Vijaya Suryawanshi,Father,Healthcare,9440700475,guardian205@example.com
+206,206,Rajendra Kumar,Mother,Teacher,9397969346,guardian206@example.com
+207,207,Rajendra Patil,Mother,Healthcare,9724616580,guardian207@example.com
+208,208,Sunita Salunkhe,Guardian,Agriculture,9706409752,guardian208@example.com
+209,209,Sunita Naik,Guardian,Government Service,9333925319,guardian209@example.com
+210,210,Rajendra Londhe,Mother,Agriculture,9715393569,guardian210@example.com
+211,211,Pradeep Phadke,Guardian,Healthcare,9790283540,guardian211@example.com
+212,212,Anita Lad,Guardian,Agriculture,9390493500,guardian212@example.com
+213,213,Sunita Bhoyar,Guardian,Government Service,9313298653,guardian213@example.com
+214,214,Sanjay Chavan,Guardian,Government Service,9626590621,guardian214@example.com
+215,215,Vijaya Shinde,Father,Healthcare,9304116173,guardian215@example.com
+216,216,Sunita Pawar,Guardian,Business,9748602222,guardian216@example.com
+217,217,Anita Bose,Father,Healthcare,9548139577,guardian217@example.com
+218,218,Madhuri Wagh,Mother,Government Service,9612953623,guardian218@example.com
+219,219,Pradeep Gaikwad,Mother,Business,9845648848,guardian219@example.com
+220,220,Madhuri Puranik,Mother,Healthcare,9515942600,guardian220@example.com
+221,221,Pradeep Shinde,Guardian,Government Service,9996203663,guardian221@example.com
+222,222,Rajendra Nair,Guardian,Government Service,9731153247,guardian222@example.com
+223,223,Madhuri More,Father,Healthcare,9132329502,guardian223@example.com
+224,224,Sunita Chaudhari,Mother,Agriculture,9880414504,guardian224@example.com
+225,225,Mahesh Lokhande,Mother,Government Service,9405812799,guardian225@example.com
+226,226,Vijaya Joshi,Mother,Agriculture,9492420963,guardian226@example.com
+227,227,Anita Shinde,Guardian,Business,9539295389,guardian227@example.com
+228,228,Madhuri Rane,Father,Engineer,9622719360,guardian228@example.com
+229,229,Sanjay Rao,Mother,Business,9905986630,guardian229@example.com
+230,230,Mahesh Bhoyar,Guardian,Business,9332061079,guardian230@example.com
+231,231,Vijaya Bhoyar,Guardian,Business,9609697498,guardian231@example.com
+232,232,Pradeep Chopra,Father,Business,9540962349,guardian232@example.com
+233,233,Mahesh Chopra,Father,Government Service,9240661711,guardian233@example.com
+234,234,Madhuri Agarwal,Mother,Healthcare,9459174576,guardian234@example.com
+235,235,Vijaya Lad,Guardian,Engineer,9416845710,guardian235@example.com
+236,236,Rajendra Kapoor,Guardian,Government Service,9701218622,guardian236@example.com
+237,237,Mahesh Vartak,Father,Engineer,9366434156,guardian237@example.com
+238,238,Madhuri Banerjee,Guardian,Teacher,9812734531,guardian238@example.com
+239,239,Rajendra Shah,Father,Teacher,9989340170,guardian239@example.com
+240,240,Sanjay Sawant,Mother,Business,9560773936,guardian240@example.com
+241,241,Sanjay Phadke,Mother,Healthcare,9643070845,guardian241@example.com
+242,242,Sanjay Gawande,Guardian,Agriculture,9740970087,guardian242@example.com
+243,243,Sanjay Pawar,Mother,Business,9446097687,guardian243@example.com
+244,244,Mahesh Vaidya,Guardian,Agriculture,9938916946,guardian244@example.com
+245,245,Mahesh Karnik,Father,Business,9441543693,guardian245@example.com
+246,246,Sanjay Pandey,Mother,Healthcare,9973484183,guardian246@example.com
+247,247,Pradeep Shelke,Guardian,Teacher,9347939314,guardian247@example.com
+248,248,Pradeep Gawande,Mother,Engineer,9635531309,guardian248@example.com
+249,249,Mahesh Tale,Father,Engineer,9450877287,guardian249@example.com
+250,250,Rajendra Pandey,Mother,Teacher,9607581143,guardian250@example.com
+251,251,Sunita Das,Father,Teacher,9415734310,guardian251@example.com
+252,252,Sunita Kulkarni,Father,Business,9851218186,guardian252@example.com
+253,253,Sanjay Kapoor,Guardian,Agriculture,9836570381,guardian253@example.com
+254,254,Pradeep Phadke,Father,Business,9902679631,guardian254@example.com
+255,255,Vijaya Reddy,Guardian,Business,9143959797,guardian255@example.com
+256,256,Pradeep Sawant,Father,Government Service,9304020750,guardian256@example.com
+257,257,Madhuri Patil,Mother,Agriculture,9206802946,guardian257@example.com
+258,258,Rajendra Rane,Mother,Engineer,9402443871,guardian258@example.com
+259,259,Vijaya Jain,Guardian,Business,9252492402,guardian259@example.com
+260,260,Rajendra Kadam,Guardian,Government Service,9555067553,guardian260@example.com
+261,261,Sanjay Pansare,Guardian,Healthcare,9681607495,guardian261@example.com
+262,262,Mahesh Kapoor,Father,Government Service,9234759845,guardian262@example.com
+263,263,Sanjay Joshi,Father,Government Service,9827152250,guardian263@example.com
+264,264,Madhuri Gawande,Father,Agriculture,9578210919,guardian264@example.com
+265,265,Vijaya Joshi,Guardian,Agriculture,9406026468,guardian265@example.com
+266,266,Sanjay Gokhale,Guardian,Healthcare,9794931135,guardian266@example.com
+267,267,Madhuri Vartak,Father,Agriculture,9249456899,guardian267@example.com
+268,268,Mahesh Kale,Mother,Healthcare,9181680135,guardian268@example.com
+269,269,Madhuri Patil,Guardian,Healthcare,9732492735,guardian269@example.com
+270,270,Mahesh Karnik,Father,Engineer,9172716139,guardian270@example.com
+271,271,Sanjay Zende,Guardian,Government Service,9114743885,guardian271@example.com
+272,272,Sanjay Dighe,Mother,Government Service,9717187933,guardian272@example.com
+273,273,Anita Kulkarni,Father,Healthcare,9801951052,guardian273@example.com
+274,274,Sanjay Shinde,Guardian,Government Service,9957440470,guardian274@example.com
+275,275,Vijaya Mankar,Mother,Business,9380100755,guardian275@example.com
+276,276,Rajendra Tale,Father,Government Service,9508579168,guardian276@example.com
+277,277,Mahesh Patil,Father,Engineer,9551926565,guardian277@example.com
+278,278,Mahesh Gaikwad,Father,Healthcare,9882539109,guardian278@example.com
+279,279,Anita Mankar,Mother,Agriculture,9765027152,guardian279@example.com
+280,280,Mahesh Agarwal,Father,Government Service,9832651657,guardian280@example.com
+281,281,Madhuri Suryawanshi,Guardian,Engineer,9690658630,guardian281@example.com
+282,282,Mahesh Mali,Father,Agriculture,9217906603,guardian282@example.com
+283,283,Sunita Chavan,Mother,Business,9492140759,guardian283@example.com
+284,284,Pradeep Bose,Guardian,Healthcare,9546058065,guardian284@example.com
+285,285,Sunita Iyer,Father,Business,9245083151,guardian285@example.com
+286,286,Sunita Kale,Father,Business,9712765892,guardian286@example.com
+287,287,Anita Londhe,Guardian,Teacher,9789677785,guardian287@example.com
+288,288,Pradeep Shinde,Father,Engineer,9951129570,guardian288@example.com
+289,289,Madhuri Yadav,Guardian,Agriculture,9640871682,guardian289@example.com
+290,290,Pradeep Ghosh,Guardian,Teacher,9725407767,guardian290@example.com
+291,291,Anita Kadam,Mother,Teacher,9698649265,guardian291@example.com
+292,292,Anita Mehta,Guardian,Healthcare,9644731410,guardian292@example.com
+293,293,Madhuri Zende,Father,Business,9693594556,guardian293@example.com
+294,294,Sunita Reddy,Father,Teacher,9993175518,guardian294@example.com
+295,295,Sanjay Vaidya,Guardian,Agriculture,9394789419,guardian295@example.com
+296,296,Sanjay Naik,Mother,Agriculture,9769577867,guardian296@example.com
+297,297,Sanjay Kshirsagar,Mother,Agriculture,9320839568,guardian297@example.com
+298,298,Sunita Singh,Guardian,Healthcare,9987402036,guardian298@example.com
+299,299,Sunita Lad,Guardian,Teacher,9451979576,guardian299@example.com
+300,300,Sanjay Das,Guardian,Business,9480696755,guardian300@example.com
+301,301,Mahesh Nikam,Father,Engineer,9784241388,guardian301@example.com
+302,302,Sanjay Nale,Mother,Engineer,9650930697,guardian302@example.com
+303,303,Madhuri Nair,Father,Business,9326088422,guardian303@example.com
+304,304,Madhuri Bhagat,Father,Government Service,9567661679,guardian304@example.com
+305,305,Rajendra Nair,Guardian,Healthcare,9296021052,guardian305@example.com
+306,306,Vijaya Nikam,Father,Teacher,9325412152,guardian306@example.com
+307,307,Madhuri Jadhav,Mother,Engineer,9314808443,guardian307@example.com
+308,308,Anita Gaikwad,Guardian,Government Service,9791475923,guardian308@example.com
+309,309,Sanjay Pawar,Father,Government Service,9368856283,guardian309@example.com
+310,310,Rajendra Shirke,Father,Healthcare,9487005309,guardian310@example.com
+311,311,Pradeep Mehta,Mother,Business,9877914230,guardian311@example.com
+312,312,Mahesh Mali,Mother,Teacher,9834539785,guardian312@example.com
+313,313,Pradeep Puranik,Father,Government Service,9154980580,guardian313@example.com
+314,314,Sanjay Shah,Guardian,Teacher,9996172557,guardian314@example.com
+315,315,Vijaya Bose,Mother,Agriculture,9637066979,guardian315@example.com
+316,316,Madhuri Reddy,Guardian,Government Service,9549936089,guardian316@example.com
+317,317,Sanjay Kothari,Mother,Teacher,9879705465,guardian317@example.com
+318,318,Sunita Rao,Mother,Business,9344567027,guardian318@example.com
+319,319,Mahesh Nair,Guardian,Engineer,9276754390,guardian319@example.com
+320,320,Anita Sharma,Guardian,Government Service,9385366502,guardian320@example.com
+321,321,Sunita Kale,Father,Engineer,9941595728,guardian321@example.com
+322,322,Pradeep Chavan,Guardian,Teacher,9588578721,guardian322@example.com
+323,323,Vijaya Tambe,Mother,Agriculture,9479060106,guardian323@example.com
+324,324,Mahesh Patil,Mother,Teacher,9719159564,guardian324@example.com
+325,325,Sunita Bhandari,Father,Agriculture,9334580548,guardian325@example.com
+326,326,Vijaya Rane,Father,Engineer,9844627190,guardian326@example.com
+327,327,Vijaya Pillai,Mother,Healthcare,9552516808,guardian327@example.com
+328,328,Sanjay Nair,Guardian,Healthcare,9309875343,guardian328@example.com
+329,329,Rajendra Lad,Father,Government Service,9598270761,guardian329@example.com
+330,330,Sunita Singh,Guardian,Agriculture,9176690140,guardian330@example.com
+331,331,Pradeep Puranik,Guardian,Engineer,9630127599,guardian331@example.com
+332,332,Anita Pisal,Father,Engineer,9896830433,guardian332@example.com
+333,333,Rajendra Babar,Father,Engineer,9214717107,guardian333@example.com
+334,334,Vijaya Jain,Father,Government Service,9901396741,guardian334@example.com
+335,335,Vijaya Warade,Father,Agriculture,9542698596,guardian335@example.com
+336,336,Anita Gaikwad,Father,Engineer,9169153712,guardian336@example.com
+337,337,Vijaya Shirke,Guardian,Government Service,9559339673,guardian337@example.com
+338,338,Pradeep Kshirsagar,Mother,Engineer,9841946877,guardian338@example.com
+339,339,Rajendra Salunkhe,Mother,Business,9902080039,guardian339@example.com
+340,340,Pradeep Kadam,Guardian,Business,9384920829,guardian340@example.com
+341,341,Sanjay Lokhande,Mother,Teacher,9501515104,guardian341@example.com
+342,342,Mahesh Dhumal,Father,Business,9323937449,guardian342@example.com
+343,343,Pradeep Rajput,Guardian,Agriculture,9260546579,guardian343@example.com
+344,344,Pradeep Rao,Mother,Engineer,9127453789,guardian344@example.com
+345,345,Anita Dhole,Father,Business,9994984779,guardian345@example.com
+346,346,Pradeep Mankar,Mother,Engineer,9590761082,guardian346@example.com
+347,347,Pradeep Bhandari,Guardian,Agriculture,9582054018,guardian347@example.com
+348,348,Vijaya Joshi,Father,Healthcare,9706690528,guardian348@example.com
+349,349,Sanjay Chavan,Mother,Healthcare,9530397864,guardian349@example.com
+350,350,Mahesh Londhe,Guardian,Government Service,9546536605,guardian350@example.com
+351,351,Anita Vartak,Mother,Teacher,9749413153,guardian351@example.com
+352,352,Vijaya Agarwal,Father,Agriculture,9761835566,guardian352@example.com
+353,353,Sunita Pandey,Father,Healthcare,9862489851,guardian353@example.com
+354,354,Rajendra Kothari,Father,Business,9853848713,guardian354@example.com
+355,355,Pradeep Kore,Father,Government Service,9795667974,guardian355@example.com
+356,356,Madhuri Shinde,Guardian,Business,9636464204,guardian356@example.com
+357,357,Sanjay Nair,Father,Engineer,9325368996,guardian357@example.com
+358,358,Madhuri Desai,Guardian,Teacher,9777403626,guardian358@example.com
+359,359,Anita Kulkarni,Mother,Business,9197787888,guardian359@example.com
+360,360,Madhuri Ranade,Mother,Healthcare,9581516361,guardian360@example.com
+361,361,Sunita Sharma,Guardian,Government Service,9863043541,guardian361@example.com
+362,362,Sanjay Londhe,Mother,Government Service,9405917438,guardian362@example.com
+363,363,Rajendra Nale,Father,Agriculture,9519849753,guardian363@example.com
+364,364,Sunita Kale,Father,Healthcare,9781595283,guardian364@example.com
+365,365,Rajendra Kore,Mother,Healthcare,9539939756,guardian365@example.com
+366,366,Anita Saxena,Father,Government Service,9941623121,guardian366@example.com
+367,367,Madhuri Yadav,Father,Agriculture,9682353123,guardian367@example.com
+368,368,Anita Mali,Guardian,Healthcare,9561847474,guardian368@example.com
+369,369,Mahesh Sawant,Father,Healthcare,9843211445,guardian369@example.com
+370,370,Pradeep Borkar,Mother,Business,9266087862,guardian370@example.com
+371,371,Anita Malhotra,Guardian,Agriculture,9272420170,guardian371@example.com
+372,372,Sanjay Jadhav,Mother,Business,9842538404,guardian372@example.com
+373,373,Mahesh Jain,Guardian,Agriculture,9380463775,guardian373@example.com
+374,374,Rajendra Kumar,Father,Engineer,9712192345,guardian374@example.com
+375,375,Pradeep Karnik,Mother,Healthcare,9763668560,guardian375@example.com
+376,376,Vijaya Patil,Father,Agriculture,9492724560,guardian376@example.com
+377,377,Madhuri Dhumal,Mother,Teacher,9792961189,guardian377@example.com
+378,378,Anita Pansare,Mother,Agriculture,9970014966,guardian378@example.com
+379,379,Anita Pansare,Father,Healthcare,9849867564,guardian379@example.com
+380,380,Madhuri Joshi,Mother,Government Service,9848659878,guardian380@example.com
+381,381,Sanjay Kshirsagar,Guardian,Government Service,9154996125,guardian381@example.com
+382,382,Mahesh Verma,Guardian,Healthcare,9245375397,guardian382@example.com
+383,383,Anita Inamdar,Guardian,Teacher,9894056491,guardian383@example.com
+384,384,Rajendra Shelke,Guardian,Agriculture,9746487177,guardian384@example.com
+385,385,Sanjay Verma,Mother,Healthcare,9374825023,guardian385@example.com
+386,386,Rajendra Deshmukh,Guardian,Business,9135445411,guardian386@example.com
+387,387,Madhuri Naik,Guardian,Healthcare,9661361173,guardian387@example.com
+388,388,Rajendra Chavan,Mother,Teacher,9182425765,guardian388@example.com
+389,389,Vijaya Shelke,Father,Agriculture,9438511846,guardian389@example.com
+390,390,Sunita Gokhale,Father,Government Service,9940860555,guardian390@example.com
+391,391,Sunita Vartak,Guardian,Healthcare,9889391653,guardian391@example.com
+392,392,Sanjay Joshi,Mother,Government Service,9363995632,guardian392@example.com
+393,393,Anita Phadke,Mother,Agriculture,9151418170,guardian393@example.com
+394,394,Mahesh Aher,Father,Engineer,9479272915,guardian394@example.com
+395,395,Pradeep Shinde,Father,Business,9423139115,guardian395@example.com
+396,396,Madhuri Rane,Mother,Agriculture,9475056760,guardian396@example.com
+397,397,Pradeep Mankar,Mother,Government Service,9226583803,guardian397@example.com
+398,398,Madhuri Singh,Guardian,Agriculture,9357768133,guardian398@example.com
+399,399,Pradeep Pawar,Guardian,Business,9718632495,guardian399@example.com
+400,400,Rajendra Tiwari,Father,Business,9585536355,guardian400@example.com
+401,401,Sunita Tambe,Mother,Engineer,9419127951,guardian401@example.com
+402,402,Anita Deshmukh,Guardian,Healthcare,9653196257,guardian402@example.com
+403,403,Sanjay Desai,Father,Government Service,9857256814,guardian403@example.com
+404,404,Pradeep Chopra,Guardian,Agriculture,9559568438,guardian404@example.com
+405,405,Anita Desai,Guardian,Agriculture,9730575428,guardian405@example.com
+406,406,Madhuri Pathak,Mother,Business,9147527161,guardian406@example.com
+407,407,Anita Vartak,Guardian,Government Service,9713727675,guardian407@example.com
+408,408,Sunita Mhatre,Father,Engineer,9108347186,guardian408@example.com
+409,409,Rajendra Shirke,Father,Engineer,9269338551,guardian409@example.com
+410,410,Sunita Dighe,Guardian,Government Service,9838761542,guardian410@example.com
+411,411,Madhuri Bhosale,Guardian,Business,9569334808,guardian411@example.com
+412,412,Vijaya Kale,Guardian,Healthcare,9259386639,guardian412@example.com
+413,413,Sanjay Yadav,Guardian,Business,9734637391,guardian413@example.com
+414,414,Rajendra Rao,Guardian,Government Service,9590682626,guardian414@example.com
+415,415,Mahesh Jain,Mother,Teacher,9885019587,guardian415@example.com
+416,416,Mahesh Ranade,Father,Healthcare,9963859116,guardian416@example.com
+417,417,Sunita Karnik,Mother,Teacher,9627011375,guardian417@example.com
+418,418,Sanjay Patil,Father,Teacher,9990988075,guardian418@example.com
+419,419,Madhuri Pawar,Father,Healthcare,9233353605,guardian419@example.com
+420,420,Sunita Joshi,Mother,Engineer,9598613421,guardian420@example.com
+421,421,Madhuri Jain,Mother,Teacher,9105372220,guardian421@example.com
+422,422,Vijaya Salunkhe,Father,Business,9471890532,guardian422@example.com
+423,423,Sunita Nale,Father,Business,9622639205,guardian423@example.com
+424,424,Anita Rao,Guardian,Engineer,9664766853,guardian424@example.com
+425,425,Vijaya Jain,Guardian,Government Service,9654016304,guardian425@example.com
+426,426,Anita Lad,Father,Teacher,9581060301,guardian426@example.com
+427,427,Mahesh Sharma,Father,Agriculture,9585646890,guardian427@example.com
+428,428,Sunita Ranade,Mother,Healthcare,9226546566,guardian428@example.com
+429,429,Rajendra Nair,Guardian,Agriculture,9568868254,guardian429@example.com
+430,430,Madhuri Joshi,Mother,Agriculture,9345444175,guardian430@example.com
+431,431,Mahesh Bhosale,Father,Business,9267607787,guardian431@example.com
+432,432,Madhuri Babar,Mother,Healthcare,9443942099,guardian432@example.com
+433,433,Mahesh Vartak,Father,Agriculture,9154770550,guardian433@example.com
+434,434,Mahesh Deshmukh,Guardian,Engineer,9701463667,guardian434@example.com
+435,435,Pradeep Ghosh,Mother,Healthcare,9414571491,guardian435@example.com
+436,436,Vijaya Banerjee,Father,Teacher,9648660692,guardian436@example.com
+437,437,Anita Vartak,Father,Business,9396135097,guardian437@example.com
+438,438,Pradeep Jain,Guardian,Healthcare,9901957208,guardian438@example.com
+439,439,Mahesh More,Father,Business,9507173034,guardian439@example.com
+440,440,Anita Kulkarni,Father,Government Service,9710619033,guardian440@example.com
+441,441,Sunita Naik,Guardian,Teacher,9499406022,guardian441@example.com
+442,442,Sanjay Bhagat,Mother,Engineer,9124253591,guardian442@example.com
+443,443,Vijaya Rajput,Mother,Engineer,9648073984,guardian443@example.com
+444,444,Sunita Joshi,Father,Teacher,9487227351,guardian444@example.com
+445,445,Madhuri Desai,Guardian,Business,9696737058,guardian445@example.com
+446,446,Rajendra Lad,Mother,Engineer,9633312921,guardian446@example.com
+447,447,Madhuri Kapoor,Mother,Agriculture,9667780552,guardian447@example.com
+448,448,Madhuri Rajput,Mother,Government Service,9346076547,guardian448@example.com
+449,449,Rajendra Kapoor,Guardian,Business,9813243547,guardian449@example.com
+450,450,Mahesh Vartak,Mother,Business,9625945686,guardian450@example.com
+451,451,Sunita Kore,Guardian,Government Service,9420712152,guardian451@example.com
+452,452,Madhuri Das,Mother,Teacher,9261287950,guardian452@example.com
+453,453,Sunita Lokhande,Father,Teacher,9417766894,guardian453@example.com
+454,454,Sanjay Bhoyar,Guardian,Agriculture,9880974674,guardian454@example.com
+455,455,Sanjay Dighe,Mother,Government Service,9977905009,guardian455@example.com
+456,456,Sunita Lokhande,Mother,Engineer,9889796848,guardian456@example.com
+457,457,Madhuri Kadam,Guardian,Engineer,9864554545,guardian457@example.com
+458,458,Mahesh Dhumal,Guardian,Business,9734480967,guardian458@example.com
+459,459,Pradeep Gawande,Mother,Business,9522914978,guardian459@example.com
+460,460,Rajendra Tale,Mother,Government Service,9858660360,guardian460@example.com
+461,461,Pradeep Nale,Guardian,Engineer,9849738458,guardian461@example.com
+462,462,Madhuri Joshi,Mother,Engineer,9173532136,guardian462@example.com
+463,463,Anita Kore,Mother,Agriculture,9605689920,guardian463@example.com
+464,464,Sanjay Reddy,Mother,Healthcare,9925595310,guardian464@example.com
+465,465,Madhuri Reddy,Guardian,Business,9833989165,guardian465@example.com
+466,466,Pradeep Kharat,Father,Government Service,9175902760,guardian466@example.com
+467,467,Sunita Joshi,Father,Engineer,9346181738,guardian467@example.com
+468,468,Pradeep Kamble,Guardian,Teacher,9637375725,guardian468@example.com
+469,469,Sunita Phadke,Father,Healthcare,9985201159,guardian469@example.com
+470,470,Sanjay Dandekar,Guardian,Agriculture,9704910412,guardian470@example.com
+471,471,Sunita Khot,Guardian,Engineer,9894299992,guardian471@example.com
+472,472,Anita Vartak,Guardian,Agriculture,9981081888,guardian472@example.com
+473,473,Rajendra Kumar,Mother,Business,9240402222,guardian473@example.com
+474,474,Vijaya Gawande,Guardian,Agriculture,9439769167,guardian474@example.com
+475,475,Rajendra Wagh,Guardian,Engineer,9689478303,guardian475@example.com
+476,476,Rajendra Pawar,Mother,Teacher,9178069495,guardian476@example.com
+477,477,Sunita Mankar,Mother,Teacher,9632110873,guardian477@example.com
+478,478,Madhuri Bhandari,Mother,Business,9876545663,guardian478@example.com
+479,479,Madhuri Das,Mother,Teacher,9408938454,guardian479@example.com
+480,480,Vijaya Sawant,Mother,Healthcare,9693161561,guardian480@example.com
+481,481,Madhuri Gore,Mother,Agriculture,9635605437,guardian481@example.com
+482,482,Madhuri Desai,Mother,Engineer,9286482106,guardian482@example.com
+483,483,Mahesh Yadav,Father,Healthcare,9688590394,guardian483@example.com
+484,484,Vijaya Sinha,Guardian,Agriculture,9486268674,guardian484@example.com
+485,485,Sunita Rajput,Mother,Healthcare,9765682252,guardian485@example.com
+486,486,Sunita Pansare,Mother,Business,9440825758,guardian486@example.com
+487,487,Sunita Gaikwad,Guardian,Business,9630010357,guardian487@example.com
+488,488,Anita Kharat,Guardian,Agriculture,9490468680,guardian488@example.com
+489,489,Sunita Nair,Guardian,Government Service,9332357143,guardian489@example.com
+490,490,Mahesh Shah,Father,Business,9345167757,guardian490@example.com
+491,491,Madhuri Vartak,Mother,Business,9712469963,guardian491@example.com
+492,492,Rajendra Dandekar,Father,Healthcare,9103226203,guardian492@example.com
+493,493,Madhuri Kulkarni,Guardian,Teacher,9334199706,guardian493@example.com
+494,494,Sunita Tiwari,Father,Healthcare,9586947757,guardian494@example.com
+495,495,Rajendra Nale,Guardian,Government Service,9879251214,guardian495@example.com
+496,496,Sanjay Agarwal,Father,Government Service,9589918495,guardian496@example.com
+497,497,Vijaya Shinde,Mother,Teacher,9377176123,guardian497@example.com
+498,498,Sunita Mishra,Guardian,Teacher,9407807911,guardian498@example.com
+499,499,Rajendra Jadhav,Mother,Healthcare,9761903984,guardian499@example.com
+500,500,Anita Tiwari,Mother,Business,9857672185,guardian500@example.com
+501,501,Rajendra Rao,Father,Engineer,9565588914,guardian501@example.com
+502,502,Sunita Kulkarni,Guardian,Agriculture,9149514993,guardian502@example.com
+503,503,Madhuri Khot,Guardian,Teacher,9984213228,guardian503@example.com
+504,504,Mahesh Saxena,Father,Teacher,9501985452,guardian504@example.com
+505,505,Sunita Kulkarni,Mother,Engineer,9440627310,guardian505@example.com
+506,506,Vijaya Aher,Guardian,Healthcare,9518639042,guardian506@example.com
+507,507,Rajendra Gokhale,Guardian,Government Service,9746082646,guardian507@example.com
+508,508,Sunita Bhosale,Mother,Agriculture,9219304157,guardian508@example.com
+509,509,Sunita Dighe,Mother,Government Service,9957585935,guardian509@example.com
+510,510,Mahesh Dhumal,Guardian,Government Service,9616347757,guardian510@example.com
+511,511,Mahesh Tale,Mother,Business,9806612169,guardian511@example.com
+512,512,Sunita Naik,Guardian,Engineer,9952180454,guardian512@example.com
+513,513,Rajendra Patil,Father,Government Service,9405302560,guardian513@example.com
+514,514,Anita Desai,Guardian,Business,9129402132,guardian514@example.com
+515,515,Sunita Sinha,Father,Government Service,9470774906,guardian515@example.com
+516,516,Pradeep Vartak,Mother,Engineer,9853285800,guardian516@example.com
+517,517,Sunita Vaidya,Mother,Government Service,9300352051,guardian517@example.com
+518,518,Rajendra Kulkarni,Mother,Healthcare,9234664951,guardian518@example.com
+519,519,Vijaya Kothari,Mother,Healthcare,9950702174,guardian519@example.com
+520,520,Anita Kulkarni,Father,Government Service,9103887797,guardian520@example.com
+521,521,Pradeep Gore,Mother,Teacher,9212186149,guardian521@example.com
+522,522,Mahesh Kumar,Guardian,Engineer,9369376729,guardian522@example.com
+523,523,Mahesh Joshi,Guardian,Teacher,9242621702,guardian523@example.com
+524,524,Anita Tiwari,Guardian,Agriculture,9179343893,guardian524@example.com
+525,525,Sanjay Nikam,Guardian,Teacher,9999232511,guardian525@example.com
+526,526,Sunita Gawande,Mother,Agriculture,9335385838,guardian526@example.com
+527,527,Madhuri Verma,Guardian,Engineer,9633537636,guardian527@example.com
+528,528,Madhuri Pillai,Father,Agriculture,9394351075,guardian528@example.com
+529,529,Pradeep Kshirsagar,Father,Healthcare,9920266570,guardian529@example.com
+530,530,Vijaya Puranik,Mother,Engineer,9380270915,guardian530@example.com
+531,531,Mahesh Mane,Father,Business,9239671817,guardian531@example.com
+532,532,Rajendra Chavan,Guardian,Teacher,9853629863,guardian532@example.com
+533,533,Sanjay Lad,Mother,Agriculture,9613677232,guardian533@example.com
+534,534,Anita Kapoor,Guardian,Business,9474985795,guardian534@example.com
+535,535,Vijaya Vartak,Guardian,Engineer,9365760142,guardian535@example.com
+536,536,Mahesh Suryawanshi,Guardian,Agriculture,9274704576,guardian536@example.com
+537,537,Sunita Joshi,Guardian,Healthcare,9973450327,guardian537@example.com
+538,538,Vijaya Kshirsagar,Father,Healthcare,9756765991,guardian538@example.com
+539,539,Pradeep Mehta,Mother,Business,9336685301,guardian539@example.com
+540,540,Pradeep Sawant,Guardian,Healthcare,9652847952,guardian540@example.com
+541,541,Rajendra Chavan,Guardian,Government Service,9399666539,guardian541@example.com
+542,542,Rajendra Bhagat,Mother,Business,9313445677,guardian542@example.com
+543,543,Madhuri Pansare,Father,Business,9569172186,guardian543@example.com
+544,544,Rajendra Bhandari,Guardian,Engineer,9976085584,guardian544@example.com
+545,545,Anita Khot,Father,Agriculture,9241622037,guardian545@example.com
+546,546,Pradeep Kamble,Mother,Government Service,9940913868,guardian546@example.com
+547,547,Sanjay Chaudhari,Guardian,Engineer,9263802341,guardian547@example.com
+548,548,Sanjay Warade,Guardian,Business,9708469880,guardian548@example.com
+549,549,Rajendra Inamdar,Father,Healthcare,9504502237,guardian549@example.com
+550,550,Anita Kapoor,Father,Teacher,9934747470,guardian550@example.com
+551,551,Anita Saxena,Mother,Business,9272699234,guardian551@example.com
+552,552,Rajendra Chavan,Guardian,Engineer,9826299609,guardian552@example.com
+553,553,Rajendra Banerjee,Guardian,Agriculture,9695081330,guardian553@example.com
+554,554,Vijaya Bose,Mother,Teacher,9968241476,guardian554@example.com
+555,555,Mahesh Khot,Mother,Engineer,9707357454,guardian555@example.com
+556,556,Anita Kore,Guardian,Healthcare,9402852868,guardian556@example.com
+557,557,Vijaya Nair,Guardian,Engineer,9238570811,guardian557@example.com
+558,558,Pradeep Nale,Mother,Government Service,9551976586,guardian558@example.com
+559,559,Sunita Kamble,Guardian,Engineer,9695344447,guardian559@example.com
+560,560,Pradeep Pawar,Father,Business,9260686989,guardian560@example.com
+561,561,Anita Gore,Mother,Government Service,9266951655,guardian561@example.com
+562,562,Madhuri Kharat,Mother,Business,9134311896,guardian562@example.com
+563,563,Sanjay Mishra,Father,Healthcare,9647818923,guardian563@example.com
+564,564,Rajendra Vartak,Mother,Teacher,9442342738,guardian564@example.com
+565,565,Anita Chaudhari,Father,Engineer,9183441786,guardian565@example.com
+566,566,Vijaya Iyer,Father,Business,9245119335,guardian566@example.com
+567,567,Rajendra Kulkarni,Mother,Healthcare,9464217340,guardian567@example.com
+568,568,Madhuri Mehta,Father,Teacher,9688665796,guardian568@example.com
+569,569,Anita Mali,Father,Business,9472330182,guardian569@example.com
+570,570,Sunita Rao,Mother,Government Service,9864195918,guardian570@example.com
+571,571,Anita Patil,Father,Agriculture,9111172599,guardian571@example.com
+572,572,Mahesh Bhosale,Mother,Government Service,9631228625,guardian572@example.com
+573,573,Pradeep Pathak,Father,Agriculture,9297987876,guardian573@example.com
+574,574,Vijaya Kore,Guardian,Engineer,9194312015,guardian574@example.com
+575,575,Mahesh Bose,Father,Government Service,9798459999,guardian575@example.com
+576,576,Sunita Reddy,Guardian,Healthcare,9789911511,guardian576@example.com
+577,577,Pradeep Pawar,Mother,Engineer,9458076025,guardian577@example.com
+578,578,Sanjay Banerjee,Guardian,Teacher,9753352679,guardian578@example.com
+579,579,Sanjay Tambe,Guardian,Agriculture,9948025423,guardian579@example.com
+580,580,Pradeep Warade,Mother,Healthcare,9966033057,guardian580@example.com
+581,581,Anita Raut,Guardian,Government Service,9537262837,guardian581@example.com
+582,582,Anita Joshi,Guardian,Business,9307557873,guardian582@example.com
+583,583,Sanjay Bhoyar,Father,Government Service,9940233371,guardian583@example.com
+584,584,Madhuri Ranade,Mother,Business,9407213678,guardian584@example.com
+585,585,Pradeep Warade,Mother,Healthcare,9656887200,guardian585@example.com
+586,586,Pradeep Pandey,Guardian,Government Service,9688343556,guardian586@example.com
+587,587,Pradeep Suryawanshi,Father,Healthcare,9814768868,guardian587@example.com
+588,588,Mahesh Pisal,Father,Government Service,9651907269,guardian588@example.com
+589,589,Mahesh Ghosh,Father,Teacher,9237702006,guardian589@example.com
+590,590,Sanjay Shelke,Guardian,Government Service,9580573687,guardian590@example.com
+591,591,Pradeep Bhosale,Mother,Business,9989661808,guardian591@example.com
+592,592,Anita Babar,Mother,Healthcare,9851368992,guardian592@example.com
+593,593,Vijaya Chaudhari,Father,Engineer,9464775749,guardian593@example.com
+594,594,Madhuri Joshi,Mother,Government Service,9990703580,guardian594@example.com
+595,595,Rajendra Naik,Guardian,Government Service,9582811645,guardian595@example.com
+596,596,Mahesh Nale,Father,Government Service,9227380153,guardian596@example.com
+597,597,Sunita Desai,Mother,Agriculture,9715127684,guardian597@example.com
+598,598,Pradeep Lokhande,Father,Business,9212575992,guardian598@example.com
+599,599,Mahesh Suryawanshi,Father,Agriculture,9419164386,guardian599@example.com
+600,600,Vijaya Mehta,Guardian,Business,9306747055,guardian600@example.com
+601,601,Mahesh Kharat,Guardian,Agriculture,9699223177,guardian601@example.com
+602,602,Sunita Mishra,Mother,Engineer,9627869531,guardian602@example.com
+603,603,Pradeep Bhosale,Father,Agriculture,9621657253,guardian603@example.com
+604,604,Sanjay Tambe,Father,Healthcare,9631668683,guardian604@example.com
+605,605,Pradeep Salunkhe,Guardian,Government Service,9271739518,guardian605@example.com
+606,606,Madhuri Bhosale,Mother,Business,9306788314,guardian606@example.com
+607,607,Rajendra Suryawanshi,Father,Business,9224031986,guardian607@example.com
+608,608,Rajendra Suryawanshi,Father,Government Service,9542267275,guardian608@example.com
+609,609,Rajendra Mukherjee,Guardian,Government Service,9792272786,guardian609@example.com
+610,610,Pradeep Mehta,Father,Agriculture,9565983573,guardian610@example.com
+611,611,Sunita Deshmukh,Guardian,Engineer,9272705616,guardian611@example.com
+612,612,Sanjay Mane,Mother,Agriculture,9831019375,guardian612@example.com
+613,613,Sunita Londhe,Guardian,Healthcare,9242678846,guardian613@example.com
+614,614,Pradeep Das,Guardian,Business,9837740642,guardian614@example.com
+615,615,Pradeep Chavan,Father,Engineer,9919283137,guardian615@example.com
+616,616,Sanjay Lokhande,Father,Teacher,9797107574,guardian616@example.com
+617,617,Mahesh Jain,Father,Healthcare,9437188036,guardian617@example.com
+618,618,Madhuri Borkar,Father,Healthcare,9141606648,guardian618@example.com
+619,619,Vijaya Karnik,Mother,Agriculture,9290291145,guardian619@example.com
+620,620,Anita Joshi,Guardian,Agriculture,9539332952,guardian620@example.com
+621,621,Mahesh Patil,Mother,Government Service,9837305442,guardian621@example.com
+622,622,Mahesh Jain,Mother,Business,9870162358,guardian622@example.com
+623,623,Rajendra Bhagat,Mother,Government Service,9601220280,guardian623@example.com
+624,624,Sanjay Agarwal,Mother,Engineer,9224879897,guardian624@example.com
+625,625,Sunita Bhagat,Mother,Agriculture,9678874016,guardian625@example.com
+626,626,Sanjay Kshirsagar,Father,Engineer,9813799854,guardian626@example.com
+627,627,Sunita Tale,Father,Business,9540652397,guardian627@example.com
+628,628,Madhuri Chaudhari,Father,Business,9951851261,guardian628@example.com
+629,629,Madhuri Gokhale,Father,Agriculture,9907172327,guardian629@example.com
+630,630,Rajendra Vaidya,Father,Business,9132836173,guardian630@example.com
+631,631,Mahesh Mishra,Mother,Healthcare,9139317434,guardian631@example.com
+632,632,Pradeep Mehta,Father,Engineer,9889640983,guardian632@example.com
+633,633,Pradeep Gawande,Guardian,Government Service,9445516509,guardian633@example.com
+634,634,Mahesh Ghosh,Mother,Government Service,9365597837,guardian634@example.com
+635,635,Madhuri Kamble,Mother,Government Service,9435035725,guardian635@example.com
+636,636,Pradeep Dhole,Father,Teacher,9625176791,guardian636@example.com
+637,637,Sunita Yadav,Mother,Teacher,9870247368,guardian637@example.com
+638,638,Anita More,Father,Agriculture,9443313857,guardian638@example.com
+639,639,Anita Zende,Mother,Government Service,9488313189,guardian639@example.com
+640,640,Anita Kale,Father,Healthcare,9485531696,guardian640@example.com
+641,641,Mahesh Pisal,Guardian,Engineer,9915813231,guardian641@example.com
+642,642,Sanjay Kadam,Mother,Healthcare,9922963379,guardian642@example.com
+643,643,Mahesh Aher,Father,Teacher,9180331658,guardian643@example.com
+644,644,Sunita Borkar,Father,Engineer,9443434019,guardian644@example.com
+645,645,Madhuri Borkar,Father,Government Service,9697482389,guardian645@example.com
+646,646,Sunita Thorat,Guardian,Business,9765205214,guardian646@example.com
+647,647,Rajendra Bhandari,Father,Government Service,9399040561,guardian647@example.com
+648,648,Mahesh Kapoor,Father,Government Service,9490162681,guardian648@example.com
+649,649,Sanjay Das,Guardian,Agriculture,9454140831,guardian649@example.com
+650,650,Pradeep Deshmukh,Guardian,Teacher,9357798559,guardian650@example.com
+651,651,Rajendra Kumar,Guardian,Government Service,9994067220,guardian651@example.com
+652,652,Anita Ghosh,Father,Business,9861864505,guardian652@example.com
+653,653,Mahesh Mishra,Guardian,Engineer,9276439606,guardian653@example.com
+654,654,Mahesh Reddy,Mother,Government Service,9762315263,guardian654@example.com
+655,655,Rajendra Khot,Guardian,Government Service,9306052596,guardian655@example.com
+656,656,Madhuri Shirke,Father,Teacher,9719208243,guardian656@example.com
+657,657,Madhuri Nikam,Father,Teacher,9250091390,guardian657@example.com
+658,658,Sanjay Vartak,Guardian,Teacher,9391284405,guardian658@example.com
+659,659,Pradeep Kore,Father,Government Service,9320149772,guardian659@example.com
+660,660,Anita Vaidya,Guardian,Agriculture,9426691466,guardian660@example.com
+661,661,Rajendra Khot,Father,Teacher,9100691192,guardian661@example.com
+662,662,Rajendra Vartak,Mother,Business,9572039356,guardian662@example.com
+663,663,Mahesh Suryawanshi,Father,Government Service,9256127853,guardian663@example.com
+664,664,Madhuri Desai,Mother,Teacher,9943842634,guardian664@example.com
+665,665,Anita Kulkarni,Guardian,Teacher,9432591302,guardian665@example.com
+666,666,Rajendra Sinha,Guardian,Engineer,9280883078,guardian666@example.com
+667,667,Pradeep Mehta,Mother,Teacher,9849017554,guardian667@example.com
+668,668,Vijaya Desai,Mother,Engineer,9121197343,guardian668@example.com
+669,669,Madhuri Borkar,Father,Agriculture,9481861716,guardian669@example.com
+670,670,Sanjay Jain,Mother,Healthcare,9845111903,guardian670@example.com
+671,671,Rajendra Pansare,Mother,Agriculture,9559491224,guardian671@example.com
+672,672,Sanjay Kapoor,Father,Engineer,9814843845,guardian672@example.com
+673,673,Sanjay Aher,Father,Healthcare,9378152932,guardian673@example.com
+674,674,Vijaya Puranik,Guardian,Teacher,9886352350,guardian674@example.com
+675,675,Sanjay Tambe,Father,Healthcare,9142319272,guardian675@example.com
+676,676,Sunita Nikam,Father,Engineer,9738685277,guardian676@example.com
+677,677,Vijaya Pandey,Guardian,Agriculture,9220062083,guardian677@example.com
+678,678,Madhuri Vartak,Mother,Government Service,9675130910,guardian678@example.com
+679,679,Anita Pisal,Guardian,Healthcare,9300526100,guardian679@example.com
+680,680,Madhuri Tambe,Father,Government Service,9737178337,guardian680@example.com
+681,681,Madhuri Joshi,Mother,Business,9189358388,guardian681@example.com
+682,682,Mahesh Jadhav,Father,Business,9442972022,guardian682@example.com
+683,683,Sanjay Inamdar,Guardian,Engineer,9680914133,guardian683@example.com
+684,684,Pradeep Nale,Mother,Healthcare,9678036345,guardian684@example.com
+685,685,Anita More,Father,Healthcare,9717112948,guardian685@example.com
+686,686,Vijaya Pathak,Guardian,Business,9612429705,guardian686@example.com
+687,687,Rajendra Warade,Father,Agriculture,9972921095,guardian687@example.com
+688,688,Rajendra Reddy,Guardian,Business,9211037698,guardian688@example.com
+689,689,Sunita Chavan,Guardian,Healthcare,9169720996,guardian689@example.com
+690,690,Mahesh Sinha,Mother,Healthcare,9709691437,guardian690@example.com
+691,691,Vijaya Ghosh,Father,Healthcare,9587800605,guardian691@example.com
+692,692,Anita Kapoor,Mother,Healthcare,9151482696,guardian692@example.com
+693,693,Sanjay Vaidya,Mother,Engineer,9804270440,guardian693@example.com
+694,694,Pradeep Kharat,Father,Healthcare,9929661672,guardian694@example.com
+695,695,Rajendra Chaudhari,Mother,Healthcare,9263908669,guardian695@example.com
+696,696,Sanjay Puranik,Guardian,Government Service,9849046164,guardian696@example.com
+697,697,Anita Nale,Father,Agriculture,9318970463,guardian697@example.com
+698,698,Sunita More,Mother,Business,9264418193,guardian698@example.com
+699,699,Pradeep Thorat,Guardian,Engineer,9398380203,guardian699@example.com
+700,700,Madhuri Bhosale,Guardian,Agriculture,9466326949,guardian700@example.com
+701,701,Vijaya Kulkarni,Guardian,Engineer,9598558118,guardian701@example.com
+702,702,Pradeep Aher,Mother,Teacher,9736005274,guardian702@example.com
+703,703,Pradeep Warade,Mother,Teacher,9345074502,guardian703@example.com
+704,704,Vijaya Shah,Guardian,Teacher,9710900829,guardian704@example.com
+705,705,Vijaya Chaudhari,Guardian,Agriculture,9145928738,guardian705@example.com
+706,706,Sunita Chopra,Mother,Government Service,9715847440,guardian706@example.com
+707,707,Pradeep Gokhale,Father,Business,9997507518,guardian707@example.com
+708,708,Anita Saxena,Father,Engineer,9757967618,guardian708@example.com
+709,709,Pradeep Tiwari,Father,Agriculture,9614315085,guardian709@example.com
+710,710,Anita Mukherjee,Father,Teacher,9134688028,guardian710@example.com
+711,711,Anita Kamble,Mother,Business,9565364638,guardian711@example.com
+712,712,Pradeep Phadke,Mother,Engineer,9272285584,guardian712@example.com
+713,713,Rajendra Shirke,Guardian,Government Service,9727414207,guardian713@example.com
+714,714,Pradeep Chopra,Father,Healthcare,9177646552,guardian714@example.com
+715,715,Mahesh Kale,Father,Engineer,9710425066,guardian715@example.com
+716,716,Pradeep Sawant,Father,Teacher,9510599072,guardian716@example.com
+717,717,Vijaya Chopra,Guardian,Agriculture,9433599333,guardian717@example.com
+718,718,Sanjay Rane,Mother,Business,9770188024,guardian718@example.com
+719,719,Anita Saxena,Mother,Engineer,9306544678,guardian719@example.com
+720,720,Mahesh Vaidya,Guardian,Engineer,9176509736,guardian720@example.com
+721,721,Anita Babar,Guardian,Agriculture,9196955801,guardian721@example.com
+722,722,Mahesh Vartak,Father,Agriculture,9457400729,guardian722@example.com
+723,723,Mahesh Bhandari,Father,Business,9505579164,guardian723@example.com
+724,724,Vijaya Bhoyar,Mother,Healthcare,9638775318,guardian724@example.com
+725,725,Pradeep Kharat,Mother,Government Service,9422267094,guardian725@example.com
+726,726,Pradeep Londhe,Mother,Government Service,9268392698,guardian726@example.com
+727,727,Sunita Suryawanshi,Guardian,Agriculture,9892087563,guardian727@example.com
+728,728,Sunita Aher,Father,Teacher,9567014552,guardian728@example.com
+729,729,Vijaya Dighe,Mother,Engineer,9854478331,guardian729@example.com
+730,730,Sunita Banerjee,Guardian,Agriculture,9193915803,guardian730@example.com
+731,731,Vijaya Pisal,Mother,Engineer,9460259905,guardian731@example.com
+732,732,Sunita Kumar,Father,Agriculture,9486004982,guardian732@example.com
+733,733,Madhuri Lokhande,Guardian,Teacher,9720688521,guardian733@example.com
+734,734,Mahesh Banerjee,Mother,Teacher,9527614000,guardian734@example.com
+735,735,Pradeep Thorat,Father,Business,9684918202,guardian735@example.com
+736,736,Vijaya Lad,Mother,Agriculture,9958071025,guardian736@example.com
+737,737,Anita Chopra,Father,Engineer,9931125725,guardian737@example.com
+738,738,Anita Jadhav,Father,Business,9265039480,guardian738@example.com
+739,739,Sanjay Malhotra,Mother,Healthcare,9712470084,guardian739@example.com
+740,740,Sanjay Pillai,Mother,Agriculture,9968360253,guardian740@example.com
+741,741,Rajendra Kharat,Mother,Agriculture,9686939702,guardian741@example.com
+742,742,Madhuri Kumar,Father,Teacher,9230102925,guardian742@example.com
+743,743,Vijaya Vaidya,Mother,Healthcare,9502232985,guardian743@example.com
+744,744,Pradeep Thorat,Father,Engineer,9810001679,guardian744@example.com
+745,745,Pradeep Babar,Mother,Government Service,9435807112,guardian745@example.com
+746,746,Rajendra Rao,Father,Business,9235196900,guardian746@example.com
+747,747,Vijaya Karnik,Guardian,Teacher,9801596186,guardian747@example.com
+748,748,Sunita Sharma,Mother,Business,9322145616,guardian748@example.com
+749,749,Sanjay Dandekar,Guardian,Government Service,9718612303,guardian749@example.com
+750,750,Vijaya Thorat,Father,Healthcare,9715637346,guardian750@example.com
+751,751,Sunita Sinha,Guardian,Healthcare,9890532755,guardian751@example.com
+752,752,Pradeep Chavan,Mother,Healthcare,9659845830,guardian752@example.com
+753,753,Rajendra Sharma,Guardian,Healthcare,9142595450,guardian753@example.com
+754,754,Anita Mankar,Father,Teacher,9448563729,guardian754@example.com
+755,755,Pradeep Karnik,Father,Engineer,9245360651,guardian755@example.com
+756,756,Pradeep Kulkarni,Mother,Agriculture,9499797713,guardian756@example.com
+757,757,Pradeep Borkar,Guardian,Engineer,9732689605,guardian757@example.com
+758,758,Sunita Kshirsagar,Guardian,Healthcare,9254241695,guardian758@example.com
+759,759,Mahesh Dhumal,Mother,Business,9787729449,guardian759@example.com
+760,760,Anita Shelke,Mother,Government Service,9277124317,guardian760@example.com
+761,761,Sunita Bhagat,Father,Healthcare,9540438971,guardian761@example.com
+762,762,Anita Pillai,Guardian,Government Service,9688385650,guardian762@example.com
+763,763,Rajendra Mali,Mother,Business,9703827672,guardian763@example.com
+764,764,Sanjay Vaidya,Guardian,Healthcare,9247624632,guardian764@example.com
+765,765,Mahesh Shelke,Father,Healthcare,9406613193,guardian765@example.com
+766,766,Sunita Rao,Guardian,Agriculture,9807238242,guardian766@example.com
+767,767,Sanjay Bhandari,Guardian,Agriculture,9319067267,guardian767@example.com
+768,768,Anita Gore,Guardian,Healthcare,9928474360,guardian768@example.com
+769,769,Pradeep Nair,Mother,Business,9242205912,guardian769@example.com
+770,770,Vijaya Gaikwad,Father,Healthcare,9372041019,guardian770@example.com
+771,771,Pradeep Salunkhe,Father,Government Service,9624660083,guardian771@example.com
+772,772,Madhuri Tale,Father,Government Service,9773369608,guardian772@example.com
+773,773,Anita Jadhav,Mother,Business,9708060405,guardian773@example.com
+774,774,Sanjay Pillai,Mother,Government Service,9351626389,guardian774@example.com
+775,775,Anita Ghosh,Guardian,Healthcare,9256205843,guardian775@example.com
+776,776,Sanjay Suryawanshi,Guardian,Government Service,9316090693,guardian776@example.com
+777,777,Sunita Zende,Mother,Government Service,9389952299,guardian777@example.com
+778,778,Mahesh Pisal,Guardian,Healthcare,9876890455,guardian778@example.com
+779,779,Madhuri Pawar,Father,Business,9540337977,guardian779@example.com
+780,780,Rajendra Shirke,Father,Engineer,9531200549,guardian780@example.com
+781,781,Sunita Gawande,Guardian,Healthcare,9917008484,guardian781@example.com
+782,782,Anita Pathak,Guardian,Agriculture,9991845824,guardian782@example.com
+783,783,Anita Vartak,Guardian,Teacher,9261960340,guardian783@example.com
+784,784,Vijaya Dhole,Mother,Healthcare,9759474718,guardian784@example.com
+785,785,Mahesh Rane,Father,Engineer,9949279938,guardian785@example.com
+786,786,Vijaya Zende,Father,Teacher,9824151808,guardian786@example.com
+787,787,Mahesh Naik,Father,Healthcare,9461468174,guardian787@example.com
+788,788,Madhuri Kshirsagar,Guardian,Teacher,9692824288,guardian788@example.com
+789,789,Madhuri Tale,Guardian,Healthcare,9258436810,guardian789@example.com
+790,790,Vijaya Ghosh,Guardian,Government Service,9298182813,guardian790@example.com
+791,791,Rajendra Chaudhari,Mother,Teacher,9227522281,guardian791@example.com
+792,792,Pradeep Verma,Father,Agriculture,9499577943,guardian792@example.com
+793,793,Sunita Das,Guardian,Engineer,9827741577,guardian793@example.com
+794,794,Sunita Suryawanshi,Guardian,Engineer,9211193862,guardian794@example.com
+795,795,Mahesh Sinha,Mother,Government Service,9458937470,guardian795@example.com
+796,796,Rajendra Jain,Guardian,Healthcare,9723482855,guardian796@example.com
+797,797,Sunita Jain,Mother,Teacher,9400226716,guardian797@example.com
+798,798,Mahesh Wagh,Father,Business,9623332654,guardian798@example.com
+799,799,Anita Puranik,Father,Healthcare,9512630219,guardian799@example.com
+800,800,Sanjay Kharat,Guardian,Teacher,9119961698,guardian800@example.com
+801,801,Anita Tale,Guardian,Business,9860922027,guardian801@example.com
+802,802,Sunita Mishra,Father,Engineer,9384064754,guardian802@example.com
+803,803,Mahesh Vaidya,Guardian,Agriculture,9821375961,guardian803@example.com
+804,804,Sanjay Mukherjee,Mother,Teacher,9758943120,guardian804@example.com
+805,805,Sunita Rane,Guardian,Business,9600630720,guardian805@example.com
+806,806,Sunita Joshi,Mother,Agriculture,9356749899,guardian806@example.com
+807,807,Mahesh Kadam,Guardian,Healthcare,9941599052,guardian807@example.com
+808,808,Mahesh Tambe,Mother,Healthcare,9435038960,guardian808@example.com
+809,809,Rajendra Warade,Mother,Healthcare,9201349134,guardian809@example.com
+810,810,Pradeep Kulkarni,Guardian,Agriculture,9787135299,guardian810@example.com
+811,811,Mahesh Dhole,Mother,Teacher,9751871962,guardian811@example.com
+812,812,Sanjay Mane,Father,Agriculture,9117926105,guardian812@example.com
+813,813,Anita Pansare,Mother,Agriculture,9709782908,guardian813@example.com
+814,814,Mahesh Vartak,Father,Business,9921032133,guardian814@example.com
+815,815,Anita Verma,Father,Teacher,9774478071,guardian815@example.com
+816,816,Sunita Mukherjee,Mother,Engineer,9283668104,guardian816@example.com
+817,817,Sanjay Joshi,Father,Healthcare,9427236484,guardian817@example.com
+818,818,Sunita Deshmukh,Father,Agriculture,9435633190,guardian818@example.com
+819,819,Madhuri Agarwal,Father,Business,9627094480,guardian819@example.com
+820,820,Madhuri Aher,Mother,Engineer,9491422093,guardian820@example.com
+821,821,Vijaya Nale,Father,Healthcare,9828990113,guardian821@example.com
+822,822,Anita Mane,Mother,Government Service,9923762324,guardian822@example.com
+823,823,Mahesh Pisal,Father,Business,9416777545,guardian823@example.com
+824,824,Mahesh Verma,Father,Engineer,9268424325,guardian824@example.com
+825,825,Rajendra Wagh,Guardian,Teacher,9603427752,guardian825@example.com
+826,826,Pradeep Ranade,Mother,Engineer,9436441049,guardian826@example.com
+827,827,Sunita Malhotra,Guardian,Engineer,9739923927,guardian827@example.com
+828,828,Pradeep Dhumal,Father,Government Service,9953384402,guardian828@example.com
+829,829,Pradeep Thorat,Guardian,Engineer,9189905854,guardian829@example.com
+830,830,Anita Gokhale,Father,Engineer,9702411334,guardian830@example.com
+831,831,Madhuri Londhe,Father,Agriculture,9654036305,guardian831@example.com
+832,832,Pradeep Banerjee,Father,Business,9133226730,guardian832@example.com
+833,833,Sunita Kulkarni,Father,Business,9975142847,guardian833@example.com
+834,834,Madhuri Tale,Mother,Engineer,9579484602,guardian834@example.com
+835,835,Sanjay Rajput,Guardian,Engineer,9826779985,guardian835@example.com
+836,836,Rajendra Shah,Mother,Teacher,9892161725,guardian836@example.com
+837,837,Pradeep Zende,Guardian,Business,9222450406,guardian837@example.com
+838,838,Rajendra Desai,Mother,Engineer,9950878084,guardian838@example.com
+839,839,Vijaya Gokhale,Father,Engineer,9405246889,guardian839@example.com
+840,840,Pradeep Gokhale,Guardian,Government Service,9814039610,guardian840@example.com
+841,841,Sanjay Bhagat,Father,Business,9551418635,guardian841@example.com
+842,842,Pradeep Londhe,Mother,Engineer,9526758929,guardian842@example.com
+843,843,Pradeep Sharma,Guardian,Business,9839877315,guardian843@example.com
+844,844,Mahesh Puranik,Father,Business,9892585919,guardian844@example.com
+845,845,Mahesh Jain,Mother,Government Service,9659119275,guardian845@example.com
+846,846,Sunita Lokhande,Father,Business,9651407986,guardian846@example.com
+847,847,Rajendra Singh,Mother,Teacher,9697050828,guardian847@example.com
+848,848,Madhuri Pawar,Father,Agriculture,9712808138,guardian848@example.com
+849,849,Anita Gawande,Father,Business,9555429907,guardian849@example.com
+850,850,Mahesh Sinha,Mother,Government Service,9250407518,guardian850@example.com
+851,851,Anita Kore,Mother,Agriculture,9100238159,guardian851@example.com
+852,852,Pradeep Mali,Father,Government Service,9623501010,guardian852@example.com
+853,853,Sunita Gaikwad,Mother,Engineer,9149022078,guardian853@example.com
+854,854,Madhuri Puranik,Guardian,Agriculture,9831963312,guardian854@example.com
+855,855,Madhuri Patil,Father,Teacher,9174462240,guardian855@example.com
+856,856,Anita Pansare,Father,Government Service,9903565383,guardian856@example.com
+857,857,Mahesh Puranik,Father,Government Service,9124393963,guardian857@example.com
+858,858,Vijaya Wagh,Mother,Engineer,9297875321,guardian858@example.com
+859,859,Sunita Banerjee,Mother,Teacher,9537751931,guardian859@example.com
+860,860,Sanjay Yadav,Mother,Healthcare,9717396339,guardian860@example.com
+861,861,Madhuri Jadhav,Guardian,Healthcare,9417076346,guardian861@example.com
+862,862,Anita Tambe,Father,Business,9255687175,guardian862@example.com
+863,863,Madhuri Pansare,Mother,Teacher,9204081224,guardian863@example.com
+864,864,Mahesh Verma,Father,Healthcare,9946409929,guardian864@example.com
+865,865,Sunita Rao,Mother,Healthcare,9957040086,guardian865@example.com
+866,866,Sunita Dhole,Mother,Agriculture,9427354363,guardian866@example.com
+867,867,Rajendra Verma,Father,Government Service,9145693400,guardian867@example.com
+868,868,Mahesh Suryawanshi,Father,Teacher,9607361028,guardian868@example.com
+869,869,Sunita Naik,Guardian,Teacher,9110863148,guardian869@example.com
+870,870,Sunita Kadam,Father,Agriculture,9289976409,guardian870@example.com
+871,871,Mahesh Wagh,Guardian,Agriculture,9570147927,guardian871@example.com
+872,872,Anita Kulkarni,Guardian,Agriculture,9773461426,guardian872@example.com
+873,873,Anita Kshirsagar,Father,Teacher,9135822554,guardian873@example.com
+874,874,Sunita Mishra,Mother,Teacher,9169057761,guardian874@example.com
+875,875,Vijaya Puranik,Guardian,Government Service,9337743373,guardian875@example.com
+876,876,Vijaya Raut,Father,Agriculture,9844080303,guardian876@example.com
+877,877,Mahesh Gaikwad,Guardian,Business,9189418546,guardian877@example.com
+878,878,Pradeep Dighe,Mother,Agriculture,9874689227,guardian878@example.com
+879,879,Sanjay Jain,Guardian,Agriculture,9149898891,guardian879@example.com
+880,880,Sanjay Tale,Father,Teacher,9661290005,guardian880@example.com
+881,881,Rajendra Singh,Father,Business,9137006144,guardian881@example.com
+882,882,Vijaya Aher,Guardian,Engineer,9203794701,guardian882@example.com
+883,883,Sanjay Chopra,Guardian,Government Service,9426024495,guardian883@example.com
+884,884,Rajendra Nair,Father,Teacher,9584011343,guardian884@example.com
+885,885,Mahesh Kapoor,Mother,Business,9867813368,guardian885@example.com
+886,886,Vijaya Nale,Father,Teacher,9890299591,guardian886@example.com
+887,887,Anita Kale,Guardian,Healthcare,9897712263,guardian887@example.com
+888,888,Vijaya Bhosale,Mother,Engineer,9471137754,guardian888@example.com
+889,889,Pradeep Pathak,Father,Teacher,9538080424,guardian889@example.com
+890,890,Madhuri Bhagat,Father,Teacher,9849319933,guardian890@example.com
+891,891,Madhuri Wagh,Guardian,Teacher,9573099111,guardian891@example.com
+892,892,Anita Ranade,Father,Teacher,9313699694,guardian892@example.com
+893,893,Madhuri Naik,Mother,Healthcare,9184527385,guardian893@example.com
+894,894,Mahesh Shinde,Mother,Healthcare,9891062902,guardian894@example.com
+895,895,Mahesh Kulkarni,Father,Engineer,9962431198,guardian895@example.com
+896,896,Mahesh Gore,Mother,Business,9509953300,guardian896@example.com
+897,897,Sanjay Mukherjee,Father,Agriculture,9169187074,guardian897@example.com
+898,898,Madhuri Dhumal,Father,Healthcare,9818565962,guardian898@example.com
+899,899,Sanjay Bhandari,Guardian,Healthcare,9231689398,guardian899@example.com
+900,900,Rajendra Inamdar,Guardian,Agriculture,9178564161,guardian900@example.com
+901,901,Anita Nair,Father,Healthcare,9173307634,guardian901@example.com
+902,902,Sunita Rajput,Mother,Agriculture,9260372586,guardian902@example.com
+903,903,Anita Zende,Guardian,Engineer,9113886030,guardian903@example.com
+904,904,Mahesh Kore,Father,Agriculture,9995057895,guardian904@example.com
+905,905,Vijaya Jadhav,Father,Engineer,9313595684,guardian905@example.com
+906,906,Rajendra Dandekar,Mother,Government Service,9901517968,guardian906@example.com
+907,907,Anita Vaidya,Father,Healthcare,9751992277,guardian907@example.com
+908,908,Sanjay Agarwal,Guardian,Business,9444717367,guardian908@example.com
+909,909,Sunita Mukherjee,Guardian,Teacher,9658137365,guardian909@example.com
+910,910,Pradeep Bhosale,Father,Engineer,9565607812,guardian910@example.com
+911,911,Sanjay Ghosh,Father,Teacher,9198208533,guardian911@example.com
+912,912,Pradeep Ghosh,Mother,Government Service,9503777421,guardian912@example.com
+913,913,Madhuri Pandey,Guardian,Agriculture,9679687604,guardian913@example.com
+914,914,Pradeep Kamble,Guardian,Engineer,9281921764,guardian914@example.com
+915,915,Mahesh Kadam,Guardian,Business,9799520906,guardian915@example.com
+916,916,Anita Chaudhari,Father,Engineer,9442742943,guardian916@example.com
+917,917,Pradeep Reddy,Father,Agriculture,9429392719,guardian917@example.com
+918,918,Rajendra Vaidya,Guardian,Healthcare,9992318360,guardian918@example.com
+919,919,Sunita Kapoor,Guardian,Agriculture,9972133098,guardian919@example.com
+920,920,Vijaya Tambe,Guardian,Teacher,9971090556,guardian920@example.com
+921,921,Sunita Pisal,Father,Engineer,9560857984,guardian921@example.com
+922,922,Vijaya Kulkarni,Guardian,Business,9217113730,guardian922@example.com
+923,923,Mahesh Warade,Guardian,Business,9497479960,guardian923@example.com
+924,924,Sunita Bhagat,Mother,Teacher,9625115595,guardian924@example.com
+925,925,Pradeep Nale,Mother,Agriculture,9281162738,guardian925@example.com
+926,926,Rajendra Agarwal,Guardian,Teacher,9469872088,guardian926@example.com
+927,927,Anita Malhotra,Guardian,Business,9651699007,guardian927@example.com
+928,928,Sanjay Vartak,Guardian,Engineer,9797154411,guardian928@example.com
+929,929,Rajendra Wagh,Father,Agriculture,9374117999,guardian929@example.com
+930,930,Sanjay Tiwari,Mother,Healthcare,9737458637,guardian930@example.com
+931,931,Sanjay Sharma,Guardian,Engineer,9667497233,guardian931@example.com
+932,932,Vijaya Yadav,Guardian,Agriculture,9545463625,guardian932@example.com
+933,933,Mahesh Warade,Mother,Business,9677614809,guardian933@example.com
+934,934,Pradeep Londhe,Mother,Healthcare,9627313467,guardian934@example.com
+935,935,Mahesh Gaikwad,Father,Government Service,9830391252,guardian935@example.com
+936,936,Pradeep Kulkarni,Mother,Business,9863420670,guardian936@example.com
+937,937,Madhuri Jadhav,Guardian,Government Service,9966728920,guardian937@example.com
+938,938,Mahesh Shelke,Father,Business,9711930825,guardian938@example.com
+939,939,Rajendra Reddy,Father,Engineer,9823137543,guardian939@example.com
+940,940,Vijaya Malhotra,Guardian,Engineer,9450842408,guardian940@example.com
+941,941,Sunita Kamble,Guardian,Government Service,9235701488,guardian941@example.com
+942,942,Sanjay Inamdar,Father,Agriculture,9484740540,guardian942@example.com
+943,943,Pradeep Jadhav,Mother,Agriculture,9518626332,guardian943@example.com
+944,944,Vijaya Dighe,Mother,Engineer,9656114268,guardian944@example.com
+945,945,Mahesh Pillai,Father,Engineer,9576394847,guardian945@example.com
+946,946,Pradeep Bhoyar,Guardian,Agriculture,9238697227,guardian946@example.com
+947,947,Sanjay Shah,Mother,Healthcare,9505904739,guardian947@example.com
+948,948,Mahesh Sawant,Guardian,Engineer,9125772373,guardian948@example.com
+949,949,Mahesh Kharat,Guardian,Business,9400612338,guardian949@example.com
+950,950,Mahesh Singh,Father,Government Service,9218788189,guardian950@example.com
+951,951,Vijaya Phadke,Mother,Healthcare,9214073387,guardian951@example.com
+952,952,Sanjay Rane,Mother,Agriculture,9714294317,guardian952@example.com
+953,953,Mahesh Kadam,Guardian,Business,9402960987,guardian953@example.com
+954,954,Pradeep Dhumal,Mother,Government Service,9896840716,guardian954@example.com
+955,955,Madhuri Kore,Guardian,Business,9493719285,guardian955@example.com
+956,956,Madhuri Kulkarni,Guardian,Teacher,9946981019,guardian956@example.com
+957,957,Rajendra Pawar,Father,Healthcare,9727446831,guardian957@example.com
+958,958,Madhuri Gore,Father,Business,9921624378,guardian958@example.com
+959,959,Vijaya Deshmukh,Guardian,Business,9105080332,guardian959@example.com
+960,960,Rajendra Mali,Mother,Business,9502908764,guardian960@example.com
+961,961,Sanjay Sharma,Guardian,Engineer,9236941099,guardian961@example.com
+962,962,Mahesh Dhole,Father,Engineer,9139967828,guardian962@example.com
+963,963,Mahesh Nair,Mother,Agriculture,9238002714,guardian963@example.com
+964,964,Sunita Naik,Guardian,Teacher,9882008938,guardian964@example.com
+965,965,Rajendra Pisal,Father,Engineer,9461931686,guardian965@example.com
+966,966,Madhuri Kulkarni,Mother,Teacher,9339933896,guardian966@example.com
+967,967,Pradeep Rao,Guardian,Government Service,9796174162,guardian967@example.com
+968,968,Madhuri Deshmukh,Father,Engineer,9816040127,guardian968@example.com
+969,969,Rajendra Nikam,Guardian,Healthcare,9556379610,guardian969@example.com
+970,970,Vijaya Jain,Mother,Engineer,9141835850,guardian970@example.com
+971,971,Mahesh Pisal,Father,Engineer,9470757498,guardian971@example.com
+972,972,Madhuri Gore,Mother,Engineer,9713527790,guardian972@example.com
+973,973,Vijaya Dighe,Mother,Healthcare,9129364830,guardian973@example.com
+974,974,Madhuri Gaikwad,Guardian,Teacher,9543259471,guardian974@example.com
+975,975,Mahesh Mhatre,Father,Agriculture,9942372381,guardian975@example.com
+976,976,Rajendra Banerjee,Father,Healthcare,9407527235,guardian976@example.com
+977,977,Vijaya Kamble,Father,Government Service,9547995560,guardian977@example.com
+978,978,Sanjay Jadhav,Guardian,Teacher,9984624697,guardian978@example.com
+979,979,Vijaya Bhosale,Father,Engineer,9229771615,guardian979@example.com
+980,980,Sanjay Gawande,Guardian,Agriculture,9765731375,guardian980@example.com
+981,981,Pradeep Sawant,Guardian,Healthcare,9682001807,guardian981@example.com
+982,982,Pradeep Kharat,Guardian,Healthcare,9755013906,guardian982@example.com
+983,983,Anita Wagh,Guardian,Business,9480897119,guardian983@example.com
+984,984,Madhuri Mukherjee,Guardian,Engineer,9577235319,guardian984@example.com
+985,985,Sunita Shelke,Father,Engineer,9142781416,guardian985@example.com
+986,986,Rajendra Aher,Father,Government Service,9709060443,guardian986@example.com
+987,987,Madhuri Reddy,Mother,Government Service,9786065227,guardian987@example.com
+988,988,Sanjay Dandekar,Mother,Engineer,9736301795,guardian988@example.com
+989,989,Pradeep Yadav,Guardian,Business,9835429614,guardian989@example.com
+990,990,Sanjay Chopra,Father,Healthcare,9159897959,guardian990@example.com
+991,991,Sanjay Dhumal,Father,Government Service,9973133518,guardian991@example.com
+992,992,Rajendra Sinha,Father,Engineer,9643314754,guardian992@example.com
+993,993,Sanjay Pathak,Mother,Healthcare,9211054778,guardian993@example.com
+994,994,Sanjay Lad,Guardian,Healthcare,9860837160,guardian994@example.com
+995,995,Mahesh Inamdar,Mother,Business,9276148602,guardian995@example.com
+996,996,Pradeep Kadam,Guardian,Teacher,9189263891,guardian996@example.com
+997,997,Pradeep Pathak,Guardian,Agriculture,9847727458,guardian997@example.com
+998,998,Sunita Shelke,Father,Government Service,9911483250,guardian998@example.com
+999,999,Sunita Dandekar,Mother,Teacher,9982105285,guardian999@example.com
+1000,1000,Pradeep Zende,Mother,Engineer,9522930710,guardian1000@example.com

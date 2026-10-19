@@ -1,0 +1,7 @@
+designation_id,designation_name,category
+1,Professor,Teaching
+2,Associate Professor,Teaching
+3,Assistant Professor,Teaching
+4,Lab Instructor,Technical
+5,Librarian,Administrative
+6,Administrative Officer,Administrative

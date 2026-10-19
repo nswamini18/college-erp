@@ -1,0 +1,26 @@
+drive_id,company_id,job_role,job_type,drive_date,package_lpa,description,eligibility_id,status
+1,1,Embedded Engineer,Internship,2026-11-03,10.0,Campus recruitment drive,1,Scheduled
+2,2,Software Engineer,Internship,2026-11-05,7.2,Campus recruitment drive,2,Scheduled
+3,3,Data Analyst,Internship,2026-11-07,17.9,Campus recruitment drive,3,Scheduled
+4,4,Data Analyst,Internship,2026-11-09,4.2,Campus recruitment drive,4,Scheduled
+5,5,Data Analyst,Internship,2026-11-11,13.8,Campus recruitment drive,5,Scheduled
+6,6,QA Engineer,Internship,2026-11-13,7.3,Campus recruitment drive,6,Scheduled
+7,7,Graduate Engineer Trainee,Internship,2026-11-15,16.3,Campus recruitment drive,7,Scheduled
+8,8,Graduate Engineer Trainee,Full-time,2026-11-17,11.5,Campus recruitment drive,8,Scheduled
+9,9,QA Engineer,Internship,2026-11-19,12.9,Campus recruitment drive,9,Scheduled
+10,10,Embedded Engineer,Internship,2026-11-21,10.1,Campus recruitment drive,10,Scheduled
+11,11,Embedded Engineer,Internship,2026-11-23,14.3,Campus recruitment drive,11,Scheduled
+12,12,VLSI Engineer,Internship,2026-11-25,13.4,Campus recruitment drive,12,Scheduled
+13,13,Software Engineer,Internship,2026-11-27,8.7,Campus recruitment drive,13,Scheduled
+14,14,VLSI Engineer,Internship,2026-11-29,13.7,Campus recruitment drive,14,Scheduled
+15,15,Embedded Engineer,Internship,2026-12-01,5.9,Campus recruitment drive,15,Scheduled
+16,16,VLSI Engineer,Internship,2026-12-03,7.5,Campus recruitment drive,16,Scheduled
+17,17,Data Analyst,Internship,2026-12-05,10.2,Campus recruitment drive,17,Scheduled
+18,18,Embedded Engineer,Internship,2026-12-07,14.1,Campus recruitment drive,18,Scheduled
+19,19,Embedded Engineer,Full-time,2026-12-09,7.3,Campus recruitment drive,19,Scheduled
+20,20,Data Analyst,Full-time,2026-12-11,17.9,Campus recruitment drive,20,Scheduled
+21,1,Software Engineer,Full-time,2026-12-13,8.5,Campus recruitment drive,21,Scheduled
+22,2,Data Analyst,Full-time,2026-12-15,9.3,Campus recruitment drive,22,Scheduled
+23,3,Data Analyst,Full-time,2026-12-17,11.3,Campus recruitment drive,23,Scheduled
+24,4,Embedded Engineer,Internship,2026-12-19,17.0,Campus recruitment drive,24,Scheduled
+25,5,Data Analyst,Full-time,2026-12-21,9.6,Campus recruitment drive,25,Scheduled

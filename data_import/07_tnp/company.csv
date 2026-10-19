@@ -1,0 +1,21 @@
+company_id,company_name,industry_type,location,website,contact_email,contact_phone
+1,Infosys,Finance,Hyderabad,https://www.infosys.example,careers1@company.example,1800452096
+2,Tata Consultancy Services,Automotive,Hyderabad,https://www.tataconsultancyservices.example,careers2@company.example,1800619661
+3,Accenture,Consulting,Chennai,https://www.accenture.example,careers3@company.example,1800771126
+4,Capgemini,Consulting,Mumbai,https://www.capgemini.example,careers4@company.example,1800942029
+5,Persistent Systems,Product Engineering,Mumbai,https://www.persistentsystems.example,careers5@company.example,1800850767
+6,Cognizant,Consulting,Pune,https://www.cognizant.example,careers6@company.example,1800965937
+7,Wipro,Consulting,Bengaluru,https://www.wipro.example,careers7@company.example,1800590880
+8,Tech Mahindra,Finance,Hyderabad,https://www.techmahindra.example,careers8@company.example,1800455800
+9,Amdocs,IT Services,Chennai,https://www.amdocs.example,careers9@company.example,1800219372
+10,Siemens,Consulting,Chennai,https://www.siemens.example,careers10@company.example,1800260893
+11,Qualcomm,IT Services,Bengaluru,https://www.qualcomm.example,careers11@company.example,1800129668
+12,KPIT Technologies,Finance,Chennai,https://www.kpittechnologies.example,careers12@company.example,1800634356
+13,Deloitte,Consulting,Hyderabad,https://www.deloitte.example,careers13@company.example,1800140405
+14,Amazon,Product Engineering,Bengaluru,https://www.amazon.example,careers14@company.example,1800214313
+15,Microsoft,Consulting,Chennai,https://www.microsoft.example,careers15@company.example,1800885664
+16,L&T Technology Services,Product Engineering,Bengaluru,https://www.lttechnologyservices.example,careers16@company.example,1800544283
+17,Zensar,Automotive,Hyderabad,https://www.zensar.example,careers17@company.example,1800913353
+18,Barclays,Product Engineering,Bengaluru,https://www.barclays.example,careers18@company.example,1800389153
+19,NVIDIA,Product Engineering,Noida,https://www.nvidia.example,careers19@company.example,1800105286
+20,Bosch,Consulting,Bengaluru,https://www.bosch.example,careers20@company.example,1800392488

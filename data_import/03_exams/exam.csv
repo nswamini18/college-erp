@@ -1,0 +1,11 @@
+exam_id,exam_name,semester_id,academic_year,exam_type,exam_date,status
+1,Unit Test,5,2026-2027,Theory,2026-10-22,Scheduled
+2,Practical Examination,5,2026-2027,Internal,2026-10-24,Scheduled
+3,Unit Test,5,2026-2027,Theory,2026-10-26,Scheduled
+4,Mid-Semester Examination,5,2026-2027,Practical,2026-10-28,Scheduled
+5,Unit Test,5,2026-2027,Practical,2026-10-30,Scheduled
+6,End-Semester Examination,5,2026-2027,Internal,2026-11-01,Scheduled
+7,Unit Test,5,2026-2027,Theory,2026-11-03,Scheduled
+8,Practical Examination,5,2026-2027,Practical,2026-11-05,Scheduled
+9,End-Semester Examination,5,2026-2027,Theory,2026-11-07,Scheduled
+10,Practical Examination,5,2026-2027,Theory,2026-11-09,Scheduled

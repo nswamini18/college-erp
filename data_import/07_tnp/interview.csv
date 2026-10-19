@@ -1,0 +1,643 @@
+interview_id,application_id,round_no,round_type,interview_date,status,feedback
+1,1,1,HR,2026-10-24,Not Cleared,Good communication
+2,2,1,HR,2026-10-27,Pending,Good communication
+3,3,1,Managerial,2026-10-04,Not Cleared,Good communication
+4,4,1,Managerial,2026-11-20,Not Cleared,Strong technical fundamentals
+5,7,3,HR,2026-11-08,Pending,Needs improvement
+6,8,2,HR,2026-11-16,Not Cleared,Good communication
+7,9,2,Technical,2026-12-02,Cleared,Strong technical fundamentals
+8,14,3,Aptitude,2026-11-21,Cleared,Good problem-solving
+9,15,1,HR,2026-11-27,Not Cleared,Good problem-solving
+10,16,3,Aptitude,2026-10-22,Cleared,Good communication
+11,19,1,Managerial,2026-10-16,Pending,Needs improvement
+12,20,3,Managerial,2026-12-09,Not Cleared,Needs improvement
+13,21,2,Managerial,2026-10-11,Not Cleared,Good problem-solving
+14,23,3,Aptitude,2026-10-07,Cleared,Good problem-solving
+15,24,2,Managerial,2026-12-08,Pending,Strong technical fundamentals
+16,25,3,Aptitude,2026-11-15,Not Cleared,Good communication
+17,26,3,Aptitude,2026-11-04,Cleared,Good problem-solving
+18,31,3,HR,2026-10-13,Cleared,Strong technical fundamentals
+19,33,1,Aptitude,2026-11-04,Pending,Good problem-solving
+20,34,1,Aptitude,2026-10-11,Cleared,Strong technical fundamentals
+21,35,1,Managerial,2026-12-07,Pending,Strong technical fundamentals
+22,37,3,Managerial,2026-10-24,Not Cleared,Good communication
+23,38,1,Managerial,2026-11-09,Cleared,Strong technical fundamentals
+24,39,1,HR,2026-10-31,Cleared,Strong technical fundamentals
+25,43,2,Technical,2026-12-09,Pending,Good communication
+26,45,1,HR,2026-11-27,Not Cleared,Good problem-solving
+27,46,2,Technical,2026-11-28,Cleared,Needs improvement
+28,47,3,HR,2026-11-19,Not Cleared,Good communication
+29,49,1,HR,2026-11-21,Pending,Needs improvement
+30,51,3,Technical,2026-10-30,Cleared,Good problem-solving
+31,52,2,HR,2026-12-05,Pending,Strong technical fundamentals
+32,54,1,Technical,2026-10-03,Cleared,Strong technical fundamentals
+33,55,2,Aptitude,2026-10-03,Not Cleared,Strong technical fundamentals
+34,56,2,Managerial,2026-12-09,Not Cleared,Good communication
+35,58,2,Technical,2026-10-02,Cleared,Good problem-solving
+36,59,3,Aptitude,2026-12-10,Cleared,Strong technical fundamentals
+37,60,1,Aptitude,2026-11-27,Not Cleared,Needs improvement
+38,61,3,Technical,2026-10-09,Pending,Good problem-solving
+39,62,2,HR,2026-11-26,Pending,Good problem-solving
+40,63,1,HR,2026-10-28,Not Cleared,Good communication
+41,64,1,Aptitude,2026-10-30,Pending,Good problem-solving
+42,66,3,Managerial,2026-10-22,Not Cleared,Needs improvement
+43,70,3,HR,2026-10-02,Cleared,Needs improvement
+44,72,3,Managerial,2026-10-05,Pending,Strong technical fundamentals
+45,73,2,HR,2026-11-09,Pending,Good problem-solving
+46,74,2,Managerial,2026-11-08,Not Cleared,Good problem-solving
+47,75,3,Aptitude,2026-11-20,Not Cleared,Needs improvement
+48,77,3,Aptitude,2026-10-01,Pending,Good problem-solving
+49,78,1,HR,2026-11-15,Pending,Strong technical fundamentals
+50,79,1,HR,2026-12-07,Not Cleared,Good problem-solving
+51,81,2,Technical,2026-11-01,Cleared,Good problem-solving
+52,82,3,Managerial,2026-10-31,Cleared,Good communication
+53,84,1,Technical,2026-10-22,Pending,Needs improvement
+54,85,3,Aptitude,2026-11-27,Cleared,Good problem-solving
+55,86,3,Managerial,2026-10-30,Not Cleared,Strong technical fundamentals
+56,88,2,Managerial,2026-10-12,Cleared,Needs improvement
+57,90,1,Aptitude,2026-10-11,Not Cleared,Good communication
+58,92,3,Aptitude,2026-11-30,Cleared,Good communication
+59,93,1,Managerial,2026-11-09,Pending,Needs improvement
+60,94,3,Aptitude,2026-10-10,Not Cleared,Strong technical fundamentals
+61,95,1,Managerial,2026-10-03,Cleared,Good problem-solving
+62,96,1,HR,2026-10-21,Cleared,Good communication
+63,97,2,HR,2026-10-01,Cleared,Good communication
+64,98,2,Technical,2026-10-12,Not Cleared,Good communication
+65,99,1,Aptitude,2026-11-29,Not Cleared,Needs improvement
+66,101,3,HR,2026-10-14,Pending,Strong technical fundamentals
+67,103,1,Aptitude,2026-10-01,Pending,Needs improvement
+68,104,1,Aptitude,2026-12-07,Not Cleared,Needs improvement
+69,106,3,HR,2026-11-09,Pending,Good problem-solving
+70,108,2,Managerial,2026-10-10,Pending,Needs improvement
+71,110,3,Technical,2026-10-30,Pending,Strong technical fundamentals
+72,111,2,Technical,2026-11-24,Pending,Needs improvement
+73,112,1,HR,2026-12-04,Pending,Good problem-solving
+74,113,3,HR,2026-11-26,Not Cleared,Strong technical fundamentals
+75,114,3,Technical,2026-11-08,Pending,Good communication
+76,115,3,HR,2026-11-18,Not Cleared,Strong technical fundamentals
+77,116,2,Aptitude,2026-12-01,Pending,Needs improvement
+78,118,1,Technical,2026-12-03,Not Cleared,Strong technical fundamentals
+79,120,3,HR,2026-12-05,Cleared,Good communication
+80,121,3,Managerial,2026-10-13,Pending,Good problem-solving
+81,122,3,HR,2026-11-29,Pending,Strong technical fundamentals
+82,124,1,HR,2026-12-03,Cleared,Good communication
+83,125,2,Technical,2026-10-26,Cleared,Good problem-solving
+84,127,1,Aptitude,2026-12-10,Cleared,Good communication
+85,128,3,Managerial,2026-11-18,Pending,Needs improvement
+86,130,2,Managerial,2026-11-03,Cleared,Good problem-solving
+87,132,2,Technical,2026-10-21,Pending,Strong technical fundamentals
+88,133,2,Technical,2026-11-06,Cleared,Good communication
+89,134,2,Aptitude,2026-11-11,Pending,Needs improvement
+90,135,2,Managerial,2026-10-18,Cleared,Good communication
+91,137,3,HR,2026-10-20,Cleared,Strong technical fundamentals
+92,141,1,Technical,2026-12-06,Cleared,Good communication
+93,143,3,Technical,2026-10-11,Pending,Good communication
+94,144,2,Aptitude,2026-11-28,Cleared,Good problem-solving
+95,145,1,Aptitude,2026-10-15,Cleared,Good communication
+96,146,3,Technical,2026-12-07,Not Cleared,Strong technical fundamentals
+97,147,2,Aptitude,2026-11-03,Pending,Needs improvement
+98,149,3,Technical,2026-11-03,Not Cleared,Needs improvement
+99,151,2,HR,2026-10-12,Not Cleared,Needs improvement
+100,154,3,HR,2026-10-23,Cleared,Needs improvement
+101,155,3,Aptitude,2026-10-27,Not Cleared,Needs improvement
+102,156,1,HR,2026-10-06,Not Cleared,Needs improvement
+103,157,1,Managerial,2026-10-25,Pending,Needs improvement
+104,158,3,Technical,2026-11-27,Cleared,Good communication
+105,162,1,HR,2026-12-03,Cleared,Good communication
+106,163,1,Technical,2026-11-15,Cleared,Good problem-solving
+107,164,3,Aptitude,2026-10-26,Cleared,Good problem-solving
+108,166,1,Managerial,2026-11-13,Not Cleared,Good communication
+109,167,1,Technical,2026-11-02,Not Cleared,Needs improvement
+110,168,3,HR,2026-11-12,Pending,Good communication
+111,169,1,Aptitude,2026-10-06,Pending,Good problem-solving
+112,170,1,Technical,2026-11-06,Not Cleared,Good problem-solving
+113,171,2,Technical,2026-10-20,Not Cleared,Needs improvement
+114,172,3,Aptitude,2026-11-03,Cleared,Good problem-solving
+115,173,2,Managerial,2026-10-05,Not Cleared,Needs improvement
+116,174,2,Aptitude,2026-10-19,Pending,Needs improvement
+117,176,3,HR,2026-10-17,Pending,Needs improvement
+118,177,3,HR,2026-10-09,Not Cleared,Needs improvement
+119,179,1,Managerial,2026-10-14,Not Cleared,Needs improvement
+120,181,1,HR,2026-10-28,Pending,Needs improvement
+121,182,1,HR,2026-11-18,Not Cleared,Good communication
+122,183,1,Managerial,2026-11-19,Cleared,Good problem-solving
+123,184,3,HR,2026-12-03,Not Cleared,Needs improvement
+124,187,3,Technical,2026-10-04,Cleared,Good communication
+125,189,2,HR,2026-12-03,Cleared,Good communication
+126,190,2,HR,2026-11-06,Not Cleared,Strong technical fundamentals
+127,191,2,Technical,2026-12-01,Pending,Needs improvement
+128,192,3,Technical,2026-11-22,Cleared,Needs improvement
+129,193,2,HR,2026-10-30,Pending,Good problem-solving
+130,194,2,Aptitude,2026-11-02,Not Cleared,Good communication
+131,195,1,Aptitude,2026-10-06,Pending,Needs improvement
+132,198,3,Aptitude,2026-11-11,Not Cleared,Good problem-solving
+133,199,2,Managerial,2026-10-31,Not Cleared,Needs improvement
+134,200,2,HR,2026-11-14,Cleared,Good communication
+135,201,1,Managerial,2026-10-09,Cleared,Good problem-solving
+136,202,3,Technical,2026-12-10,Cleared,Strong technical fundamentals
+137,203,3,Aptitude,2026-10-18,Pending,Good problem-solving
+138,204,2,HR,2026-12-04,Not Cleared,Strong technical fundamentals
+139,205,2,HR,2026-10-31,Cleared,Good problem-solving
+140,206,1,Managerial,2026-11-13,Not Cleared,Needs improvement
+141,207,1,HR,2026-11-21,Cleared,Good communication
+142,208,1,HR,2026-11-27,Not Cleared,Strong technical fundamentals
+143,211,3,Managerial,2026-11-29,Not Cleared,Strong technical fundamentals
+144,214,2,HR,2026-10-01,Not Cleared,Good communication
+145,216,2,Aptitude,2026-10-31,Cleared,Good problem-solving
+146,217,1,Managerial,2026-10-05,Pending,Needs improvement
+147,219,3,Managerial,2026-11-11,Cleared,Needs improvement
+148,220,3,Managerial,2026-10-10,Cleared,Strong technical fundamentals
+149,222,2,HR,2026-10-08,Cleared,Good communication
+150,224,3,HR,2026-11-09,Not Cleared,Good communication
+151,225,3,Technical,2026-10-29,Not Cleared,Needs improvement
+152,226,1,Aptitude,2026-11-20,Cleared,Good problem-solving
+153,227,2,Managerial,2026-11-18,Pending,Good communication
+154,228,3,HR,2026-12-08,Pending,Good problem-solving
+155,230,1,Technical,2026-10-03,Not Cleared,Strong technical fundamentals
+156,233,2,HR,2026-10-18,Pending,Strong technical fundamentals
+157,234,3,Managerial,2026-12-07,Cleared,Good problem-solving
+158,236,1,Managerial,2026-11-02,Cleared,Good problem-solving
+159,237,3,HR,2026-11-14,Not Cleared,Good communication
+160,238,2,HR,2026-11-15,Cleared,Needs improvement
+161,239,1,HR,2026-11-16,Pending,Good communication
+162,240,3,Technical,2026-12-02,Not Cleared,Needs improvement
+163,241,1,Managerial,2026-11-09,Not Cleared,Good communication
+164,242,1,Managerial,2026-11-03,Pending,Good communication
+165,243,1,Technical,2026-11-11,Cleared,Needs improvement
+166,244,1,Aptitude,2026-10-17,Not Cleared,Good problem-solving
+167,245,1,Managerial,2026-12-02,Cleared,Good communication
+168,246,2,HR,2026-10-19,Not Cleared,Good communication
+169,247,1,Aptitude,2026-10-04,Cleared,Good problem-solving
+170,249,3,Aptitude,2026-10-19,Cleared,Good problem-solving
+171,250,1,HR,2026-12-04,Not Cleared,Good problem-solving
+172,251,2,Managerial,2026-10-18,Not Cleared,Good communication
+173,252,2,HR,2026-10-03,Cleared,Needs improvement
+174,253,2,HR,2026-10-12,Cleared,Strong technical fundamentals
+175,256,1,Aptitude,2026-12-05,Pending,Strong technical fundamentals
+176,257,1,HR,2026-11-03,Not Cleared,Good communication
+177,258,1,Aptitude,2026-11-13,Not Cleared,Strong technical fundamentals
+178,259,2,HR,2026-11-26,Cleared,Needs improvement
+179,260,1,HR,2026-10-07,Not Cleared,Good communication
+180,264,1,HR,2026-10-08,Cleared,Good communication
+181,265,2,Aptitude,2026-11-14,Not Cleared,Strong technical fundamentals
+182,268,3,HR,2026-11-30,Pending,Good problem-solving
+183,269,1,HR,2026-11-21,Cleared,Good problem-solving
+184,270,1,HR,2026-10-05,Not Cleared,Strong technical fundamentals
+185,272,1,Technical,2026-12-07,Pending,Strong technical fundamentals
+186,274,2,Managerial,2026-11-06,Pending,Good communication
+187,275,3,Technical,2026-11-17,Pending,Needs improvement
+188,278,3,Managerial,2026-11-11,Not Cleared,Good communication
+189,279,2,Technical,2026-10-02,Not Cleared,Needs improvement
+190,281,1,Managerial,2026-12-03,Cleared,Good communication
+191,282,2,Managerial,2026-11-29,Pending,Needs improvement
+192,283,1,Aptitude,2026-10-23,Pending,Needs improvement
+193,284,3,Managerial,2026-11-04,Cleared,Good problem-solving
+194,287,3,Managerial,2026-12-10,Cleared,Strong technical fundamentals
+195,288,3,HR,2026-12-07,Cleared,Good problem-solving
+196,289,1,HR,2026-10-21,Not Cleared,Good communication
+197,291,3,Technical,2026-10-31,Not Cleared,Needs improvement
+198,292,3,Aptitude,2026-11-29,Not Cleared,Good communication
+199,294,3,Managerial,2026-10-07,Cleared,Good communication
+200,299,3,Managerial,2026-11-24,Cleared,Strong technical fundamentals
+201,301,1,Aptitude,2026-12-06,Not Cleared,Good problem-solving
+202,302,1,HR,2026-11-16,Pending,Strong technical fundamentals
+203,305,3,HR,2026-10-17,Cleared,Good problem-solving
+204,307,2,HR,2026-12-10,Pending,Needs improvement
+205,308,1,Aptitude,2026-11-02,Cleared,Good communication
+206,309,1,Aptitude,2026-10-28,Pending,Strong technical fundamentals
+207,314,1,Managerial,2026-11-07,Not Cleared,Needs improvement
+208,318,2,Aptitude,2026-11-01,Not Cleared,Strong technical fundamentals
+209,322,3,Technical,2026-10-27,Cleared,Good problem-solving
+210,323,1,HR,2026-12-05,Pending,Strong technical fundamentals
+211,324,3,HR,2026-11-25,Pending,Good problem-solving
+212,325,3,Managerial,2026-11-27,Cleared,Good problem-solving
+213,327,1,Aptitude,2026-10-24,Not Cleared,Needs improvement
+214,328,1,HR,2026-12-01,Not Cleared,Good communication
+215,329,2,Managerial,2026-11-03,Pending,Good problem-solving
+216,330,2,Managerial,2026-12-01,Cleared,Good problem-solving
+217,331,2,HR,2026-11-26,Not Cleared,Needs improvement
+218,334,1,Technical,2026-12-05,Pending,Good problem-solving
+219,335,3,HR,2026-11-05,Not Cleared,Strong technical fundamentals
+220,336,1,Managerial,2026-10-25,Cleared,Strong technical fundamentals
+221,338,3,Technical,2026-10-24,Not Cleared,Needs improvement
+222,339,1,Managerial,2026-10-01,Not Cleared,Good problem-solving
+223,340,2,Managerial,2026-10-26,Pending,Good problem-solving
+224,341,2,HR,2026-10-29,Pending,Strong technical fundamentals
+225,342,1,Managerial,2026-11-12,Not Cleared,Good communication
+226,343,3,Managerial,2026-10-06,Pending,Needs improvement
+227,344,3,Managerial,2026-10-27,Cleared,Good problem-solving
+228,346,1,Managerial,2026-10-30,Not Cleared,Good problem-solving
+229,348,3,Technical,2026-10-11,Not Cleared,Strong technical fundamentals
+230,350,1,Managerial,2026-10-13,Not Cleared,Good problem-solving
+231,351,1,Aptitude,2026-11-02,Pending,Strong technical fundamentals
+232,352,1,Aptitude,2026-12-04,Cleared,Needs improvement
+233,353,3,Managerial,2026-12-01,Not Cleared,Needs improvement
+234,355,3,Managerial,2026-10-12,Cleared,Good problem-solving
+235,357,2,Aptitude,2026-10-12,Cleared,Strong technical fundamentals
+236,359,2,HR,2026-11-12,Not Cleared,Strong technical fundamentals
+237,360,1,Managerial,2026-11-25,Cleared,Good communication
+238,361,3,HR,2026-10-05,Pending,Needs improvement
+239,362,2,Managerial,2026-10-25,Pending,Needs improvement
+240,363,3,Aptitude,2026-10-22,Pending,Needs improvement
+241,366,3,Aptitude,2026-10-05,Pending,Strong technical fundamentals
+242,367,2,Technical,2026-10-11,Not Cleared,Needs improvement
+243,369,1,HR,2026-10-24,Cleared,Good communication
+244,370,2,HR,2026-12-05,Pending,Strong technical fundamentals
+245,371,1,Managerial,2026-11-06,Cleared,Needs improvement
+246,372,1,Managerial,2026-11-11,Pending,Strong technical fundamentals
+247,373,1,Aptitude,2026-11-03,Pending,Needs improvement
+248,374,3,Technical,2026-12-03,Not Cleared,Good problem-solving
+249,375,1,HR,2026-11-21,Cleared,Good problem-solving
+250,377,3,HR,2026-11-14,Pending,Needs improvement
+251,379,3,Aptitude,2026-11-14,Cleared,Good communication
+252,381,1,Managerial,2026-12-10,Not Cleared,Strong technical fundamentals
+253,382,1,Aptitude,2026-11-05,Pending,Good communication
+254,384,2,Technical,2026-10-18,Not Cleared,Needs improvement
+255,386,2,Technical,2026-10-15,Not Cleared,Good communication
+256,390,3,HR,2026-11-30,Cleared,Good communication
+257,391,3,HR,2026-11-20,Pending,Good communication
+258,393,1,Managerial,2026-11-09,Pending,Good communication
+259,394,2,HR,2026-11-22,Not Cleared,Strong technical fundamentals
+260,396,1,Managerial,2026-10-04,Cleared,Good communication
+261,397,1,HR,2026-11-19,Not Cleared,Good communication
+262,399,3,Technical,2026-11-16,Not Cleared,Good problem-solving
+263,400,2,Aptitude,2026-10-13,Cleared,Strong technical fundamentals
+264,408,2,Managerial,2026-10-01,Pending,Good communication
+265,409,2,Managerial,2026-10-16,Pending,Good communication
+266,410,2,HR,2026-12-06,Cleared,Good problem-solving
+267,411,1,Managerial,2026-10-28,Pending,Good problem-solving
+268,413,2,HR,2026-11-10,Not Cleared,Good communication
+269,414,2,Technical,2026-12-08,Pending,Strong technical fundamentals
+270,415,1,HR,2026-12-07,Cleared,Good problem-solving
+271,416,2,Technical,2026-10-28,Cleared,Needs improvement
+272,418,2,HR,2026-10-21,Cleared,Good communication
+273,424,1,Aptitude,2026-10-22,Pending,Good communication
+274,425,1,HR,2026-11-19,Not Cleared,Needs improvement
+275,426,3,Aptitude,2026-11-07,Pending,Good problem-solving
+276,427,3,HR,2026-12-03,Cleared,Needs improvement
+277,428,3,Technical,2026-12-09,Cleared,Strong technical fundamentals
+278,429,2,Managerial,2026-10-07,Pending,Strong technical fundamentals
+279,430,3,Technical,2026-11-05,Cleared,Good problem-solving
+280,431,1,HR,2026-11-26,Pending,Good problem-solving
+281,436,2,Technical,2026-10-07,Not Cleared,Strong technical fundamentals
+282,437,1,Managerial,2026-12-04,Pending,Good communication
+283,438,2,Aptitude,2026-11-01,Not Cleared,Good problem-solving
+284,440,1,Technical,2026-10-18,Cleared,Strong technical fundamentals
+285,443,2,Managerial,2026-11-14,Cleared,Needs improvement
+286,445,1,Aptitude,2026-11-29,Pending,Good communication
+287,446,1,Managerial,2026-10-28,Cleared,Good problem-solving
+288,447,3,Aptitude,2026-10-19,Cleared,Needs improvement
+289,448,2,Aptitude,2026-10-29,Cleared,Good problem-solving
+290,449,2,HR,2026-11-30,Cleared,Strong technical fundamentals
+291,453,2,Managerial,2026-10-16,Cleared,Good communication
+292,454,2,Aptitude,2026-10-07,Not Cleared,Good communication
+293,455,2,Managerial,2026-11-08,Pending,Good problem-solving
+294,456,3,Technical,2026-11-02,Cleared,Good problem-solving
+295,457,2,HR,2026-10-22,Cleared,Needs improvement
+296,459,3,HR,2026-10-19,Not Cleared,Good problem-solving
+297,460,1,Managerial,2026-10-16,Cleared,Strong technical fundamentals
+298,461,2,Managerial,2026-10-25,Not Cleared,Strong technical fundamentals
+299,462,3,HR,2026-11-26,Not Cleared,Strong technical fundamentals
+300,464,2,Aptitude,2026-10-18,Pending,Good communication
+301,467,2,Managerial,2026-12-09,Cleared,Needs improvement
+302,470,2,Aptitude,2026-11-25,Not Cleared,Good problem-solving
+303,471,3,HR,2026-10-20,Not Cleared,Strong technical fundamentals
+304,473,1,Technical,2026-11-30,Not Cleared,Needs improvement
+305,475,2,Technical,2026-11-28,Cleared,Good problem-solving
+306,476,1,Aptitude,2026-11-05,Pending,Good communication
+307,480,1,Managerial,2026-10-31,Cleared,Good problem-solving
+308,484,1,Managerial,2026-10-10,Not Cleared,Good communication
+309,486,3,HR,2026-11-29,Cleared,Needs improvement
+310,487,1,Technical,2026-10-10,Pending,Strong technical fundamentals
+311,488,1,Aptitude,2026-11-22,Cleared,Good problem-solving
+312,489,1,Aptitude,2026-11-28,Pending,Needs improvement
+313,490,2,Technical,2026-11-11,Not Cleared,Strong technical fundamentals
+314,491,2,Managerial,2026-10-06,Pending,Good communication
+315,492,3,HR,2026-11-03,Not Cleared,Needs improvement
+316,493,2,Aptitude,2026-12-06,Not Cleared,Strong technical fundamentals
+317,494,3,HR,2026-11-04,Cleared,Needs improvement
+318,495,3,Managerial,2026-11-29,Pending,Good communication
+319,496,3,Aptitude,2026-11-04,Not Cleared,Needs improvement
+320,498,1,Aptitude,2026-12-03,Not Cleared,Good communication
+321,501,3,Technical,2026-11-06,Not Cleared,Good problem-solving
+322,502,3,HR,2026-10-10,Cleared,Needs improvement
+323,506,1,Managerial,2026-12-08,Not Cleared,Needs improvement
+324,508,1,HR,2026-10-19,Not Cleared,Needs improvement
+325,509,1,Technical,2026-11-24,Pending,Needs improvement
+326,511,2,Managerial,2026-10-18,Pending,Good communication
+327,512,3,HR,2026-11-02,Cleared,Good problem-solving
+328,513,2,Managerial,2026-11-06,Cleared,Needs improvement
+329,515,3,HR,2026-10-09,Not Cleared,Good communication
+330,516,1,Aptitude,2026-10-17,Cleared,Good communication
+331,517,1,Aptitude,2026-11-14,Cleared,Needs improvement
+332,518,3,HR,2026-12-07,Cleared,Needs improvement
+333,520,1,Technical,2026-10-20,Pending,Needs improvement
+334,521,2,HR,2026-10-24,Cleared,Strong technical fundamentals
+335,522,1,HR,2026-12-06,Pending,Strong technical fundamentals
+336,523,1,Aptitude,2026-10-27,Not Cleared,Good communication
+337,524,1,Managerial,2026-11-14,Cleared,Good problem-solving
+338,525,3,Managerial,2026-10-23,Not Cleared,Strong technical fundamentals
+339,526,1,Technical,2026-10-01,Not Cleared,Good communication
+340,527,2,Managerial,2026-10-18,Cleared,Needs improvement
+341,529,1,Aptitude,2026-11-22,Not Cleared,Needs improvement
+342,530,2,HR,2026-11-09,Not Cleared,Strong technical fundamentals
+343,531,1,HR,2026-11-06,Not Cleared,Good problem-solving
+344,532,1,Managerial,2026-10-24,Pending,Strong technical fundamentals
+345,534,2,Managerial,2026-10-13,Cleared,Good communication
+346,535,1,Managerial,2026-10-08,Pending,Needs improvement
+347,537,3,Managerial,2026-10-01,Cleared,Needs improvement
+348,539,3,HR,2026-10-24,Pending,Good problem-solving
+349,540,1,Aptitude,2026-11-19,Not Cleared,Good problem-solving
+350,542,3,Managerial,2026-11-17,Pending,Good problem-solving
+351,544,3,HR,2026-11-15,Not Cleared,Good communication
+352,545,1,HR,2026-11-06,Cleared,Strong technical fundamentals
+353,546,1,Technical,2026-10-31,Not Cleared,Good communication
+354,548,2,Technical,2026-11-21,Pending,Needs improvement
+355,549,2,Aptitude,2026-12-01,Not Cleared,Good problem-solving
+356,550,3,HR,2026-11-21,Pending,Good communication
+357,551,3,Technical,2026-11-27,Pending,Strong technical fundamentals
+358,552,2,Technical,2026-12-06,Cleared,Strong technical fundamentals
+359,553,3,Technical,2026-11-16,Pending,Needs improvement
+360,555,1,HR,2026-10-07,Not Cleared,Needs improvement
+361,558,3,HR,2026-10-07,Not Cleared,Good problem-solving
+362,559,2,HR,2026-10-15,Cleared,Strong technical fundamentals
+363,560,2,Managerial,2026-11-13,Not Cleared,Strong technical fundamentals
+364,562,1,Aptitude,2026-10-20,Not Cleared,Good communication
+365,564,2,Managerial,2026-11-05,Pending,Needs improvement
+366,565,1,Technical,2026-12-03,Not Cleared,Good problem-solving
+367,566,3,Aptitude,2026-10-25,Pending,Good communication
+368,567,1,Managerial,2026-12-05,Cleared,Needs improvement
+369,569,3,Aptitude,2026-12-06,Not Cleared,Good problem-solving
+370,570,1,Technical,2026-10-01,Pending,Good problem-solving
+371,572,2,HR,2026-10-04,Pending,Needs improvement
+372,573,3,Aptitude,2026-10-16,Cleared,Strong technical fundamentals
+373,575,1,HR,2026-11-15,Cleared,Good communication
+374,577,1,Aptitude,2026-10-21,Pending,Needs improvement
+375,580,3,Technical,2026-10-23,Pending,Good problem-solving
+376,581,1,Managerial,2026-10-26,Pending,Needs improvement
+377,582,1,HR,2026-10-07,Not Cleared,Needs improvement
+378,583,1,Aptitude,2026-10-07,Pending,Strong technical fundamentals
+379,585,1,Technical,2026-10-06,Cleared,Needs improvement
+380,588,3,Aptitude,2026-10-27,Pending,Needs improvement
+381,589,3,Managerial,2026-11-08,Not Cleared,Good problem-solving
+382,590,2,HR,2026-12-05,Not Cleared,Good communication
+383,591,1,Managerial,2026-11-03,Pending,Strong technical fundamentals
+384,592,1,Aptitude,2026-11-18,Not Cleared,Good problem-solving
+385,593,1,Technical,2026-11-13,Not Cleared,Good communication
+386,594,1,Technical,2026-10-13,Not Cleared,Good communication
+387,595,1,Technical,2026-11-17,Pending,Good communication
+388,596,3,Managerial,2026-10-15,Not Cleared,Good communication
+389,597,3,HR,2026-10-17,Pending,Good problem-solving
+390,599,1,Aptitude,2026-10-08,Pending,Good problem-solving
+391,601,3,HR,2026-11-06,Pending,Good problem-solving
+392,602,3,Managerial,2026-10-18,Not Cleared,Good communication
+393,603,3,Aptitude,2026-10-20,Pending,Good problem-solving
+394,605,2,Aptitude,2026-10-06,Pending,Good communication
+395,608,2,Technical,2026-11-29,Pending,Good communication
+396,609,2,Technical,2026-10-18,Pending,Strong technical fundamentals
+397,610,2,HR,2026-10-29,Pending,Strong technical fundamentals
+398,611,2,Managerial,2026-11-05,Cleared,Good problem-solving
+399,612,1,Managerial,2026-11-05,Pending,Good communication
+400,614,3,Technical,2026-11-05,Not Cleared,Needs improvement
+401,615,3,Managerial,2026-10-04,Not Cleared,Good problem-solving
+402,616,2,HR,2026-10-24,Cleared,Good communication
+403,617,2,HR,2026-11-27,Pending,Good problem-solving
+404,618,1,Managerial,2026-11-22,Cleared,Needs improvement
+405,619,1,Technical,2026-11-30,Cleared,Good communication
+406,620,3,Aptitude,2026-11-15,Cleared,Strong technical fundamentals
+407,621,1,HR,2026-10-09,Cleared,Good problem-solving
+408,624,2,Technical,2026-12-10,Cleared,Strong technical fundamentals
+409,627,3,Managerial,2026-12-06,Pending,Good communication
+410,630,2,Aptitude,2026-10-29,Not Cleared,Needs improvement
+411,631,3,Aptitude,2026-11-11,Not Cleared,Needs improvement
+412,632,2,Aptitude,2026-10-06,Cleared,Needs improvement
+413,633,3,Technical,2026-10-10,Cleared,Needs improvement
+414,634,3,Managerial,2026-10-02,Pending,Strong technical fundamentals
+415,636,1,Technical,2026-10-11,Cleared,Strong technical fundamentals
+416,637,1,Technical,2026-10-31,Cleared,Good communication
+417,639,1,Aptitude,2026-12-03,Not Cleared,Strong technical fundamentals
+418,640,1,Aptitude,2026-12-10,Not Cleared,Needs improvement
+419,641,2,Technical,2026-12-02,Cleared,Strong technical fundamentals
+420,645,1,Managerial,2026-10-03,Cleared,Strong technical fundamentals
+421,647,3,Aptitude,2026-11-01,Not Cleared,Good problem-solving
+422,648,3,Aptitude,2026-12-10,Pending,Good communication
+423,652,3,Managerial,2026-11-26,Pending,Strong technical fundamentals
+424,653,2,Technical,2026-11-28,Cleared,Good problem-solving
+425,654,3,HR,2026-11-26,Cleared,Good communication
+426,656,2,HR,2026-11-27,Cleared,Needs improvement
+427,657,1,HR,2026-11-21,Cleared,Strong technical fundamentals
+428,658,3,Technical,2026-11-07,Not Cleared,Strong technical fundamentals
+429,660,3,Aptitude,2026-12-01,Not Cleared,Good problem-solving
+430,663,3,Aptitude,2026-10-04,Not Cleared,Good communication
+431,664,2,Managerial,2026-10-18,Not Cleared,Good communication
+432,666,2,Aptitude,2026-11-11,Pending,Good problem-solving
+433,667,3,HR,2026-12-05,Cleared,Good communication
+434,668,3,Managerial,2026-10-17,Not Cleared,Good problem-solving
+435,669,1,HR,2026-11-02,Pending,Strong technical fundamentals
+436,670,2,Technical,2026-11-09,Pending,Good communication
+437,671,1,HR,2026-10-21,Pending,Needs improvement
+438,673,2,Aptitude,2026-12-05,Cleared,Strong technical fundamentals
+439,674,3,Technical,2026-10-07,Not Cleared,Strong technical fundamentals
+440,680,2,Aptitude,2026-11-20,Pending,Good communication
+441,683,2,Aptitude,2026-11-08,Pending,Needs improvement
+442,684,3,Technical,2026-10-20,Cleared,Good communication
+443,685,3,Technical,2026-10-09,Not Cleared,Strong technical fundamentals
+444,686,3,Technical,2026-10-07,Not Cleared,Good communication
+445,687,2,Aptitude,2026-11-18,Not Cleared,Needs improvement
+446,688,1,Technical,2026-10-09,Pending,Good problem-solving
+447,689,2,HR,2026-11-07,Cleared,Good communication
+448,691,1,Aptitude,2026-12-10,Not Cleared,Good problem-solving
+449,692,2,Technical,2026-10-02,Pending,Strong technical fundamentals
+450,693,3,HR,2026-11-13,Pending,Needs improvement
+451,694,2,Managerial,2026-10-28,Cleared,Needs improvement
+452,695,3,Aptitude,2026-11-26,Not Cleared,Good problem-solving
+453,697,3,Technical,2026-10-01,Pending,Strong technical fundamentals
+454,698,3,Managerial,2026-10-04,Cleared,Needs improvement
+455,699,3,Managerial,2026-10-29,Pending,Strong technical fundamentals
+456,701,3,Aptitude,2026-11-10,Pending,Needs improvement
+457,703,2,HR,2026-10-03,Not Cleared,Strong technical fundamentals
+458,704,2,HR,2026-10-02,Pending,Strong technical fundamentals
+459,705,1,Managerial,2026-12-02,Cleared,Strong technical fundamentals
+460,706,2,Technical,2026-11-24,Pending,Good problem-solving
+461,707,1,Technical,2026-10-11,Cleared,Good problem-solving
+462,709,1,HR,2026-11-06,Pending,Good problem-solving
+463,710,3,Managerial,2026-11-05,Cleared,Needs improvement
+464,711,2,Aptitude,2026-12-02,Cleared,Good problem-solving
+465,713,1,Managerial,2026-11-11,Pending,Good communication
+466,715,1,HR,2026-10-16,Pending,Needs improvement
+467,716,2,Aptitude,2026-11-04,Not Cleared,Good problem-solving
+468,717,2,Technical,2026-11-21,Not Cleared,Needs improvement
+469,721,1,Aptitude,2026-10-29,Pending,Strong technical fundamentals
+470,722,1,HR,2026-10-03,Pending,Strong technical fundamentals
+471,724,1,Aptitude,2026-12-04,Cleared,Strong technical fundamentals
+472,725,3,Technical,2026-11-17,Pending,Needs improvement
+473,726,1,Managerial,2026-10-02,Cleared,Good communication
+474,727,1,Technical,2026-11-27,Pending,Needs improvement
+475,728,2,Technical,2026-10-31,Cleared,Strong technical fundamentals
+476,730,1,HR,2026-10-09,Pending,Good communication
+477,731,1,Technical,2026-10-14,Cleared,Strong technical fundamentals
+478,735,2,HR,2026-10-02,Pending,Needs improvement
+479,736,1,Technical,2026-12-06,Not Cleared,Strong technical fundamentals
+480,737,2,Managerial,2026-10-31,Not Cleared,Good problem-solving
+481,738,3,Managerial,2026-11-19,Pending,Good problem-solving
+482,739,1,Managerial,2026-11-14,Cleared,Strong technical fundamentals
+483,741,3,Managerial,2026-11-28,Not Cleared,Strong technical fundamentals
+484,742,2,Managerial,2026-11-28,Cleared,Needs improvement
+485,743,3,Managerial,2026-10-05,Pending,Good problem-solving
+486,745,2,Managerial,2026-11-09,Not Cleared,Strong technical fundamentals
+487,747,3,Technical,2026-11-01,Cleared,Strong technical fundamentals
+488,748,2,Managerial,2026-11-03,Not Cleared,Needs improvement
+489,749,2,Aptitude,2026-11-08,Pending,Needs improvement
+490,750,1,Aptitude,2026-11-12,Cleared,Needs improvement
+491,751,3,HR,2026-12-09,Cleared,Good problem-solving
+492,752,2,Aptitude,2026-12-06,Not Cleared,Good problem-solving
+493,754,1,HR,2026-10-04,Pending,Good communication
+494,755,3,HR,2026-11-24,Pending,Good communication
+495,757,2,Managerial,2026-10-01,Not Cleared,Good communication
+496,758,1,Technical,2026-10-19,Pending,Needs improvement
+497,759,1,HR,2026-11-05,Not Cleared,Strong technical fundamentals
+498,760,1,Aptitude,2026-12-05,Cleared,Good communication
+499,761,1,Managerial,2026-10-19,Pending,Good communication
+500,763,3,Managerial,2026-10-11,Not Cleared,Needs improvement
+501,766,3,Aptitude,2026-11-16,Not Cleared,Needs improvement
+502,767,2,Aptitude,2026-11-29,Cleared,Good problem-solving
+503,768,3,Managerial,2026-10-02,Pending,Needs improvement
+504,773,3,Managerial,2026-11-20,Pending,Good problem-solving
+505,774,3,HR,2026-10-03,Cleared,Strong technical fundamentals
+506,776,2,Aptitude,2026-11-21,Not Cleared,Good communication
+507,777,1,Technical,2026-10-03,Pending,Good communication
+508,779,3,Technical,2026-10-24,Cleared,Strong technical fundamentals
+509,780,3,HR,2026-11-11,Not Cleared,Good communication
+510,781,1,HR,2026-11-02,Pending,Needs improvement
+511,782,3,Technical,2026-11-07,Cleared,Strong technical fundamentals
+512,783,3,Managerial,2026-10-27,Pending,Strong technical fundamentals
+513,785,1,HR,2026-10-30,Cleared,Good communication
+514,786,2,Aptitude,2026-11-02,Pending,Good problem-solving
+515,787,1,Managerial,2026-10-05,Cleared,Good communication
+516,788,1,HR,2026-11-27,Cleared,Needs improvement
+517,790,1,Technical,2026-11-02,Pending,Strong technical fundamentals
+518,791,2,Managerial,2026-11-01,Cleared,Needs improvement
+519,794,1,Aptitude,2026-11-21,Cleared,Strong technical fundamentals
+520,795,2,Technical,2026-10-23,Not Cleared,Needs improvement
+521,798,3,HR,2026-11-18,Pending,Needs improvement
+522,799,3,Technical,2026-11-09,Not Cleared,Needs improvement
+523,802,1,HR,2026-10-31,Pending,Good problem-solving
+524,807,1,HR,2026-10-27,Pending,Good communication
+525,809,3,Technical,2026-11-06,Pending,Needs improvement
+526,814,2,HR,2026-11-16,Cleared,Needs improvement
+527,815,2,Technical,2026-12-07,Not Cleared,Good problem-solving
+528,817,1,Technical,2026-10-13,Cleared,Needs improvement
+529,818,1,Aptitude,2026-10-23,Not Cleared,Strong technical fundamentals
+530,819,2,Aptitude,2026-10-10,Not Cleared,Good communication
+531,820,2,Technical,2026-12-06,Cleared,Strong technical fundamentals
+532,821,3,Managerial,2026-11-11,Not Cleared,Good problem-solving
+533,822,3,Technical,2026-10-25,Not Cleared,Needs improvement
+534,823,2,Managerial,2026-10-28,Pending,Good problem-solving
+535,824,3,HR,2026-10-28,Not Cleared,Strong technical fundamentals
+536,825,1,Managerial,2026-11-27,Not Cleared,Good problem-solving
+537,826,2,HR,2026-10-29,Not Cleared,Good problem-solving
+538,828,1,HR,2026-10-01,Not Cleared,Strong technical fundamentals
+539,831,1,HR,2026-11-30,Not Cleared,Good communication
+540,832,2,Aptitude,2026-11-03,Cleared,Good communication
+541,833,2,Aptitude,2026-11-18,Pending,Needs improvement
+542,835,1,Aptitude,2026-11-21,Cleared,Needs improvement
+543,836,1,Technical,2026-10-16,Not Cleared,Needs improvement
+544,837,1,Managerial,2026-12-05,Pending,Good problem-solving
+545,838,2,HR,2026-10-17,Not Cleared,Needs improvement
+546,839,2,Managerial,2026-10-02,Pending,Strong technical fundamentals
+547,841,2,Aptitude,2026-11-09,Pending,Good problem-solving
+548,844,1,HR,2026-10-11,Pending,Needs improvement
+549,846,2,HR,2026-11-18,Cleared,Good communication
+550,847,2,Technical,2026-11-26,Pending,Good communication
+551,848,3,HR,2026-10-20,Not Cleared,Needs improvement
+552,849,1,Technical,2026-10-17,Pending,Good problem-solving
+553,850,1,Aptitude,2026-10-19,Cleared,Good problem-solving
+554,851,1,Technical,2026-11-12,Not Cleared,Needs improvement
+555,852,3,Managerial,2026-12-02,Not Cleared,Needs improvement
+556,853,3,Managerial,2026-10-23,Cleared,Good problem-solving
+557,854,3,Technical,2026-10-20,Cleared,Good communication
+558,856,3,Technical,2026-11-24,Not Cleared,Needs improvement
+559,858,2,Managerial,2026-11-27,Pending,Needs improvement
+560,859,1,Technical,2026-11-21,Not Cleared,Needs improvement
+561,863,2,Managerial,2026-11-02,Not Cleared,Strong technical fundamentals
+562,864,3,HR,2026-11-21,Not Cleared,Good problem-solving
+563,865,2,Technical,2026-11-29,Cleared,Good communication
+564,874,1,Aptitude,2026-12-01,Not Cleared,Needs improvement
+565,876,2,HR,2026-11-22,Cleared,Good communication
+566,877,2,Aptitude,2026-10-31,Pending,Needs improvement
+567,880,1,Managerial,2026-11-25,Cleared,Needs improvement
+568,882,1,Technical,2026-10-24,Not Cleared,Needs improvement
+569,884,2,HR,2026-11-13,Not Cleared,Good communication
+570,885,3,Managerial,2026-10-15,Cleared,Good problem-solving
+571,886,3,Managerial,2026-12-02,Not Cleared,Good communication
+572,887,1,Technical,2026-10-28,Cleared,Good communication
+573,888,1,HR,2026-11-03,Not Cleared,Good communication
+574,891,3,Managerial,2026-12-06,Cleared,Good communication
+575,895,2,HR,2026-11-11,Pending,Needs improvement
+576,896,3,Aptitude,2026-10-30,Cleared,Strong technical fundamentals
+577,897,3,Aptitude,2026-12-10,Cleared,Needs improvement
+578,898,2,Managerial,2026-11-17,Pending,Good problem-solving
+579,899,2,Managerial,2026-12-09,Pending,Good problem-solving
+580,900,1,Managerial,2026-10-17,Cleared,Needs improvement
+581,901,3,Technical,2026-11-12,Pending,Good communication
+582,902,1,Managerial,2026-11-17,Not Cleared,Good communication
+583,904,3,Technical,2026-12-04,Cleared,Needs improvement
+584,907,3,Aptitude,2026-11-17,Pending,Good problem-solving
+585,910,1,Technical,2026-12-02,Cleared,Good communication
+586,911,3,Aptitude,2026-10-02,Not Cleared,Needs improvement
+587,912,2,HR,2026-10-26,Pending,Needs improvement
+588,913,1,Managerial,2026-10-19,Cleared,Good communication
+589,916,3,Managerial,2026-12-05,Not Cleared,Good problem-solving
+590,918,3,Aptitude,2026-11-24,Not Cleared,Good problem-solving
+591,919,2,HR,2026-10-18,Cleared,Needs improvement
+592,921,2,Managerial,2026-10-21,Not Cleared,Good problem-solving
+593,924,3,Technical,2026-11-05,Pending,Needs improvement
+594,928,2,HR,2026-12-08,Cleared,Strong technical fundamentals
+595,930,1,Aptitude,2026-10-11,Not Cleared,Good communication
+596,932,2,Managerial,2026-10-21,Cleared,Good communication
+597,933,2,HR,2026-10-24,Cleared,Strong technical fundamentals
+598,935,2,Managerial,2026-11-28,Pending,Needs improvement
+599,936,3,Aptitude,2026-10-28,Cleared,Strong technical fundamentals
+600,937,1,Managerial,2026-11-15,Cleared,Needs improvement
+601,941,1,Technical,2026-11-23,Pending,Needs improvement
+602,942,2,Technical,2026-11-07,Not Cleared,Good communication
+603,943,1,Technical,2026-11-14,Not Cleared,Strong technical fundamentals
+604,944,1,Managerial,2026-11-30,Not Cleared,Good communication
+605,947,2,Managerial,2026-11-28,Pending,Needs improvement
+606,949,3,Aptitude,2026-11-09,Cleared,Good problem-solving
+607,951,1,Managerial,2026-10-26,Cleared,Needs improvement
+608,952,1,Managerial,2026-10-29,Cleared,Strong technical fundamentals
+609,953,3,Aptitude,2026-11-07,Pending,Good communication
+610,954,3,Managerial,2026-11-17,Pending,Needs improvement
+611,955,2,Aptitude,2026-10-03,Cleared,Needs improvement
+612,956,3,Managerial,2026-11-20,Not Cleared,Strong technical fundamentals
+613,957,1,HR,2026-11-06,Not Cleared,Needs improvement
+614,958,2,HR,2026-10-25,Pending,Needs improvement
+615,959,2,Technical,2026-12-03,Cleared,Good problem-solving
+616,960,2,Managerial,2026-10-13,Cleared,Good communication
+617,962,2,Managerial,2026-11-14,Pending,Needs improvement
+618,963,3,Aptitude,2026-10-05,Cleared,Good communication
+619,965,1,Managerial,2026-10-06,Pending,Good problem-solving
+620,968,1,Technical,2026-12-03,Pending,Good communication
+621,969,1,Technical,2026-11-05,Cleared,Strong technical fundamentals
+622,971,1,Technical,2026-11-30,Cleared,Needs improvement
+623,972,1,HR,2026-12-06,Pending,Good problem-solving
+624,973,3,Technical,2026-11-07,Pending,Good communication
+625,974,1,HR,2026-11-20,Cleared,Good communication
+626,975,2,HR,2026-10-01,Pending,Good communication
+627,976,1,HR,2026-10-09,Cleared,Strong technical fundamentals
+628,977,2,Managerial,2026-12-06,Pending,Good problem-solving
+629,982,3,HR,2026-11-27,Not Cleared,Needs improvement
+630,983,1,Managerial,2026-10-15,Cleared,Strong technical fundamentals
+631,984,1,Technical,2026-10-16,Pending,Good communication
+632,985,3,HR,2026-10-22,Pending,Good communication
+633,986,2,Technical,2026-10-13,Cleared,Strong technical fundamentals
+634,987,3,Managerial,2026-10-20,Pending,Good communication
+635,988,2,Technical,2026-12-06,Not Cleared,Good problem-solving
+636,992,2,HR,2026-11-07,Cleared,Good problem-solving
+637,994,3,HR,2026-12-03,Cleared,Good communication
+638,995,2,Technical,2026-12-02,Not Cleared,Good communication
+639,996,1,Technical,2026-10-24,Cleared,Good problem-solving
+640,997,3,Aptitude,2026-10-18,Not Cleared,Good problem-solving
+641,999,2,Technical,2026-11-04,Pending,Good problem-solving
+642,1000,3,HR,2026-11-07,Cleared,Good communication

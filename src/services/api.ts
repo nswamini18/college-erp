@@ -41,7 +41,7 @@ class ApiClient {
 
   // Auth Endpoints
   async login(identifier: string, password: string, role?: string) {
-    const res = await this.request<{ success: boolean; token: string; user: any }>('/auth/login', {
+    const res = await this.request<{ success: boolean; token: string; user: any; message?: string }>('/auth/login', {
       method: 'POST',
       body: JSON.stringify({ identifier, password, role })
     });
@@ -63,6 +63,10 @@ class ApiClient {
   // Student Endpoints
   async getStudentProfile() {
     return this.request<{ success: boolean; data: any }>('/students/profile');
+  }
+
+  async getStudentDashboard() {
+    return this.request<{ success: boolean; data: any }>('/students/dashboard');
   }
 
   async getStudentAttendance() {
@@ -112,8 +116,9 @@ class ApiClient {
     return this.request<{ success: boolean; data: any }>('/faculty/dashboard');
   }
 
-  async getFacultyAttendance() {
-    return this.request<{ success: boolean; data: any }>('/faculty/attendance');
+  async getFacultyAttendance(queryString?: string) {
+    const url = queryString ? `/faculty/attendance?${queryString}` : '/faculty/attendance';
+    return this.request<{ success: boolean; data: any }>(url);
   }
 
   async saveFacultyAttendance(payload: any) {
@@ -147,6 +152,44 @@ class ApiClient {
 
   async getFacultyPayroll() {
     return this.request<{ success: boolean; data: any }>('/faculty/payroll');
+  }
+
+  // Faculty Timetable Operations
+  async getFacultyTimetable() {
+    return this.request<{ success: boolean; data: any[] }>('/faculty/timetable');
+  }
+
+  async createFacultyTimetable(payload: any) {
+    return this.request<{ success: boolean; message: string; timetable_id: number }>('/faculty/timetable', {
+      method: 'POST',
+      body: JSON.stringify(payload)
+    });
+  }
+
+  async updateFacultyTimetable(id: number, payload: any) {
+    return this.request<{ success: boolean; message: string }>(`/faculty/timetable/${id}`, {
+      method: 'PUT',
+      body: JSON.stringify(payload)
+    });
+  }
+
+  async deleteFacultyTimetable(id: number) {
+    return this.request<{ success: boolean; message: string }>(`/faculty/timetable/${id}`, {
+      method: 'DELETE'
+    });
+  }
+
+  // Faculty Preview Mode (Demonstration Student View)
+  async getFacultyStudentPreview(studentId: number) {
+    return this.request<{
+      success: boolean;
+      previewMode: boolean;
+      notice: string;
+      student: any;
+      attendance: any[];
+      timetable: any[];
+      feeSummary: any;
+    }>(`/faculty/preview-student/${studentId}`);
   }
 }
 

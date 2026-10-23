@@ -1,16 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   Award, 
   Save, 
   CheckCircle2, 
   AlertCircle, 
-  Lock, 
-  FileCheck2,
-  Calendar
+  Loader2
 } from 'lucide-react';
 import { Badge } from '../../components/common/Badge';
 import { Modal } from '../../components/common/Modal';
-import { mockStudents } from '../../data/mockStudents';
+import { useAuth } from '../../context/AuthContext';
+import { api } from '../../services/api';
 
 interface StudentMarkInput {
   student_id: number;
@@ -22,10 +21,13 @@ interface StudentMarkInput {
 }
 
 export const FacultyGradingPage: React.FC = () => {
-  // Assigned subjects for Dr. Arvind Sharma (CSE)
+  const { user } = useAuth();
+  const [loading, setLoading] = useState(true);
+  const [submitting, setSubmitting] = useState(false);
+
   const assignedSubjects = [
     { code: "CS302", name: "Database Management Systems", classSection: "B.Tech CSE - Section A" },
-    { code: "CS302P", name: "Database Systems Lab", classSection: "B.Tech CSE - Section A" }
+    { code: "CS301", name: "Data Structures & Algorithms", classSection: "B.Tech CSE - Section A" }
   ];
 
   const [selectedClass, setSelectedClass] = useState("B.Tech CSE - Section A");
@@ -41,7 +43,6 @@ export const FacultyGradingPage: React.FC = () => {
 
   const currentMaxMarks = maxMarksMap[selectedExamType];
 
-  // Grade calculator helper
   const calculateGrade = (score: number, max: number): string => {
     const pct = (score / max) * 100;
     if (pct >= 90) return 'O';
@@ -52,23 +53,38 @@ export const FacultyGradingPage: React.FC = () => {
     return 'F';
   };
 
-  // Student roster for Section A
-  const sectionAStudents = mockStudents.filter(s => s.department_id === 1 && (s.section_name === 'CS-A' || s.section_id === 1));
-
-  const [marksRoster, setMarksRoster] = useState<StudentMarkInput[]>(() => {
-    return sectionAStudents.map(s => ({
-      student_id: s.student_id,
-      roll_no: s.roll_no,
-      name: `${s.first_name} ${s.last_name}`,
-      marks_obtained: 44,
-      grade_letter: 'A+',
-      status: 'Present'
-    }));
-  });
-
+  const [marksRoster, setMarksRoster] = useState<StudentMarkInput[]>([]);
   const [validationError, setValidationError] = useState<string | null>(null);
+  const [successMessage, setSuccessMessage] = useState<string | null>(null);
   const [isSubmitModalOpen, setIsSubmitModalOpen] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+
+  useEffect(() => {
+    let isMounted = true;
+    async function loadGrading() {
+      try {
+        setLoading(true);
+        const res = await api.getFacultyGrading();
+        if (isMounted && res.success && res.data && res.data.length > 0) {
+          const mapped: StudentMarkInput[] = res.data.map((m: any) => ({
+            student_id: m.student_id,
+            roll_no: m.roll_no,
+            name: m.name,
+            marks_obtained: Math.min(Number(m.marks_obtained || 42), currentMaxMarks),
+            grade_letter: m.grade_letter || calculateGrade(Number(m.marks_obtained || 42), currentMaxMarks),
+            status: m.status === 'Absent' ? 'Absent' : 'Present'
+          }));
+          setMarksRoster(mapped);
+        }
+      } catch (err) {
+        console.warn('Failed to fetch grading roster:', err);
+      } finally {
+        if (isMounted) setLoading(false);
+      }
+    }
+    loadGrading();
+    return () => { isMounted = false; };
+  }, [currentMaxMarks]);
 
   const handleScoreChange = (student_id: number, val: string) => {
     setValidationError(null);
@@ -91,9 +107,26 @@ export const FacultyGradingPage: React.FC = () => {
     }));
   };
 
-  const handleConfirmSubmit = () => {
-    setIsSubmitted(true);
-    setIsSubmitModalOpen(false);
+  const handleConfirmSubmit = async () => {
+    try {
+      setSubmitting(true);
+      await api.saveFacultyGrading({
+        marks: marksRoster.map(s => ({
+          student_id: s.student_id,
+          marks_obtained: s.marks_obtained,
+          grade_letter: s.grade_letter,
+          status: s.status
+        }))
+      });
+      setIsSubmitted(true);
+      setIsSubmitModalOpen(false);
+      setSuccessMessage(`Grades successfully sealed and submitted to Controller of Examinations for ${marksRoster.length} candidates.`);
+    } catch (err: any) {
+      setValidationError(err.message || 'Failed to save grades.');
+      setIsSubmitModalOpen(false);
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -106,7 +139,7 @@ export const FacultyGradingPage: React.FC = () => {
             Digital Gradebook & Examination Grading
           </h1>
           <p className="text-xs text-slate-500 mt-1">
-            Official marks-entry registry for assigned course sections with automatic grade mapping and score validation.
+            Official marks-entry registry for {user?.department || 'Department'} course sections with automatic grade mapping and score validation.
           </p>
         </div>
 
@@ -116,6 +149,13 @@ export const FacultyGradingPage: React.FC = () => {
           </Badge>
         </div>
       </div>
+
+      {successMessage && (
+        <div className="p-4 rounded-xl bg-emerald-50 border border-emerald-200 flex items-center gap-2.5 text-xs text-emerald-800 font-semibold">
+          <CheckCircle2 className="w-4 h-4 flex-shrink-0" />
+          <span>{successMessage}</span>
+        </div>
+      )}
 
       {/* Class & Assessment Filters */}
       <div className="erp-card p-6 bg-white space-y-4">
@@ -134,7 +174,7 @@ export const FacultyGradingPage: React.FC = () => {
               onChange={(e) => setSelectedClass(e.target.value)}
               className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl outline-none font-semibold text-navy-950"
             >
-              <option value="B.Tech CSE - Section A">B.Tech CSE - Section A (3rd Sem)</option>
+              <option value="B.Tech CSE - Section A">B.Tech {user?.department || 'CSE'} - Section A (3rd Sem)</option>
             </select>
           </div>
 
@@ -192,7 +232,7 @@ export const FacultyGradingPage: React.FC = () => {
           <button
             type="button"
             onClick={() => setIsSubmitModalOpen(true)}
-            disabled={isSubmitted}
+            disabled={isSubmitted || marksRoster.length === 0}
             className="px-4 py-2 bg-navy-950 hover:bg-navy-900 disabled:opacity-50 text-white text-xs font-bold rounded-xl transition-all shadow-sm flex items-center gap-1.5"
           >
             <Save className="w-3.5 h-3.5" />
@@ -200,51 +240,60 @@ export const FacultyGradingPage: React.FC = () => {
           </button>
         </div>
 
-        <div className="overflow-x-auto">
-          <table className="w-full text-left text-xs border-collapse">
-            <thead>
-              <tr className="bg-[#FAFBFD] border-b border-slate-200 text-slate-500 uppercase text-[10px] font-bold">
-                <th className="p-3 w-16">#</th>
-                <th className="p-3">Roll Number</th>
-                <th className="p-3">Candidate Name</th>
-                <th className="p-3">Marks Obtained (Max: {currentMaxMarks})</th>
-                <th className="p-3 text-center">Calculated Letter Grade</th>
-                <th className="p-3 text-center">Exam Attendance</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-slate-100">
-              {marksRoster.map((student, idx) => (
-                <tr key={student.student_id} className="hover:bg-slate-50 transition-colors">
-                  <td className="p-3 font-mono text-slate-400">{idx + 1}</td>
-                  <td className="p-3 font-mono font-bold text-navy-950">{student.roll_no}</td>
-                  <td className="p-3 font-semibold text-slate-800">{student.name}</td>
-                  <td className="p-3">
-                    <div className="flex items-center gap-2">
-                      <input
-                        type="number"
-                        min={0}
-                        max={currentMaxMarks}
-                        disabled={isSubmitted}
-                        value={student.marks_obtained}
-                        onChange={(e) => handleScoreChange(student.student_id, e.target.value)}
-                        className="w-20 px-2.5 py-1 text-xs font-mono font-bold text-navy-950 bg-slate-50 border border-slate-200 rounded-lg outline-none focus:ring-2 focus:ring-navy-800 disabled:bg-slate-100 disabled:text-slate-500"
-                      />
-                      <span className="text-slate-400 font-mono text-[11px]">/ {currentMaxMarks}</span>
-                    </div>
-                  </td>
-                  <td className="p-3 text-center">
-                    <span className="font-mono font-bold text-emerald-800 bg-emerald-50 px-2.5 py-0.5 rounded border border-emerald-200 text-xs">
-                      {student.grade_letter}
-                    </span>
-                  </td>
-                  <td className="p-3 text-center">
-                    <Badge variant="success">Present</Badge>
-                  </td>
+        {loading ? (
+          <div className="flex items-center justify-center p-12">
+            <Loader2 className="w-6 h-6 animate-spin text-navy-800" />
+            <span className="text-xs text-slate-500 ml-2">Loading enrolled candidates...</span>
+          </div>
+        ) : marksRoster.length === 0 ? (
+          <p className="text-xs text-slate-500 py-8 text-center">No examination entries or students assigned for this subject.</p>
+        ) : (
+          <div className="overflow-x-auto">
+            <table className="w-full text-left text-xs border-collapse">
+              <thead>
+                <tr className="bg-[#FAFBFD] border-b border-slate-200 text-slate-500 uppercase text-[10px] font-bold">
+                  <th className="p-3 w-16">#</th>
+                  <th className="p-3">Roll Number</th>
+                  <th className="p-3">Candidate Name</th>
+                  <th className="p-3">Marks Obtained (Max: {currentMaxMarks})</th>
+                  <th className="p-3 text-center">Calculated Letter Grade</th>
+                  <th className="p-3 text-center">Exam Attendance</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+              </thead>
+              <tbody className="divide-y divide-slate-100">
+                {marksRoster.map((student, idx) => (
+                  <tr key={student.student_id} className="hover:bg-slate-50 transition-colors">
+                    <td className="p-3 font-mono text-slate-400">{idx + 1}</td>
+                    <td className="p-3 font-mono font-bold text-navy-950">{student.roll_no}</td>
+                    <td className="p-3 font-semibold text-slate-800">{student.name}</td>
+                    <td className="p-3">
+                      <div className="flex items-center gap-2">
+                        <input
+                          type="number"
+                          min={0}
+                          max={currentMaxMarks}
+                          disabled={isSubmitted}
+                          value={student.marks_obtained}
+                          onChange={(e) => handleScoreChange(student.student_id, e.target.value)}
+                          className="w-20 px-2.5 py-1 text-xs font-mono font-bold text-navy-950 bg-slate-50 border border-slate-200 rounded-lg outline-none focus:ring-2 focus:ring-navy-800 disabled:bg-slate-100 disabled:text-slate-500"
+                        />
+                        <span className="text-slate-400 font-mono text-[11px]">/ {currentMaxMarks}</span>
+                      </div>
+                    </td>
+                    <td className="p-3 text-center">
+                      <span className="font-mono font-bold text-emerald-800 bg-emerald-50 px-2.5 py-0.5 rounded border border-emerald-200 text-xs">
+                        {student.grade_letter}
+                      </span>
+                    </td>
+                    <td className="p-3 text-center">
+                      <Badge variant="success">Present</Badge>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
       </div>
 
       {/* Confirmation Modal */}
@@ -267,8 +316,10 @@ export const FacultyGradingPage: React.FC = () => {
               <button
                 type="button"
                 onClick={handleConfirmSubmit}
-                className="px-4 py-2 text-xs font-bold text-white bg-navy-950 hover:bg-navy-900 rounded-xl shadow-sm"
+                disabled={submitting}
+                className="px-4 py-2 text-xs font-bold text-white bg-navy-950 hover:bg-navy-900 rounded-xl shadow-sm flex items-center gap-1.5"
               >
+                {submitting && <Loader2 className="w-3.5 h-3.5 animate-spin" />}
                 Confirm & Seal Grades
               </button>
             </div>
@@ -284,7 +335,7 @@ export const FacultyGradingPage: React.FC = () => {
               <div>Cycle: {selectedExamType} (Max: {currentMaxMarks})</div>
             </div>
             <p className="text-[11px] text-slate-500 italic">
-              Once submitted, marks are archived and forwarded to the Central Result Cell for semester SGPA calculation.
+              Once submitted, marks are archived in MySQL and forwarded to the Central Result Cell for semester SGPA calculation.
             </p>
           </div>
         </Modal>

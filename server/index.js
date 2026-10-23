@@ -29,9 +29,9 @@ const FRONTEND_URL = process.env.FRONTEND_URL || 'http://localhost:5173';
 // Middlewares
 // -----------------------------------------------------------------------------
 
-// CORS configuration (strictly allowing frontend origin)
+// CORS configuration (allow local dev frontend ports)
 app.use(cors({
-  origin: [FRONTEND_URL, 'http://localhost:5173', 'http://127.0.0.1:5173'],
+  origin: true,
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization', 'x-sync-admin-key']

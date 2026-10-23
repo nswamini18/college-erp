@@ -10,15 +10,18 @@ import {
   Menu, 
   X, 
   Bell, 
-  Briefcase 
+  Briefcase,
+  Eye
 } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
+import { StudentPreviewModal } from '../common/StudentPreviewModal';
 
 export const FacultyLayout: React.FC = () => {
   const { user, role, logout } = useAuth();
   const navigate = useNavigate();
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [showNotifications, setShowNotifications] = useState(false);
+  const [showStudentPreview, setShowStudentPreview] = useState(false);
 
   // Strict route protection: If not logged in as faculty, block access
   if (!user || role !== 'FACULTY') {
@@ -156,6 +159,16 @@ export const FacultyLayout: React.FC = () => {
           </div>
 
           <div className="flex items-center gap-3">
+            {/* Student View Demonstration Preview Button */}
+            <button
+              onClick={() => setShowStudentPreview(true)}
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-indigo-50 text-indigo-700 hover:bg-indigo-100 border border-indigo-200 text-xs font-bold transition-all shadow-sm"
+              title="Demonstrate student dashboard without exposing student passwords"
+            >
+              <Eye className="w-3.5 h-3.5 text-indigo-600" />
+              <span className="hidden sm:inline">Student View Preview</span>
+            </button>
+
             {/* Quick Duty Status */}
             <div className="hidden md:flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 text-[#2ECC71] border border-emerald-100 text-xs font-semibold">
               <span className="w-2 h-2 rounded-full bg-[#2ECC71] animate-pulse" />
@@ -206,6 +219,13 @@ export const FacultyLayout: React.FC = () => {
           <Outlet />
         </main>
       </div>
+
+      {/* Faculty Demonstration Student Preview Modal */}
+      <StudentPreviewModal
+        isOpen={showStudentPreview}
+        onClose={() => setShowStudentPreview(false)}
+        defaultStudentId={1}
+      />
     </div>
   );
 };

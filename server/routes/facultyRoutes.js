@@ -17,6 +17,15 @@ router.get('/dashboard', facultyController.getDashboard);
 router.get('/attendance', facultyController.getAttendanceRoster);
 router.post('/attendance', facultyController.saveAttendance);
 
+// Timetable Management (ACID writes, scheduling conflict detection)
+router.get('/timetable', facultyController.getTimetable);
+router.post('/timetable', facultyController.createTimetableEntry);
+router.put('/timetable/:id', facultyController.updateTimetableEntry);
+router.delete('/timetable/:id', facultyController.deleteTimetableEntry);
+
+// Faculty Preview Mode: Student Academic View
+router.get('/preview-student/:studentId', facultyController.getStudentPreview);
+
 // Academic Grading & Marks Entry
 router.get('/grading', facultyController.getGradingRoster);
 router.post('/grading', facultyController.saveGrading);

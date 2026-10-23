@@ -9,9 +9,17 @@
 const fs = require('fs');
 const path = require('path');
 
-// Optional dotenv check
+// Safe dotenv loading
+let dotenv;
 try {
-  const dotenv = require('dotenv');
+  dotenv = require('dotenv');
+} catch (e) {
+  try {
+    dotenv = require(path.resolve(__dirname, '../server/node_modules/dotenv'));
+  } catch (err) {}
+}
+
+if (dotenv) {
   const envPaths = [
     path.resolve(__dirname, '../server/.env'),
     path.resolve(__dirname, '../.env')
@@ -22,8 +30,6 @@ try {
       break;
     }
   }
-} catch (e) {
-  // dotenv optional for dry-run
 }
 
 const isDryRun = process.argv.includes('--dry-run');
@@ -72,7 +78,7 @@ function parseCSV(content) {
 
 function normalizeDate(val) {
   if (!val || val === 'NULL' || val === 'null') return null;
-  val = val.trim();
+  val = String(val).trim();
   if (/^\d{4}-\d{2}-\d{2}$/.test(val)) return val;
   const match = val.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})$/);
   if (match) {
@@ -153,6 +159,290 @@ const IMPORT_SEQUENCE = [
   { table: 'placement', file: '07_tnp/placement.csv' }
 ];
 
+function transformRow(tableName, r, appMap) {
+  switch (tableName) {
+    case 'faculty':
+      return {
+        faculty_id: r.faculty_id,
+        faculty_name: r.faculty_name,
+        faculty_code: `FAC-${String(r.faculty_id).padStart(3, '0')}`,
+        email: r.email,
+        phone_no: r.phone_no,
+        department_id: r.department_id,
+        designation_id: r.designation_id,
+        qualification: r.qualification,
+        joining_date: normalizeDate(r.joining_date),
+        status: r.status || 'Active'
+      };
+
+    case 'staff': {
+      const parts = (r.staff_name || '').trim().split(/\s+/);
+      const firstName = parts[0] || 'Staff';
+      const lastName = parts.length > 1 ? parts[parts.length - 1] : parts[0];
+      const middleName = parts.length > 2 ? parts.slice(1, -1).join(' ') : null;
+      return {
+        staff_id: r.staff_id,
+        first_name: firstName,
+        middle_name: middleName,
+        last_name: lastName,
+        email: r.email,
+        phone_no: r.phone_no,
+        department_id: r.department_id,
+        designation_id: r.designation_id,
+        joining_date: normalizeDate(r.joining_date),
+        status: r.status || 'Active'
+      };
+    }
+
+    case 'course':
+      return {
+        course_id: r.course_id,
+        course_code: r.course_code,
+        course_name: r.course_name,
+        department_id: r.department_id,
+        course_type: r.course_type || 'UG',
+        duration_years: Math.max(1, Math.round(Number(r.duration_semesters || 8) / 2)),
+        total_credits: r.total_credits || 160,
+        status: 'Active'
+      };
+
+    case 'subject':
+      return {
+        subject_id: r.subject_id,
+        subject_code: r.subject_code,
+        subject_name: r.subject_name,
+        course_id: r.course_id,
+        semester_id: r.semester_id,
+        credits: r.credits,
+        subject_type: r.subject_type || 'Theory'
+      };
+
+    case 'librarian':
+      return {
+        librarian_id: 1,
+        staff_id: r.staff_id,
+        email: r.email,
+        phone: r.phone,
+        status: 'Active'
+      };
+
+    case 'job_drive':
+      return {
+        drive_id: r.drive_id,
+        company_id: r.company_id,
+        job_role: r.job_role,
+        job_type: r.job_type || 'Full-time',
+        package: r.package_lpa ? `${r.package_lpa} LPA` : (r.package || 'TBD'),
+        drive_date: normalizeDate(r.drive_date),
+        registration_deadline: normalizeDate(r.registration_deadline),
+        description: r.description || null,
+        status: r.status || 'Open for Registration'
+      };
+
+    case 'exam':
+      return {
+        exam_id: r.exam_id,
+        exam_name: r.exam_name,
+        exam_type: r.exam_type || 'Midterm',
+        academic_year: r.academic_year,
+        semester_id: r.semester_id,
+        start_date: normalizeDate(r.exam_date),
+        end_date: normalizeDate(r.exam_date)
+      };
+
+    case 'book':
+      return {
+        isbn: r.isbn,
+        title: r.title,
+        author_id: r.author_id,
+        publisher_id: r.publisher_id,
+        category_id: r.category_id,
+        edition: r.edition,
+        publication_year: r.publication_year,
+        language: r.language || 'English',
+        total_copies: r.total_copies,
+        available_copies: r.available_copies,
+        shelf_location: r.shelf_no || r.shelf_location || 'A-1',
+        rack_no: r.rack_no || null
+      };
+
+    case 'fee_structure':
+      return {
+        fee_structure_id: r.fee_structure_id,
+        course_id: r.department_id,
+        semester_id: r.semester_id,
+        fee_type: r.fee_type,
+        amount: r.amount,
+        academic_year: r.academic_year,
+        due_date: normalizeDate(r.due_date)
+      };
+
+    case 'book_copy':
+      return {
+        copy_id: r.copy_id,
+        isbn: r.isbn,
+        accession_no: r.accession_no,
+        purchase_date: normalizeDate(r.purchase_date),
+        status: r.status || 'Available',
+        condition_status: r.condition || r.condition_status || 'Good'
+      };
+
+    case 'attendance_session':
+      return {
+        session_id: r.session_id,
+        subject_id: r.subject_id,
+        faculty_id: r.faculty_id,
+        section_id: r.section_id,
+        session_date: normalizeDate(r.session_date),
+        period: r.period_no || r.period || 'Period 1',
+        topic_covered: r.topic || r.topic_covered || 'Regular Lecture'
+      };
+
+    case 'announcement':
+      return {
+        announcement_id: r.announcement_id,
+        title: r.title,
+        description: r.description,
+        category: r.category || 'General',
+        posted_by: r.posted_by,
+        announcement_date: normalizeDate(r.announcement_date)
+      };
+
+    case 'attendance_record':
+      return {
+        record_id: r.attendance_id || r.record_id,
+        session_id: r.session_id,
+        student_id: r.student_id,
+        status: r.attendance_status || r.status || 'Present',
+        remarks: r.remarks || null
+      };
+
+    case 'book_issue':
+      return {
+        issue_id: r.issue_id,
+        copy_id: r.copy_id,
+        student_id: r.student_id,
+        librarian_id: 1,
+        issue_date: normalizeDate(r.issue_date),
+        due_date: normalizeDate(r.due_date),
+        status: r.issue_status || r.status || 'Issued',
+        remarks: r.remarks || null
+      };
+
+    case 'student_fee':
+      return {
+        student_fee_id: r.student_fee_id,
+        student_id: r.student_id,
+        fee_structure_id: r.fee_structure_id,
+        scholarship_id: r.scholarship_id || null,
+        amount_due: r.amount_due,
+        amount_paid: r.amount_paid || 0,
+        due_date: normalizeDate(r.due_date),
+        status: r.status || 'Unpaid',
+        invoice_no: `INV-2026-${String(r.student_fee_id).padStart(4, '0')}`
+      };
+
+    case 'training_enrollment':
+      return {
+        enrollment_id: r.training_enrollment_id || r.enrollment_id,
+        student_id: r.student_id,
+        training_id: r.training_id,
+        enrollment_date: normalizeDate(r.enrollment_date),
+        status: r.status || 'Enrolled'
+      };
+
+    case 'payment':
+      return {
+        payment_id: r.payment_id,
+        student_fee_id: r.student_fee_id,
+        amount: r.amount,
+        payment_date: normalizeDate(r.payment_date),
+        payment_mode: r.payment_mode,
+        transaction_reference: r.transaction_reference || `TXN-${r.payment_id}`,
+        status: r.payment_status || r.status || 'Success'
+      };
+
+    case 'interview':
+      return {
+        interview_id: r.interview_id,
+        application_id: r.application_id,
+        round_no: r.round_no,
+        round_type: r.round_type,
+        interview_date: normalizeDate(r.interview_date),
+        venue: r.venue,
+        status: r.status || 'Scheduled'
+      };
+
+    case 'fine':
+      return {
+        fine_id: r.fine_id,
+        student_id: r.student_id,
+        return_id: null,
+        fine_type: r.fine_type || 'Late Return',
+        fine_amount: r.fine_amount,
+        fine_date: normalizeDate(r.fine_date),
+        paid_date: normalizeDate(r.paid_date),
+        payment_status: r.payment_status || 'Unpaid'
+      };
+
+    case 'placement': {
+      const key = `${r.student_id}_${r.drive_id}`;
+      const appId = appMap ? appMap.get(key) : null;
+      if (!appId) return null;
+      return {
+        placement_id: r.placement_id,
+        application_id: appId,
+        job_role: r.job_role,
+        package: r.package_lpa ? `${r.package_lpa} LPA` : (r.package || 'TBD'),
+        offer_date: normalizeDate(r.joining_date) || '2026-10-01',
+        joining_date: normalizeDate(r.joining_date),
+        status: r.status === 'Offer Accepted' ? 'Accepted' : (r.status || 'Offered')
+      };
+    }
+
+    case 'faculty_subject_assignment':
+      return {
+        assignment_id: r.assignment_id,
+        faculty_id: r.faculty_id,
+        subject_id: r.subject_id,
+        section_id: r.section_id,
+        semester_id: r.semester_id
+      };
+
+    case 'student_subject_enrollment':
+      return {
+        enrollment_id: r.enrollment_id,
+        student_id: r.student_id,
+        subject_id: r.subject_id,
+        semester_id: r.semester_id,
+        academic_year: r.academic_year,
+        status: r.status || 'Enrolled'
+      };
+
+    case 'timetable':
+      return {
+        timetable_id: r.timetable_id,
+        section_id: r.section_id,
+        subject_id: r.subject_id,
+        faculty_id: r.faculty_id,
+        semester_id: r.semester_id || 5,
+        day_of_week: r.day_of_week,
+        start_time: r.start_time,
+        end_time: r.end_time,
+        room_no: r.room_no,
+        timetable_type: r.timetable_type || 'Lecture'
+      };
+
+    default: {
+      const out = {};
+      for (const k of Object.keys(r)) {
+        out[k] = sanitizeVal(k, r[k]);
+      }
+      return out;
+    }
+  }
+}
+
 async function run() {
   console.log('=====================================================');
   console.log(` UNIVERSITY ERP — DATA IMPORT UTILITY (${isDryRun ? 'DRY RUN' : 'LIVE IMPORT'})`);
@@ -169,7 +459,7 @@ async function run() {
     }
 
     const content = fs.readFileSync(fullPath, 'utf8');
-    const { headers, rows } = parseCSV(content);
+    const { rows } = parseCSV(content);
     totalFiles++;
     totalRows += rows.length;
 
@@ -201,25 +491,48 @@ async function run() {
     await connection.beginTransaction();
     await connection.query('SET FOREIGN_KEY_CHECKS = 0');
 
+    let appMap = new Map();
+
     for (const item of IMPORT_SEQUENCE) {
       const fullPath = path.join(dataImportDir, item.file);
       if (!fs.existsSync(fullPath)) continue;
 
       const content = fs.readFileSync(fullPath, 'utf8');
-      const { headers, rows } = parseCSV(content);
+      const { rows } = parseCSV(content);
       if (!rows.length) continue;
 
-      console.log(`Importing ${rows.length} records into \`${item.table}\`...`);
+      // When reaching placement, build application map from DB
+      if (item.table === 'placement') {
+        const [appRows] = await connection.query('SELECT application_id, student_id, drive_id FROM application');
+        appMap = new Map();
+        for (const ar of appRows) {
+          appMap.set(`${ar.student_id}_${ar.drive_id}`, ar.application_id);
+        }
+      }
 
-      const chunkSize = 250;
-      for (let i = 0; i < rows.length; i += chunkSize) {
-        const chunk = rows.slice(i, i + chunkSize);
-        const colNames = headers.map(h => `\`${h}\``).join(', ');
-        const placeholders = chunk.map(() => `(${headers.map(() => '?').join(', ')})`).join(', ');
+      // Transform rows
+      const transformedRows = [];
+      for (const raw of rows) {
+        const tr = transformRow(item.table, raw, appMap);
+        if (tr) transformedRows.push(tr);
+      }
+
+      if (!transformedRows.length) continue;
+
+      const firstRow = transformedRows[0];
+      const targetCols = Object.keys(firstRow);
+      const colNames = targetCols.map(h => `\`${h}\``).join(', ');
+
+      console.log(`Importing ${transformedRows.length} records into \`${item.table}\`...`);
+
+      const chunkSize = 1000;
+      for (let i = 0; i < transformedRows.length; i += chunkSize) {
+        const chunk = transformedRows.slice(i, i + chunkSize);
+        const placeholders = chunk.map(() => `(${targetCols.map(() => '?').join(', ')})`).join(', ');
 
         const flatValues = [];
         for (const row of chunk) {
-          for (const h of headers) {
+          for (const h of targetCols) {
             flatValues.push(sanitizeVal(h, row[h]));
           }
         }
@@ -229,28 +542,55 @@ async function run() {
       }
     }
 
-    console.log('Provisioning login credentials in `user_account` for all students (password: Student@2026)...');
-    const studentHash = '$2a$10$Yjr1.09MV39ZxBLJ2CMyMOqAEHRPbzwnduBAzPufZLn3/EC/MFeI6';
+    // Seed Operational Data for Demo Modules (Exam Applications, Faculty Leave, Faculty Payroll)
+    console.log('Seeding operational records for Exam Applications, Faculty Leave & Payroll...');
     await connection.query(`
-      INSERT IGNORE INTO user_account (identifier, email, password_hash, role, student_id, is_active)
+      INSERT IGNORE INTO exam_application (application_id, app_code, student_id, type, semester_label, subject_code, submission_date, fee_status, approval_status)
+      VALUES
+      (1, 'EX-APP-2026-01', 1, 'Regular Semester Exam', 'Semester 5 (Autumn 2026)', NULL, '2026-09-28', 'Paid', 'Approved'),
+      (2, 'REV-2026-04', 1, 'Paper Revaluation', 'Semester 4 (Spring 2026)', 'CS401 - Database Systems', '2026-08-10', 'Paid', 'Approved')
+    `);
+
+    await connection.query(`
+      INSERT IGNORE INTO faculty_leave (leave_id, leave_code, faculty_id, leave_type, start_date, end_date, days_count, reason, cover_faculty_name, status, applied_on, approver_comments)
+      VALUES
+      (1, 'LV-2026-042', 1, 'Casual Leave (CL)', '2026-10-24', '2026-10-25', 2, 'Attending IEEE International Conference on Cloud & AI', 'Varun Pawar', 'Approved', '2026-10-04', 'Duty leave sanctioned for technical conference presentation.'),
+      (2, 'LV-2026-021', 1, 'Sick Leave (SL)', '2026-09-12', '2026-09-13', 2, 'Viral fever and recovery', 'Manasi Kadam', 'Approved', '2026-09-11', 'Medical certificate verified.')
+    `);
+
+    await connection.query(`
+      INSERT IGNORE INTO faculty_payroll (payroll_id, slip_id, faculty_id, month, year, basic_salary, da_allowance, hra_allowance, travel_allowance, academic_allowance, gross_salary, pf_deduction, income_tax, professional_tax, total_deductions, net_salary, disbursement_date, payment_mode, status)
+      VALUES
+      (1, 'PAY-2026-10', 1, 'October', 2026, 110000.00, 15000.00, 12000.00, 4000.00, 4000.00, 145000.00, 9000.00, 8500.00, 500.00, 18000.00, 127000.00, '2026-10-01', 'Electronic Direct Deposit', 'Paid'),
+      (2, 'PAY-2026-09', 1, 'September', 2026, 110000.00, 15000.00, 12000.00, 4000.00, 4000.00, 145000.00, 9000.00, 8500.00, 500.00, 18000.00, 127000.00, '2026-09-01', 'Electronic Direct Deposit', 'Paid')
+    `);
+
+    // Provision Login Credentials in user_account
+    console.log('Provisioning login credentials in `user_account` for all students (password: Student@2026)...');
+    const studentHash = '$2a$10$khTD.1dS3/lNvlkHb8OK2.MfXJz0GUT1FoD8fo..iowCtCW3x/q/y';
+    await connection.query(`
+      INSERT INTO user_account (identifier, email, password_hash, role, student_id, is_active)
       SELECT roll_no, email, ?, 'STUDENT', student_id, TRUE
       FROM student
+      ON DUPLICATE KEY UPDATE password_hash = VALUES(password_hash), student_id = VALUES(student_id), is_active = TRUE
     `, [studentHash]);
 
     console.log('Provisioning login credentials in `user_account` for all faculty (password: Faculty@2026)...');
-    const facultyHash = '$2a$10$cRhUL9dF1xc8I7kYza3lGe7n9rDFpb8WUa7Oa06znap/cipLPJn8e';
+    const facultyHash = '$2a$10$NGCI5I5UBe6bNltsJ.niku.wkJ6LxC0NIDgG8kAxY/mtPzqrmFf9u';
     await connection.query(`
-      INSERT IGNORE INTO user_account (identifier, email, password_hash, role, faculty_id, is_active)
+      INSERT INTO user_account (identifier, email, password_hash, role, faculty_id, is_active)
       SELECT email, email, ?, 'FACULTY', faculty_id, TRUE
       FROM faculty
+      ON DUPLICATE KEY UPDATE password_hash = VALUES(password_hash), faculty_id = VALUES(faculty_id), is_active = TRUE
     `, [facultyHash]);
 
     await connection.query('SET FOREIGN_KEY_CHECKS = 1');
     await connection.commit();
-    console.log('\n[SUCCESS] All CSV data and user accounts successfully imported into MySQL!');
+    console.log('\n[SUCCESS] All CSV data, operational records, and user accounts successfully imported into MySQL!');
   } catch (err) {
     await connection.rollback();
     console.error('\n[ERROR] Import failed. Rolled back transaction.', err);
+    process.exit(1);
   } finally {
     await connection.end();
   }

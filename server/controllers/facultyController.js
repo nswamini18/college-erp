@@ -1,47 +1,44 @@
 const { pool, query } = require('../config/db');
 
+function formatTime12(tStr) {
+  if (!tStr) return '';
+  const parts = String(tStr).split(':');
+  const h = parseInt(parts[0], 10);
+  const m = parts[1] || '00';
+  if (isNaN(h)) return String(tStr);
+  const period = h >= 12 ? 'PM' : 'AM';
+  const h12 = h % 12 || 12;
+  return `${String(h12).padStart(2, '0')}:${m} ${period}`;
+}
+
 /**
  * Get Faculty Profile
  * GET /api/faculty/profile
  */
 async function getProfile(req, res, next) {
   try {
-    const facultyId = req.user.faculty_id || 1;
+    const facultyId = req.user.faculty_id;
+    if (!facultyId) {
+      return res.status(403).json({ success: false, message: 'Faculty ID not associated with account.' });
+    }
 
-    try {
-      const [faculties] = await query(
-        `SELECT f.*, d.department_name, des.designation_name
-         FROM faculty f
-         JOIN department d ON f.department_id = d.department_id
-         JOIN designation des ON f.designation_id = des.designation_id
-         WHERE f.faculty_id = ?`,
-        [facultyId]
-      );
+    const [faculties] = await query(
+      `SELECT f.*, d.department_name, des.designation_name
+       FROM faculty f
+       JOIN department d ON f.department_id = d.department_id
+       JOIN designation des ON f.designation_id = des.designation_id
+       WHERE f.faculty_id = ?
+       LIMIT 1`,
+      [facultyId]
+    );
 
-      if (faculties.length > 0) {
-        return res.json({
-          success: true,
-          data: faculties[0]
-        });
-      }
-    } catch (err) {
-      console.warn('[FACULTY PROFILE] DB fetch failed, using fallback:', err.message);
+    if (faculties.length === 0) {
+      return res.status(404).json({ success: false, message: 'Faculty record not found.' });
     }
 
     res.json({
       success: true,
-      data: {
-        faculty_id: 1,
-        faculty_name: "Dr. Arvind Sharma",
-        faculty_code: "FAC-CSE-001",
-        email: "arvind.sharma@college.edu",
-        phone_no: "9820011223",
-        department_name: "Computer Science & Engineering",
-        designation_name: "Professor & Head of Department",
-        qualification: "Ph.D. Computer Science (IIT Bombay)",
-        joining_date: "2016-07-01",
-        status: "Active"
-      }
+      data: faculties[0]
     });
   } catch (error) {
     next(error);
@@ -54,42 +51,53 @@ async function getProfile(req, res, next) {
  */
 async function getDashboard(req, res, next) {
   try {
-    const facultyId = req.user.faculty_id || 1;
-
-    try {
-      const [timetable] = await query(
-        `SELECT t.*, s.subject_name, s.subject_code, sec.section_name
-         FROM timetable t
-         JOIN subject s ON t.subject_id = s.subject_id
-         JOIN section sec ON t.section_id = sec.section_id
-         WHERE t.faculty_id = ?
-         ORDER BY t.start_time ASC`,
-        [facultyId]
-      );
-
-      return res.json({
-        success: true,
-        data: {
-          todayLectures: timetable.map(t => ({
-            time: `${t.start_time.slice(0, 5)} - ${t.end_time.slice(0, 5)}`,
-            subject: `${t.subject_name} (${t.subject_code})`,
-            classSection: t.section_name,
-            room: t.room_no,
-            status: "Upcoming"
-          }))
-        }
-      });
-    } catch (err) {
-      console.warn('[FACULTY DASHBOARD] DB fetch failed, using fallback:', err.message);
+    const facultyId = req.user.faculty_id;
+    if (!facultyId) {
+      return res.status(403).json({ success: false, message: 'Faculty ID not associated with account.' });
     }
+
+    const [timetable] = await query(
+      `SELECT t.*, s.subject_name, s.subject_code, sec.section_name
+       FROM timetable t
+       JOIN subject s ON t.subject_id = s.subject_id
+       JOIN section sec ON t.section_id = sec.section_id
+       WHERE t.faculty_id = ?
+       ORDER BY FIELD(t.day_of_week, 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'), t.start_time ASC`,
+      [facultyId]
+    );
+
+    const [recentAttendance] = await query(
+      `SELECT ses.session_id, ses.session_date, s.subject_code, s.subject_name, sec.section_name,
+              COUNT(rec.record_id) AS total_students,
+              SUM(CASE WHEN rec.status = 'Present' THEN 1 ELSE 0 END) AS present_count
+       FROM attendance_session ses
+       JOIN subject s ON ses.subject_id = s.subject_id
+       JOIN section sec ON ses.section_id = sec.section_id
+       LEFT JOIN attendance_record rec ON ses.session_id = rec.session_id
+       WHERE ses.faculty_id = ?
+       GROUP BY ses.session_id, ses.session_date, s.subject_code, s.subject_name, sec.section_name
+       ORDER BY ses.session_date DESC
+       LIMIT 5`,
+      [facultyId]
+    );
 
     res.json({
       success: true,
       data: {
-        todayLectures: [
-          { time: "10:15 AM - 11:15 AM", subject: "Database Management Systems (CS302)", classSection: "B.Tech CSE - Section A", room: "AB-301", status: "Completed" },
-          { time: "02:00 PM - 04:00 PM", subject: "DBMS Advanced Laboratory (CS302P)", classSection: "B.Tech CSE - Section A", room: "Lab 304", status: "Upcoming" }
-        ]
+        todayLectures: (timetable || []).map(t => {
+          const s12 = formatTime12(t.start_time);
+          const e12 = formatTime12(t.end_time);
+          return {
+            time: `${s12} - ${e12}`,
+            subject: `${t.subject_name} (${t.subject_code})`,
+            classSection: t.section_name,
+            room: t.room_no,
+            day: t.day_of_week,
+            type: t.timetable_type || (t.room_no && t.room_no.toLowerCase().includes('lab') ? 'Lab' : 'Lecture'),
+            status: "Scheduled"
+          };
+        }),
+        recentAttendance: recentAttendance || []
       }
     });
   } catch (error) {
@@ -103,63 +111,100 @@ async function getDashboard(req, res, next) {
  */
 async function getAttendanceRoster(req, res, next) {
   try {
-    const facultyId = req.user.faculty_id || 1;
-
-    try {
-      // Find students in the section taught by this faculty
-      const [students] = await query(
-        `SELECT s.student_id, s.roll_no, s.student_name AS name, 'Present' as status
-         FROM student s
-         WHERE s.department_id = 1 AND s.section_id = 1
-         LIMIT 50`
-      );
-
-      const [sessions] = await query(
-        `SELECT ses.session_id AS id, ses.session_date AS date, sec.section_name AS division,
-                CONCAT(sub.subject_code, ' - ', sub.subject_name) AS subject,
-                ses.period,
-                COUNT(rec.record_id) AS total_students,
-                SUM(CASE WHEN rec.status = 'Present' THEN 1 ELSE 0 END) AS present_count,
-                SUM(CASE WHEN rec.status = 'Absent' THEN 1 ELSE 0 END) AS absent_count,
-                ses.created_at AS saved_at,
-                TRUE AS can_edit
-         FROM attendance_session ses
-         JOIN subject sub ON ses.subject_id = sub.subject_id
-         JOIN section sec ON ses.section_id = sec.section_id
-         LEFT JOIN attendance_record rec ON ses.session_id = rec.session_id
-         WHERE ses.faculty_id = ?
-         GROUP BY ses.session_id
-         ORDER BY ses.session_date DESC
-         LIMIT 10`,
-        [facultyId]
-      );
-
-      if (students.length > 0) {
-        return res.json({
-          success: true,
-          data: {
-            roster: students,
-            savedLogs: sessions
-          }
-        });
-      }
-    } catch (err) {
-      console.warn('[FACULTY ATTENDANCE] DB fetch failed, using fallback:', err.message);
+    const facultyId = req.user.faculty_id;
+    if (!facultyId) {
+      return res.status(403).json({ success: false, message: 'Faculty ID not associated with account.' });
     }
+
+    // Get faculty department
+    const [fac] = await query('SELECT department_id FROM faculty WHERE faculty_id = ?', [facultyId]);
+    const deptId = fac[0]?.department_id || 1;
+
+    // Check if a specific section was requested
+    const requestedSectionId = req.query.section_id ? parseInt(req.query.section_id, 10) : null;
+
+    // Get faculty's assigned sections from timetable
+    const [assignedSections] = await query(
+      `SELECT DISTINCT sec.section_id, sec.section_name
+       FROM timetable t
+       JOIN section sec ON t.section_id = sec.section_id
+       WHERE t.faculty_id = ?
+       ORDER BY sec.section_id ASC`,
+      [facultyId]
+    );
+
+    // Get faculty's assigned subjects from timetable
+    const [assignedSubjects] = await query(
+      `SELECT DISTINCT s.subject_id, s.subject_code, s.subject_name
+       FROM timetable t
+       JOIN subject s ON t.subject_id = s.subject_id
+       WHERE t.faculty_id = ?
+       ORDER BY s.subject_id ASC`,
+      [facultyId]
+    );
+
+    const activeSectionId = requestedSectionId || assignedSections[0]?.section_id || 1;
+
+    // Find students for active section
+    const [students] = await query(
+      `SELECT s.student_id, s.roll_no, s.student_name AS name, 'Present' as status
+       FROM student s
+       WHERE s.section_id = ?
+       ORDER BY s.roll_no ASC`,
+      [activeSectionId]
+    );
+
+    const [sessions] = await query(
+      `SELECT ses.session_id AS id, ses.session_date AS date, sec.section_name AS division,
+              CONCAT(sub.subject_code, ' - ', sub.subject_name) AS subject,
+              ses.period,
+              COUNT(rec.record_id) AS total_students,
+              SUM(CASE WHEN rec.status = 'Present' THEN 1 ELSE 0 END) AS present_count,
+              SUM(CASE WHEN rec.status = 'Absent' THEN 1 ELSE 0 END) AS absent_count,
+              ses.created_at AS saved_at,
+              TRUE AS can_edit
+       FROM attendance_session ses
+       JOIN subject sub ON ses.subject_id = sub.subject_id
+       JOIN section sec ON ses.section_id = sec.section_id
+       LEFT JOIN attendance_record rec ON ses.session_id = rec.session_id
+       WHERE ses.faculty_id = ?
+       GROUP BY ses.session_id, ses.session_date, sec.section_name, sub.subject_code, sub.subject_name, ses.period, ses.created_at
+       ORDER BY ses.session_date DESC
+       LIMIT 50`,
+      [facultyId]
+    );
+
+    // Full timetable for this faculty
+    const [facultyTimetable] = await query(
+      `SELECT t.*, s.subject_name, s.subject_code, sec.section_name
+       FROM timetable t
+       JOIN subject s ON t.subject_id = s.subject_id
+       JOIN section sec ON t.section_id = sec.section_id
+       WHERE t.faculty_id = ?
+       ORDER BY FIELD(t.day_of_week, 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'), t.start_time ASC`,
+      [facultyId]
+    );
 
     res.json({
       success: true,
       data: {
-        roster: [
-          { student_id: 1, roll_no: "CS2023001", name: "Aarav Sharma", status: "Present" },
-          { student_id: 2, roll_no: "CS2023002", name: "Aditi Rao", status: "Present" },
-          { student_id: 3, roll_no: "CS2023003", name: "Ananya Iyer", status: "Present" },
-          { student_id: 4, roll_no: "CS2023004", name: "Devansh Mehta", status: "Present" },
-          { student_id: 5, roll_no: "CS2023005", name: "Ishaan Verma", status: "Present" }
-        ],
-        savedLogs: [
-          { id: "LOG-1001", date: "2026-10-09", division: "B.Tech CSE - Section A", subject: "CS302 - Database Management Systems", period: "Period 2 (10:15 AM - 11:15 AM)", total_students: 5, present_count: 4, absent_count: 1, saved_at: "2026-10-09 11:20 AM", can_edit: true }
-        ]
+        roster: students || [],
+        savedLogs: sessions || [],
+        sections: assignedSections.length > 0 ? assignedSections : [{ section_id: 1, section_name: 'Section 1' }],
+        subjects: assignedSubjects || [],
+        timetable: (facultyTimetable || []).map(t => {
+          const s12 = formatTime12(t.start_time);
+          const e12 = formatTime12(t.end_time);
+          return {
+            time: `${s12} - ${e12}`,
+            subject: `${t.subject_name} (${t.subject_code})`,
+            classSection: t.section_name,
+            room: t.room_no,
+            day: t.day_of_week,
+            type: t.timetable_type || (t.room_no && t.room_no.toLowerCase().includes('lab') ? 'Lab' : 'Lecture'),
+            status: "Scheduled"
+          };
+        })
       }
     });
   } catch (error) {
@@ -170,13 +215,17 @@ async function getAttendanceRoster(req, res, next) {
 /**
  * Save Attendance Session & Records with Transaction
  * POST /api/faculty/attendance
+ * Idempotent: Repeated submissions for the same section/subject/date/period update existing records.
  */
 async function saveAttendance(req, res, next) {
   let conn;
   try {
-    const facultyId = req.user.faculty_id || 1;
-    const { date, subject_id, section_id, period, topic, records } = req.body;
+    const facultyId = req.user.faculty_id;
+    if (!facultyId) {
+      return res.status(403).json({ success: false, message: 'Faculty ID not associated with account.' });
+    }
 
+    const { date, subject_id, section_id, period, topic, records } = req.body;
     if (!records || !Array.isArray(records)) {
       return res.status(400).json({
         success: false,
@@ -184,48 +233,66 @@ async function saveAttendance(req, res, next) {
       });
     }
 
-    try {
-      conn = await pool.getConnection();
-      await conn.beginTransaction();
+    const sessionDate = date || new Date().toISOString().split('T')[0];
+    const sessionPeriod = period || 'Period 1';
+    const subId = subject_id || 1;
+    const secId = section_id || 1;
 
+    conn = await pool.getConnection();
+    await conn.beginTransaction();
+
+    // Check if session exists for this subject, section, date, and period (concurrency lock)
+    const [existingSessions] = await conn.execute(
+      `SELECT session_id FROM attendance_session
+       WHERE subject_id = ? AND section_id = ? AND session_date = ? AND period = ?
+       LIMIT 1 FOR UPDATE`,
+      [subId, secId, sessionDate, sessionPeriod]
+    );
+
+    let sessionId;
+    let isUpdate = false;
+
+    if (existingSessions.length > 0) {
+      sessionId = existingSessions[0].session_id;
+      isUpdate = true;
+      await conn.execute(
+        `UPDATE attendance_session SET faculty_id = ?, topic_covered = ? WHERE session_id = ?`,
+        [facultyId, topic || 'Curriculum Lecture Session', sessionId]
+      );
+    } else {
       const [sessResult] = await conn.execute(
         `INSERT INTO attendance_session (subject_id, faculty_id, section_id, session_date, period, topic_covered)
          VALUES (?, ?, ?, ?, ?, ?)`,
-        [subject_id || 2, facultyId, section_id || 1, date || new Date().toISOString().split('T')[0], period || 'Period 1', topic || 'Lecture']
+        [subId, facultyId, secId, sessionDate, sessionPeriod, topic || 'Curriculum Lecture Session']
       );
-
-      const sessionId = sessResult.insertId;
-
-      for (const rec of records) {
-        await conn.execute(
-          `INSERT INTO attendance_record (session_id, student_id, status)
-           VALUES (?, ?, ?)
-           ON DUPLICATE KEY UPDATE status = VALUES(status)`,
-          [sessionId, rec.student_id, rec.status || 'Present']
-        );
-      }
-
-      await conn.commit();
-
-      return res.status(201).json({
-        success: true,
-        message: `Attendance session successfully logged for ${records.length} students.`,
-        sessionId
-      });
-    } catch (err) {
-      if (conn) await conn.rollback();
-      console.warn('[ATTENDANCE SAVE] Transaction error, using prototype fallback:', err.message);
-    } finally {
-      if (conn) conn.release();
+      sessionId = sessResult.insertId;
     }
 
-    res.status(201).json({
+    // Atomic multi-row upsert
+    for (const rec of records) {
+      await conn.execute(
+        `INSERT INTO attendance_record (session_id, student_id, status)
+         VALUES (?, ?, ?)
+         ON DUPLICATE KEY UPDATE status = VALUES(status)`,
+        [sessionId, rec.student_id, rec.status || 'Present']
+      );
+    }
+
+    await conn.commit();
+
+    return res.status(201).json({
       success: true,
-      message: 'Attendance saved in prototype session.',
-      sessionId: `LOG-${Date.now().toString().slice(-4)}`
+      message: isUpdate 
+        ? `Attendance records updated successfully for ${records.length} students (Session #${sessionId}).`
+        : `Attendance session successfully logged for ${records.length} students (Session #${sessionId}).`,
+      sessionId,
+      isUpdate
     });
-  } catch (error) {
-    next(error);
+  } catch (err) {
+    if (conn) await conn.rollback();
+    next(err);
+  } finally {
+    if (conn) conn.release();
   }
 }
 
@@ -235,35 +302,31 @@ async function saveAttendance(req, res, next) {
  */
 async function getGradingRoster(req, res, next) {
   try {
-    const facultyId = req.user.faculty_id || 1;
-
-    try {
-      const [marks] = await query(
-        `SELECT m.mark_id, m.marks_obtained, m.grade_letter, m.status,
-                s.student_id, s.roll_no, s.student_name AS name
-         FROM marks m
-         JOIN student s ON m.student_id = s.student_id
-         WHERE s.department_id = 1
-         LIMIT 20`
-      );
-
-      if (marks.length > 0) {
-        return res.json({
-          success: true,
-          data: marks
-        });
-      }
-    } catch (err) {
-      console.warn('[FACULTY GRADING] DB fetch failed, using fallback:', err.message);
+    const facultyId = req.user.faculty_id;
+    if (!facultyId) {
+      return res.status(403).json({ success: false, message: 'Faculty ID not associated with account.' });
     }
+
+    const [fac] = await query('SELECT department_id FROM faculty WHERE faculty_id = ?', [facultyId]);
+    const deptId = fac[0]?.department_id || 1;
+
+    const [marks] = await query(
+      `SELECT m.mark_id, m.marks_obtained, m.max_marks, m.grade_letter, m.status,
+              s.student_id, s.roll_no, s.student_name AS name,
+              sub.subject_code, sub.subject_name
+       FROM marks m
+       JOIN student s ON m.student_id = s.student_id
+       JOIN exam_schedule es ON m.schedule_id = es.schedule_id
+       JOIN subject sub ON es.subject_id = sub.subject_id
+       WHERE s.department_id = ?
+       ORDER BY s.roll_no ASC
+       LIMIT 30`,
+      [deptId]
+    );
 
     res.json({
       success: true,
-      data: [
-        { student_id: 1, roll_no: "CS2023001", name: "Aarav Sharma", marks_obtained: 44, grade_letter: "A+", status: "Present" },
-        { student_id: 2, roll_no: "CS2023002", name: "Aditi Rao", marks_obtained: 47, grade_letter: "O", status: "Present" },
-        { student_id: 3, roll_no: "CS2023003", name: "Ananya Iyer", marks_obtained: 41, grade_letter: "A", status: "Present" }
-      ]
+      data: marks || []
     });
   } catch (error) {
     next(error);
@@ -284,24 +347,16 @@ async function saveGrading(req, res, next) {
       });
     }
 
-    try {
-      for (const m of marks) {
-        await query(
-          `UPDATE marks SET marks_obtained = ?, grade_letter = ?, status = ? WHERE student_id = ?`,
-          [m.marks_obtained, m.grade_letter, m.status, m.student_id]
-        );
-      }
-      return res.json({
-        success: true,
-        message: `Successfully updated marks for ${marks.length} students.`
-      });
-    } catch (err) {
-      console.warn('[SAVE GRADING] DB update failed:', err.message);
+    for (const m of marks) {
+      await query(
+        `UPDATE marks SET marks_obtained = ?, grade_letter = ?, status = ? WHERE student_id = ?`,
+        [m.marks_obtained, m.grade_letter, m.status || 'Present', m.student_id]
+      );
     }
 
-    res.json({
+    return res.json({
       success: true,
-      message: 'Marks updated in prototype session.'
+      message: `Successfully updated marks for ${marks.length} students.`
     });
   } catch (error) {
     next(error);
@@ -314,35 +369,24 @@ async function saveGrading(req, res, next) {
  */
 async function getLeave(req, res, next) {
   try {
-    const facultyId = req.user.faculty_id || 1;
-
-    try {
-      const [leaves] = await query(
-        `SELECT l.leave_id AS id, l.leave_code, l.leave_type, l.start_date, l.end_date,
-                l.days_count, l.reason, l.cover_faculty_name AS cover_faculty,
-                l.status, l.applied_on, l.approver_comments
-         FROM faculty_leave l
-         WHERE l.faculty_id = ?
-         ORDER BY l.applied_on DESC`,
-        [facultyId]
-      );
-
-      if (leaves.length > 0) {
-        return res.json({
-          success: true,
-          data: leaves
-        });
-      }
-    } catch (err) {
-      console.warn('[FACULTY LEAVE] DB fetch failed, using fallback:', err.message);
+    const facultyId = req.user.faculty_id;
+    if (!facultyId) {
+      return res.status(403).json({ success: false, message: 'Faculty ID not associated with account.' });
     }
+
+    const [leaves] = await query(
+      `SELECT l.leave_id AS id, l.leave_code, l.leave_type, l.start_date, l.end_date,
+              l.days_count, l.reason, l.cover_faculty_name AS cover_faculty,
+              l.status, l.applied_on, l.approver_comments
+       FROM faculty_leave l
+       WHERE l.faculty_id = ?
+       ORDER BY l.applied_on DESC`,
+      [facultyId]
+    );
 
     res.json({
       success: true,
-      data: [
-        { id: "LV-2026-042", leave_type: "Casual Leave (CL)", start_date: "2026-10-24", end_date: "2026-10-25", days_count: 2, reason: "Attending IEEE International Conference on Cloud & AI", cover_faculty: "Prof. Sunita Rao (Associate Professor)", status: "Approved", applied_on: "2026-10-04", approver_comments: "Duty leave sanctioned for technical conference presentation." },
-        { id: "LV-2026-021", leave_type: "Sick Leave (SL)", start_date: "2026-09-12", end_date: "2026-09-13", days_count: 2, reason: "Viral fever and recovery", cover_faculty: "Prof. Kunal Joshi (Assistant Professor)", status: "Approved", applied_on: "2026-09-11", approver_comments: "Medical certificate verified by university dispensary." }
-      ]
+      data: leaves || []
     });
   } catch (error) {
     next(error);
@@ -355,49 +399,33 @@ async function getLeave(req, res, next) {
  */
 async function applyLeave(req, res, next) {
   try {
-    const facultyId = req.user.faculty_id || 1;
-    const { leave_type, start_date, end_date, days_count, reason, cover_faculty } = req.body;
+    const facultyId = req.user.faculty_id;
+    if (!facultyId) {
+      return res.status(403).json({ success: false, message: 'Faculty ID not associated with account.' });
+    }
 
-    if (!leave_type || !start_date || !end_date || !reason) {
+    const { leave_type, start_date, end_date, days_count, reason, cover_faculty } = req.body;
+    if (!leave_type || !start_date || !end_date) {
       return res.status(400).json({
         success: false,
-        message: 'Leave type, start date, end date, and reason are required.'
+        message: 'Leave type, start date, and end date are required.'
       });
     }
 
-    const leaveCode = `LV-2026-${Date.now().toString().slice(-3)}`;
+    const leaveCode = `LV-2026-${Date.now().toString().slice(-4)}`;
 
-    try {
-      await query(
-        `INSERT INTO faculty_leave (leave_code, faculty_id, leave_type, start_date, end_date, days_count, reason, cover_faculty_name, status, applied_on)
-         VALUES (?, ?, ?, ?, ?, ?, ?, ?, 'Pending Dean Review', CURDATE())`,
-        [leaveCode, facultyId, leave_type, start_date, end_date, days_count || 1, reason, cover_faculty || null]
-      );
-
-      return res.status(201).json({
-        success: true,
-        message: 'Leave application submitted for Dean review.',
-        data: {
-          id: leaveCode,
-          leave_type,
-          start_date,
-          end_date,
-          days_count,
-          reason,
-          cover_faculty,
-          status: 'Pending Dean Review',
-          applied_on: new Date().toISOString().split('T')[0]
-        }
-      });
-    } catch (err) {
-      console.warn('[FACULTY LEAVE APPLY] DB insert failed:', err.message);
-    }
+    await query(
+      `INSERT INTO faculty_leave (leave_code, faculty_id, leave_type, start_date, end_date, days_count, reason, cover_faculty_name, status, applied_on)
+       VALUES (?, ?, ?, ?, ?, ?, ?, ?, 'Pending Dean Review', CURDATE())`,
+      [leaveCode, facultyId, leave_type, start_date, end_date, days_count || 1, reason || 'Personal Leave', cover_faculty || null]
+    );
 
     res.status(201).json({
       success: true,
-      message: 'Leave application recorded in prototype session.',
+      message: 'Leave application submitted successfully.',
       data: {
         id: leaveCode,
+        leave_code: leaveCode,
         leave_type,
         start_date,
         end_date,
@@ -414,56 +442,302 @@ async function applyLeave(req, res, next) {
 }
 
 /**
- * Get Faculty Payroll & Payslips
+ * Get Faculty Payroll & Monthly Payslips
  * GET /api/faculty/payroll
  */
 async function getPayroll(req, res, next) {
   try {
-    const facultyId = req.user.faculty_id || 1;
-
-    try {
-      const [payslips] = await query(
-        `SELECT p.*, p.slip_id
-         FROM faculty_payroll p
-         WHERE p.faculty_id = ?
-         ORDER BY p.year DESC, p.disbursement_date DESC`,
-        [facultyId]
-      );
-
-      if (payslips.length > 0) {
-        return res.json({
-          success: true,
-          data: payslips.map(p => ({
-            slip_id: p.slip_id,
-            month: p.month,
-            year: p.year,
-            basic_salary: Number(p.basic_salary),
-            da_allowance: Number(p.da_allowance),
-            hra_allowance: Number(p.hra_allowance),
-            travel_allowance: Number(p.travel_allowance),
-            academic_allowance: Number(p.academic_allowance),
-            gross_salary: Number(p.gross_salary),
-            pf_deduction: Number(p.pf_deduction),
-            income_tax: Number(p.income_tax),
-            professional_tax: Number(p.professional_tax),
-            total_deductions: Number(p.total_deductions),
-            net_salary: Number(p.net_salary),
-            disbursement_date: p.disbursement_date,
-            payment_mode: p.payment_mode,
-            status: p.status
-          }))
-        });
-      }
-    } catch (err) {
-      console.warn('[FACULTY PAYROLL] DB fetch failed, using fallback:', err.message);
+    const facultyId = req.user.faculty_id;
+    if (!facultyId) {
+      return res.status(403).json({ success: false, message: 'Faculty ID not associated with account.' });
     }
+
+    const [payroll] = await query(
+      `SELECT * FROM faculty_payroll
+       WHERE faculty_id = ?
+       ORDER BY year DESC, month DESC`,
+      [facultyId]
+    );
 
     res.json({
       success: true,
-      data: [
-        { slip_id: "PAY-2026-10", month: "October", year: 2026, basic_salary: 110000, da_allowance: 15000, hra_allowance: 12000, travel_allowance: 4000, academic_allowance: 4000, gross_salary: 145000, pf_deduction: 9000, income_tax: 8500, professional_tax: 500, total_deductions: 18000, net_salary: 127000, disbursement_date: "2026-10-01", payment_mode: "Electronic Direct Deposit (HDFC Bank)", status: "Paid" },
-        { slip_id: "PAY-2026-09", month: "September", year: 2026, basic_salary: 110000, da_allowance: 15000, hra_allowance: 12000, travel_allowance: 4000, academic_allowance: 4000, gross_salary: 145000, pf_deduction: 9000, income_tax: 8500, professional_tax: 500, total_deductions: 18000, net_salary: 127000, disbursement_date: "2026-09-01", payment_mode: "Electronic Direct Deposit (HDFC Bank)", status: "Paid" }
-      ]
+      data: (payroll || []).map(p => ({
+        id: p.slip_id,
+        slip_id: p.slip_id,
+        month: p.month,
+        year: p.year,
+        basic_salary: Number(p.basic_salary),
+        da_allowance: Number(p.da_allowance),
+        hra_allowance: Number(p.hra_allowance),
+        travel_allowance: Number(p.travel_allowance),
+        academic_allowance: Number(p.academic_allowance),
+        gross_salary: Number(p.gross_salary),
+        pf_deduction: Number(p.pf_deduction),
+        income_tax: Number(p.income_tax),
+        professional_tax: Number(p.professional_tax),
+        total_deductions: Number(p.total_deductions),
+        net_salary: Number(p.net_salary),
+        disbursement_date: p.disbursement_date,
+        payment_mode: p.payment_mode,
+        status: p.status
+      }))
+    });
+  } catch (error) {
+    next(error);
+  }
+}
+
+/**
+ * Get Faculty Timetable with conflict resolution metadata
+ * GET /api/faculty/timetable
+ */
+async function getTimetable(req, res, next) {
+  try {
+    const facultyId = req.user.faculty_id;
+    if (!facultyId) {
+      return res.status(403).json({ success: false, message: 'Faculty ID required.' });
+    }
+
+    const [timetable] = await query(
+      `SELECT t.*, s.subject_name, s.subject_code, sec.section_name, d.department_name
+       FROM timetable t
+       JOIN subject s ON t.subject_id = s.subject_id
+       JOIN section sec ON t.section_id = sec.section_id
+       JOIN department d ON sec.department_id = d.department_id
+       WHERE t.faculty_id = ?
+       ORDER BY FIELD(t.day_of_week, 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'), t.start_time ASC`,
+      [facultyId]
+    );
+
+    res.json({
+      success: true,
+      data: (timetable || []).map(t => ({
+        ...t,
+        start_time_12: formatTime12(t.start_time),
+        end_time_12: formatTime12(t.end_time),
+        time: `${formatTime12(t.start_time)} - ${formatTime12(t.end_time)}`
+      }))
+    });
+  } catch (error) {
+    next(error);
+  }
+}
+
+/**
+ * Create Timetable Slot with Scheduling Conflict Detection
+ * POST /api/faculty/timetable
+ */
+async function createTimetableEntry(req, res, next) {
+  try {
+    const facultyId = req.user.faculty_id;
+    if (!facultyId) {
+      return res.status(403).json({ success: false, message: 'Faculty ID required.' });
+    }
+
+    const { section_id, subject_id, semester_id, day_of_week, start_time, end_time, room_no, timetable_type } = req.body;
+
+    if (!section_id || !subject_id || !day_of_week || !start_time || !end_time || !room_no) {
+      return res.status(400).json({
+        success: false,
+        message: 'section_id, subject_id, day_of_week, start_time, end_time, and room_no are required.'
+      });
+    }
+
+    // 1. Conflict Check: Section schedule overlap
+    const [secConflict] = await query(
+      `SELECT t.*, s.subject_name FROM timetable t
+       JOIN subject s ON t.subject_id = s.subject_id
+       WHERE t.section_id = ? AND t.day_of_week = ?
+         AND NOT (t.end_time <= ? OR t.start_time >= ?)`,
+      [section_id, day_of_week, start_time, end_time]
+    );
+    if (secConflict.length > 0) {
+      return res.status(409).json({
+        success: false,
+        message: `Scheduling Conflict: Section already has lecture '${secConflict[0].subject_name}' scheduled on ${day_of_week} (${formatTime12(secConflict[0].start_time)} - ${formatTime12(secConflict[0].end_time)}).`
+      });
+    }
+
+    // 2. Conflict Check: Faculty schedule overlap
+    const [facConflict] = await query(
+      `SELECT t.*, s.subject_name FROM timetable t
+       JOIN subject s ON t.subject_id = s.subject_id
+       WHERE t.faculty_id = ? AND t.day_of_week = ?
+         AND NOT (t.end_time <= ? OR t.start_time >= ?)`,
+      [facultyId, day_of_week, start_time, end_time]
+    );
+    if (facConflict.length > 0) {
+      return res.status(409).json({
+        success: false,
+        message: `Faculty Scheduling Conflict: You already have lecture '${facConflict[0].subject_name}' assigned on ${day_of_week} (${formatTime12(facConflict[0].start_time)} - ${formatTime12(facConflict[0].end_time)}).`
+      });
+    }
+
+    // 3. Conflict Check: Venue / Room overlap
+    const [roomConflict] = await query(
+      `SELECT t.*, s.subject_name, sec.section_name FROM timetable t
+       JOIN subject s ON t.subject_id = s.subject_id
+       JOIN section sec ON t.section_id = sec.section_id
+       WHERE t.room_no = ? AND t.day_of_week = ?
+         AND NOT (t.end_time <= ? OR t.start_time >= ?)`,
+      [room_no, day_of_week, start_time, end_time]
+    );
+    if (roomConflict.length > 0) {
+      return res.status(409).json({
+        success: false,
+        message: `Venue Conflict: Room '${room_no}' is already occupied on ${day_of_week} (${formatTime12(roomConflict[0].start_time)} - ${formatTime12(roomConflict[0].end_time)}) by ${roomConflict[0].section_name}.`
+      });
+    }
+
+    const [result] = await query(
+      `INSERT INTO timetable (section_id, subject_id, faculty_id, semester_id, day_of_week, start_time, end_time, room_no, timetable_type)
+       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+      [section_id, subject_id, facultyId, semester_id || 5, day_of_week, start_time, end_time, room_no, timetable_type || 'Lecture']
+    );
+
+    res.status(201).json({
+      success: true,
+      message: 'Timetable entry successfully created and committed to MySQL.',
+      timetable_id: result.insertId
+    });
+  } catch (error) {
+    next(error);
+  }
+}
+
+/**
+ * Update Timetable Slot
+ * PUT /api/faculty/timetable/:id
+ */
+async function updateTimetableEntry(req, res, next) {
+  try {
+    const timetableId = parseInt(req.params.id, 10);
+    const facultyId = req.user.faculty_id;
+
+    const { section_id, subject_id, semester_id, day_of_week, start_time, end_time, room_no, timetable_type } = req.body;
+
+    // Check conflict excluding this slot
+    const [secConflict] = await query(
+      `SELECT t.*, s.subject_name FROM timetable t
+       JOIN subject s ON t.subject_id = s.subject_id
+       WHERE t.section_id = ? AND t.day_of_week = ? AND t.timetable_id != ?
+         AND NOT (t.end_time <= ? OR t.start_time >= ?)`,
+      [section_id, day_of_week, timetableId, start_time, end_time]
+    );
+    if (secConflict.length > 0) {
+      return res.status(409).json({
+        success: false,
+        message: `Scheduling Conflict: Section already has lecture '${secConflict[0].subject_name}' scheduled at this time.`
+      });
+    }
+
+    await query(
+      `UPDATE timetable 
+       SET section_id = ?, subject_id = ?, semester_id = ?, day_of_week = ?, start_time = ?, end_time = ?, room_no = ?, timetable_type = ?
+       WHERE timetable_id = ? AND faculty_id = ?`,
+      [section_id, subject_id, semester_id || 5, day_of_week, start_time, end_time, room_no, timetable_type || 'Lecture', timetableId, facultyId]
+    );
+
+    res.json({
+      success: true,
+      message: 'Timetable entry updated successfully in MySQL.'
+    });
+  } catch (error) {
+    next(error);
+  }
+}
+
+/**
+ * Delete Timetable Slot
+ * DELETE /api/faculty/timetable/:id
+ */
+async function deleteTimetableEntry(req, res, next) {
+  try {
+    const timetableId = parseInt(req.params.id, 10);
+    const facultyId = req.user.faculty_id;
+
+    await query(
+      `DELETE FROM timetable WHERE timetable_id = ? AND faculty_id = ?`,
+      [timetableId, facultyId]
+    );
+
+    res.json({
+      success: true,
+      message: 'Timetable entry deleted successfully.'
+    });
+  } catch (error) {
+    next(error);
+  }
+}
+
+/**
+ * Faculty Preview Mode: View Student Interface & Academic Record (Read-Only)
+ * GET /api/faculty/preview-student/:studentId
+ */
+async function getStudentPreview(req, res, next) {
+  try {
+    const studentId = parseInt(req.params.studentId, 10);
+    const facultyId = req.user.faculty_id;
+    if (!facultyId) {
+      return res.status(403).json({ success: false, message: 'Faculty access required.' });
+    }
+
+    const [students] = await query(
+      `SELECT s.student_id, s.roll_no, s.prn, s.student_name, s.email, s.current_year, s.current_semester, s.branch,
+              d.department_name, sec.section_name, c.course_name
+       FROM student s
+       JOIN department d ON s.department_id = d.department_id
+       LEFT JOIN section sec ON s.section_id = sec.section_id
+       LEFT JOIN course c ON c.department_id = s.department_id
+       WHERE s.student_id = ?
+       LIMIT 1`,
+      [studentId]
+    );
+
+    if (students.length === 0) {
+      return res.status(404).json({ success: false, message: 'Student record not found.' });
+    }
+
+    const student = students[0];
+
+    // Live attendance summary using view
+    const [attendance] = await query(
+      `SELECT * FROM v_student_attendance_summary WHERE student_id = ?`,
+      [studentId]
+    );
+
+    // Timetable
+    const [timetable] = await query(
+      `SELECT t.*, s.subject_name, s.subject_code, f.faculty_name, sec.section_name
+       FROM timetable t
+       JOIN subject s ON t.subject_id = s.subject_id
+       JOIN faculty f ON t.faculty_id = f.faculty_id
+       JOIN section sec ON t.section_id = sec.section_id
+       JOIN student st ON st.section_id = t.section_id
+       WHERE st.student_id = ?
+       ORDER BY FIELD(t.day_of_week, 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'), t.start_time`,
+      [studentId]
+    );
+
+    // Fee summary using view
+    const [feeSummary] = await query(
+      `SELECT * FROM v_student_fee_balance WHERE student_id = ?`,
+      [studentId]
+    );
+
+    res.json({
+      success: true,
+      previewMode: true,
+      notice: 'READ-ONLY DEMONSTRATION PREVIEW - Passwords & Private Auth Tokens Protected',
+      student,
+      attendance: attendance || [],
+      timetable: (timetable || []).map(t => ({
+        ...t,
+        start_time_12: formatTime12(t.start_time),
+        end_time_12: formatTime12(t.end_time),
+        time: `${formatTime12(t.start_time)} - ${formatTime12(t.end_time)}`
+      })),
+      feeSummary: feeSummary[0] || null
     });
   } catch (error) {
     next(error);
@@ -475,6 +749,11 @@ module.exports = {
   getDashboard,
   getAttendanceRoster,
   saveAttendance,
+  getTimetable,
+  createTimetableEntry,
+  updateTimetableEntry,
+  deleteTimetableEntry,
+  getStudentPreview,
   getGradingRoster,
   saveGrading,
   getLeave,

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   BookOpen, 
   RotateCcw, 
@@ -10,6 +10,8 @@ import {
 } from 'lucide-react';
 import { Badge } from '../../components/common/Badge';
 import { DataTable, Column } from '../../components/common/DataTable';
+import { EmptyState } from '../../components/common/EmptyState';
+import { api } from '../../services/api';
 import { mockBooks } from '../../data/mockLibrary';
 
 interface BorrowedBook {
@@ -35,50 +37,29 @@ interface ReturnedBook {
 
 export const StudentLibraryPage: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'current' | 'history' | 'catalog'>('current');
+  const [currentLoans, setCurrentLoans] = useState<BorrowedBook[]>([]);
+  const [returnHistory, setReturnHistory] = useState<ReturnedBook[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
-  const currentLoans: BorrowedBook[] = [
-    {
-      issue_id: "ISS-2026-001",
-      title: "Introduction to Algorithms (CLRS)",
-      author: "Thomas H. Cormen et al.",
-      isbn: "978-0262033848",
-      accession_no: "LIB-CLRS-002",
-      issue_date: "2026-09-28",
-      due_date: "2026-10-12",
-      status: "Issued",
-      fine_amount: 0.00
-    },
-    {
-      issue_id: "ISS-2026-004",
-      title: "Computer Networks: A Systems Approach",
-      author: "Larry L. Peterson",
-      isbn: "978-0123850591",
-      accession_no: "LIB-CN-004",
-      issue_date: "2026-09-15",
-      due_date: "2026-09-29",
-      status: "Overdue",
-      fine_amount: 22.00 // Overdue fine!
-    }
-  ];
+  useEffect(() => {
+    let isMounted = true;
+    setIsLoading(true);
+    api.getStudentLibrary()
+      .then(res => {
+        if (isMounted && res && res.success && res.data) {
+          setCurrentLoans(res.data.currentLoans || []);
+          setReturnHistory(res.data.returns || []);
+        }
+      })
+      .catch(err => {
+        console.warn('Failed to load library records:', err);
+      })
+      .finally(() => {
+        if (isMounted) setIsLoading(false);
+      });
 
-  const returnHistory: ReturnedBook[] = [
-    {
-      return_id: "RET-2026-081",
-      title: "Database System Concepts (7th Edition)",
-      isbn: "978-0078022159",
-      returned_date: "2026-09-14",
-      condition: "Good",
-      fine_paid: 0.00
-    },
-    {
-      return_id: "RET-2026-042",
-      title: "Discrete Mathematics and Its Applications",
-      isbn: "978-0073383095",
-      returned_date: "2026-08-20",
-      condition: "Good",
-      fine_paid: 10.00
-    }
-  ];
+    return () => { isMounted = false; };
+  }, []);
 
   const loanColumns: Column<BorrowedBook>[] = [
     {
@@ -99,14 +80,14 @@ export const StudentLibraryPage: React.FC = () => {
     {
       header: "Borrowed Date",
       accessor: "issue_date",
-      render: (b) => <span className="font-mono text-slate-500">{b.issue_date}</span>
+      render: (b) => <span className="font-mono text-slate-500 text-xs">{b.issue_date ? String(b.issue_date).slice(0, 10) : 'N/A'}</span>
     },
     {
       header: "Return Due Deadline",
       accessor: "due_date",
       render: (b) => (
-        <span className={`font-mono font-bold ${b.status === 'Overdue' ? 'text-rose-600' : 'text-slate-800'}`}>
-          {b.due_date}
+        <span className={`font-mono font-bold text-xs ${b.status === 'Overdue' ? 'text-rose-600' : 'text-slate-800'}`}>
+          {b.due_date ? String(b.due_date).slice(0, 10) : 'N/A'}
         </span>
       )
     },
@@ -175,43 +156,56 @@ export const StudentLibraryPage: React.FC = () => {
 
       {activeTab === 'current' && (
         <div className="space-y-4">
-          {/* Overdue alert if any */}
           {currentLoans.some(b => b.status === 'Overdue') && (
             <div className="p-4 rounded-xl bg-rose-50 border border-rose-200 flex items-start gap-3">
               <AlertCircle className="w-5 h-5 text-rose-600 flex-shrink-0 mt-0.5" />
               <div className="text-xs text-rose-900 leading-relaxed">
-                <strong>Attention — Overdue Loan Penalty:</strong> You have an overdue book loan: <em>Computer Networks: A Systems Approach</em>.
+                <strong>Attention — Overdue Loan Penalty:</strong> You have an overdue book loan.
                 An overdue fine of ₹2.00 per day is accruing. Please return the book to the Central Circulation Desk immediately.
               </div>
             </div>
           )}
 
-          <DataTable
-            columns={loanColumns}
-            data={currentLoans}
-            title="Active Borrowed Books"
-            subtitle="Books currently in your possession from Central Library"
-          />
+          {currentLoans.length > 0 ? (
+            <DataTable
+              columns={loanColumns}
+              data={currentLoans}
+              title="Active Borrowed Books"
+              subtitle="Books currently in your possession from Central Library"
+            />
+          ) : (
+            <EmptyState
+              title="No Active Book Loans"
+              description="You do not currently have any books checked out from the library."
+            />
+          )}
         </div>
       )}
 
       {activeTab === 'history' && (
-        <DataTable
-          columns={[
-            { header: "Book Title", accessor: "title", render: (r) => <span className="font-bold text-navy-950">{r.title}</span> },
-            { header: "ISBN", accessor: "isbn", render: (r) => <span className="font-mono text-slate-500">{r.isbn}</span> },
-            { header: "Returned On", accessor: "returned_date", render: (r) => <span className="font-mono">{r.returned_date}</span> },
-            { header: "Physical Condition", accessor: "condition", render: (r) => <Badge variant="neutral">{r.condition}</Badge> },
-            {
-              header: "Fine Cleared",
-              accessor: "fine_paid",
-              render: (r) => <span className="font-mono">₹{r.fine_paid.toFixed(2)}</span>
-            }
-          ]}
-          data={returnHistory}
-          title="Past Circulation Return Archive"
-          subtitle="All returned books previously checked out by your student card"
-        />
+        returnHistory.length > 0 ? (
+          <DataTable
+            columns={[
+              { header: "Book Title", accessor: "title", render: (r) => <span className="font-bold text-navy-950">{r.title}</span> },
+              { header: "ISBN", accessor: "isbn", render: (r) => <span className="font-mono text-slate-500">{r.isbn}</span> },
+              { header: "Returned On", accessor: "returned_date", render: (r) => <span className="font-mono">{r.returned_date ? String(r.returned_date).slice(0, 10) : ''}</span> },
+              { header: "Physical Condition", accessor: "condition", render: (r) => <Badge variant="neutral">{r.condition}</Badge> },
+              {
+                header: "Fine Cleared",
+                accessor: "fine_paid",
+                render: (r) => <span className="font-mono">₹{r.fine_paid.toFixed(2)}</span>
+              }
+            ]}
+            data={returnHistory}
+            title="Past Circulation Return Archive"
+            subtitle="All returned books previously checked out by your student card"
+          />
+        ) : (
+          <EmptyState
+            title="No Prior Circulation History"
+            description="You have no returned book transactions on record."
+          />
+        )
       )}
 
       {activeTab === 'catalog' && (
@@ -249,3 +243,5 @@ export const StudentLibraryPage: React.FC = () => {
     </div>
   );
 };
+
+export default StudentLibraryPage;

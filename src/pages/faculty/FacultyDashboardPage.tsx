@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { 
   CheckSquare, 
@@ -16,14 +16,27 @@ import {
 import { useAuth } from '../../context/AuthContext';
 import { StatCard } from '../../components/common/StatCard';
 import { Badge } from '../../components/common/Badge';
+import { api } from '../../services/api';
 
 export const FacultyDashboardPage: React.FC = () => {
   const { user } = useAuth();
 
-  const todayLectures = [
+  const [todayLectures, setTodayLectures] = useState<any[]>([
     { time: "10:15 AM - 11:15 AM", subject: "Database Management Systems (CS302)", classSection: "B.Tech CSE - Section A", room: "AB-301", status: "Completed" },
     { time: "02:00 PM - 04:00 PM", subject: "DBMS Advanced Laboratory (CS302P)", classSection: "B.Tech CSE - Section A", room: "Lab 304", status: "Upcoming" }
-  ];
+  ]);
+
+  useEffect(() => {
+    let isMounted = true;
+    api.getFacultyDashboard()
+      .then(res => {
+        if (isMounted && res.success && res.data?.todayLectures && res.data.todayLectures.length > 0) {
+          setTodayLectures(res.data.todayLectures);
+        }
+      })
+      .catch(() => {});
+    return () => { isMounted = false; };
+  }, []);
 
   return (
     <div className="space-y-6">

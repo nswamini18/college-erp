@@ -19,8 +19,8 @@ export const LoginPage: React.FC = () => {
   const navigate = useNavigate();
 
   const [selectedRole, setSelectedRole] = useState<UserRole>('STUDENT');
-  const [identifier, setIdentifier] = useState('aarav.sharma@college.edu');
-  const [password, setPassword] = useState('College@2026');
+  const [identifier, setIdentifier] = useState('');
+  const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -28,13 +28,8 @@ export const LoginPage: React.FC = () => {
   const handleRoleChange = (role: UserRole) => {
     setSelectedRole(role);
     setErrorMessage('');
-    if (role === 'STUDENT') {
-      setIdentifier('aarav.sharma@college.edu');
-      setPassword('Student@2026');
-    } else {
-      setIdentifier('arvind.sharma@college.edu');
-      setPassword('Faculty@2026');
-    }
+    setIdentifier('');
+    setPassword('');
   };
 
   const handleLoginSubmit = async (e: React.FormEvent) => {
@@ -42,18 +37,18 @@ export const LoginPage: React.FC = () => {
     setErrorMessage('');
 
     if (!identifier.trim()) {
-      setErrorMessage('Please enter your College ID or registered email.');
+      setErrorMessage(selectedRole === 'STUDENT' ? 'Please enter your student email or roll number.' : 'Please enter your faculty email or employee code.');
       return;
     }
-    if (!password || password.length < 4) {
-      setErrorMessage('Please enter a valid password.');
+    if (!password) {
+      setErrorMessage('Please enter your password.');
       return;
     }
 
     setIsLoading(true);
 
     try {
-      await login(selectedRole, identifier, password);
+      await login(selectedRole, identifier.trim(), password);
       setIsLoading(false);
 
       // Strict role-specific routing: Student to /student/dashboard, Faculty to /faculty/dashboard
@@ -64,7 +59,10 @@ export const LoginPage: React.FC = () => {
       }
     } catch (err: any) {
       setIsLoading(false);
-      setErrorMessage(err.message || 'Login failed. Please check credentials.');
+      const displayMsg = err.message === 'Failed to fetch'
+        ? 'Cannot connect to backend server. Please verify the Express backend is running on port 5000.'
+        : (err.message || 'Login failed. Please verify credentials.');
+      setErrorMessage(displayMsg);
     }
   };
 
@@ -95,7 +93,7 @@ export const LoginPage: React.FC = () => {
               Select Your Portal Role
             </label>
 
-            {/* TWO ROLE SELECTION CARDS */}
+            {/* TWO ROLE SELECTION CARDS: Only Student and Faculty */}
             <div className="grid grid-cols-2 gap-3">
               {/* Student Role Button */}
               <button
@@ -141,67 +139,9 @@ export const LoginPage: React.FC = () => {
                 </div>
                 <div>
                   <span className="text-xs font-bold text-[#2C3E50] block">Faculty</span>
-                  <span className="text-[10px] text-[#718096] block mt-0.5">Professors & HODs</span>
+                  <span className="text-[10px] text-[#718096] block mt-0.5">Professors & Instructors</span>
                 </div>
               </button>
-            </div>
-
-            {/* Quick Test Accounts Switcher */}
-            <div className="mt-3 pt-2.5 border-t border-slate-100">
-              <span className="text-[10px] font-semibold text-slate-500 uppercase tracking-wider block mb-1.5">
-                Quick Test Accounts ({selectedRole === 'STUDENT' ? 'Student' : 'Faculty'}):
-              </span>
-              <div className="flex flex-wrap gap-1.5">
-                {selectedRole === 'STUDENT' ? (
-                  <>
-                    <button
-                      type="button"
-                      onClick={() => { setIdentifier('aarav.sharma@college.edu'); setPassword('Student@2026'); }}
-                      className={`text-[11px] px-2.5 py-1 rounded-lg border transition-all ${identifier.includes('aarav') ? 'bg-[#4D8DFF] text-white border-[#4D8DFF] font-semibold' : 'bg-slate-50 text-slate-700 hover:bg-slate-100 border-slate-200'}`}
-                    >
-                      Aarav (CS2023001)
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => { setIdentifier('31001'); setPassword('Student@2026'); }}
-                      className={`text-[11px] px-2.5 py-1 rounded-lg border transition-all ${identifier === '31001' ? 'bg-[#4D8DFF] text-white border-[#4D8DFF] font-semibold' : 'bg-slate-50 text-slate-700 hover:bg-slate-100 border-slate-200'}`}
-                    >
-                      Kavya (31001)
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => { setIdentifier('31002'); setPassword('Student@2026'); }}
-                      className={`text-[11px] px-2.5 py-1 rounded-lg border transition-all ${identifier === '31002' ? 'bg-[#4D8DFF] text-white border-[#4D8DFF] font-semibold' : 'bg-slate-50 text-slate-700 hover:bg-slate-100 border-slate-200'}`}
-                    >
-                      Siddharth (31002)
-                    </button>
-                  </>
-                ) : (
-                  <>
-                    <button
-                      type="button"
-                      onClick={() => { setIdentifier('arvind.sharma@college.edu'); setPassword('Faculty@2026'); }}
-                      className={`text-[11px] px-2.5 py-1 rounded-lg border transition-all ${identifier.includes('arvind') ? 'bg-[#4D8DFF] text-white border-[#4D8DFF] font-semibold' : 'bg-slate-50 text-slate-700 hover:bg-slate-100 border-slate-200'}`}
-                    >
-                      Dr. Arvind (HOD)
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => { setIdentifier('faculty1@example.edu'); setPassword('Faculty@2026'); }}
-                      className={`text-[11px] px-2.5 py-1 rounded-lg border transition-all ${identifier === 'faculty1@example.edu' ? 'bg-[#4D8DFF] text-white border-[#4D8DFF] font-semibold' : 'bg-slate-50 text-slate-700 hover:bg-slate-100 border-slate-200'}`}
-                    >
-                      Prof. Ashwini (faculty1)
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => { setIdentifier('faculty2@example.edu'); setPassword('Faculty@2026'); }}
-                      className={`text-[11px] px-2.5 py-1 rounded-lg border transition-all ${identifier === 'faculty2@example.edu' ? 'bg-[#4D8DFF] text-white border-[#4D8DFF] font-semibold' : 'bg-slate-50 text-slate-700 hover:bg-slate-100 border-slate-200'}`}
-                    >
-                      Prof. Varun (faculty2)
-                    </button>
-                  </>
-                )}
-              </div>
             </div>
           </div>
 
@@ -217,7 +157,7 @@ export const LoginPage: React.FC = () => {
           <form onSubmit={handleLoginSubmit} className="space-y-4">
             <div>
               <label className="block text-xs font-bold text-[#2C3E50] mb-1">
-                {selectedRole === 'STUDENT' ? 'Student Email / Roll Number *' : 'Faculty Email / Employee Code *'}
+                {selectedRole === 'STUDENT' ? 'Student Email or Roll Number *' : 'Faculty Email or Faculty Code *'}
               </label>
               <div className="relative">
                 <Mail className="w-4 h-4 text-[#718096] absolute left-3.5 top-1/2 -translate-y-1/2" />
@@ -226,7 +166,7 @@ export const LoginPage: React.FC = () => {
                   required
                   value={identifier}
                   onChange={(e) => setIdentifier(e.target.value)}
-                  placeholder={selectedRole === 'STUDENT' ? 'e.g. CS2023001 or aarav@college.edu' : 'e.g. FAC-CSE-001 or arvind@college.edu'}
+                  placeholder={selectedRole === 'STUDENT' ? 'Enter roll number (e.g. 31001) or email' : 'Enter faculty email or faculty code'}
                   className="w-full pl-10 pr-3 py-2.5 text-xs bg-slate-50/80 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#4D8DFF] focus:bg-white text-[#2C3E50] transition-all font-mono"
                 />
               </div>
@@ -279,11 +219,11 @@ export const LoginPage: React.FC = () => {
             </div>
           </form>
 
-          {/* Footer credentials reminder */}
+          {/* Footer */}
           <div className="mt-5 pt-4 border-t border-slate-100 text-center">
             <p className="text-[11px] text-[#718096] flex items-center justify-center gap-1.5 font-medium">
               <ShieldCheck className="w-3.5 h-3.5 text-[#4D8DFF]" />
-              <span>Academic Prototype Session • Credentials pre-filled</span>
+              <span>Secure institutional portal • Encrypted session authentication</span>
             </p>
           </div>
         </div>

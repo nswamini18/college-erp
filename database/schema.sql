@@ -259,6 +259,7 @@ CREATE TABLE `timetable` (
   `start_time` TIME NOT NULL,
   `end_time` TIME NOT NULL,
   `room_no` VARCHAR(30) NOT NULL,
+  `timetable_type` ENUM('Lecture', 'Lab', 'Tutorial') NOT NULL DEFAULT 'Lecture',
   `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   CONSTRAINT `fk_tt_section` FOREIGN KEY (`section_id`) REFERENCES `section` (`section_id`) ON UPDATE CASCADE,
   CONSTRAINT `fk_tt_subject` FOREIGN KEY (`subject_id`) REFERENCES `subject` (`subject_id`) ON UPDATE CASCADE,

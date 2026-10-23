@@ -9,6 +9,7 @@ router.use(requireRole('STUDENT', 'ADMIN'));
 
 // Student Profile & Demographics
 router.get('/profile', studentController.getProfile);
+router.get('/dashboard', studentController.getDashboard);
 
 // Academic Attendance & Timetable
 router.get('/attendance', studentController.getAttendance);

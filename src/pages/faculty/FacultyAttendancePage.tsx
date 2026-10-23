@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   CheckSquare, 
   Calendar, 
@@ -14,8 +14,8 @@ import {
 } from 'lucide-react';
 import { Badge } from '../../components/common/Badge';
 import { Modal } from '../../components/common/Modal';
-import { mockStudents } from '../../data/mockStudents';
-import { mockTimetables } from '../../data/mockAcademic';
+import { useAuth } from '../../context/AuthContext';
+import { api } from '../../services/api';
 
 interface StudentAttendanceRow {
   student_id: number;
@@ -38,6 +38,7 @@ interface SavedSessionLog {
 }
 
 export const FacultyAttendancePage: React.FC = () => {
+  const { user } = useAuth();
   const [activeTab, setActiveTab] = useState<'mark' | 'saved_logs' | 'my_attendance' | 'my_timetable'>('mark');
 
   // Filter selection state for marking attendance
@@ -46,34 +47,75 @@ export const FacultyAttendancePage: React.FC = () => {
   const [selectedSubject, setSelectedSubject] = useState<string>('CS302 - Database Management Systems');
   const [selectedPeriod, setSelectedPeriod] = useState<string>('Period 2 (10:15 AM - 11:15 AM)');
 
-  // Filter students for the selected class/division from mockStudents
-  const sectionAStudents = mockStudents.filter(s => s.department_id === 1 && (s.section_name === 'CS-A' || s.section_id === 1));
+  const [roster, setRoster] = useState<StudentAttendanceRow[]>([]);
+  const [savedLogs, setSavedLogs] = useState<SavedSessionLog[]>([]);
+  const [timetableSlots, setTimetableSlots] = useState<any[]>([]);
+  const [assignedSections, setAssignedSections] = useState<any[]>([]);
+  const [assignedSubjects, setAssignedSubjects] = useState<any[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [saving, setSaving] = useState<boolean>(false);
+  const [isUpdatingExisting, setIsUpdatingExisting] = useState<boolean>(false);
 
-  // Initialize student attendance roster
-  const [roster, setRoster] = useState<StudentAttendanceRow[]>(() => {
-    return sectionAStudents.map(s => ({
-      student_id: s.student_id,
-      roll_no: s.roll_no,
-      name: `${s.first_name} ${s.last_name}`,
-      status: 'Present'
-    }));
-  });
+  // Timetable slot creation state
+  const [isAddSlotModalOpen, setIsAddSlotModalOpen] = useState<boolean>(false);
+  const [newSlotDay, setNewSlotDay] = useState<string>('Monday');
+  const [newSlotSectionId, setNewSlotSectionId] = useState<number>(1);
+  const [newSlotSubjectId, setNewSlotSubjectId] = useState<number>(1);
+  const [newSlotStartTime, setNewSlotStartTime] = useState<string>('09:15');
+  const [newSlotEndTime, setNewSlotEndTime] = useState<string>('10:15');
+  const [newSlotRoom, setNewSlotRoom] = useState<string>('Room 302');
+  const [newSlotType, setNewSlotType] = useState<string>('Lecture');
+  const [slotSaving, setSlotSaving] = useState<boolean>(false);
+  const [slotError, setSlotError] = useState<string | null>(null);
 
-  // Saved attendance session history
-  const [savedLogs, setSavedLogs] = useState<SavedSessionLog[]>([
-    {
-      id: "ATT-2026-1009-P1",
-      date: "2026-10-09",
-      division: "B.Tech CSE - Section A",
-      subject: "CS302 - Database Management Systems",
-      period: "Period 2 (10:15 AM - 11:15 AM)",
-      total_students: 2,
-      present_count: 2,
-      absent_count: 0,
-      saved_at: "2026-10-09 11:20 AM",
-      can_edit: true
+  useEffect(() => {
+    let isMounted = true;
+    async function loadAttendanceData() {
+      try {
+        setLoading(true);
+        const [attRes, dashRes] = await Promise.all([
+          api.getFacultyAttendance().catch(() => null),
+          api.getFacultyDashboard().catch(() => null)
+        ]);
+
+        if (isMounted) {
+          if (attRes?.success && attRes.data) {
+            if (attRes.data.roster && attRes.data.roster.length > 0) {
+              setRoster(attRes.data.roster.map((s: any) => ({
+                student_id: s.student_id,
+                roll_no: s.roll_no,
+                name: s.name,
+                status: 'Present'
+              })));
+            }
+            if (attRes.data.savedLogs) {
+              setSavedLogs(attRes.data.savedLogs);
+            }
+            if (attRes.data.sections && attRes.data.sections.length > 0) {
+              setAssignedSections(attRes.data.sections);
+              setSelectedDivision(attRes.data.sections[0].section_name);
+            }
+            if (attRes.data.subjects && attRes.data.subjects.length > 0) {
+              setAssignedSubjects(attRes.data.subjects);
+              setSelectedSubject(`${attRes.data.subjects[0].subject_code} - ${attRes.data.subjects[0].subject_name}`);
+            }
+            if (attRes.data.timetable && attRes.data.timetable.length > 0) {
+              setTimetableSlots(attRes.data.timetable);
+            }
+          }
+          if (dashRes?.success && dashRes.data?.todayLectures && (!attRes?.data?.timetable || attRes.data.timetable.length === 0)) {
+            setTimetableSlots(dashRes.data.todayLectures);
+          }
+        }
+      } catch (err) {
+        console.warn('Error fetching faculty attendance data:', err);
+      } finally {
+        if (isMounted) setLoading(false);
+      }
     }
-  ]);
+    loadAttendanceData();
+    return () => { isMounted = false; };
+  }, []);
 
   // Modals & Feedback
   const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
@@ -100,48 +142,104 @@ export const FacultyAttendancePage: React.FC = () => {
   // Check duplicate before confirmation
   const handleInitiateSave = () => {
     setFeedbackMessage(null);
-    const isDuplicate = savedLogs.some(
+    const existingLog = savedLogs.find(
       log => log.date === selectedDate &&
              log.division === selectedDivision &&
              log.subject === selectedSubject &&
              log.period === selectedPeriod
     );
 
-    if (isDuplicate) {
-      setFeedbackMessage({
-        type: 'error',
-        text: `Duplicate Record Prevented: Attendance for ${selectedSubject} (${selectedPeriod}) on ${selectedDate} has already been recorded.`
-      });
-      return;
-    }
-
+    setIsUpdatingExisting(!!existingLog);
     setIsConfirmModalOpen(true);
   };
 
-  // Final submission handler
-  const handleConfirmSave = () => {
+  // Final submission handler (ACID transaction)
+  const handleConfirmSave = async () => {
     const presentCount = roster.filter(s => s.status === 'Present').length;
     const absentCount = roster.length - presentCount;
 
-    const newLog: SavedSessionLog = {
-      id: `ATT-${selectedDate.replace(/-/g, '')}-${Math.floor(10 + Math.random() * 90)}`,
-      date: selectedDate,
-      division: selectedDivision,
-      subject: selectedSubject,
-      period: selectedPeriod,
-      total_students: roster.length,
-      present_count: presentCount,
-      absent_count: absentCount,
-      saved_at: "2026-10-10 11:18 AM",
-      can_edit: true
-    };
+    try {
+      setSaving(true);
+      const activeSection = assignedSections.find((s: any) => s.section_name === selectedDivision);
+      const activeSubject = assignedSubjects.find((sub: any) => `${sub.subject_code} - ${sub.subject_name}` === selectedSubject);
 
-    setSavedLogs([newLog, ...savedLogs]);
-    setIsConfirmModalOpen(false);
-    setFeedbackMessage({
-      type: 'success',
-      text: `Attendance successfully saved! Recorded ${presentCount} Present and ${absentCount} Absent.`
-    });
+      const res = await api.saveFacultyAttendance({
+        date: selectedDate,
+        subject_id: activeSubject?.subject_id || assignedSubjects[0]?.subject_id || 1,
+        section_id: activeSection?.section_id || assignedSections[0]?.section_id || 1,
+        period: selectedPeriod,
+        topic: selectedSubject,
+        records: roster.map(s => ({ student_id: s.student_id, status: s.status }))
+      });
+
+      const newLog: SavedSessionLog = {
+        id: res.sessionId ? `ATT-SES-${res.sessionId}` : `ATT-${selectedDate.replace(/-/g, '')}-${Math.floor(10 + Math.random() * 90)}`,
+        date: selectedDate,
+        division: selectedDivision,
+        subject: selectedSubject,
+        period: selectedPeriod,
+        total_students: roster.length,
+        present_count: presentCount,
+        absent_count: absentCount,
+        saved_at: new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' }),
+        can_edit: true
+      };
+
+      setSavedLogs(prev => {
+        const filtered = prev.filter(l => !(l.date === selectedDate && l.division === selectedDivision && l.subject === selectedSubject && l.period === selectedPeriod));
+        return [newLog, ...filtered];
+      });
+
+      setIsConfirmModalOpen(false);
+      setFeedbackMessage({
+        type: 'success',
+        text: (res as any).isUpdate
+          ? `Attendance session updated in MySQL! Recorded ${presentCount} Present and ${absentCount} Absent.`
+          : `Attendance successfully saved to MySQL! Recorded ${presentCount} Present and ${absentCount} Absent.`
+      });
+    } catch (err: any) {
+      setFeedbackMessage({
+        type: 'error',
+        text: err.message || 'Failed to record attendance to database.'
+      });
+      setIsConfirmModalOpen(false);
+    } finally {
+      setSaving(false);
+    }
+  };
+
+  // Timetable Slot Allocation Handler with Conflict Validation
+  const handleAddTimetableSlot = async () => {
+    try {
+      setSlotSaving(true);
+      setSlotError(null);
+      const res = await api.createFacultyTimetable({
+        section_id: newSlotSectionId || assignedSections[0]?.section_id || 1,
+        subject_id: newSlotSubjectId || assignedSubjects[0]?.subject_id || 1,
+        semester_id: 5,
+        day_of_week: newSlotDay,
+        start_time: `${newSlotStartTime}:00`,
+        end_time: `${newSlotEndTime}:00`,
+        room_no: newSlotRoom,
+        timetable_type: newSlotType
+      });
+
+      if (res.success) {
+        setIsAddSlotModalOpen(false);
+        const attRes = await api.getFacultyAttendance().catch(() => null);
+        if (attRes?.data?.timetable) {
+          setTimetableSlots(attRes.data.timetable);
+        }
+        setFeedbackMessage({
+          type: 'success',
+          text: 'Timetable entry added and persisted to MySQL. Enrolled students will see this slot immediately!'
+        });
+      }
+    } catch (err: any) {
+      setSlotError(err.message || 'Failed to allocate timetable slot.');
+    } finally {
+      setSlotSaving(false);
+    }
   };
 
   // Faculty's personal biometric records
@@ -242,11 +340,36 @@ export const FacultyAttendancePage: React.FC = () => {
                 <label className="block font-bold text-slate-700 mb-1">Class / Division *</label>
                 <select
                   value={selectedDivision}
-                  onChange={(e) => setSelectedDivision(e.target.value)}
+                  onChange={(e) => {
+                    const newDiv = e.target.value;
+                    setSelectedDivision(newDiv);
+                    const matchedSec = assignedSections.find((s: any) => s.section_name === newDiv);
+                    if (matchedSec) {
+                      api.getFacultyAttendance(`section_id=${matchedSec.section_id}`)
+                        .then(res => {
+                          if (res?.data?.roster && res.data.roster.length > 0) {
+                            setRoster(res.data.roster.map((s: any) => ({
+                              student_id: s.student_id,
+                              roll_no: s.roll_no,
+                              name: s.name,
+                              status: 'Present'
+                            })));
+                          }
+                        })
+                        .catch(() => {});
+                    }
+                  }}
                   className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl outline-none font-semibold text-navy-950"
                 >
-                  <option value="B.Tech CSE - Section A">B.Tech CSE - Section A (3rd Sem)</option>
-                  <option value="B.Tech CSE - Section B">B.Tech CSE - Section B (3rd Sem)</option>
+                  {assignedSections.length > 0 ? (
+                    assignedSections.map((sec: any) => (
+                      <option key={sec.section_id} value={sec.section_name}>
+                        {sec.section_name}
+                      </option>
+                    ))
+                  ) : (
+                    <option value="Section 1">{user?.department || 'Department'} - Section 1</option>
+                  )}
                 </select>
               </div>
 
@@ -257,8 +380,15 @@ export const FacultyAttendancePage: React.FC = () => {
                   onChange={(e) => setSelectedSubject(e.target.value)}
                   className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl outline-none font-semibold text-navy-950"
                 >
-                  <option value="CS302 - Database Management Systems">CS302 - Database Management Systems</option>
-                  <option value="CS301 - Data Structures & Algorithms">CS301 - Data Structures & Algorithms</option>
+                  {assignedSubjects.length > 0 ? (
+                    assignedSubjects.map((sub: any) => (
+                      <option key={sub.subject_id} value={`${sub.subject_code} - ${sub.subject_name}`}>
+                        {sub.subject_code} - {sub.subject_name}
+                      </option>
+                    ))
+                  ) : (
+                    <option value="Core Department Course">Core Department Course</option>
+                  )}
                 </select>
               </div>
 
@@ -453,55 +583,54 @@ export const FacultyAttendancePage: React.FC = () => {
 
       {activeTab === 'my_timetable' && (
         <div className="erp-card p-6 bg-white space-y-4">
-          <div className="border-b border-slate-200 pb-3">
-            <h3 className="text-base font-bold text-navy-950">Faculty Assigned Teaching Schedule</h3>
-            <p className="text-xs text-slate-500">Weekly allocated curriculum lectures, labs, and office consultation hours</p>
+          <div className="border-b border-slate-200 pb-3 flex items-center justify-between">
+            <div>
+              <h3 className="text-base font-bold text-navy-950">Faculty Assigned Teaching Schedule</h3>
+              <p className="text-xs text-slate-500">Weekly allocated curriculum lectures, labs, and classroom sessions</p>
+            </div>
+            <div className="flex items-center gap-2">
+              <Badge variant="navy">{timetableSlots.length} Weekly Lectures</Badge>
+              <button
+                onClick={() => {
+                  setSlotError(null);
+                  setIsAddSlotModalOpen(true);
+                }}
+                className="px-3 py-1.5 bg-navy-950 text-white rounded-lg text-xs font-bold hover:bg-navy-900 transition-colors shadow-sm"
+              >
+                + Add Timetable Entry
+              </button>
+            </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {mockTimetables.filter(t => t.faculty_id === 1 || t.faculty_name?.includes('Arvind')).concat([
-              {
-                timetable_id: 11,
-                section_id: 1,
-                subject_id: 2,
-                faculty_id: 1,
-                semester_id: 3,
-                day_of_week: "Wednesday",
-                start_time: "10:15 AM",
-                end_time: "11:15 AM",
-                room_no: "AB-301",
-                timetable_type: "Lecture",
-                subject_name: "Database Management Systems",
-                faculty_name: "Dr. Arvind Sharma",
-                section_name: "CS-A"
-              },
-              {
-                timetable_id: 12,
-                section_id: 1,
-                subject_id: 2,
-                faculty_id: 1,
-                semester_id: 3,
-                day_of_week: "Friday",
-                start_time: "02:00 PM",
-                end_time: "04:00 PM",
-                room_no: "DBMS Lab 304",
-                timetable_type: "Lab",
-                subject_name: "Database Systems Lab",
-                faculty_name: "Dr. Arvind Sharma",
-                section_name: "CS-A"
-              }
-            ]).map(slot => (
-              <div key={slot.timetable_id} className="p-4 rounded-xl border border-slate-200 bg-[#FAFCFD] space-y-2 text-xs">
-                <div className="flex items-center justify-between">
-                  <span className="font-bold text-navy-950">{slot.day_of_week}</span>
-                  <Badge variant={slot.timetable_type === 'Lab' ? 'ice' : 'navy'}>{slot.timetable_type}</Badge>
+          {timetableSlots.length === 0 ? (
+            <div className="text-center py-12 text-slate-500 bg-slate-50/50 rounded-xl border border-slate-200">
+              <Clock className="w-8 h-8 mx-auto text-slate-400 mb-2" />
+              <p className="font-semibold text-sm text-navy-950">No Teaching Schedule Found</p>
+              <p className="text-xs text-slate-500">No timetable sessions are currently allocated to your profile.</p>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {timetableSlots.map((slot, idx) => (
+                <div key={idx} className="p-4 rounded-xl border border-slate-200 bg-[#FAFCFD] space-y-2 text-xs">
+                  <div className="flex items-center justify-between">
+                    <span className="font-bold text-navy-950">{slot.day || 'Weekly'}</span>
+                    <Badge variant={slot.type === 'Lab' ? 'ice' : 'navy'}>{slot.type || 'Lecture'}</Badge>
+                  </div>
+                  <h4 className="font-bold text-navy-900">{slot.subject}</h4>
+                  <div className="text-slate-600 font-mono text-[11px] space-y-0.5">
+                    <p className="text-navy-800 flex items-center gap-1.5">
+                      <Clock className="w-3.5 h-3.5 text-navy-600" />
+                      {slot.time}
+                    </p>
+                    {slot.classSection && (
+                      <p className="text-slate-500">Section: <strong>{slot.classSection}</strong></p>
+                    )}
+                    <p className="text-slate-500">Room: {slot.room || 'Classroom'}</p>
+                  </div>
                 </div>
-                <h4 className="font-bold text-navy-900">{slot.subject_name}</h4>
-                <p className="text-slate-600 font-mono text-[11px]">{slot.start_time} - {slot.end_time}</p>
-                <p className="text-slate-500 font-mono text-[11px]">Room / Lab: {slot.room_no}</p>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          )}
         </div>
       )}
 
@@ -510,8 +639,8 @@ export const FacultyAttendancePage: React.FC = () => {
         <Modal
           isOpen={isConfirmModalOpen}
           onClose={() => setIsConfirmModalOpen(false)}
-          title="Confirm Attendance Submission"
-          subtitle="Finalize session record before writing to database"
+          title={isUpdatingExisting ? "Update Existing Attendance Session" : "Confirm Attendance Submission"}
+          subtitle="Finalize session record before writing to MySQL database"
           maxWidth="md"
           footer={
             <div className="flex items-center justify-end gap-2">
@@ -525,17 +654,25 @@ export const FacultyAttendancePage: React.FC = () => {
               <button
                 type="button"
                 onClick={handleConfirmSave}
-                className="px-4 py-2 text-xs font-bold text-white bg-navy-950 hover:bg-navy-900 rounded-xl shadow-sm"
+                disabled={saving}
+                className="px-4 py-2 text-xs font-bold text-white bg-navy-950 hover:bg-navy-900 rounded-xl shadow-sm disabled:opacity-50"
               >
-                Confirm & Submit Attendance
+                {saving ? 'Writing to MySQL...' : (isUpdatingExisting ? 'Commit Session Update' : 'Confirm & Submit Attendance')}
               </button>
             </div>
           }
         >
           <div className="space-y-3 text-xs">
-            <p className="text-slate-700">
-              You are about to submit the attendance register for:
-            </p>
+            {isUpdatingExisting ? (
+              <div className="p-3 bg-amber-50 border border-amber-200 rounded-xl text-amber-900">
+                <strong className="block font-bold">Existing Session Detected:</strong>
+                Attendance for this date and period is already recorded. Confirming will execute an ACID transaction updating student records without creating duplicate entries.
+              </div>
+            ) : (
+              <p className="text-slate-700">
+                You are about to submit the attendance register for:
+              </p>
+            )}
             <div className="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-1 font-mono text-slate-800">
               <div>Date: <strong>{selectedDate}</strong></div>
               <div>Class: <strong>{selectedDivision}</strong></div>
@@ -546,7 +683,138 @@ export const FacultyAttendancePage: React.FC = () => {
               </div>
             </div>
             <p className="text-[11px] text-slate-500 italic">
-              Once submitted, attendance is locked to avoid duplicate entries.
+              Attendance records are stored in MySQL `attendance_record` with foreign key and UNIQUE constraints.
+            </p>
+          </div>
+        </Modal>
+      )}
+
+      {/* Add Timetable Slot Modal */}
+      {isAddSlotModalOpen && (
+        <Modal
+          isOpen={isAddSlotModalOpen}
+          onClose={() => setIsAddSlotModalOpen(false)}
+          title="Allocate Timetable Lecture / Lab Slot"
+          subtitle="Enforces scheduling conflict detection across section, faculty, and room in MySQL"
+          maxWidth="md"
+          footer={
+            <div className="flex items-center justify-end gap-2">
+              <button
+                type="button"
+                onClick={() => setIsAddSlotModalOpen(false)}
+                className="px-4 py-2 text-xs font-semibold text-slate-600 hover:bg-slate-50 rounded-xl"
+              >
+                Cancel
+              </button>
+              <button
+                type="button"
+                onClick={handleAddTimetableSlot}
+                disabled={slotSaving}
+                className="px-4 py-2 text-xs font-bold text-white bg-navy-950 hover:bg-navy-900 rounded-xl shadow-sm disabled:opacity-50"
+              >
+                {slotSaving ? 'Validating & Persisting...' : 'Save & Publish Slot'}
+              </button>
+            </div>
+          }
+        >
+          <div className="space-y-4 text-xs">
+            {slotError && (
+              <div className="p-3 bg-rose-50 border border-rose-200 rounded-xl text-rose-800 font-semibold flex items-center gap-2">
+                <AlertCircle className="w-4 h-4 flex-shrink-0" />
+                <span>{slotError}</span>
+              </div>
+            )}
+
+            <div className="grid grid-cols-2 gap-3">
+              <div>
+                <label className="block font-bold text-slate-700 mb-1">Day of Week *</label>
+                <select
+                  value={newSlotDay}
+                  onChange={(e) => setNewSlotDay(e.target.value)}
+                  className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl font-semibold outline-none"
+                >
+                  {['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'].map(d => (
+                    <option key={d} value={d}>{d}</option>
+                  ))}
+                </select>
+              </div>
+
+              <div>
+                <label className="block font-bold text-slate-700 mb-1">Session Type *</label>
+                <select
+                  value={newSlotType}
+                  onChange={(e) => setNewSlotType(e.target.value)}
+                  className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl font-semibold outline-none"
+                >
+                  <option value="Lecture">Lecture</option>
+                  <option value="Lab">Laboratory</option>
+                  <option value="Tutorial">Tutorial</option>
+                </select>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-2 gap-3">
+              <div>
+                <label className="block font-bold text-slate-700 mb-1">Target Section *</label>
+                <select
+                  value={newSlotSectionId}
+                  onChange={(e) => setNewSlotSectionId(parseInt(e.target.value, 10))}
+                  className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl font-semibold outline-none"
+                >
+                  {assignedSections.map((s: any) => (
+                    <option key={s.section_id} value={s.section_id}>{s.section_name}</option>
+                  ))}
+                </select>
+              </div>
+
+              <div>
+                <label className="block font-bold text-slate-700 mb-1">Curriculum Subject *</label>
+                <select
+                  value={newSlotSubjectId}
+                  onChange={(e) => setNewSlotSubjectId(parseInt(e.target.value, 10))}
+                  className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl font-semibold outline-none"
+                >
+                  {assignedSubjects.map((sub: any) => (
+                    <option key={sub.subject_id} value={sub.subject_id}>{sub.subject_code} - {sub.subject_name}</option>
+                  ))}
+                </select>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-3 gap-3">
+              <div>
+                <label className="block font-bold text-slate-700 mb-1">Start Time *</label>
+                <input
+                  type="time"
+                  value={newSlotStartTime}
+                  onChange={(e) => setNewSlotStartTime(e.target.value)}
+                  className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl font-mono outline-none"
+                />
+              </div>
+
+              <div>
+                <label className="block font-bold text-slate-700 mb-1">End Time *</label>
+                <input
+                  type="time"
+                  value={newSlotEndTime}
+                  onChange={(e) => setNewSlotEndTime(e.target.value)}
+                  className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl font-mono outline-none"
+                />
+              </div>
+
+              <div>
+                <label className="block font-bold text-slate-700 mb-1">Classroom / Lab *</label>
+                <input
+                  type="text"
+                  value={newSlotRoom}
+                  onChange={(e) => setNewSlotRoom(e.target.value)}
+                  className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl font-semibold outline-none"
+                />
+              </div>
+            </div>
+
+            <p className="text-[11px] text-slate-500 italic">
+              Conflict engine validates in MySQL: 1) Section schedule clash, 2) Faculty clash, 3) Room clash.
             </p>
           </div>
         </Modal>

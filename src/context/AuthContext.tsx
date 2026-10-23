@@ -1,11 +1,11 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
-
+import React, { createContext, useContext, useState } from 'react';
 import { api } from '../services/api';
 
 export type UserRole = 'STUDENT' | 'FACULTY';
 
 export interface AuthUser {
   id: number;
+  userId?: number;
   name: string;
   email: string;
   role: UserRole;
@@ -19,31 +19,9 @@ export interface AuthUser {
 interface AuthContextType {
   user: AuthUser | null;
   role: UserRole | null;
-  login: (selectedRole: UserRole, identifier: string, password?: string) => Promise<boolean> | boolean;
+  login: (selectedRole: UserRole, identifier: string, password?: string) => Promise<boolean>;
   logout: () => void;
 }
-
-export const STUDENT_PROFILE: AuthUser = {
-  id: 1,
-  name: "Aarav Sharma",
-  email: "aarav.sharma@college.edu",
-  role: "STUDENT",
-  department: "Computer Science & Engineering",
-  codeOrRoll: "CS2023001",
-  programOrDesignation: "B.Tech Computer Science",
-  semester: 3,
-  section: "Section A"
-};
-
-export const FACULTY_PROFILE: AuthUser = {
-  id: 1,
-  name: "Dr. Arvind Sharma",
-  email: "arvind.sharma@college.edu",
-  role: "FACULTY",
-  department: "Computer Science & Engineering",
-  codeOrRoll: "FAC-CSE-001",
-  programOrDesignation: "Professor & HOD"
-};
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
@@ -57,44 +35,19 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         return null;
       }
     }
-    // Start at login page if not authenticated
     return null;
   });
 
   const role = user ? user.role : null;
 
   const login = async (selectedRole: UserRole, identifier: string, password?: string): Promise<boolean> => {
-    try {
-      const res = await api.login(
-        identifier,
-        password || (selectedRole === 'STUDENT' ? 'Student@2026' : 'Faculty@2026'),
-        selectedRole
-      );
-      if (res && res.success && res.user) {
-        setUser(res.user);
-        localStorage.setItem('college_erp_user', JSON.stringify(res.user));
-        return true;
-      }
-    } catch {
-      // Backend unavailable or rejected, proceed with prototype session fallback
+    const res = await api.login(identifier, password || '', selectedRole);
+    if (res && res.success && res.user) {
+      setUser(res.user);
+      localStorage.setItem('college_erp_user', JSON.stringify(res.user));
+      return true;
     }
-
-    let loggedUser: AuthUser;
-    if (selectedRole === 'STUDENT') {
-      loggedUser = {
-        ...STUDENT_PROFILE,
-        email: identifier.includes('@') ? identifier : `${identifier}@college.edu`
-      };
-    } else {
-      loggedUser = {
-        ...FACULTY_PROFILE,
-        email: identifier.includes('@') ? identifier : `${identifier}@college.edu`
-      };
-    }
-
-    setUser(loggedUser);
-    localStorage.setItem('college_erp_user', JSON.stringify(loggedUser));
-    return true;
+    throw new Error(res?.message || 'Login failed. Invalid credentials.');
   };
 
   const logout = () => {
@@ -117,3 +70,5 @@ export const useAuth = () => {
   }
   return context;
 };
+
+export default AuthContext;

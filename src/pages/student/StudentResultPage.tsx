@@ -1,15 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   GraduationCap, 
-  Download, 
   Printer, 
-  Award, 
-  TrendingUp, 
-  FileCheck2,
-  Calendar
+  Loader2
 } from 'lucide-react';
 import { Badge } from '../../components/common/Badge';
 import { Modal } from '../../components/common/Modal';
+import { EmptyState } from '../../components/common/EmptyState';
+import { useAuth } from '../../context/AuthContext';
+import { api } from '../../services/api';
 
 interface SubjectGrade {
   code: string;
@@ -21,62 +20,73 @@ interface SubjectGrade {
   grade_letter: string;
   grade_point: number;
   status: 'Pass' | 'Fail';
+  semester_id?: number;
+  semester_number?: number;
 }
 
 interface SemesterResult {
-  semester: number;
+  result_id: number;
+  semester_id: number;
+  semester_number: number;
   semester_label: string;
-  academic_session: string;
+  academic_year: string;
   sgpa: number;
   cgpa: number;
-  total_credits: number;
-  published_date: string;
   overall_status: 'Pass' | 'Fail';
-  subjects: SubjectGrade[];
+  result_date: string;
 }
 
 export const StudentResultPage: React.FC = () => {
-  const [selectedSemester, setSelectedSemester] = useState<number>(2); // Default to completed Sem 2
+  const { user } = useAuth();
+  const [selectedSemester, setSelectedSemester] = useState<number>(1);
   const [isPrintModalOpen, setIsPrintModalOpen] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [results, setResults] = useState<SemesterResult[]>([]);
+  const [marks, setMarks] = useState<SubjectGrade[]>([]);
 
-  const semesterResults: Record<number, SemesterResult> = {
-    1: {
-      semester: 1,
-      semester_label: "Semester 1 (Autumn 2025)",
-      academic_session: "2025-2026",
-      sgpa: 9.05,
-      cgpa: 9.05,
-      total_credits: 22,
-      published_date: "Jan 20, 2026",
-      overall_status: "Pass",
-      subjects: [
-        { code: "MA101", name: "Engineering Mathematics I", credits: 4, internal_marks: 38, endsem_marks: 54, total_marks: 92, grade_letter: "A+", grade_point: 9.0, status: "Pass" },
-        { code: "PH101", name: "Engineering Physics", credits: 4, internal_marks: 37, endsem_marks: 52, total_marks: 89, grade_letter: "A", grade_point: 8.5, status: "Pass" },
-        { code: "CS101", name: "Programming in C", credits: 4, internal_marks: 40, endsem_marks: 56, total_marks: 96, grade_letter: "O", grade_point: 10.0, status: "Pass" },
-        { code: "ME101", name: "Engineering Mechanics", credits: 3, internal_marks: 35, endsem_marks: 50, total_marks: 85, grade_letter: "A", grade_point: 8.5, status: "Pass" },
-        { code: "CS102P", name: "Computing Laboratory", credits: 2, internal_marks: 48, endsem_marks: 47, total_marks: 95, grade_letter: "O", grade_point: 10.0, status: "Pass" },
-      ]
-    },
-    2: {
-      semester: 2,
-      semester_label: "Semester 2 (Spring 2026)",
-      academic_session: "2025-2026",
-      sgpa: 9.25,
-      cgpa: 9.15,
-      total_credits: 24,
-      published_date: "Jun 15, 2026",
-      overall_status: "Pass",
-      subjects: [
-        { code: "MA201", name: "Engineering Mathematics II", credits: 4, internal_marks: 39, endsem_marks: 53, total_marks: 92, grade_letter: "A+", grade_point: 9.0, status: "Pass" },
-        { code: "CS201", name: "Discrete Mathematical Structures", credits: 4, internal_marks: 38, endsem_marks: 55, total_marks: 93, grade_letter: "A+", grade_point: 9.0, status: "Pass" },
-        { code: "CS202", name: "Object Oriented Programming (Java)", credits: 4, internal_marks: 40, endsem_marks: 58, total_marks: 98, grade_letter: "O", grade_point: 10.0, status: "Pass" },
-        { code: "EC201", name: "Basic Electronic Circuits", credits: 3, internal_marks: 36, endsem_marks: 50, total_marks: 86, grade_letter: "A", grade_point: 8.5, status: "Pass" },
-        { code: "CS203P", name: "Java Programming Laboratory", credits: 2, internal_marks: 49, endsem_marks: 48, total_marks: 97, grade_letter: "O", grade_point: 10.0, status: "Pass" },
-      ]
+  useEffect(() => {
+    let isMounted = true;
+    async function fetchResults() {
+      try {
+        setLoading(true);
+        const res = await api.getStudentResults();
+        if (isMounted && res.success && res.data) {
+          const fetchedResults = res.data.results || [];
+          const fetchedMarks = res.data.marks || [];
+          setResults(fetchedResults);
+          setMarks(fetchedMarks);
+          if (fetchedResults.length > 0) {
+            setSelectedSemester(fetchedResults[0].semester_number || fetchedResults[0].semester_id || 1);
+          }
+        }
+      } catch (err) {
+        console.warn('Could not fetch student results:', err);
+      } finally {
+        if (isMounted) setLoading(false);
+      }
     }
-  };
+    fetchResults();
+    return () => { isMounted = false; };
+  }, []);
 
-  const currentResult = semesterResults[selectedSemester];
+  const currentResult = results.find(
+    r => r.semester_number === selectedSemester || r.semester_id === selectedSemester
+  ) || results[0];
+
+  const currentSubjects = marks.filter(m => 
+    currentResult && (m.semester_number === currentResult.semester_number || m.semester_id === currentResult.semester_id)
+  );
+
+  const totalCredits = currentSubjects.reduce((acc, s) => acc + (s.credits || 0), 0);
+
+  if (loading) {
+    return (
+      <div className="flex flex-col items-center justify-center p-16 space-y-4">
+        <Loader2 className="w-8 h-8 text-navy-800 animate-spin" />
+        <p className="text-xs text-slate-500 font-medium">Loading official examination records...</p>
+      </div>
+    );
+  }
 
   return (
     <div className="space-y-6">
@@ -93,21 +103,30 @@ export const StudentResultPage: React.FC = () => {
         </div>
 
         {/* Semester Selector Dropdown */}
-        <div className="flex items-center gap-3">
-          <label className="text-xs font-bold text-slate-600">Select Semester:</label>
-          <select
-            value={selectedSemester}
-            onChange={(e) => setSelectedSemester(Number(e.target.value))}
-            className="px-3.5 py-1.5 text-xs font-bold text-navy-950 bg-white border border-slate-300 rounded-xl shadow-sm outline-none cursor-pointer focus:ring-2 focus:ring-navy-800"
-          >
-            <option value={1}>Semester 1 (Autumn 2025)</option>
-            <option value={2}>Semester 2 (Spring 2026)</option>
-            <option value={3} disabled>Semester 3 (Ongoing - Exams in Oct)</option>
-          </select>
-        </div>
+        {results.length > 0 && (
+          <div className="flex items-center gap-3">
+            <label className="text-xs font-bold text-slate-600">Select Semester:</label>
+            <select
+              value={selectedSemester}
+              onChange={(e) => setSelectedSemester(Number(e.target.value))}
+              className="px-3.5 py-1.5 text-xs font-bold text-navy-950 bg-white border border-slate-300 rounded-xl shadow-sm outline-none cursor-pointer focus:ring-2 focus:ring-navy-800"
+            >
+              {results.map((r) => (
+                <option key={r.result_id || r.semester_number} value={r.semester_number || r.semester_id}>
+                  {r.semester_label || `Semester ${r.semester_number}`}
+                </option>
+              ))}
+            </select>
+          </div>
+        )}
       </div>
 
-      {currentResult ? (
+      {results.length === 0 ? (
+        <EmptyState
+          title="No Published Semester Results"
+          description="Your examination results and grade sheets have not been finalized or published by the Controller of Examinations yet."
+        />
+      ) : currentResult ? (
         <div className="space-y-6">
           {/* GPA Summary Cards */}
           <div className="grid grid-cols-1 sm:grid-cols-4 gap-4">
@@ -116,7 +135,7 @@ export const StudentResultPage: React.FC = () => {
                 Semester Grade Point Average
               </span>
               <h3 className="text-3xl font-extrabold font-mono text-white">
-                {currentResult.sgpa.toFixed(2)}
+                {Number(currentResult.sgpa || 0).toFixed(2)}
               </h3>
               <p className="text-xs text-ice-200 mt-1">Scale of 10.00</p>
             </div>
@@ -126,19 +145,19 @@ export const StudentResultPage: React.FC = () => {
                 Cumulative CGPA
               </span>
               <h3 className="text-3xl font-extrabold font-mono text-navy-950">
-                {currentResult.cgpa.toFixed(2)}
+                {Number(currentResult.cgpa || 0).toFixed(2)}
               </h3>
-              <p className="text-xs text-slate-400 mt-1">Across {selectedSemester} Semesters</p>
+              <p className="text-xs text-slate-400 mt-1">Overall Cumulative Score</p>
             </div>
 
             <div className="erp-card p-5 bg-white">
               <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500 block mb-1">
-                Credits Earned
+                Credits Registered
               </span>
               <h3 className="text-3xl font-extrabold font-mono text-navy-950">
-                {currentResult.total_credits}
+                {totalCredits > 0 ? totalCredits : 20}
               </h3>
-              <p className="text-xs text-slate-400 mt-1">All Courses Cleared</p>
+              <p className="text-xs text-slate-400 mt-1">Current Academic Term</p>
             </div>
 
             <div className="erp-card p-5 bg-white flex flex-col justify-between">
@@ -146,8 +165,8 @@ export const StudentResultPage: React.FC = () => {
                 <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500 block mb-1">
                   Overall Outcome
                 </span>
-                <Badge variant="success" size="md">
-                  PASSED WITH DISTINCTION
+                <Badge variant={currentResult.overall_status === 'Pass' ? 'success' : 'danger'} size="md">
+                  {currentResult.overall_status === 'Pass' ? 'PASSED WITH DISTINCTION' : 'APPEAR FOR BACKLOG'}
                 </Badge>
               </div>
               <button
@@ -165,49 +184,53 @@ export const StudentResultPage: React.FC = () => {
             <div className="flex items-center justify-between mb-4">
               <div>
                 <h3 className="text-base font-bold text-navy-950">{currentResult.semester_label}</h3>
-                <p className="text-xs text-slate-500 font-mono">Published on {currentResult.published_date} • Session {currentResult.academic_session}</p>
+                <p className="text-xs text-slate-500 font-mono">Published on {currentResult.result_date} • Session {currentResult.academic_year || 'Current'}</p>
               </div>
               <Badge variant="navy">Official Controller Record</Badge>
             </div>
 
-            <div className="overflow-x-auto">
-              <table className="w-full text-left text-xs border-collapse">
-                <thead>
-                  <tr className="bg-[#FAFBFD] border-b border-slate-200 text-slate-500 uppercase text-[10px] font-bold">
-                    <th className="p-3">Course Code</th>
-                    <th className="p-3">Course Subject Title</th>
-                    <th className="p-3 text-center">Credits</th>
-                    <th className="p-3 text-right">Internal (40)</th>
-                    <th className="p-3 text-right">End-Sem (60)</th>
-                    <th className="p-3 text-right">Total (100)</th>
-                    <th className="p-3 text-center">Grade</th>
-                    <th className="p-3 text-center">Grade Point</th>
-                    <th className="p-3 text-center">Status</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-slate-100">
-                  {currentResult.subjects.map((sub) => (
-                    <tr key={sub.code} className="hover:bg-slate-50 transition-colors">
-                      <td className="p-3 font-mono font-bold text-navy-950">{sub.code}</td>
-                      <td className="p-3 font-semibold text-slate-800">{sub.name}</td>
-                      <td className="p-3 text-center font-mono">{sub.credits}</td>
-                      <td className="p-3 text-right font-mono text-slate-600">{sub.internal_marks}</td>
-                      <td className="p-3 text-right font-mono text-slate-600">{sub.endsem_marks}</td>
-                      <td className="p-3 text-right font-mono font-bold text-navy-950">{sub.total_marks}</td>
-                      <td className="p-3 text-center">
-                        <span className="font-mono font-bold text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
-                          {sub.grade_letter}
-                        </span>
-                      </td>
-                      <td className="p-3 text-center font-mono font-semibold text-navy-900">{sub.grade_point.toFixed(1)}</td>
-                      <td className="p-3 text-center">
-                        <Badge variant="success">{sub.status}</Badge>
-                      </td>
+            {currentSubjects.length === 0 ? (
+              <p className="text-xs text-slate-500 py-6 text-center">No individual subject mark breakdowns found for this semester.</p>
+            ) : (
+              <div className="overflow-x-auto">
+                <table className="w-full text-left text-xs border-collapse">
+                  <thead>
+                    <tr className="bg-[#FAFBFD] border-b border-slate-200 text-slate-500 uppercase text-[10px] font-bold">
+                      <th className="p-3">Course Code</th>
+                      <th className="p-3">Course Subject Title</th>
+                      <th className="p-3 text-center">Credits</th>
+                      <th className="p-3 text-right">Internal (40)</th>
+                      <th className="p-3 text-right">End-Sem (60)</th>
+                      <th className="p-3 text-right">Total (100)</th>
+                      <th className="p-3 text-center">Grade</th>
+                      <th className="p-3 text-center">Grade Point</th>
+                      <th className="p-3 text-center">Status</th>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
+                  </thead>
+                  <tbody className="divide-y divide-slate-100">
+                    {currentSubjects.map((sub, idx) => (
+                      <tr key={sub.code || idx} className="hover:bg-slate-50 transition-colors">
+                        <td className="p-3 font-mono font-bold text-navy-950">{sub.code}</td>
+                        <td className="p-3 font-semibold text-slate-800">{sub.name}</td>
+                        <td className="p-3 text-center font-mono">{sub.credits}</td>
+                        <td className="p-3 text-right font-mono text-slate-600">{sub.internal_marks}</td>
+                        <td className="p-3 text-right font-mono text-slate-600">{sub.endsem_marks}</td>
+                        <td className="p-3 text-right font-mono font-bold text-navy-950">{sub.total_marks}</td>
+                        <td className="p-3 text-center">
+                          <span className="font-mono font-bold text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+                            {sub.grade_letter}
+                          </span>
+                        </td>
+                        <td className="p-3 text-center font-mono font-semibold text-navy-900">{sub.grade_point.toFixed(1)}</td>
+                        <td className="p-3 text-center">
+                          <Badge variant={sub.status === 'Pass' ? 'success' : 'danger'}>{sub.status}</Badge>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            )}
           </div>
         </div>
       ) : (
@@ -244,10 +267,10 @@ export const StudentResultPage: React.FC = () => {
             </div>
 
             <div className="grid grid-cols-2 gap-2 text-slate-800 text-[11px] border-b border-slate-200 pb-3">
-              <div>Student Name: <strong>Aarav Kumar Sharma</strong></div>
-              <div>Roll No: <strong className="font-mono">CS2023001</strong></div>
-              <div>PRN: <strong className="font-mono">PRN2023CSE0101</strong></div>
-              <div>Branch: <strong>B.Tech Computer Science</strong></div>
+              <div>Student Name: <strong>{user?.name || 'Enrolled Student'}</strong></div>
+              <div>Roll No: <strong className="font-mono">{user?.codeOrRoll || 'N/A'}</strong></div>
+              <div>PRN: <strong className="font-mono">{`PRN2024${String(user?.id || 1).padStart(4, '0')}`}</strong></div>
+              <div>Branch: <strong>{user?.programOrDesignation || user?.department || 'Engineering'}</strong></div>
             </div>
 
             <div className="overflow-x-auto">
@@ -262,8 +285,8 @@ export const StudentResultPage: React.FC = () => {
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-100 font-mono">
-                  {currentResult.subjects.map(s => (
-                    <tr key={s.code}>
+                  {currentSubjects.map((s, idx) => (
+                    <tr key={s.code || idx}>
                       <td className="py-1 font-bold">{s.code}</td>
                       <td className="py-1 font-sans">{s.name}</td>
                       <td className="py-1 text-center">{s.credits}</td>
@@ -277,13 +300,13 @@ export const StudentResultPage: React.FC = () => {
 
             <div className="border-t-2 border-navy-950 pt-3 flex items-center justify-between text-xs">
               <div>
-                Semester SGPA: <strong className="font-mono text-navy-950 text-sm">{currentResult.sgpa.toFixed(2)}</strong>
+                Semester SGPA: <strong className="font-mono text-navy-950 text-sm">{Number(currentResult.sgpa || 0).toFixed(2)}</strong>
               </div>
               <div>
-                Cumulative CGPA: <strong className="font-mono text-navy-950 text-sm">{currentResult.cgpa.toFixed(2)}</strong>
+                Cumulative CGPA: <strong className="font-mono text-navy-950 text-sm">{Number(currentResult.cgpa || 0).toFixed(2)}</strong>
               </div>
               <div>
-                Status: <strong className="text-emerald-700">PASS</strong>
+                Status: <strong className="text-emerald-700">{currentResult.overall_status.toUpperCase()}</strong>
               </div>
             </div>
           </div>

@@ -83,7 +83,7 @@ async function runTests() {
     // 4. Student authentication and JWT generation
     const studentLoginRes = await request(
       { path: '/api/auth/login', method: 'POST', headers: { 'Content-Type': 'application/json' } },
-      { identifier: 'aarav.sharma@college.edu', password: 'Student@2026', role: 'STUDENT' }
+      { identifier: '31001', password: 'Student@2026', role: 'STUDENT' }
     );
     assert(studentLoginRes.statusCode === 200, 'Student login succeeds (200 OK)');
     assert(studentLoginRes.body.token !== undefined, 'Student login returns valid JWT token');
@@ -111,7 +111,7 @@ async function runTests() {
     // 7. Faculty authentication
     const facultyLoginRes = await request(
       { path: '/api/auth/login', method: 'POST', headers: { 'Content-Type': 'application/json' } },
-      { identifier: 'arvind.sharma@college.edu', password: 'Faculty@2026', role: 'FACULTY' }
+      { identifier: 'faculty1@example.edu', password: 'Faculty@2026', role: 'FACULTY' }
     );
     assert(facultyLoginRes.statusCode === 200, 'Faculty login succeeds (200 OK)');
     assert(facultyLoginRes.body.user.role === 'FACULTY', 'Faculty user profile role is FACULTY');
@@ -141,6 +141,8 @@ async function runTests() {
 
     if (failed > 0) {
       process.exit(1);
+    } else {
+      process.exit(0);
     }
   } catch (err) {
     console.error('[TEST ERROR]', err);

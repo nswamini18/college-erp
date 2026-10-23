@@ -1,19 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   Briefcase, 
   CheckCircle2, 
-  Clock, 
-  Building2, 
-  AlertCircle, 
   FileText, 
-  ArrowRight,
-  Award,
-  Bell
+  Loader2
 } from 'lucide-react';
 import { Badge } from '../../components/common/Badge';
 import { Modal } from '../../components/common/Modal';
 import { DataTable, Column } from '../../components/common/DataTable';
-import { mockCompanies } from '../../data/mockPlacement';
+import { EmptyState } from '../../components/common/EmptyState';
+import { useAuth } from '../../context/AuthContext';
+import { api } from '../../services/api';
 
 interface StudentJobOpportunity {
   drive_id: number;
@@ -24,7 +21,7 @@ interface StudentJobOpportunity {
   min_cgpa: number;
   drive_date: string;
   deadline: string;
-  status: 'Open for Registration' | 'Closed';
+  status: string;
 }
 
 interface StudentJobApplication {
@@ -33,95 +30,71 @@ interface StudentJobApplication {
   job_role: string;
   package: string;
   applied_date: string;
-  status: 'Applied' | 'Shortlisted' | 'Technical Round' | 'Selected' | 'Offer Accepted' | 'Rejected';
+  status: string;
   interview_date?: string;
-  interview_venue?: string;
-  offer_letter?: boolean;
+}
+
+interface Announcement {
+  id: number;
+  title: string;
+  content: string;
+  date: string;
 }
 
 export const StudentPlacementPage: React.FC = () => {
+  const { user } = useAuth();
   const [activeTab, setActiveTab] = useState<'open_jobs' | 'my_applications' | 'announcements'>('open_jobs');
-
-  const [opportunities, setOpportunities] = useState<StudentJobOpportunity[]>([
-    {
-      drive_id: 1,
-      company_name: "Microsoft Corporation",
-      job_role: "Software Development Engineer (SDE-1)",
-      package: "18.5 LPA",
-      job_type: "Full-time",
-      min_cgpa: 8.0,
-      drive_date: "2026-10-24",
-      deadline: "2026-10-15",
-      status: "Open for Registration"
-    },
-    {
-      drive_id: 2,
-      company_name: "Google India",
-      job_role: "Associate Cloud Solutions Architect",
-      package: "22.0 LPA",
-      job_type: "Internship + PPO",
-      min_cgpa: 8.5,
-      drive_date: "2026-10-28",
-      deadline: "2026-10-18",
-      status: "Open for Registration"
-    },
-    {
-      drive_id: 3,
-      company_name: "Tata Consultancy Services (TCS)",
-      job_role: "Systems Engineer (Digital)",
-      package: "7.5 LPA",
-      job_type: "Full-time",
-      min_cgpa: 7.0,
-      drive_date: "2026-11-05",
-      deadline: "2026-10-25",
-      status: "Open for Registration"
-    }
-  ]);
-
-  const [myApplications, setMyApplications] = useState<StudentJobApplication[]>([
-    {
-      app_id: "APP-MS-001",
-      company_name: "Microsoft Corporation",
-      job_role: "Software Development Engineer (SDE-1)",
-      package: "18.5 LPA",
-      applied_date: "2026-10-02",
-      status: "Shortlisted",
-      interview_date: "2026-10-24 10:00 AM",
-      interview_venue: "Virtual Teams & Technical Assessment"
-    },
-    {
-      app_id: "APP-AWS-009",
-      company_name: "Amazon Web Services (AWS)",
-      job_role: "Cloud Support Associate",
-      package: "14.0 LPA",
-      applied_date: "2026-09-18",
-      status: "Offer Accepted",
-      offer_letter: true
-    }
-  ]);
+  const [loading, setLoading] = useState(true);
+  const [submitting, setSubmitting] = useState(false);
+  const [opportunities, setOpportunities] = useState<StudentJobOpportunity[]>([]);
+  const [myApplications, setMyApplications] = useState<StudentJobApplication[]>([]);
+  const [announcements, setAnnouncements] = useState<Announcement[]>([]);
 
   const [selectedJob, setSelectedJob] = useState<StudentJobOpportunity | null>(null);
+  const [selectedOfferApp, setSelectedOfferApp] = useState<StudentJobApplication | null>(null);
   const [isApplyModalOpen, setIsApplyModalOpen] = useState(false);
   const [isOfferModalOpen, setIsOfferModalOpen] = useState(false);
+
+  const fetchData = async () => {
+    try {
+      setLoading(true);
+      const res = await api.getStudentPlacement();
+      if (res.success && res.data) {
+        setOpportunities(res.data.opportunities || []);
+        setMyApplications(res.data.applications || []);
+        setAnnouncements(res.data.announcements || []);
+      }
+    } catch (err) {
+      console.warn('Error fetching placement data:', err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   const handleApplyDrive = (job: StudentJobOpportunity) => {
     setSelectedJob(job);
     setIsApplyModalOpen(true);
   };
 
-  const handleConfirmApplication = () => {
+  const handleConfirmApplication = async () => {
     if (!selectedJob) return;
-    const newApp: StudentJobApplication = {
-      app_id: `APP-${Date.now().toString().slice(-4)}`,
-      company_name: selectedJob.company_name,
-      job_role: selectedJob.job_role,
-      package: selectedJob.package,
-      applied_date: "2026-10-10",
-      status: "Applied"
-    };
-    setMyApplications([newApp, ...myApplications]);
-    setIsApplyModalOpen(false);
-    setActiveTab('my_applications');
+    try {
+      setSubmitting(true);
+      const res = await api.applyStudentJobDrive(selectedJob.drive_id);
+      if (res.success) {
+        setIsApplyModalOpen(false);
+        await fetchData();
+        setActiveTab('my_applications');
+      }
+    } catch (err: any) {
+      alert(err.message || 'Failed to submit application.');
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   const jobColumns: Column<StudentJobOpportunity>[] = [
@@ -154,7 +127,7 @@ export const StudentPlacementPage: React.FC = () => {
     {
       header: "Eligibility Criteria",
       accessor: "min_cgpa",
-      render: (j) => <span className="font-mono text-xs">Min CGPA: <strong>{j.min_cgpa.toFixed(1)}</strong></span>
+      render: (j) => <span className="font-mono text-xs">Min CGPA: <strong>{Number(j.min_cgpa || 6.5).toFixed(1)}</strong></span>
     },
     { header: "Drive Date", accessor: "drive_date", render: (j) => <span className="font-mono text-slate-600">{j.drive_date}</span> },
     {
@@ -191,17 +164,11 @@ export const StudentPlacementPage: React.FC = () => {
       header: "Recruitment Pipeline Status",
       accessor: "status",
       render: (a) => {
-        const statusMap = {
-          'Applied': 'info' as const,
-          'Shortlisted': 'warning' as const,
-          'Technical Round': 'warning' as const,
-          'Selected': 'success' as const,
-          'Offer Accepted': 'success' as const,
-          'Rejected': 'danger' as const
-        };
+        const status = a.status || 'Applied';
+        const isSuccess = status === 'Selected' || status === 'Offer Accepted' || status === 'Shortlisted';
         return (
           <div className="space-y-1">
-            <Badge variant={statusMap[a.status] || 'neutral'}>{a.status}</Badge>
+            <Badge variant={isSuccess ? 'success' : status === 'Rejected' ? 'danger' : 'info'}>{status}</Badge>
             {a.interview_date && (
               <p className="text-[10px] text-slate-500 font-mono">
                 Slot: {a.interview_date}
@@ -214,9 +181,9 @@ export const StudentPlacementPage: React.FC = () => {
     {
       header: "Offer Letter",
       render: (a) => (
-        a.status === 'Offer Accepted' ? (
+        (a.status === 'Selected' || a.status === 'Offer Accepted') ? (
           <button
-            onClick={() => setIsOfferModalOpen(true)}
+            onClick={() => { setSelectedOfferApp(a); setIsOfferModalOpen(true); }}
             className="px-2.5 py-1 text-xs font-bold text-emerald-800 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 rounded-lg flex items-center gap-1"
           >
             <FileText className="w-3.5 h-3.5" /> View Offer
@@ -227,6 +194,15 @@ export const StudentPlacementPage: React.FC = () => {
       )
     }
   ];
+
+  if (loading) {
+    return (
+      <div className="flex flex-col items-center justify-center p-16 space-y-4">
+        <Loader2 className="w-8 h-8 text-navy-800 animate-spin" />
+        <p className="text-xs text-slate-500 font-medium">Loading placement records...</p>
+      </div>
+    );
+  }
 
   return (
     <div className="space-y-6">
@@ -266,56 +242,65 @@ export const StudentPlacementPage: React.FC = () => {
               activeTab === 'announcements' ? 'bg-navy-950 text-white shadow-sm' : 'text-slate-600 hover:bg-slate-50'
             }`}
           >
-            T&P Notices
+            T&P Notices ({announcements.length})
           </button>
         </div>
       </div>
 
       {activeTab === 'open_jobs' && (
-        <DataTable
-          columns={jobColumns}
-          data={opportunities}
-          title="Active Corporate Campus Recruitment Drives"
-          subtitle="Companies currently accepting student registrations for 2026-2027 placement season"
-          searchPlaceholder="Search by company or role..."
-        />
+        opportunities.length === 0 ? (
+          <EmptyState
+            title="No Active Campus Recruitment Drives"
+            description="There are currently no open recruitment drives scheduled for your department. Check back soon or visit the T&P Notices tab."
+          />
+        ) : (
+          <DataTable
+            columns={jobColumns}
+            data={opportunities}
+            title="Active Corporate Campus Recruitment Drives"
+            subtitle="Companies currently accepting student registrations for 2026-2027 placement season"
+            searchPlaceholder="Search by company or role..."
+          />
+        )
       )}
 
       {activeTab === 'my_applications' && (
-        <DataTable
-          columns={appColumns}
-          data={myApplications}
-          title="My Job Applications & Interview Progress Tracker"
-          subtitle="Track active recruitment rounds from submission to final offer acceptance"
-        />
+        myApplications.length === 0 ? (
+          <EmptyState
+            title="No Placement Applications Filed"
+            description="You have not registered for any campus recruitment drives yet. Browse open drives under the Eligible Drives tab to apply."
+            actionLabel="Browse Open Drives"
+            onAction={() => setActiveTab('open_jobs')}
+          />
+        ) : (
+          <DataTable
+            columns={appColumns}
+            data={myApplications}
+            title="My Job Applications & Interview Progress Tracker"
+            subtitle="Track active recruitment rounds from submission to final offer acceptance"
+          />
+        )
       )}
 
       {activeTab === 'announcements' && (
         <div className="space-y-4">
           <div className="erp-card p-6 space-y-4">
             <h3 className="text-base font-bold text-navy-950">Training & Placement Cell Circulars</h3>
-            <div className="space-y-3 text-xs">
-              <div className="p-4 rounded-xl border border-slate-200 bg-[#FAFCFD]">
-                <div className="flex items-center justify-between mb-1">
-                  <span className="font-bold text-navy-950">Microsoft Technical Assessment Guidelines</span>
-                  <span className="font-mono text-slate-500">Oct 07, 2026</span>
-                </div>
-                <p className="text-slate-600">
-                  Online coding assessment will be conducted on Oct 24 on Codility platform.
-                  Please ensure your webcams and microphones are tested before the test window.
-                </p>
+            {announcements.length === 0 ? (
+              <p className="text-xs text-slate-500 py-6 text-center">No official circulars released this term.</p>
+            ) : (
+              <div className="space-y-3 text-xs">
+                {announcements.map((a) => (
+                  <div key={a.id} className="p-4 rounded-xl border border-slate-200 bg-[#FAFCFD]">
+                    <div className="flex items-center justify-between mb-1">
+                      <span className="font-bold text-navy-950">{a.title}</span>
+                      <span className="font-mono text-slate-500">{a.date}</span>
+                    </div>
+                    <p className="text-slate-600 leading-relaxed">{a.content}</p>
+                  </div>
+                ))}
               </div>
-
-              <div className="p-4 rounded-xl border border-slate-200 bg-[#FAFCFD]">
-                <div className="flex items-center justify-between mb-1">
-                  <span className="font-bold text-navy-950">Resume Verification Mandatory Deadline</span>
-                  <span className="font-mono text-slate-500">Oct 05, 2026</span>
-                </div>
-                <p className="text-slate-600">
-                  All 7th and 8th semester scholars must have their updated one-page resume stamped by department placement coordinators.
-                </p>
-              </div>
-            </div>
+            )}
           </div>
         </div>
       )}
@@ -338,8 +323,10 @@ export const StudentPlacementPage: React.FC = () => {
               </button>
               <button
                 onClick={handleConfirmApplication}
-                className="px-4 py-2 text-xs font-bold text-white bg-navy-950 hover:bg-navy-900 rounded-xl"
+                disabled={submitting}
+                className="px-4 py-2 text-xs font-bold text-white bg-navy-950 hover:bg-navy-900 rounded-xl flex items-center gap-1.5"
               >
+                {submitting && <Loader2 className="w-3.5 h-3.5 animate-spin" />}
                 Confirm & Submit Profile
               </button>
             </div>
@@ -347,7 +334,7 @@ export const StudentPlacementPage: React.FC = () => {
         >
           <div className="space-y-3 text-xs">
             <p className="text-slate-600">
-              By confirming, your verified student credentials (CGPA: <strong>9.15</strong>, Department: <strong>CSE</strong>, active backlogs: <strong>0</strong>) will be forwarded to the corporate recruitment team.
+              By confirming, your verified student profile (Name: <strong>{user?.name}</strong>, Roll: <strong>{user?.codeOrRoll}</strong>, Department: <strong>{user?.department}</strong>) will be forwarded to the corporate recruitment team.
             </p>
             <div className="p-3 bg-slate-50 border border-slate-200 rounded-xl space-y-1 font-mono text-slate-700">
               <div>Drive Date: {selectedJob.drive_date}</div>
@@ -358,12 +345,12 @@ export const StudentPlacementPage: React.FC = () => {
       )}
 
       {/* Offer Letter Modal */}
-      {isOfferModalOpen && (
+      {isOfferModalOpen && selectedOfferApp && (
         <Modal
           isOpen={isOfferModalOpen}
           onClose={() => setIsOfferModalOpen(false)}
           title="Official Placement Offer Letter"
-          subtitle="Amazon Web Services (AWS) • Cloud Support Associate"
+          subtitle={`${selectedOfferApp.company_name} • ${selectedOfferApp.job_role}`}
           maxWidth="md"
           footer={
             <button
@@ -376,14 +363,14 @@ export const StudentPlacementPage: React.FC = () => {
         >
           <div className="border border-slate-200 p-5 rounded-xl bg-slate-50 space-y-3 text-xs">
             <div className="flex items-center justify-between border-b border-slate-200 pb-2">
-              <span className="font-extrabold text-navy-950 text-sm">AMAZON WEB SERVICES</span>
-              <Badge variant="success">OFFER ACCEPTED</Badge>
+              <span className="font-extrabold text-navy-950 text-sm uppercase">{selectedOfferApp.company_name}</span>
+              <Badge variant="success">OFFER VERIFIED</Badge>
             </div>
-            <p className="text-slate-700">
-              Dear <strong>Aarav Sharma</strong>, we are pleased to confirm your appointment as <strong>Cloud Support Associate</strong> with an annual compensation package of <strong>14.0 LPA</strong>.
+            <p className="text-slate-700 leading-relaxed">
+              Dear <strong>{user?.name || 'Candidate'}</strong>, we are pleased to confirm your appointment as <strong>{selectedOfferApp.job_role}</strong> with an annual compensation package of <strong>{selectedOfferApp.package}</strong>.
             </p>
             <p className="text-[11px] text-slate-500 font-mono">
-              Tentative Joining Date: July 2027 • Location: Hyderabad, India
+              Offer Status: {selectedOfferApp.status} • Reference: {selectedOfferApp.app_id}
             </p>
           </div>
         </Modal>

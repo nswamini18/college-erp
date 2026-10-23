@@ -1,5 +1,5 @@
 const bcrypt = require('bcryptjs');
-const { query } = require('../config/db');
+const { pool, query } = require('../config/db');
 const { generateToken } = require('../middleware/auth');
 
 /**
@@ -222,8 +222,345 @@ function logout(req, res) {
   });
 }
 
+/**
+ * Get Available Academic Options for Registration Dropdowns
+ * GET /api/auth/registration-options
+ */
+async function getRegistrationOptions(req, res, next) {
+  try {
+    const [departments] = await query('SELECT department_id, department_name, branch_code FROM department ORDER BY department_id');
+    const [designations] = await query("SELECT designation_id, designation_name, category FROM designation WHERE category = 'Teaching' ORDER BY designation_id");
+    const [sections] = await query('SELECT section_id, section_name, department_id FROM section ORDER BY section_id');
+
+    res.json({
+      success: true,
+      data: {
+        departments: departments || [],
+        designations: designations || [],
+        sections: sections || []
+      }
+    });
+  } catch (err) {
+    next(err);
+  }
+}
+
+/**
+ * Register New Student Account (Public Self-Registration)
+ * POST /api/auth/register/student
+ * Strictly enforces STUDENT role on backend.
+ */
+async function registerStudent(req, res, next) {
+  let conn;
+  try {
+    const {
+      student_name,
+      roll_no,
+      prn,
+      email,
+      password,
+      confirm_password,
+      department_id,
+      section_id,
+      phone,
+      gender,
+      dob,
+      current_year,
+      current_semester
+    } = req.body;
+
+    // 1. Mandatory field validation
+    if (!student_name || !student_name.trim()) {
+      return res.status(400).json({ success: false, message: 'Full student name is required.' });
+    }
+    if (!roll_no || !roll_no.trim()) {
+      return res.status(400).json({ success: false, message: 'Roll number / Student ID is required.' });
+    }
+    if (!email || !email.trim()) {
+      return res.status(400).json({ success: false, message: 'Institutional email address is required.' });
+    }
+    if (!password || password.length < 6) {
+      return res.status(400).json({ success: false, message: 'Password must be at least 6 characters long.' });
+    }
+    if (confirm_password !== undefined && password !== confirm_password) {
+      return res.status(400).json({ success: false, message: 'Password confirmation does not match.' });
+    }
+    if (!department_id) {
+      return res.status(400).json({ success: false, message: 'Academic department selection is required.' });
+    }
+
+    const trimmedRoll = roll_no.trim();
+    const trimmedEmail = email.trim().toLowerCase();
+    const trimmedName = student_name.trim();
+
+    // 2. Validate department existence
+    const [deptRows] = await query('SELECT department_id, department_name, branch_code FROM department WHERE department_id = ?', [department_id]);
+    if (deptRows.length === 0) {
+      return res.status(400).json({ success: false, message: 'Invalid academic department selected.' });
+    }
+    const dept = deptRows[0];
+    const branchCode = dept.branch_code || 'CS';
+
+    // 3. Uniqueness verification across student and user_account
+    const [existingUsers] = await query(
+      `SELECT identifier, email FROM user_account WHERE identifier = ? OR email = ?
+       UNION
+       SELECT roll_no, email FROM student WHERE roll_no = ? OR email = ?`,
+      [trimmedRoll, trimmedEmail, trimmedRoll, trimmedEmail]
+    );
+
+    if (existingUsers.length > 0) {
+      const isEmailConflict = existingUsers.some(u => u.email?.toLowerCase() === trimmedEmail);
+      if (isEmailConflict) {
+        return res.status(409).json({ success: false, message: `An account with email '${trimmedEmail}' already exists. Please sign in instead.` });
+      }
+      return res.status(409).json({ success: false, message: `Student with roll number '${trimmedRoll}' is already registered.` });
+    }
+
+    // Name splitting for database normalization
+    const nameParts = trimmedName.split(/\s+/);
+    const firstName = nameParts[0];
+    const lastName = nameParts.length > 1 ? nameParts[nameParts.length - 1] : 'Student';
+    const middleName = nameParts.length > 2 ? nameParts.slice(1, -1).join(' ') : null;
+
+    // Deterministic PRN generation if omitted
+    const finalPrn = prn && prn.trim() ? prn.trim() : `PRN2026${trimmedRoll}`;
+
+    const [prnConflict] = await query('SELECT student_id FROM student WHERE prn = ?', [finalPrn]);
+    if (prnConflict.length > 0) {
+      return res.status(409).json({ success: false, message: `PRN / Registration Number '${finalPrn}' is already registered.` });
+    }
+
+    // Default section resolution
+    let finalSectionId = section_id ? parseInt(section_id, 10) : null;
+    if (!finalSectionId) {
+      const [secRows] = await query('SELECT section_id FROM section WHERE department_id = ? ORDER BY section_id ASC LIMIT 1', [department_id]);
+      finalSectionId = secRows[0]?.section_id || 1;
+    }
+
+    // 4. Secure Bcrypt Hash
+    const passwordHash = await bcrypt.hash(password, 10);
+
+    // 5. Atomic Multi-Table Transaction
+    conn = await pool.getConnection();
+    await conn.beginTransaction();
+
+    const [stInsert] = await conn.execute(
+      `INSERT INTO student (
+        prn, roll_no, student_name, first_name, middle_name, last_name,
+        email, phone, branch, department_id, section_id,
+        batch_year, current_year, current_semester, dob, gender,
+        admission_year, admission_status
+      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'Active')`,
+      [
+        finalPrn,
+        trimmedRoll,
+        trimmedName,
+        firstName,
+        middleName,
+        lastName,
+        trimmedEmail,
+        phone || null,
+        branchCode,
+        dept.department_id,
+        finalSectionId,
+        2024,
+        current_year || 3,
+        current_semester || 5,
+        dob || '2004-01-01',
+        gender && ['Male', 'Female', 'Other'].includes(gender) ? gender : 'Other',
+        2024
+      ]
+    );
+
+    const newStudentId = stInsert.insertId;
+
+    // Create user_account record (Strictly enforce STUDENT role)
+    await conn.execute(
+      `INSERT INTO user_account (identifier, email, password_hash, role, student_id, is_active)
+       VALUES (?, ?, ?, 'STUDENT', ?, 1)`,
+      [trimmedRoll, trimmedEmail, passwordHash, newStudentId]
+    );
+
+    // Initial student contact record
+    await conn.execute(
+      `INSERT INTO student_contact (student_id, mobile_number, institute_email)
+       VALUES (?, ?, ?)`,
+      [newStudentId, phone || '9876543210', trimmedEmail]
+    );
+
+    await conn.commit();
+
+    return res.status(201).json({
+      success: true,
+      message: 'Student account successfully registered in MySQL! You can now log in.',
+      student: {
+        id: newStudentId,
+        student_id: newStudentId,
+        roll_no: trimmedRoll,
+        student_name: trimmedName,
+        email: trimmedEmail,
+        department: dept.department_name,
+        role: 'STUDENT'
+      }
+    });
+  } catch (err) {
+    if (conn) await conn.rollback();
+    next(err);
+  } finally {
+    if (conn) conn.release();
+  }
+}
+
+/**
+ * Register New Faculty Account (Institutional Policy Enforced)
+ * POST /api/auth/register/faculty
+ * Requires institutional verification secret or admin privileges.
+ * Strictly enforces FACULTY role on backend.
+ */
+async function registerFaculty(req, res, next) {
+  let conn;
+  try {
+    const {
+      faculty_name,
+      faculty_code,
+      email,
+      password,
+      confirm_password,
+      department_id,
+      designation_id,
+      phone_no,
+      qualification,
+      verification_code
+    } = req.body;
+
+    // 1. Mandatory validation
+    if (!faculty_name || !faculty_name.trim()) {
+      return res.status(400).json({ success: false, message: 'Faculty member name is required.' });
+    }
+    if (!faculty_code || !faculty_code.trim()) {
+      return res.status(400).json({ success: false, message: 'Faculty employee code is required.' });
+    }
+    if (!email || !email.trim()) {
+      return res.status(400).json({ success: false, message: 'Institutional email is required.' });
+    }
+    if (!password || password.length < 6) {
+      return res.status(400).json({ success: false, message: 'Password must be at least 6 characters long.' });
+    }
+    if (confirm_password !== undefined && password !== confirm_password) {
+      return res.status(400).json({ success: false, message: 'Password confirmation does not match.' });
+    }
+    if (!department_id) {
+      return res.status(400).json({ success: false, message: 'Academic department is required.' });
+    }
+
+    // 2. Institutional Authorization Security Policy
+    // Prevents unverified public self-elevation to faculty teaching status
+    const expectedSecret = process.env.FACULTY_REGISTRATION_SECRET || 'CAMPUS_FACULTY_2026';
+    const isAuthorized = (verification_code && verification_code.trim() === expectedSecret) || (req.user && req.user.role === 'ADMIN');
+
+    if (!isAuthorized) {
+      return res.status(403).json({
+        success: false,
+        message: 'Institutional Authorization Denied: A valid Faculty Verification Key is required to create a faculty account.'
+      });
+    }
+
+    const trimmedCode = faculty_code.trim().toUpperCase();
+    const trimmedEmail = email.trim().toLowerCase();
+    const trimmedName = faculty_name.trim();
+
+    // 3. Validate department and designation
+    const [deptRows] = await query('SELECT department_id, department_name FROM department WHERE department_id = ?', [department_id]);
+    if (deptRows.length === 0) {
+      return res.status(400).json({ success: false, message: 'Invalid academic department selected.' });
+    }
+
+    let finalDesigId = designation_id ? parseInt(designation_id, 10) : null;
+    if (!finalDesigId) {
+      const [desigRows] = await query("SELECT designation_id FROM designation WHERE designation_name LIKE '%Assistant%' LIMIT 1");
+      finalDesigId = desigRows[0]?.designation_id || 1;
+    }
+
+    // 4. Uniqueness verification
+    const [existingUsers] = await query(
+      `SELECT identifier, email FROM user_account WHERE identifier = ? OR email = ?
+       UNION
+       SELECT faculty_code, email FROM faculty WHERE faculty_code = ? OR email = ?`,
+      [trimmedCode, trimmedEmail, trimmedCode, trimmedEmail]
+    );
+
+    if (existingUsers.length > 0) {
+      const isEmailConflict = existingUsers.some(u => u.email?.toLowerCase() === trimmedEmail);
+      if (isEmailConflict) {
+        return res.status(409).json({ success: false, message: `An account with email '${trimmedEmail}' already exists. Please sign in instead.` });
+      }
+      return res.status(409).json({ success: false, message: `Faculty code '${trimmedCode}' is already registered.` });
+    }
+
+    // 5. Bcrypt Password Hash
+    const passwordHash = await bcrypt.hash(password, 10);
+
+    // 6. Atomic Transaction
+    conn = await pool.getConnection();
+    await conn.beginTransaction();
+
+    const [facInsert] = await conn.execute(
+      `INSERT INTO faculty (faculty_name, faculty_code, email, phone_no, department_id, designation_id, qualification, joining_date, status)
+       VALUES (?, ?, ?, ?, ?, ?, ?, CURDATE(), 'Active')`,
+      [trimmedName, trimmedCode, trimmedEmail, phone_no || null, department_id, finalDesigId, qualification || 'M.Tech / Ph.D.']
+    );
+
+    const newFacultyId = facInsert.insertId;
+
+    // Insert user_account (Strictly enforce FACULTY role)
+    await conn.execute(
+      `INSERT INTO user_account (identifier, email, password_hash, role, faculty_id, is_active)
+       VALUES (?, ?, ?, 'FACULTY', ?, 1)`,
+      [trimmedCode, trimmedEmail, passwordHash, newFacultyId]
+    );
+
+    await conn.commit();
+
+    return res.status(201).json({
+      success: true,
+      message: 'Faculty account registered and authorized in MySQL! You can now log in.',
+      faculty: {
+        id: newFacultyId,
+        faculty_id: newFacultyId,
+        faculty_code: trimmedCode,
+        faculty_name: trimmedName,
+        email: trimmedEmail,
+        department: deptRows[0].department_name,
+        role: 'FACULTY'
+      }
+    });
+  } catch (err) {
+    if (conn) await conn.rollback();
+    next(err);
+  } finally {
+    if (conn) conn.release();
+  }
+}
+
+/**
+ * Unified Registration Dispatcher
+ * POST /api/auth/register
+ */
+async function register(req, res, next) {
+  const role = (req.body.role || 'STUDENT').toUpperCase();
+  if (role === 'FACULTY') {
+    return registerFaculty(req, res, next);
+  }
+  return registerStudent(req, res, next);
+}
+
 module.exports = {
   login,
   getCurrentUser,
-  logout
+  logout,
+  getRegistrationOptions,
+  registerStudent,
+  registerFaculty,
+  register
 };

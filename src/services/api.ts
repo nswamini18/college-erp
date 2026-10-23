@@ -60,6 +60,32 @@ class ApiClient {
     localStorage.removeItem('college_erp_user');
   }
 
+  // Registration Endpoints
+  async getRegistrationOptions() {
+    return this.request<{
+      success: boolean;
+      data: {
+        departments: Array<{ department_id: number; department_name: string; branch_code: string }>;
+        designations: Array<{ designation_id: number; designation_name: string; category: string }>;
+        sections: Array<{ section_id: number; section_name: string; department_id: number }>;
+      };
+    }>('/auth/registration-options');
+  }
+
+  async registerStudent(payload: any) {
+    return this.request<{ success: boolean; message: string; student: any }>('/auth/register/student', {
+      method: 'POST',
+      body: JSON.stringify(payload)
+    });
+  }
+
+  async registerFaculty(payload: any) {
+    return this.request<{ success: boolean; message: string; faculty: any }>('/auth/register/faculty', {
+      method: 'POST',
+      body: JSON.stringify(payload)
+    });
+  }
+
   // Student Endpoints
   async getStudentProfile() {
     return this.request<{ success: boolean; data: any }>('/students/profile');

@@ -1,0 +1,1174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>College ERP - DBMS Project Report</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 18mm 15mm 20mm 15mm;
+      @bottom-right {
+        content: "Page " counter(page);
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-size: 8.5pt;
+        color: #64748b;
+      }
+      @bottom-left {
+        content: "Campus ERP - DBMS Academic Project Report (2025-2026)";
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-size: 8pt;
+        color: #94a3b8;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      font-size: 9.5pt;
+      line-height: 1.55;
+      color: #1e293b;
+      background-color: #ffffff;
+    }
+
+    .page-break {
+      page-break-after: always;
+    }
+
+    .avoid-break {
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+
+    /* Headings */
+    h1, h2, h3, h4 {
+      color: #0f172a;
+      font-weight: 700;
+      margin-top: 14pt;
+      margin-bottom: 6pt;
+      page-break-after: avoid;
+    }
+
+    h1 {
+      font-size: 16pt;
+      border-bottom: 2pt solid #2563eb;
+      padding-bottom: 4pt;
+      margin-top: 20pt;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    h2 {
+      font-size: 12.5pt;
+      border-bottom: 1pt solid #cbd5e1;
+      padding-bottom: 3pt;
+      color: #1e3a8a;
+    }
+
+    h3 {
+      font-size: 10.5pt;
+      color: #0f172a;
+    }
+
+    p {
+      margin-bottom: 8pt;
+      text-align: justify;
+    }
+
+    /* Cover Page */
+    .cover-page {
+      height: 100%;
+      min-height: 250mm;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      text-align: center;
+      padding: 10mm 5mm;
+      border: 3pt double #1e3a8a;
+    }
+
+    .cover-header {
+      margin-top: 5mm;
+    }
+
+    .inst-title {
+      font-size: 14pt;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: #0f172a;
+      letter-spacing: 1px;
+    }
+
+    .dept-title {
+      font-size: 11pt;
+      font-weight: 600;
+      color: #2563eb;
+      margin-top: 3pt;
+    }
+
+    .emblem-box {
+      margin: 10mm auto;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      font-size: 32pt;
+      font-weight: bold;
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+    }
+
+    .project-title-box {
+      margin: 8mm 0;
+      padding: 12mm 5mm;
+      background: #f8fafc;
+      border-top: 2pt solid #2563eb;
+      border-bottom: 2pt solid #2563eb;
+    }
+
+    .main-title {
+      font-size: 18pt;
+      font-weight: 900;
+      color: #0f172a;
+      text-transform: uppercase;
+      line-height: 1.3;
+    }
+
+    .sub-title {
+      font-size: 11pt;
+      font-weight: 600;
+      color: #475569;
+      margin-top: 6pt;
+    }
+
+    .meta-table {
+      width: 100%;
+      margin: 6mm 0;
+      border-collapse: collapse;
+      font-size: 9pt;
+      text-align: left;
+    }
+
+    .meta-table td, .meta-table th {
+      padding: 5pt 8pt;
+      border: 1pt solid #cbd5e1;
+    }
+
+    .meta-table th {
+      background-color: #f1f5f9;
+      color: #0f172a;
+      width: 30%;
+    }
+
+    .signatures-box {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 10mm;
+      font-size: 9pt;
+    }
+
+    .sig-col {
+      width: 45%;
+      border-top: 1pt dashed #64748b;
+      padding-top: 6pt;
+    }
+
+    /* Tables */
+    table.data-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 8pt 0 12pt 0;
+      font-size: 8.5pt;
+      page-break-inside: avoid;
+    }
+
+    table.data-table th, table.data-table td {
+      border: 1pt solid #cbd5e1;
+      padding: 4.5pt 6pt;
+      vertical-align: top;
+    }
+
+    table.data-table th {
+      background-color: #0f172a;
+      color: #ffffff;
+      font-weight: 700;
+      text-align: left;
+      font-size: 8pt;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+
+    table.data-table tr:nth-child(even) {
+      background-color: #f8fafc;
+    }
+
+    /* Code Blocks */
+    .code-box {
+      background-color: #0f172a;
+      color: #f8fafc;
+      padding: 8pt 10pt;
+      border-radius: 4pt;
+      font-family: 'Consolas', 'Courier New', monospace;
+      font-size: 8pt;
+      line-height: 1.45;
+      margin: 6pt 0 10pt 0;
+      border-left: 3pt solid #38bdf8;
+      overflow-x: auto;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      page-break-inside: avoid;
+    }
+
+    .code-box .kw { color: #f43f5e; font-weight: bold; }
+    .code-box .fn { color: #38bdf8; }
+    .code-box .str { color: #a3e635; }
+    .code-box .cm { color: #94a3b8; font-style: italic; }
+
+    /* Badges & Alerts */
+    .badge-pass {
+      display: inline-block;
+      padding: 1.5pt 5pt;
+      border-radius: 3pt;
+      font-size: 7.5pt;
+      font-weight: 700;
+      background-color: #dcfce7;
+      color: #15803d;
+      border: 1pt solid #86efac;
+    }
+
+    .badge-info {
+      display: inline-block;
+      padding: 1.5pt 5pt;
+      border-radius: 3pt;
+      font-size: 7.5pt;
+      font-weight: 700;
+      background-color: #e0f2fe;
+      color: #0369a1;
+      border: 1pt solid #7dd3fc;
+    }
+
+    .callout {
+      background-color: #f8fafc;
+      border-left: 3pt solid #2563eb;
+      padding: 8pt 10pt;
+      margin: 8pt 0;
+      font-size: 8.5pt;
+      border-radius: 0 4pt 4pt 0;
+      page-break-inside: avoid;
+    }
+
+    .diagram-container {
+      background-color: #ffffff;
+      border: 1pt solid #cbd5e1;
+      border-radius: 4pt;
+      padding: 10pt;
+      margin: 10pt 0;
+      text-align: center;
+      page-break-inside: avoid;
+    }
+
+    .diagram-caption {
+      font-size: 8pt;
+      font-weight: 600;
+      color: #64748b;
+      margin-top: 4pt;
+      text-align: center;
+    }
+
+    /* Q&A Cards */
+    .qa-card {
+      background: #f8fafc;
+      border: 1pt solid #e2e8f0;
+      border-radius: 4pt;
+      padding: 7pt 9pt;
+      margin-bottom: 7pt;
+      page-break-inside: avoid;
+    }
+
+    .qa-card .q-title {
+      font-weight: 700;
+      color: #1e3a8a;
+      font-size: 9pt;
+      margin-bottom: 3pt;
+    }
+
+    .qa-card .a-text {
+      font-size: 8.5pt;
+      color: #334155;
+      text-align: justify;
+    }
+
+    /* TOC */
+    .toc-list {
+      list-style: none;
+      margin: 12pt 0;
+    }
+
+    .toc-item {
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1pt dotted #cbd5e1;
+      padding: 3.5pt 0;
+      font-size: 9pt;
+    }
+
+    .toc-item .title {
+      font-weight: 600;
+      color: #0f172a;
+    }
+
+    .toc-item .pg {
+      font-family: monospace;
+      color: #2563eb;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========================================================================= -->
+  <!-- 1. COVER PAGE -->
+  <!-- ========================================================================= -->
+  <div class="cover-page page-break">
+    <div class="cover-header">
+      <div class="inst-title">[ COLLEGE / UNIVERSITY NAME PLACEHOLDER ]</div>
+      <div class="dept-title">DEPARTMENT OF COMPUTER SCIENCE & ENGINEERING</div>
+      <div style="font-size: 8.5pt; color: #64748b; margin-top: 2pt;">Affiliated with [State Technical University] • Approved by AICTE</div>
+    </div>
+
+    <div class="emblem-box">🎓</div>
+
+    <div class="project-title-box">
+      <div class="main-title">CAMPUS ERP SYSTEM</div>
+      <div class="sub-title">Multi-Tier Relational Database Management System & Institutional Automation Portal</div>
+      <div style="font-size: 9pt; font-weight: 700; color: #1e3a8a; margin-top: 6pt;">
+        Course Code: CS-302 • Database Management Systems Laboratory (DBMS)
+      </div>
+      <div style="font-size: 8.5pt; color: #475569; margin-top: 2pt;">
+        Academic Year: 2025 – 2026
+      </div>
+    </div>
+
+    <div>
+      <table class="meta-table">
+        <tr>
+          <th>Submitted By (Candidates)</th>
+          <td>
+            <strong>1. [Student 1 Full Name]</strong> (USN: [USN Placeholder 1])<br>
+            <strong>2. [Student 2 Full Name]</strong> (USN: [USN Placeholder 2])<br>
+            <strong>3. [Student 3 Full Name]</strong> (USN: [USN Placeholder 3])<br>
+            <strong>4. [Student 4 Full Name]</strong> (USN: [USN Placeholder 4])
+          </td>
+        </tr>
+        <tr>
+          <th>Academic Program</th>
+          <td>Bachelor of Technology (B.Tech) in Computer Science & Engineering</td>
+        </tr>
+        <tr>
+          <th>Project Guide / Supervisor</th>
+          <td><strong>[Faculty Guide Name Placeholder]</strong>, Assistant/Associate Professor, Department of CSE</td>
+        </tr>
+        <tr>
+          <th>Database Engine</th>
+          <td><strong>MySQL 8.0 (InnoDB)</strong> with Strict Third Normal Form (3NF) Architecture</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="signatures-box">
+      <div class="sig-col">
+        <strong>Internal Examiner</strong><br>
+        Signature: _______________________<br>
+        Date: ____ / ____ / 2026
+      </div>
+      <div class="sig-col">
+        <strong>External Examiner</strong><br>
+        Signature: _______________________<br>
+        Date: ____ / ____ / 2026
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- 2. TABLE OF CONTENTS -->
+  <!-- ========================================================================= -->
+  <div class="page-break">
+    <h1>Table of Contents</h1>
+    <ul class="toc-list">
+      <li class="toc-item"><span class="title">1. Executive Abstract, Problem Statement & Objectives</span><span class="pg">Page 3</span></li>
+      <li class="toc-item"><span class="title">2. Technology Stack & Multi-Tier Architecture</span><span class="pg">Page 4</span></li>
+      <li class="toc-item"><span class="title">3. Comprehensive Analysis of the Eight ERP Modules</span><span class="pg">Page 5</span></li>
+      <li class="toc-item"><span class="title">4. Database Design & Data Dictionary</span><span class="pg">Page 7</span></li>
+      <li class="toc-item"><span class="title">5. Entity-Relationship (ER) Modeling & Referential Integrity</span><span class="pg">Page 9</span></li>
+      <li class="toc-item"><span class="title">6. Normalization Analysis (1NF, 2NF, 3NF)</span><span class="pg">Page 11</span></li>
+      <li class="toc-item"><span class="title">7. Core & Advanced DBMS Concepts Demonstrated</span><span class="pg">Page 12</span></li>
+      <li class="toc-item"><span class="title">8. Important SQL Queries with Execution Analysis</span><span class="pg">Page 14</span></li>
+      <li class="toc-item"><span class="title">9. API Architecture & Cross-Dashboard Data Flow</span><span class="pg">Page 16</span></li>
+      <li class="toc-item"><span class="title">10. Security, Authentication & IDOR Isolation</span><span class="pg">Page 17</span></li>
+      <li class="toc-item"><span class="title">11. Verification Test Suite & Empirical Results (15/15 Passed)</span><span class="pg">Page 18</span></li>
+      <li class="toc-item"><span class="title">12. Installation, Configuration & Execution Manual</span><span class="pg">Page 19</span></li>
+      <li class="toc-item"><span class="title">13. Current Limitations & Future Roadmap</span><span class="pg">Page 20</span></li>
+      <li class="toc-item"><span class="title">14. Conclusion & Project File References</span><span class="pg">Page 20</span></li>
+      <li class="toc-item"><span class="title">15. Comprehensive DBMS Viva Voce Preparation (25 Questions & Answers)</span><span class="pg">Page 21</span></li>
+    </ul>
+
+    <div class="callout" style="margin-top: 15mm;">
+      <strong>Academic Submission Notice:</strong> This project report represents the empirical engineering output for the Database Management Systems Laboratory (CS-302). All referenced relational schemas, stored views, indexes, transactional workflows, and test assertions are live and verified within the MySQL <code>college_erp</code> database.
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- 3. CHAPTER 1: ABSTRACT & OBJECTIVES -->
+  <!-- ========================================================================= -->
+  <div>
+    <h1>1. Executive Abstract, Problem Statement & Objectives</h1>
+
+    <h2>1.1 Project Abstract</h2>
+    <p>
+      The <strong>Campus ERP System</strong> is a multi-tier, enterprise-class Academic Information Management and Relational Database Management System (RDBMS) engineered to orchestrate collegiate administration, faculty scheduling, student registration, curricular turnout tracking, term examinations, library circulation, and financial accounting. Powered by <strong>MySQL 8.0 (InnoDB)</strong>, a high-throughput <strong>Node.js / Express.js REST API</strong>, and an intuitive <strong>React 18 Single-Page Application (SPA)</strong>, the system maintains strict relational normalization in Third Normal Form (3NF) across 50 database tables representing 1,000 enrolled students and 60 faculty members across five departments.
+    </p>
+
+    <h2>1.2 Problem Statement & Institutional Motivation</h2>
+    <p>
+      Academic institutions frequently grapple with fragmented record systems, disparate flat spreadsheets, and stale web caches. In legacy software:
+    </p>
+    <ul style="margin-left: 20px; margin-bottom: 8pt;">
+      <li><strong>Duplicate Attendance Vulnerabilities:</strong> Network re-transmissions or instructor re-saves frequently produce multiple identical session records, artificially skewing statutory attendance percentages.</li>
+      <li><strong>Asynchronous State Drift:</strong> Instructor actions (such as attendance marking or timetable rescheduling) fail to propagate to student terminals in real time without manual application restarts.</li>
+      <li><strong>Insecure Direct Object References (IDOR):</strong> URL tampering allows students to query unauthorized personal records by altering query parameters.</li>
+      <li><strong>Resource Scheduling Clashes:</strong> Lack of cross-entity boundary checks permits instructors, student cohorts, or physical lecture halls to be double-booked at identical intervals.</li>
+    </ul>
+
+    <h2>1.3 Core Project Objectives</h2>
+    <ul style="margin-left: 20px; margin-bottom: 8pt;">
+      <li><strong>Third Normal Form (3NF) Relational Architecture:</strong> Design a cohesive relational schema eliminating redundancy, update anomalies, and transitive dependencies.</li>
+      <li><strong>Multi-Row ACID Transaction Engine:</strong> Implement atomic attendance logging with concurrency row locking (<code>SELECT ... FOR UPDATE</code>) and automatic rollback.</li>
+      <li><strong>Idempotent Session Upserts:</strong> Ensure repeated submissions for identical cohorts and hours update existing records rather than producing redundant rows.</li>
+      <li><strong>Three-Way Conflict Engine:</strong> Detect classroom, faculty, and student schedule collisions using relational interval logic.</li>
+      <li><strong>Identity Isolation & Security:</strong> Enforce JWT token identity extraction at the database query layer, rendering the system impervious to IDOR attacks.</li>
+    </ul>
+
+    <h2>1.4 Scope & Operational Parameters</h2>
+    <p>
+      The system models five specialized engineering disciplines: Computer Science (CS), Electronics & Telecommunication (ENTC), Information Technology (IT), Artificial Intelligence & Data Science (AIDS), and Electronics & Computer Engineering (ENCE). Exactly 1,000 active students (distributed across 20 cohort divisions: CS-1..4, ENTC-1..4, etc.) and 60 faculty instructors (12 per department) are modeled with complete historical attendance, timetable, fee, exam, and library records.
+    </p>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- 4. CHAPTER 2: ARCHITECTURE & TECH STACK -->
+  <!-- ========================================================================= -->
+  <div class="page-break">
+    <h1>2. Technology Stack & Multi-Tier Architecture</h1>
+
+    <h2>2.1 Multi-Tier Architecture Diagram</h2>
+    <div class="diagram-container">
+      <svg width="600" height="230" viewBox="0 0 600 230" style="max-width: 100%;">
+        <!-- Presentation Tier -->
+        <rect x="20" y="15" width="560" height="45" rx="6" fill="#f8fafc" stroke="#2563eb" stroke-width="2"/>
+        <text x="300" y="35" text-anchor="middle" font-weight="bold" font-size="12" fill="#0f172a">PRESENTATION TIER (React 18 SPA • TypeScript • Vite • Port 3000)</text>
+        <text x="300" y="50" text-anchor="middle" font-size="9" fill="#475569">Student Scholars Desk │ Faculty Academic Workspace │ System Admin & Preview Mode</text>
+
+        <!-- Down Arrow 1 -->
+        <line x1="300" y1="60" x2="300" y2="85" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow)"/>
+        <text x="310" y="75" font-size="8" fill="#2563eb" font-family="monospace">REST JSON / JWT Bearer</text>
+
+        <!-- Application Tier -->
+        <rect x="20" y="90" width="560" height="50" rx="6" fill="#f8fafc" stroke="#0f172a" stroke-width="2"/>
+        <text x="300" y="110" text-anchor="middle" font-weight="bold" font-size="12" fill="#0f172a">APPLICATION LOGIC TIER (Express.js REST Engine • Port 5000)</text>
+        <text x="300" y="127" text-anchor="middle" font-size="9" fill="#475569">Bcrypt Auth Engine │ ACID Transaction Coordinator │ Three-Way Conflict Engine</text>
+
+        <!-- Down Arrow 2 -->
+        <line x1="300" y1="140" x2="300" y2="165" stroke="#0f172a" stroke-width="2"/>
+        <text x="310" y="155" font-size="8" fill="#0f172a" font-family="monospace">mysql2/promise Pool (10 Conn)</text>
+
+        <!-- Data Tier -->
+        <rect x="20" y="170" width="560" height="48" rx="6" fill="#f1f5f9" stroke="#059669" stroke-width="2"/>
+        <text x="300" y="190" text-anchor="middle" font-weight="bold" font-size="12" fill="#065f46">DATA PERSISTENCE TIER (MySQL 8.0 • InnoDB Storage Engine • Port 3306)</text>
+        <text x="300" y="207" text-anchor="middle" font-size="9" fill="#047857">50 Normalized 3NF Relational Tables │ 5 SQL Views │ B-Tree Indexes │ Foreign Key Cascades</text>
+      </svg>
+      <div class="diagram-caption">Figure 2.1: Multi-Tier Architectural Topology of Campus ERP</div>
+    </div>
+
+    <h2>2.2 Technology Stack Justification</h2>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Tier / Component</th>
+          <th>Technology Selected</th>
+          <th>Engineering Justification</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>RDBMS Engine</strong></td>
+          <td>MySQL 8.0 Community (InnoDB)</td>
+          <td>Guarantees complete ACID compliance, row-level locking, foreign key referential integrity, crash-recovery write-ahead logs, and sub-millisecond view evaluations.</td>
+        </tr>
+        <tr>
+          <td><strong>Server Runtime</strong></td>
+          <td>Node.js (v24.7.0 LTS)</td>
+          <td>Asynchronous non-blocking event loop handles high-concurrency student query traffic without thread-starvation latency.</td>
+        </tr>
+        <tr>
+          <td><strong>Web Framework</strong></td>
+          <td>Express.js v4.21</td>
+          <td>Provides lightweight, modular routing, robust JSON middleware parsing, and centralized error/exception handling.</td>
+        </tr>
+        <tr>
+          <td><strong>Database Driver</strong></td>
+          <td>mysql2/promise</td>
+          <td>Features connection pooling (10 pooled TCP sockets), keep-alive heartbeats, and native prepared statements resistant to SQL injection.</td>
+        </tr>
+        <tr>
+          <td><strong>Frontend Client</strong></td>
+          <td>React 18 + Vite</td>
+          <td>Component-based SPA architecture with instantaneous hot module reloading, declarative UI rendering, and client-side route guards.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- 5. CHAPTER 3: EIGHT ERP MODULES -->
+  <!-- ========================================================================= -->
+  <div class="page-break">
+    <h1>3. Comprehensive Analysis of the Eight ERP Modules</h1>
+
+    <h2>3.1 Module Descriptions & Data Persistence</h2>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Module Name</th>
+          <th>Key MySQL Tables</th>
+          <th>Core Relational Functionality</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>1</strong></td>
+          <td><strong>Student Management</strong></td>
+          <td><code>student</code>, <code>student_address</code>, <code>student_contact</code></td>
+          <td>Manages student master identity, permanent registration numbers (PRN), rolls, cohort division mapping, and guardian metadata.</td>
+          <td><span class="badge-pass">Implemented</span></td>
+        </tr>
+        <tr>
+          <td><strong>2</strong></td>
+          <td><strong>Faculty Management</strong></td>
+          <td><code>faculty</code>, <code>designation</code>, <code>faculty_payroll</code></td>
+          <td>Manages instructor appointments, academic ranks (Professor, Associate, Assistant), leave registers, and monthly salary disbursement slips.</td>
+          <td><span class="badge-pass">Implemented</span></td>
+        </tr>
+        <tr>
+          <td><strong>3</strong></td>
+          <td><strong>Attendance Management</strong></td>
+          <td><code>attendance_session</code>, <code>attendance_record</code></td>
+          <td>High-priority transactional module: records lecture turnout, enforces unique student-session constraints, and computes 75% debarment metrics.</td>
+          <td><span class="badge-pass">Implemented</span></td>
+        </tr>
+        <tr>
+          <td><strong>4</strong></td>
+          <td><strong>Academics & Timetable</strong></td>
+          <td><code>course</code>, <code>subject</code>, <code>section</code>, <code>timetable</code></td>
+          <td>Stores curricular subjects, credit allocations, and weekly schedule slots. Features an automated three-way clash prevention engine.</td>
+          <td><span class="badge-pass">Implemented</span></td>
+        </tr>
+        <tr>
+          <td><strong>5</strong></td>
+          <td><strong>Examination & Results</strong></td>
+          <td><code>exam</code>, <code>exam_schedule</code>, <code>marks</code>, <code>result</code></td>
+          <td>Maintains assessment schedules, evaluation rosters, maximum/passing marks, grade point averages (SGPA), and official result releases.</td>
+          <td><span class="badge-pass">Implemented</span></td>
+        </tr>
+        <tr>
+          <td><strong>6</strong></td>
+          <td><strong>Library Management</strong></td>
+          <td><code>book</code>, <code>book_copy</code>, <code>book_issue</code>, <code>fine</code></td>
+          <td>Accession-level physical book tracking, borrowing transactions, due date enforcement, and automated daily overdue fine accumulation.</td>
+          <td><span class="badge-pass">Implemented</span></td>
+        </tr>
+        <tr>
+          <td><strong>7</strong></td>
+          <td><strong>Training & Placement</strong></td>
+          <td><code>company</code>, <code>job_drive</code>, <code>application</code></td>
+          <td>Corporate recruitment listings, minimum SGPA criteria checks, student job applications, interview pipelines, and placement CTC registers.</td>
+          <td><span class="badge-pass">Implemented</span></td>
+        </tr>
+        <tr>
+          <td><strong>8</strong></td>
+          <td><strong>Fees & Finance</strong></td>
+          <td><code>fee_structure</code>, <code>student_fee</code>, <code>payment</code></td>
+          <td>Tuition fee billing structures, student payment receipts, online reference reconciliations, and outstanding balance tracking in INR (₹).</td>
+          <td><span class="badge-pass">Implemented</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>3.2 Faculty Attendance to Student Propagation Workflow</h2>
+    <div class="diagram-container">
+      <svg width="600" height="150" viewBox="0 0 600 150" style="max-width: 100%;">
+        <!-- Steps -->
+        <rect x="10" y="20" width="100" height="60" rx="4" fill="#e0f2fe" stroke="#0284c7"/>
+        <text x="60" y="45" text-anchor="middle" font-size="9" font-weight="bold" fill="#0369a1">1. Faculty Portal</text>
+        <text x="60" y="60" text-anchor="middle" font-size="7.5" fill="#475569">Selects Section &</text>
+        <text x="60" y="70" text-anchor="middle" font-size="7.5" fill="#475569">Toggles Status</text>
+
+        <line x1="110" y1="50" x2="135" y2="50" stroke="#0284c7" stroke-width="1.5"/>
+
+        <rect x="135" y="20" width="105" height="60" rx="4" fill="#f1f5f9" stroke="#475569"/>
+        <text x="187" y="45" text-anchor="middle" font-size="9" font-weight="bold" fill="#0f172a">2. Express API</text>
+        <text x="187" y="60" text-anchor="middle" font-size="7.5" fill="#475569">Validates JWT &</text>
+        <text x="187" y="70" text-anchor="middle" font-size="7.5" fill="#475569">Begins Transaction</text>
+
+        <line x1="240" y1="50" x2="265" y2="50" stroke="#0284c7" stroke-width="1.5"/>
+
+        <rect x="265" y="20" width="115" height="60" rx="4" fill="#fef3c7" stroke="#d97706"/>
+        <text x="322" y="45" text-anchor="middle" font-size="9" font-weight="bold" fill="#92400e">3. Concurrency Lock</text>
+        <text x="322" y="60" text-anchor="middle" font-size="7.5" fill="#78350f">SELECT ...</text>
+        <text x="322" y="70" text-anchor="middle" font-size="7.5" fill="#78350f">FOR UPDATE</text>
+
+        <line x1="380" y1="50" x2="405" y2="50" stroke="#0284c7" stroke-width="1.5"/>
+
+        <rect x="405" y="20" width="95" height="60" rx="4" fill="#dcfce7" stroke="#16a34a"/>
+        <text x="452" y="45" text-anchor="middle" font-size="9" font-weight="bold" fill="#15803d">4. MySQL Upsert</text>
+        <text x="452" y="60" text-anchor="middle" font-size="7.5" fill="#14532d">ON DUPLICATE KEY</text>
+        <text x="452" y="70" text-anchor="middle" font-size="7.5" fill="#14532d">COMMIT</text>
+
+        <line x1="500" y1="50" x2="525" y2="50" stroke="#0284c7" stroke-width="1.5"/>
+
+        <rect x="525" y="20" width="70" height="60" rx="4" fill="#ede9fe" stroke="#7c3aed"/>
+        <text x="560" y="45" text-anchor="middle" font-size="8.5" font-weight="bold" fill="#5b21b6">5. Student</text>
+        <text x="560" y="60" text-anchor="middle" font-size="7.5" fill="#4c1d95">Fresh View</text>
+        <text x="560" y="70" text-anchor="middle" font-size="7.5" fill="#4c1d95">Fetch</text>
+      </svg>
+      <div class="diagram-caption">Figure 3.1: Transactional Propagation Pipeline from Faculty Input to Student Dashboard</div>
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- 6. CHAPTER 4: DATA DICTIONARY -->
+  <!-- ========================================================================= -->
+  <div class="page-break">
+    <h1>4. Database Design & Comprehensive Data Dictionary</h1>
+
+    <h2>4.1 Master Table: <code>student</code></h2>
+    <table class="data-table">
+      <thead>
+        <tr><th>Column</th><th>Data Type</th><th>Null</th><th>Key</th><th>Default</th><th>Constraint / Reference</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><code>student_id</code></td><td>INT</td><td>NO</td><td>PRI</td><td>NULL</td><td>AUTO_INCREMENT Primary Key</td></tr>
+        <tr><td><code>prn</code></td><td>VARCHAR(20)</td><td>NO</td><td>UNI</td><td>NULL</td><td>Permanent Registration Number (Unique)</td></tr>
+        <tr><td><code>roll_no</code></td><td>VARCHAR(20)</td><td>NO</td><td>UNI</td><td>NULL</td><td>Class Roll Number (e.g. 31001)</td></tr>
+        <tr><td><code>student_name</code></td><td>VARCHAR(100)</td><td>NO</td><td></td><td>NULL</td><td>Full Candidate Name</td></tr>
+        <tr><td><code>email</code></td><td>VARCHAR(100)</td><td>NO</td><td>UNI</td><td>NULL</td><td>Institutional Email</td></tr>
+        <tr><td><code>department_id</code></td><td>INT</td><td>NO</td><td>MUL</td><td>NULL</td><td>FK -> <code>department(department_id)</code> ON UPDATE CASCADE</td></tr>
+        <tr><td><code>section_id</code></td><td>INT</td><td>YES</td><td>MUL</td><td>NULL</td><td>FK -> <code>section(section_id)</code> ON UPDATE CASCADE</td></tr>
+        <tr><td><code>current_year</code></td><td>TINYINT UNSIGNED</td><td>NO</td><td></td><td>3</td><td>Study Year (1..4)</td></tr>
+        <tr><td><code>current_semester</code></td><td>TINYINT UNSIGNED</td><td>NO</td><td></td><td>5</td><td>Semester Index (1..8)</td></tr>
+      </tbody>
+    </table>
+
+    <h2>4.2 Master Table: <code>faculty</code></h2>
+    <table class="data-table">
+      <thead>
+        <tr><th>Column</th><th>Data Type</th><th>Null</th><th>Key</th><th>Default</th><th>Constraint / Reference</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><code>faculty_id</code></td><td>INT</td><td>NO</td><td>PRI</td><td>NULL</td><td>AUTO_INCREMENT Primary Key</td></tr>
+        <tr><td><code>faculty_code</code></td><td>VARCHAR(30)</td><td>NO</td><td>UNI</td><td>NULL</td><td>Unique Employee Code (e.g. FAC-001)</td></tr>
+        <tr><td><code>faculty_name</code></td><td>VARCHAR(100)</td><td>NO</td><td></td><td>NULL</td><td>Instructor Name</td></tr>
+        <tr><td><code>email</code></td><td>VARCHAR(100)</td><td>NO</td><td>UNI</td><td>NULL</td><td>Official Email (Unique)</td></tr>
+        <tr><td><code>department_id</code></td><td>INT</td><td>NO</td><td>MUL</td><td>NULL</td><td>FK -> <code>department(department_id)</code></td></tr>
+        <tr><td><code>designation_id</code></td><td>INT</td><td>NO</td><td>MUL</td><td>NULL</td><td>FK -> <code>designation(designation_id)</code></td></tr>
+        <tr><td><code>joining_date</code></td><td>DATE</td><td>NO</td><td></td><td>NULL</td><td>Date of Institutional Appointment</td></tr>
+      </tbody>
+    </table>
+
+    <h2>4.3 Transaction Table: <code>attendance_record</code></h2>
+    <table class="data-table">
+      <thead>
+        <tr><th>Column</th><th>Data Type</th><th>Null</th><th>Key</th><th>Default</th><th>Constraint / Reference</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><code>record_id</code></td><td>INT</td><td>NO</td><td>PRI</td><td>NULL</td><td>AUTO_INCREMENT Primary Key</td></tr>
+        <tr><td><code>session_id</code></td><td>INT</td><td>NO</td><td>MUL</td><td>NULL</td><td>FK -> <code>attendance_session(session_id)</code> ON DELETE CASCADE</td></tr>
+        <tr><td><code>student_id</code></td><td>INT</td><td>NO</td><td>MUL</td><td>NULL</td><td>FK -> <code>student(student_id)</code> ON UPDATE CASCADE</td></tr>
+        <tr><td><code>status</code></td><td>ENUM</td><td>NO</td><td></td><td>'Present'</td><td>ENUM('Present','Absent','Late','Excused')</td></tr>
+        <tr><td colspan="6"><strong>Composite Unique Constraint:</strong> <code>CONSTRAINT uk_session_student UNIQUE (session_id, student_id)</code></td></tr>
+      </tbody>
+    </table>
+
+    <h2>4.4 Scheduling Table: <code>timetable</code></h2>
+    <table class="data-table">
+      <thead>
+        <tr><th>Column</th><th>Data Type</th><th>Null</th><th>Key</th><th>Default</th><th>Constraint / Reference</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><code>timetable_id</code></td><td>INT</td><td>NO</td><td>PRI</td><td>NULL</td><td>AUTO_INCREMENT Primary Key</td></tr>
+        <tr><td><code>section_id</code></td><td>INT</td><td>NO</td><td>MUL</td><td>NULL</td><td>FK -> <code>section(section_id)</code></td></tr>
+        <tr><td><code>subject_id</code></td><td>INT</td><td>NO</td><td>MUL</td><td>NULL</td><td>FK -> <code>subject(subject_id)</code></td></tr>
+        <tr><td><code>faculty_id</code></td><td>INT</td><td>NO</td><td>MUL</td><td>NULL</td><td>FK -> <code>faculty(faculty_id)</code></td></tr>
+        <tr><td><code>day_of_week</code></td><td>ENUM</td><td>NO</td><td></td><td>NULL</td><td>ENUM('Monday','Tuesday','Wednesday','Thursday','Friday','Saturday')</td></tr>
+        <tr><td><code>start_time</code></td><td>TIME</td><td>NO</td><td></td><td>NULL</td><td>Slot Start Time</td></tr>
+        <tr><td><code>end_time</code></td><td>TIME</td><td>NO</td><td></td><td>NULL</td><td>Slot End Time</td></tr>
+        <tr><td><code>room_no</code></td><td>VARCHAR(30)</td><td>NO</td><td></td><td>NULL</td><td>Venue Classroom or Laboratory</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- 7. CHAPTER 5 & 6: ER MODELING & NORMALIZATION -->
+  <!-- ========================================================================= -->
+  <div class="page-break">
+    <h1>5. Entity-Relationship (ER) Modeling & Structural Integrity</h1>
+
+    <div class="diagram-container">
+      <svg width="600" height="260" viewBox="0 0 600 260" style="max-width: 100%;">
+        <!-- Entities -->
+        <rect x="20" y="20" width="110" height="45" rx="4" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.5"/>
+        <text x="75" y="40" text-anchor="middle" font-weight="bold" font-size="10" fill="#1e3a8a">DEPARTMENT</text>
+        <text x="75" y="53" text-anchor="middle" font-size="8" fill="#475569">PK: department_id</text>
+
+        <rect x="240" y="20" width="110" height="45" rx="4" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.5"/>
+        <text x="295" y="40" text-anchor="middle" font-weight="bold" font-size="10" fill="#1e3a8a">FACULTY</text>
+        <text x="295" y="53" text-anchor="middle" font-size="8" fill="#475569">PK: faculty_id</text>
+
+        <rect x="460" y="20" width="110" height="45" rx="4" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.5"/>
+        <text x="515" y="40" text-anchor="middle" font-weight="bold" font-size="10" fill="#1e3a8a">DESIGNATION</text>
+        <text x="515" y="53" text-anchor="middle" font-size="8" fill="#475569">PK: designation_id</text>
+
+        <rect x="20" y="110" width="110" height="45" rx="4" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.5"/>
+        <text x="75" y="130" text-anchor="middle" font-weight="bold" font-size="10" fill="#1e3a8a">SECTION</text>
+        <text x="75" y="143" text-anchor="middle" font-size="8" fill="#475569">PK: section_id</text>
+
+        <rect x="240" y="110" width="110" height="45" rx="4" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.5"/>
+        <text x="295" y="130" text-anchor="middle" font-weight="bold" font-size="10" fill="#1e3a8a">TIMETABLE</text>
+        <text x="295" y="143" text-anchor="middle" font-size="8" fill="#475569">PK: timetable_id</text>
+
+        <rect x="460" y="110" width="110" height="45" rx="4" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.5"/>
+        <text x="515" y="130" text-anchor="middle" font-weight="bold" font-size="10" fill="#1e3a8a">SUBJECT</text>
+        <text x="515" y="143" text-anchor="middle" font-size="8" fill="#475569">PK: subject_id</text>
+
+        <rect x="20" y="200" width="110" height="45" rx="4" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.5"/>
+        <text x="75" y="220" text-anchor="middle" font-weight="bold" font-size="10" fill="#1e3a8a">STUDENT</text>
+        <text x="75" y="233" text-anchor="middle" font-size="8" fill="#475569">PK: student_id</text>
+
+        <rect x="240" y="200" width="120" height="45" rx="4" fill="#fef2f2" stroke="#dc2626" stroke-width="1.5"/>
+        <text x="300" y="220" text-anchor="middle" font-weight="bold" font-size="10" fill="#991b1b">ATT_RECORD</text>
+        <text x="300" y="233" text-anchor="middle" font-size="8" fill="#7f1d1d">UK: (session_id, student_id)</text>
+
+        <rect x="460" y="200" width="120" height="45" rx="4" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.5"/>
+        <text x="520" y="220" text-anchor="middle" font-weight="bold" font-size="10" fill="#1e3a8a">ATT_SESSION</text>
+        <text x="520" y="233" text-anchor="middle" font-size="8" fill="#475569">PK: session_id</text>
+
+        <!-- Connectors -->
+        <line x1="130" y1="42" x2="240" y2="42" stroke="#64748b" stroke-width="1.5"/>
+        <line x1="350" y1="42" x2="460" y2="42" stroke="#64748b" stroke-width="1.5"/>
+        <line x1="75" y1="65" x2="75" y2="110" stroke="#64748b" stroke-width="1.5"/>
+        <line x1="130" y1="132" x2="240" y2="132" stroke="#64748b" stroke-width="1.5"/>
+        <line x1="350" y1="132" x2="460" y2="132" stroke="#64748b" stroke-width="1.5"/>
+        <line x1="295" y1="65" x2="295" y2="110" stroke="#64748b" stroke-width="1.5"/>
+        <line x1="75" y1="155" x2="75" y2="200" stroke="#64748b" stroke-width="1.5"/>
+        <line x1="130" y1="222" x2="240" y2="222" stroke="#64748b" stroke-width="1.5"/>
+        <line x1="360" y1="222" x2="460" y2="222" stroke="#64748b" stroke-width="1.5"/>
+      </svg>
+      <div class="diagram-caption">Figure 5.1: Relational Entity-Relationship Diagram of Academic & Attendance Core</div>
+    </div>
+
+    <h1>6. Normalization Analysis (1NF, 2NF, 3NF)</h1>
+    <p>
+      The relational architecture was developed through systematic normal form decomposition:
+    </p>
+    <ul style="margin-left: 20px;">
+      <li><strong>First Normal Form (1NF):</strong> All attributes contain atomic data. Multi-valued contacts are split into <code>student_contact</code> and <code>student_address</code>. Repeating groups of attendance or marks are strictly eliminated into relational tuples.</li>
+      <li><strong>Second Normal Form (2NF):</strong> No partial dependencies exist. In junction entities like <code>attendance_record(session_id, student_id)</code>, non-key status attributes depend strictly on both components of the composite primary key.</li>
+      <li><strong>Third Normal Form (3NF):</strong> No transitive functional dependencies exist ($X \rightarrow Y$ and $Y \rightarrow Z$). For example, department metadata (HOD, location) is not duplicated inside <code>student</code> or <code>faculty</code> tables; rather, both reference <code>department_id</code> as an immutable foreign key.</li>
+    </ul>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- 8. CHAPTER 7: ADVANCED DBMS CONCEPTS -->
+  <!-- ========================================================================= -->
+  <div class="page-break">
+    <h1>7. Core & Advanced DBMS Concepts Demonstrated</h1>
+
+    <h2>7.1 Production Relational Database Views</h2>
+    <p>Five centralized views eliminate ad-hoc joins and expose secure reporting interfaces:</p>
+    <table class="data-table">
+      <thead>
+        <tr><th>View Name</th><th>Base Tables Joined</th><th>Aggregated Computed Columns</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>v_student_attendance_summary</code></td>
+          <td><code>student</code>, <code>section</code>, <code>subject</code>, <code>attendance_session</code>, <code>attendance_record</code></td>
+          <td><code>total_sessions</code>, <code>attended_sessions</code>, <code>absent_sessions</code>, <code>attendance_pct</code></td>
+        </tr>
+        <tr>
+          <td><code>v_student_fee_balance</code></td>
+          <td><code>student</code>, <code>department</code>, <code>student_fee</code></td>
+          <td><code>total_invoiced</code>, <code>total_paid</code>, <code>outstanding_balance</code>, <code>payment_standing</code></td>
+        </tr>
+        <tr>
+          <td><code>v_faculty_workload</code></td>
+          <td><code>faculty</code>, <code>designation</code>, <code>timetable</code></td>
+          <td><code>sections_count</code>, <code>subjects_taught</code>, <code>weekly_lectures_count</code></td>
+        </tr>
+        <tr>
+          <td><code>v_department_performance</code></td>
+          <td><code>department</code>, <code>student</code>, <code>marks</code></td>
+          <td><code>average_marks_obtained</code>, <code>highest_marks_obtained</code>, <code>total_passes</code></td>
+        </tr>
+        <tr>
+          <td><code>v_library_overdue_books</code></td>
+          <td><code>book_issue</code>, <code>book_copy</code>, <code>book</code>, <code>student</code></td>
+          <td><code>days_overdue</code>, <code>estimated_fine_inr</code> (calculated via <code>DATEDIFF</code>)</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>7.2 B-Tree Indexes & Query Execution Tuning</h2>
+    <p>Targeted composite B-Tree indexes prevent full-table sequential scans during high-traffic operational routines:</p>
+    <table class="data-table">
+      <thead>
+        <tr><th>Index Identifier</th><th>Target Table</th><th>Indexed Columns</th><th>Optimization Target</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><code>idx_att_sess_filter</code></td><td><code>attendance_session</code></td><td><code>(section_id, subject_id, session_date)</code></td><td>Instant roster lookup during daily roll marking</td></tr>
+        <tr><td><code>idx_tt_sec_day_time</code></td><td><code>timetable</code></td><td><code>(section_id, day_of_week, start_time)</code></td><td>Sub-millisecond student schedule query</td></tr>
+        <tr><td><code>idx_tt_fac_day_time</code></td><td><code>timetable</code></td><td><code>(faculty_id, day_of_week, start_time)</code></td><td>Instructor conflict detection resolution</td></tr>
+        <tr><td><code>idx_tt_room_day_time</code></td><td><code>timetable</code></td><td><code>(room_no, day_of_week, start_time)</code></td><td>Physical classroom double-booking rejection</td></tr>
+        <tr><td><code>idx_user_auth_lookup</code></td><td><code>user_account</code></td><td><code>(identifier, is_active)</code></td><td>Authentication query resolution &lt; 1ms</td></tr>
+      </tbody>
+    </table>
+
+    <h2>7.3 ACID Transaction Engine & Isolation</h2>
+    <p>
+      During attendance logging, partial updates are intolerable. If an update crashes midway across a 50-student roster, the database must not be left with orphan rows. The transaction model guarantees:
+    </p>
+    <ul style="margin-left: 20px;">
+      <li><strong>Atomicity:</strong> <code>BEGIN TRANSACTION</code> wraps session upsert and all student marks. Any error triggers <code>ROLLBACK</code>.</li>
+      <li><strong>Consistency:</strong> Relational foreign keys and composite unique keys guarantee that only existing students are recorded.</li>
+      <li><strong>Isolation:</strong> Row-level locks (<code>SELECT ... FOR UPDATE</code>) prevent concurrent faculty updates from overwriting the same lecture hour simultaneously.</li>
+      <li><strong>Durability:</strong> Write-ahead redo logging guarantees that once <code>COMMIT</code> returns, records survive server power loss.</li>
+    </ul>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- 9. CHAPTER 8: SQL QUERIES -->
+  <!-- ========================================================================= -->
+  <div class="page-break">
+    <h1>8. Important SQL Queries with Execution Analysis</h1>
+
+    <h3>Query 1: Statutory Debarment Detection (HAVING Clause + Aggregate Filter)</h3>
+    <div class="code-box"><span class="kw">SELECT</span> 
+    s.roll_no, s.student_name, d.department_name, sec.section_name, sub.subject_code,
+    <span class="fn">COUNT</span>(ar.record_id) <span class="kw">AS</span> total_conducted_sessions,
+    <span class="fn">SUM</span>(<span class="kw">CASE WHEN</span> ar.status = <span class="str">'Present'</span> <span class="kw">THEN</span> 1 <span class="kw">ELSE</span> 0 <span class="kw">END</span>) <span class="kw">AS</span> attended_sessions,
+    <span class="fn">ROUND</span>((<span class="fn">SUM</span>(<span class="kw">CASE WHEN</span> ar.status = <span class="str">'Present'</span> <span class="kw">THEN</span> 1 <span class="kw">ELSE</span> 0 <span class="kw">END</span>) / <span class="fn">COUNT</span>(ar.record_id)) * 100, 2) <span class="kw">AS</span> attendance_pct
+<span class="kw">FROM</span> student s
+<span class="kw">JOIN</span> department d <span class="kw">ON</span> s.department_id = d.department_id
+<span class="kw">JOIN</span> section sec <span class="kw">ON</span> s.section_id = sec.section_id
+<span class="kw">JOIN</span> attendance_record ar <span class="kw">ON</span> s.student_id = ar.student_id
+<span class="kw">JOIN</span> attendance_session ses <span class="kw">ON</span> ar.session_id = ses.session_id
+<span class="kw">JOIN</span> subject sub <span class="kw">ON</span> ses.subject_id = sub.subject_id
+<span class="kw">GROUP BY</span> s.student_id, s.roll_no, s.student_name, d.department_name, sec.section_name, sub.subject_id, sub.subject_code
+<span class="kw">HAVING</span> attendance_pct &lt; 75.00
+<span class="kw">ORDER BY</span> attendance_pct <span class="kw">ASC</span>;</div>
+    <p><strong>Analysis:</strong> Demonstrates multi-table joins across five entities. Utilizes conditional aggregation (<code>CASE WHEN</code>) inside <code>SUM</code>, groups by student and subject, and utilizes <code>HAVING</code> to filter aggregated percentages below the statutory 75% examination threshold.</p>
+
+    <h3>Query 2: High Academic Achievers (Correlated Subquery)</h3>
+    <div class="code-box"><span class="kw">SELECT</span> 
+    s.roll_no, s.student_name, d.department_name,
+    <span class="fn">ROUND</span>(<span class="fn">AVG</span>(m.marks_obtained), 2) <span class="kw">AS</span> student_avg_marks,
+    (
+        <span class="kw">SELECT</span> <span class="fn">ROUND</span>(<span class="fn">AVG</span>(m2.marks_obtained), 2)
+        <span class="kw">FROM</span> marks m2
+        <span class="kw">JOIN</span> student s2 <span class="kw">ON</span> m2.student_id = s2.student_id
+        <span class="kw">WHERE</span> s2.department_id = s.department_id
+    ) <span class="kw">AS</span> department_overall_avg
+<span class="kw">FROM</span> student s
+<span class="kw">JOIN</span> department d <span class="kw">ON</span> s.department_id = d.department_id
+<span class="kw">JOIN</span> marks m <span class="kw">ON</span> s.student_id = m.student_id
+<span class="kw">GROUP BY</span> s.student_id, s.roll_no, s.student_name, d.department_name, s.department_id
+<span class="kw">HAVING</span> student_avg_marks &gt; department_overall_avg
+<span class="kw">ORDER BY</span> student_avg_marks <span class="kw">DESC</span>;</div>
+    <p><strong>Analysis:</strong> The correlated subquery dynamically calculates the departmental mean mark for each candidate's branch. The outer query isolates students performing strictly above their peer benchmark.</p>
+
+    <h3>Query 3: Three-Way Timetable Conflict Engine Check</h3>
+    <div class="code-box"><span class="kw">SELECT</span> t.timetable_id, s.subject_name, sec.section_name, t.start_time, t.end_time
+<span class="kw">FROM</span> timetable t
+<span class="kw">JOIN</span> subject s <span class="kw">ON</span> t.subject_id = s.subject_id
+<span class="kw">JOIN</span> section sec <span class="kw">ON</span> t.section_id = sec.section_id
+<span class="kw">WHERE</span> t.room_no = ? <span class="kw">AND</span> t.day_of_week = ?
+  <span class="kw">AND NOT</span> (t.end_time &lt;= ? <span class="kw">OR</span> t.start_time &gt;= ?);</div>
+    <p><strong>Analysis:</strong> Executes boundary interval arithmetic. If any row satisfies the condition, an overlapping lecture is scheduled in that physical classroom, returning an immediate HTTP 409 Conflict error to prevent double-booking.</p>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- 10. CHAPTER 9 & 10: API & SECURITY -->
+  <!-- ========================================================================= -->
+  <div class="page-break">
+    <h1>9. API Architecture & Cross-Dashboard Data Flow</h1>
+
+    <h2>9.1 Core RESTful Endpoints</h2>
+    <table class="data-table">
+      <thead>
+        <tr><th>Method</th><th>Endpoint</th><th>Auth Role</th><th>Payload / Query</th><th>Status Code & Response</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><code>POST</code></td><td><code>/api/auth/login</code></td><td>Public</td><td><code>{identifier, password, role}</code></td><td>200 OK (Signed JWT + User Profile)</td></tr>
+        <tr><td><code>GET</code></td><td><code>/api/students/profile</code></td><td>STUDENT</td><td>Bearer Token</td><td>200 OK (Student details & addresses)</td></tr>
+        <tr><td><code>GET</code></td><td><code>/api/students/attendance</code></td><td>STUDENT</td><td>Bearer Token</td><td>200 OK (Subject Attendance & Timetable)</td></tr>
+        <tr><td><code>GET</code></td><td><code>/api/faculty/attendance</code></td><td>FACULTY</td><td><code>?section_id=X</code></td><td>200 OK (Class Roster & Saved Logs)</td></tr>
+        <tr><td><code>POST</code></td><td><code>/api/faculty/attendance</code></td><td>FACULTY</td><td><code>{date, subject_id, section_id, period, records:[]}</code></td><td>201 Created (ACID Upsert Confirmed)</td></tr>
+        <tr><td><code>POST</code></td><td><code>/api/faculty/timetable</code></td><td>FACULTY</td><td><code>{section_id, subject_id, day, start, end, room}</code></td><td>201 Created / 409 Conflict</td></tr>
+        <tr><td><code>GET</code></td><td><code>/api/faculty/preview-student/:id</code></td><td>FACULTY</td><td>Param: <code>student_id</code></td><td>200 OK (Live Read-Only Student View)</td></tr>
+      </tbody>
+    </table>
+
+    <h1>10. Security, Authentication & IDOR Isolation</h1>
+    <p>
+      Insecure Direct Object References (IDOR) represent one of the most pervasive flaws in academic web systems. In this architecture:
+    </p>
+    <div class="callout">
+      <strong>IDOR Mitigation Principle:</strong> The server never trusts client-supplied primary keys in URL parameters (e.g. <code>/api/students/profile?student_id=6</code>). When a request is processed, authentication middleware decodes the cryptographically signed JWT token, extracting the immutable <code>req.user.student_id</code>. All subsequent database queries bind strictly to this verified session token.
+    </div>
+
+    <h2>10.1 Password Security & Demonstration Mode</h2>
+    <ul style="margin-left: 20px;">
+      <li>Passwords are hashed using <strong>Bcrypt with 10 salt rounds</strong>. Plaintext passwords are never committed, seeded, or returned in API payloads.</li>
+      <li><strong>Student View Preview Mode:</strong> Faculty members can inspect any student's live academic records via <code>/api/faculty/preview-student/:id</code> directly inside the faculty portal. Passwords, hashes, and session secrets are completely excluded from the projection.</li>
+    </ul>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- 11. CHAPTER 11 & 12: TESTING & EXECUTION -->
+  <!-- ========================================================================= -->
+  <div class="page-break">
+    <h1>11. Verification Test Suite & Empirical Results</h1>
+
+    <p>
+      The complete system was evaluated using an automated verification test suite (<code>scripts/verify_dbms_evaluation.cjs</code>) executing end-to-end against the active MySQL database. <strong>All 15 test scenarios passed with 100% success:</strong>
+    </p>
+
+    <table class="data-table">
+      <thead>
+        <tr><th>#</th><th>Evaluation Test Scenario</th><th>Tested Technical Condition</th><th>Result Status</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td>50 Test Students Login Across 5 Depts</td><td>10 students per department authenticated via individual hashed passwords</td><td><span class="badge-pass">PASS (50/50)</span></td></tr>
+        <tr><td>2</td><td>15 Test Faculty Login Across 5 Depts</td><td>3 instructors per department authenticated via employee code credentials</td><td><span class="badge-pass">PASS (15/15)</span></td></tr>
+        <tr><td>3</td><td>Independent Student Data Retrieval</td><td>Student A (CS-1, 31001) vs Student B (AIDS-1, 34001) retrieve isolated records</td><td><span class="badge-pass">PASS</span></td></tr>
+        <tr><td>4</td><td>IDOR Parameter Tampering Resistance</td><td>Query string tampering (<code>?student_id=6</code>) is ignored; verified JWT binding</td><td><span class="badge-pass">PASS</span></td></tr>
+        <tr><td>5</td><td>Role-Based Authorization Enforcement</td><td>Student token attempting faculty routes rejected with HTTP 403 Forbidden</td><td><span class="badge-pass">PASS</span></td></tr>
+        <tr><td>6</td><td>Attendance Persistence to MySQL</td><td>Faculty session submission commits row to <code>attendance_session</code></td><td><span class="badge-pass">PASS</span></td></tr>
+        <tr><td>7</td><td>Student Live Propagation</td><td>Student query immediately reflects updated absent/attended metrics</td><td><span class="badge-pass">PASS</span></td></tr>
+        <tr><td>8</td><td>Timetable Conflict Engine</td><td>Overlapping section or venue booking triggers HTTP 409 Conflict</td><td><span class="badge-pass">PASS</span></td></tr>
+        <tr><td>9</td><td>Duplicate Attendance Idempotency</td><td>Repeated submission updates existing session without redundant rows</td><td><span class="badge-pass">PASS</span></td></tr>
+        <tr><td>10</td><td>ACID Transaction Rollback</td><td>Foreign key violation on invalid student triggers full rollback (0 orphan rows)</td><td><span class="badge-pass">PASS</span></td></tr>
+        <tr><td>11</td><td>8 ERP Modules Live Coverage</td><td>Profile, Faculty, Attendance, Timetable, Exams, Library, TNP, Fees all active</td><td><span class="badge-pass">PASS (8/8)</span></td></tr>
+        <tr><td>12</td><td>Database Views Functional</td><td>Queries against <code>v_student_attendance_summary</code>, <code>v_student_fee_balance</code></td><td><span class="badge-pass">PASS</span></td></tr>
+        <tr><td>13</td><td>Admin Login & Preview Mode</td><td>Admin authenticated (<code>Admin@2026</code>); Faculty preview mode active</td><td><span class="badge-pass">PASS</span></td></tr>
+        <tr><td>14</td><td>Invalid Credentials Rejection</td><td>Incorrect password rejected safely with HTTP 401 Unauthorized</td><td><span class="badge-pass">PASS</span></td></tr>
+        <tr><td>15</td><td>SQL Injection Immunity</td><td>Injected payload (<code>' OR '1'='1</code>) safely rejected via prepared statements</td><td><span class="badge-pass">PASS</span></td></tr>
+      </tbody>
+    </table>
+
+    <h1>12. Installation, Configuration & Execution Manual</h1>
+    <div class="code-box"><span class="cm"># 1. Install Dependencies</span>
+npm install
+<span class="kw">cd</span> server && npm install && <span class="kw">cd</span> ..
+
+<span class="cm"># 2. Database Schema Initialization & Views (MySQL Workbench or CLI)</span>
+mysql -u root -p college_erp &lt; database/schema.sql
+mysql -u root -p college_erp &lt; database/views.sql
+mysql -u root -p college_erp &lt; database/indexes.sql
+
+<span class="cm"># 3. Seed Development Accounts (Idempotent)</span>
+node database/seed_test_accounts.cjs
+
+<span class="cm"># 4. Start Services</span>
+node server/index.js       <span class="cm"># Express Backend (Port 5000)</span>
+npm run dev               <span class="cm"># Vite Frontend (Port 3000)</span>
+
+<span class="cm"># 5. Run Verification Suite</span>
+node scripts/verify_dbms_evaluation.cjs</div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- 12. CHAPTER 13 & 14: LIMITATIONS & CONCLUSION -->
+  <!-- ========================================================================= -->
+  <div class="page-break">
+    <h1>13. Current Limitations & Future Roadmap</h1>
+    <ul style="margin-left: 20px; margin-bottom: 12pt;">
+      <li><strong>Hardware Biometric Interface:</strong> Biometric attendance is currently recorded via web interface and simulated gate logs. Future versions can incorporate physical TCP/IP RFID attendance turnstiles.</li>
+      <li><strong>Payment Webhooks:</strong> Tuition fees record transaction receipts and reference tokens. Integration with live payment gateways (e.g. Razorpay, UPI) is slated for version 2.0.</li>
+    </ul>
+
+    <h1>14. Conclusion & Project File References</h1>
+    <p>
+      The <strong>Campus ERP</strong> project successfully demonstrates the real-world application of relational database engineering principles within an academic environment. By implementing a Third Normal Form normalized schema, ACID transactional boundaries with row locking, automated scheduling conflict resolution, composite B-Tree indexes, and cryptographic JWT identity mapping, the platform guarantees data integrity, prevents duplicate records, and enables real-time synchronization between faculty and student dashboards.
+    </p>
+
+    <h2>Primary Project File Manifest</h2>
+    <table class="data-table">
+      <thead>
+        <tr><th>File Path</th><th>Component Role</th><th>Description</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><code>database/schema.sql</code></td><td>Master Schema</td><td>Full DDL script for all 50 tables, foreign keys, and constraints.</td></tr>
+        <tr><td><code>database/views.sql</code></td><td>Database Views</td><td>Production SQL views for attendance, fee balances, and workloads.</td></tr>
+        <tr><td><code>database/indexes.sql</code></td><td>Performance Indexes</td><td>B-Tree composite indexes for timetable and attendance filtering.</td></tr>
+        <tr><td><code>database/reports.sql</code></td><td>DBMS Analytical Queries</td><td>Complex queries with joins, aggregates, HAVING, and subqueries.</td></tr>
+        <tr><td><code>server/controllers/facultyController.js</code></td><td>Backend ACID Engine</td><td>Transaction coordinator for attendance and timetable conflict engine.</td></tr>
+        <tr><td><code>server/controllers/studentController.js</code></td><td>Backend Query Engine</td><td>Isolated query handler for student profiles, fees, and results.</td></tr>
+        <tr><td><code>docs/TEST_ACCOUNTS.md</code></td><td>Credentials Directory</td><td>Complete evaluation credentials for Admin, Faculty, and Students.</td></tr>
+        <tr><td><code>scripts/verify_dbms_evaluation.cjs</code></td><td>Verification Suite</td><td>Automated 15-scenario integration test harness.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- 13. CHAPTER 15: DBMS VIVA VOCE QUESTIONS -->
+  <!-- ========================================================================= -->
+  <div class="page-break">
+    <h1>15. Comprehensive DBMS Viva Voce Preparation (25 Questions & Answers)</h1>
+
+    <div class="qa-card">
+      <div class="q-title">Q1: Which storage engine was chosen for MySQL in this project, and why?</div>
+      <div class="a-text"><strong>Answer:</strong> MySQL's <strong>InnoDB</strong> engine was selected. Unlike MyISAM, InnoDB supports ACID transactions, row-level locking, foreign key referential integrity constraints, and write-ahead redo logging for crash recovery.</div>
+    </div>
+
+    <div class="qa-card">
+      <div class="q-title">Q2: What normal form is the database schema in, and how was it achieved?</div>
+      <div class="a-text"><strong>Answer:</strong> The database is in <strong>Third Normal Form (3NF)</strong>. Every column contains atomic values (1NF), no non-key attribute is partially dependent on any candidate key (2NF), and all transitive dependencies ($X \rightarrow Y \rightarrow Z$) have been eliminated by extracting master entities (departments, designations, fee structures) into separate tables (3NF).</div>
+    </div>
+
+    <div class="qa-card">
+      <div class="q-title">Q3: How does the system prevent duplicate attendance records when an instructor re-submits?</div>
+      <div class="a-text"><strong>Answer:</strong> The database enforces a composite <code>UNIQUE KEY uk_session_student (session_id, student_id)</code> on <code>attendance_record</code>. In the backend, <code>saveAttendance</code> queries <code>attendance_session</code> with <code>FOR UPDATE</code> to lock the row, reuses the existing session ID, and executes <code>INSERT ... ON DUPLICATE KEY UPDATE status = VALUES(status)</code> within an atomic transaction.</div>
+    </div>
+
+    <div class="qa-card">
+      <div class="q-title">Q4: How are ACID properties guaranteed during attendance logging?</div>
+      <div class="a-text"><strong>Answer:</strong> <strong>Atomicity:</strong> Enclosed in <code>START TRANSACTION</code> and <code>COMMIT</code>; errors trigger <code>ROLLBACK</code>. <strong>Consistency:</strong> Foreign keys ensure only valid students are logged. <strong>Isolation:</strong> Row-level locks prevent concurrent race conditions. <strong>Durability:</strong> InnoDB write-ahead logs ensure committed data survives system crashes.</div>
+    </div>
+
+    <div class="qa-card">
+      <div class="q-title">Q5: What is the purpose of database views in this system?</div>
+      <div class="a-text"><strong>Answer:</strong> Views like <code>v_student_attendance_summary</code> encapsulate complex multi-table joins and calculations inside MySQL, improving query maintainability, performance, and preventing code duplication across frontend/backend layers.</div>
+    </div>
+
+    <div class="qa-card">
+      <div class="q-title">Q6: What is an Insecure Direct Object Reference (IDOR) and how is it eliminated?</div>
+      <div class="a-text"><strong>Answer:</strong> IDOR allows unauthorized access by changing parameter IDs. The system mitigates IDOR by binding queries strictly to <code>req.user.student_id</code> decoded from the cryptographically signed JWT token, completely ignoring client-supplied URL query parameters.</div>
+    </div>
+
+    <div class="qa-card">
+      <div class="q-title">Q7: How does the timetable conflict engine detect overlapping classes?</div>
+      <div class="a-text"><strong>Answer:</strong> The backend queries MySQL with interval arithmetic: <code>NOT (end_time &lt;= ? OR start_time &gt;= ?)</code> for the given section, instructor, and classroom. If any row is returned, the API rejects the request with an HTTP 409 Conflict error.</div>
+    </div>
+
+    <div class="qa-card">
+      <div class="q-title">Q8: Why are composite indexes used on <code>timetable</code> and <code>attendance_session</code>?</div>
+      <div class="a-text"><strong>Answer:</strong> Composite B-Tree indexes on <code>(section_id, day_of_week, start_time)</code> allow MySQL to locate scheduled lectures directly without performing expensive full-table scans.</div>
+    </div>
+
+    <div class="qa-card">
+      <div class="q-title">Q9: What is the difference between WHERE and HAVING clauses in SQL?</div>
+      <div class="a-text"><strong>Answer:</strong> <code>WHERE</code> filters individual tuples before aggregation. <code>HAVING</code> filters grouped summary rows after aggregation, such as isolating students whose attendance percentage is strictly below 75%.</div>
+    </div>
+
+    <div class="qa-card">
+      <div class="q-title">Q10: What is a correlated subquery, and where is it demonstrated in this project?</div>
+      <div class="a-text"><strong>Answer:</strong> A correlated subquery references columns from the outer query. It is demonstrated in Report 2 to compute the overall average marks of the specific department to which each candidate belongs.</div>
+    </div>
+
+    <div class="qa-card">
+      <div class="q-title">Q11: Why are passwords hashed with Bcrypt instead of stored in plaintext?</div>
+      <div class="a-text"><strong>Answer:</strong> Storing plaintext passwords exposes credentials during database breaches. Bcrypt with 10 salt rounds provides cryptographic one-way hashing with deliberate computational cost resistant to brute-force attacks.</div>
+    </div>
+
+    <div class="qa-card">
+      <div class="q-title">Q12: What referential integrity actions are configured on foreign keys?</div>
+      <div class="a-text"><strong>Answer:</strong> <code>ON UPDATE CASCADE</code> ensures primary key changes propagate to child rows. <code>ON DELETE RESTRICT</code> prevents accidental deletion of master entities (such as departments or instructors) that have active dependent records.</div>
+    </div>
+
+    <div class="qa-card">
+      <div class="q-title">Q13: How does the Faculty Preview Mode function without exposing student passwords?</div>
+      <div class="a-text"><strong>Answer:</strong> The endpoint <code>/api/faculty/preview-student/:id</code> queries academic tables and views for the designated student and returns profile and attendance data. The password hash is explicitly excluded from the SQL <code>SELECT</code> projection.</div>
+    </div>
+
+    <div class="qa-card">
+      <div class="q-title">Q14: What is connection pooling in <code>mysql2/promise</code>?</div>
+      <div class="a-text"><strong>Answer:</strong> Connection pooling maintains a pool of 10 persistent database sockets, avoiding the latency overhead of establishing a new TCP handshake and MySQL authentication on every HTTP request.</div>
+    </div>
+
+    <div class="qa-card">
+      <div class="q-title">Q15: How does the system prevent SQL Injection vulnerabilities?</div>
+      <div class="a-text"><strong>Answer:</strong> All database interactions utilize <strong>parameterized prepared statements</strong> (e.g. <code>query('SELECT ... WHERE roll_no = ?', [val])</code>), ensuring user inputs are treated strictly as data literals and never interpreted as executable SQL syntax.</div>
+    </div>
+
+    <div class="qa-card">
+      <div class="q-title">Q16: What is the difference between surrogate keys and natural keys?</div>
+      <div class="a-text"><strong>Answer:</strong> Natural keys (PRN, Roll Number) exist in the institutional domain. Surrogate keys (e.g. <code>student_id INT AUTO_INCREMENT</code>) are synthetic, immutable, and computationally optimal for joining relational tables.</div>
+    </div>
+
+    <div class="qa-card">
+      <div class="q-title">Q17: What cardinality exists between <code>student</code> and <code>user_account</code>?</div>
+      <div class="a-text"><strong>Answer:</strong> Exactly <strong>one-to-one (1:1)</strong>, enforced by a <code>UNIQUE</code> foreign key constraint on <code>user_account(student_id)</code>.</div>
+    </div>
+
+    <div class="qa-card">
+      <div class="q-title">Q18: What is the difference between COUNT(*) and COUNT(column)?</div>
+      <div class="a-text"><strong>Answer:</strong> <code>COUNT(*)</code> tallies all rows in the group, including rows with NULLs. <code>COUNT(column)</code> counts only rows where the specified column evaluates to a non-NULL value.</div>
+    </div>
+
+    <div class="qa-card">
+      <div class="q-title">Q19: How are library overdue fines calculated in the database?</div>
+      <div class="a-text"><strong>Answer:</strong> Calculated via SQL date arithmetic: <code>GREATEST(0, DATEDIFF(CURDATE(), due_date) * 5)</code> inside <code>v_library_overdue_books</code>.</div>
+    </div>
+
+    <div class="qa-card">
+      <div class="q-title">Q20: What error code does MySQL return on foreign key violation?</div>
+      <div class="a-text"><strong>Answer:</strong> MySQL rejects the operation with error <code>ER_NO_REFERENCED_ROW_2</code> (Error 1452: Cannot add or update a child row: a foreign key constraint fails).</div>
+    </div>
+
+    <div class="qa-card">
+      <div class="q-title">Q21: Why are financial fees stored as DECIMAL(10,2) instead of FLOAT?</div>
+      <div class="a-text"><strong>Answer:</strong> <code>FLOAT</code> uses binary floating-point representation, causing inexact rounding errors. <code>DECIMAL(10,2)</code> is an exact fixed-point numeric type essential for monetary calculations.</div>
+    </div>
+
+    <div class="qa-card">
+      <div class="q-title">Q22: How does the backend monitor database availability?</div>
+      <div class="a-text"><strong>Answer:</strong> The endpoint <code>/api/health</code> invokes <code>connection.ping()</code>. If MySQL is unreachable, the frontend displays actionable connection diagnostics rather than unhandled fetch errors.</div>
+    </div>
+
+    <div class="qa-card">
+      <div class="q-title">Q23: How does <code>ON DUPLICATE KEY UPDATE</code> operate under the hood?</div>
+      <div class="a-text"><strong>Answer:</strong> If an <code>INSERT</code> statement violates a <code>PRIMARY KEY</code> or <code>UNIQUE</code> constraint, MySQL automatically executes an <code>UPDATE</code> on the existing row, preventing duplicate insertion exceptions.</div>
+    </div>
+
+    <div class="qa-card">
+      <div class="q-title">Q24: What is the impact of normalization on write performance?</div>
+      <div class="a-text"><strong>Answer:</strong> Normalization eliminates data redundancy. Updating an entity (such as a department name) requires modifying only a single row in one table, eliminating update anomalies and minimizing lock contention.</div>
+    </div>
+
+    <div class="qa-card">
+      <div class="q-title">Q25: What is the significance of the 15/15 automated verification test suite?</div>
+      <div class="a-text"><strong>Answer:</strong> It provides empirical proof that all DBMS mechanisms—authentication, data isolation, ACID rollback, conflict detection, view evaluation, and live propagation—function reliably under automated test conditions.</div>
+    </div>
+  </div>
+
+</body>
+</html>

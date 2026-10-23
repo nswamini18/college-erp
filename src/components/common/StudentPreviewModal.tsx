@@ -193,7 +193,7 @@ export const StudentPreviewModal: React.FC<StudentPreviewModalProps> = ({
                           <div key={idx} className="p-3.5 bg-white border border-slate-200 rounded-xl shadow-sm space-y-2">
                             <div className="flex items-center justify-between">
                               <span className="font-mono font-bold text-navy-950 text-xs">{att.subject_code}</span>
-                              <Badge variant={isDebarred ? 'error' : 'success'}>
+                              <Badge variant={isDebarred ? 'danger' : 'success'}>
                                 {pct}% {isDebarred ? 'Debarment Risk' : 'Eligible'}
                               </Badge>
                             </div>

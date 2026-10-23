@@ -8,6 +8,7 @@ import { FacultyLayout } from './components/layout/FacultyLayout';
 
 // Common Pages
 import { LoginPage } from './pages/LoginPage';
+import { RegisterPage } from './pages/RegisterPage';
 import { NotFoundPage } from './pages/NotFoundPage';
 
 // Student Pages
@@ -39,8 +40,9 @@ export const App: React.FC = () => {
     <AuthProvider>
       <BrowserRouter>
         <Routes>
-          {/* Public Login Route */}
+          {/* Public Authentication Routes */}
           <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />} />
 
           {/* Root Redirect */}
           <Route path="/" element={<RootRedirect />} />

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { 
   GraduationCap, 
   Briefcase, 
@@ -218,6 +218,16 @@ export const LoginPage: React.FC = () => {
               </button>
             </div>
           </form>
+
+          {/* Registration Link */}
+          <div className="mt-4 text-center">
+            <p className="text-xs text-slate-600">
+              New student or faculty?{' '}
+              <Link to="/register" className="font-bold text-[#4D8DFF] hover:underline">
+                Register Account
+              </Link>
+            </p>
+          </div>
 
           {/* Footer */}
           <div className="mt-5 pt-4 border-t border-slate-100 text-center">

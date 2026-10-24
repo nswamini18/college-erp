@@ -3,7 +3,8 @@
  * Configurable base URL with JWT session management and safe network fallbacks.
  */
 
-const API_BASE_URL = (import.meta as any).env?.VITE_API_BASE_URL || 'http://localhost:5000/api';
+const PRIMARY_API_URL = (import.meta as any).env?.VITE_API_BASE_URL || '/api';
+const FALLBACK_API_URL = 'http://localhost:5000/api';
 
 class ApiClient {
   private getAuthHeader(): Record<string, string> {
@@ -18,13 +19,27 @@ class ApiClient {
       ...(options.headers || {})
     };
 
-    const url = `${API_BASE_URL}${endpoint}`;
+    let url = `${PRIMARY_API_URL}${endpoint}`;
 
     try {
-      const response = await fetch(url, {
-        ...options,
-        headers
-      });
+      let response: Response;
+      try {
+        response = await fetch(url, {
+          ...options,
+          headers
+        });
+      } catch (networkErr: any) {
+        if (PRIMARY_API_URL === '/api') {
+          console.warn(`[API CLIENT] Primary route ${url} failed (${networkErr.message}), retrying fallback ${FALLBACK_API_URL}${endpoint}`);
+          url = `${FALLBACK_API_URL}${endpoint}`;
+          response = await fetch(url, {
+            ...options,
+            headers
+          });
+        } else {
+          throw networkErr;
+        }
+      }
 
       const data = await response.json();
 
@@ -217,6 +232,81 @@ class ApiClient {
       feeSummary: any;
     }>(`/faculty/preview-student/${studentId}`);
   }
+
+  // ─────────────────────────────────────────────
+  // Staff Shared
+  // ─────────────────────────────────────────────
+  async getStaffProfile() { return this.request<{ success: boolean; data: any }>('/staff/profile'); }
+
+  // ─────────────────────────────────────────────
+  // TNP Head
+  // ─────────────────────────────────────────────
+  async getTNPDashboard() { return this.request<{ success: boolean; data: any }>('/staff/tnp/dashboard'); }
+  async getTNPCompanies() { return this.request<{ success: boolean; data: any[] }>('/staff/tnp/companies'); }
+  async addCompany(payload: any) { return this.request<{ success: boolean; message: string; data: any }>('/staff/tnp/companies', { method: 'POST', body: JSON.stringify(payload) }); }
+  async updateCompany(id: number, payload: any) { return this.request<{ success: boolean; message: string }>(`/staff/tnp/companies/${id}`, { method: 'PUT', body: JSON.stringify(payload) }); }
+  async getTNPDrives() { return this.request<{ success: boolean; data: any[] }>('/staff/tnp/drives'); }
+  async addDrive(payload: any) { return this.request<{ success: boolean; message: string; drive_id: number }>('/staff/tnp/drives', { method: 'POST', body: JSON.stringify(payload) }); }
+  async updateDriveStatus(id: number, status: string) { return this.request<{ success: boolean; message: string }>(`/staff/tnp/drives/${id}/status`, { method: 'PUT', body: JSON.stringify({ status }) }); }
+  async getTNPApplications(driveId?: number, status?: string) {
+    const q = new URLSearchParams();
+    if (driveId) q.append('drive_id', String(driveId));
+    if (status) q.append('status', status);
+    const qs = q.toString() ? `?${q.toString()}` : '';
+    return this.request<{ success: boolean; data: any[] }>(`/staff/tnp/applications${qs}`);
+  }
+  async shortlistApplication(id: number, payload: any) { return this.request<{ success: boolean; message: string }>(`/staff/tnp/applications/${id}/shortlist`, { method: 'PUT', body: JSON.stringify(payload) }); }
+  async getTNPPlacements() { return this.request<{ success: boolean; data: any[] }>('/staff/tnp/placements'); }
+
+  // ─────────────────────────────────────────────
+  // Finance Officer
+  // ─────────────────────────────────────────────
+  async getFinanceDashboard() { return this.request<{ success: boolean; data: any }>('/staff/finance/dashboard'); }
+  async getStudentsWithFees(params?: { dept?: number | string; search?: string; status?: string } | number) {
+    if (typeof params === 'number') {
+      return this.request<{ success: boolean; data: any[] }>(`/staff/finance/students?dept=${params}`);
+    }
+    const q = new URLSearchParams();
+    if (params?.dept) q.append('dept', String(params.dept));
+    if (params?.search) q.append('search', params.search);
+    if (params?.status) q.append('status', params.status);
+    const qs = q.toString() ? `?${q.toString()}` : '';
+    return this.request<{ success: boolean; data: any[] }>(`/staff/finance/students${qs}`);
+  }
+  async getStudentFeeDetails(studentId: number) { return this.request<{ success: boolean; data: any }>(`/staff/finance/fees/${studentId}`); }
+  async recordPayment(studentFeeId: number, payload: any) { return this.request<{ success: boolean; message: string; data?: any }>(`/staff/finance/fees/${studentFeeId}/payment`, { method: 'PUT', body: JSON.stringify(payload) }); }
+  async getFeeStructures() { return this.request<{ success: boolean; data: any[] }>('/staff/finance/fee-structures'); }
+  async addFeeStructure(payload: any) { return this.request<{ success: boolean; message: string }>('/staff/finance/fee-structures', { method: 'POST', body: JSON.stringify(payload) }); }
+  async getAllPayments() { return this.request<{ success: boolean; data: any[] }>('/staff/finance/payments'); }
+
+  // ─────────────────────────────────────────────
+  // Librarian
+  // ─────────────────────────────────────────────
+  async getLibraryDashboard() { return this.request<{ success: boolean; data: any }>('/staff/library/dashboard'); }
+  async getLibraryBooks(search?: string, category?: string) {
+    const q = new URLSearchParams();
+    if (search) q.append('search', search);
+    if (category) q.append('category', category);
+    const qs = q.toString() ? `?${q.toString()}` : '';
+    return this.request<{ success: boolean; data: any[] }>(`/staff/library/books${qs}`);
+  }
+  async addBook(payload: any) { return this.request<{ success: boolean; message: string }>('/staff/library/books', { method: 'POST', body: JSON.stringify(payload) }); }
+  async updateBook(isbn: string, payload: any) { return this.request<{ success: boolean; message: string }>(`/staff/library/books/${isbn}`, { method: 'PUT', body: JSON.stringify(payload) }); }
+  async getLibraryIssues(status?: string, studentId?: number) {
+    const q = new URLSearchParams();
+    if (status) q.append('status', status);
+    if (studentId) q.append('student_id', String(studentId));
+    const qs = q.toString() ? `?${q.toString()}` : '';
+    return this.request<{ success: boolean; data: any[] }>(`/staff/library/issues${qs}`);
+  }
+  async issueBook(payload: any) { return this.request<{ success: boolean; message: string; issue_id?: number }>('/staff/library/issues', { method: 'POST', body: JSON.stringify(payload) }); }
+  async returnBook(issueId: number, payload?: any) {
+    return this.request<{ success: boolean; message: string }>(`/staff/library/issues/${issueId}/return`, {
+      method: 'PUT',
+      ...(payload ? { body: JSON.stringify(payload) } : {})
+    });
+  }
+  async getOverdueBooks() { return this.request<{ success: boolean; data: any[] }>('/staff/library/overdue'); }
 }
 
 export const api = new ApiClient();

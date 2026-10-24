@@ -1,0 +1,20 @@
+const path = require('path');
+const mysql = require(path.join(__dirname, '../server/node_modules/mysql2/promise'));
+(async () => {
+  const db = await mysql.createConnection({ host: '127.0.0.1', user: 'root', password: 'Raj@2026', database: 'college_erp' });
+  const [s] = await db.query('SELECT * FROM staff');
+  console.log('staff rows:', s.length, s[0] || 'empty');
+  const [l] = await db.query('SELECT * FROM librarian');
+  console.log('librarian rows:', l.length, l[0] || 'empty');
+  const [ua] = await db.query("SELECT * FROM user_account WHERE role NOT IN ('STUDENT','FACULTY') AND role IS NOT NULL");
+  console.log('non-std users:', ua);
+  const [uaRole] = await db.query("SELECT DISTINCT role FROM user_account");
+  console.log('roles in DB:', uaRole.map(r => r.role));
+  const [comp] = await db.query('SELECT COUNT(*) as c FROM company');
+  console.log('companies:', comp[0].c);
+  const [feeSt] = await db.query('DESCRIBE fee_structure');
+  console.log('fee_structure cols:', feeSt.map(c => c.Field));
+  const [book] = await db.query('DESCRIBE book');
+  console.log('book cols:', book.map(c => c.Field));
+  await db.end();
+})();

@@ -4,6 +4,8 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
+    "start": "node scripts/start-all.cjs",
+    "dev:all": "node scripts/start-all.cjs",
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",

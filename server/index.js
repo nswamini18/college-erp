@@ -19,6 +19,7 @@ const { errorHandler, notFoundHandler } = require('./middleware/errorHandler');
 const authRoutes = require('./routes/authRoutes');
 const studentRoutes = require('./routes/studentRoutes');
 const facultyRoutes = require('./routes/facultyRoutes');
+const staffRoutes = require('./routes/staffRoutes');
 const syncRoutes = require('./routes/syncRoutes');
 
 const app = express();
@@ -80,6 +81,7 @@ app.get('/api/health', async (req, res) => {
 app.use('/api/auth', authRoutes);
 app.use('/api/students', studentRoutes);
 app.use('/api/faculty', facultyRoutes);
+app.use('/api/staff', staffRoutes);
 app.use('/api/sync', syncRoutes);
 
 // -----------------------------------------------------------------------------

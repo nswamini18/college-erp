@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useState } from 'react';
 import { api } from '../services/api';
 
-export type UserRole = 'STUDENT' | 'FACULTY';
+export type UserRole = 'STUDENT' | 'FACULTY' | 'TNP_HEAD' | 'FINANCE' | 'LIBRARIAN';
 
 export interface AuthUser {
   id: number;
@@ -19,7 +19,7 @@ export interface AuthUser {
 interface AuthContextType {
   user: AuthUser | null;
   role: UserRole | null;
-  login: (selectedRole: UserRole, identifier: string, password?: string) => Promise<boolean>;
+  login: (selectedRole: UserRole | 'STAFF', identifier: string, password?: string) => Promise<boolean>;
   logout: () => void;
 }
 
@@ -40,7 +40,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const role = user ? user.role : null;
 
-  const login = async (selectedRole: UserRole, identifier: string, password?: string): Promise<boolean> => {
+  const login = async (selectedRole: UserRole | 'STAFF', identifier: string, password?: string): Promise<boolean> => {
     const res = await api.login(identifier, password || '', selectedRole);
     if (res && res.success && res.user) {
       setUser(res.user);

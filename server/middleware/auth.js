@@ -73,7 +73,8 @@ function generateToken(user) {
       email: user.email,
       role: user.role,
       student_id: user.student_id || null,
-      faculty_id: user.faculty_id || null
+      faculty_id: user.faculty_id || null,
+      staff_id: user.staff_id || null
     },
     JWT_SECRET,
     { expiresIn: process.env.JWT_EXPIRES_IN || '7d' }

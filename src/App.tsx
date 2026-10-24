@@ -5,6 +5,7 @@ import { AuthProvider, useAuth } from './context/AuthContext';
 // Layouts
 import { StudentLayout } from './components/layout/StudentLayout';
 import { FacultyLayout } from './components/layout/FacultyLayout';
+import { StaffLayout } from './components/layout/StaffLayout';
 
 // Common Pages
 import { LoginPage } from './pages/LoginPage';
@@ -27,10 +28,21 @@ import { FacultyGradingPage } from './pages/faculty/FacultyGradingPage';
 import { FacultyLeavePage } from './pages/faculty/FacultyLeavePage';
 import { FacultyPayrollPage } from './pages/faculty/FacultyPayrollPage';
 
+// Staff Pages
+import { StaffDashboardPage } from './pages/staff/StaffDashboardPage';
+import { TNPCompaniesPage } from './pages/staff/TNPCompaniesPage';
+import { TNPPlacementsPage } from './pages/staff/TNPPlacementsPage';
+import { FinanceFeesPage } from './pages/staff/FinanceFeesPage';
+import { LibrarianBooksPage } from './pages/staff/LibrarianBooksPage';
+import { LibrarianIssuancePage } from './pages/staff/LibrarianIssuancePage';
+
 // Smart Root Redirect based on active session
 const RootRedirect: React.FC = () => {
   const { user, role } = useAuth();
   if (!user) return <Navigate to="/login" replace />;
+  if (role === 'TNP_HEAD' || role === 'FINANCE' || role === 'LIBRARIAN') {
+    return <Navigate to="/staff/dashboard" replace />;
+  }
   if (role === 'FACULTY') return <Navigate to="/faculty/dashboard" replace />;
   return <Navigate to="/student/dashboard" replace />;
 };
@@ -67,6 +79,30 @@ export const App: React.FC = () => {
             <Route path="grading" element={<FacultyGradingPage />} />
             <Route path="leave" element={<FacultyLeavePage />} />
             <Route path="payroll" element={<FacultyPayrollPage />} />
+          </Route>
+
+          {/* Dedicated Staff Portal Routes */}
+          <Route path="/staff" element={<StaffLayout />}>
+            <Route index element={<Navigate to="/staff/dashboard" replace />} />
+            <Route path="dashboard" element={<StaffDashboardPage />} />
+
+            {/* TNP Cell Routes */}
+            <Route path="companies" element={<TNPCompaniesPage />} />
+            <Route path="drives" element={<TNPPlacementsPage />} />
+            <Route path="applications" element={<TNPPlacementsPage />} />
+            <Route path="placements" element={<TNPPlacementsPage />} />
+
+            {/* Finance Officer Routes */}
+            <Route path="fees" element={<FinanceFeesPage />} />
+            <Route path="payments" element={<FinanceFeesPage />} />
+            <Route path="fee-structures" element={<FinanceFeesPage />} />
+            <Route path="reports" element={<FinanceFeesPage />} />
+
+            {/* Librarian Routes */}
+            <Route path="books" element={<LibrarianBooksPage />} />
+            <Route path="issues" element={<LibrarianIssuancePage />} />
+            <Route path="overdue" element={<LibrarianIssuancePage />} />
+            <Route path="returns" element={<LibrarianIssuancePage />} />
           </Route>
 
           {/* Catch-all Fallback */}
